@@ -15,16 +15,16 @@ st.markdown("Estimado/a estudiante. "
             "Bienvenido/a a este espacio interactivo del curso de Análisis Biomecánico del Movimiento. " \
             "Aquí encontrarás recursos y herramientas interactivas para complementar tu aprendizaje."
             )
+st.info("⬅ Usa el menú lateral para navegar por las secciones que estén disponibles.")
 st.markdown("---")
 
-st.info("⬅ Usa el menú lateral para navegar por las unidades cuando estén disponibles.")
-
-pag_bienvenida = "Bienvenida"
-pag_introduccion = "Sección 1: Introducción"
-pag_bioinstrumentacion = "Sección 2: Bioinstrumentación"
-pag_control_motor = "Sección 3: Teorías del control motor"
-pag_balance = "Sección 4: Sistema sensoriomotor y balance"
-pag_marcha = "Sección 5: Análisis de marcha"
+# Nombres de las páginas
+pag_bienvenida          = "Bienvenida"
+pag_introduccion        = "Sección 1: Introducción"
+pag_bioinstrumentacion  = "Sección 2: Bioinstrumentación"
+pag_control_motor       = "Sección 3: Teorías del control motor"
+pag_balance             = "Sección 4: Sistema sensoriomotor y balance"
+pag_marcha              = "Sección 5: Análisis de marcha"
 
 
 # Sidebar con selector de página
@@ -41,9 +41,6 @@ pagina = st.sidebar.radio("Selecciona una sección:", [
 if pagina == pag_bienvenida:
     st.title("Te damos la Bienvenida 👋")
     st.write("Usa el menú de la izquierda para navegar.")
-
-
-
 
 elif pagina == pag_introduccion:
     st.header("📘 Unidad 1: Introducción al análisis del movimiento")
