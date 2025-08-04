@@ -89,8 +89,8 @@ def mostrar():
             freq = st.slider(f"Frecuencia (Hz)", 0.0, float(freq_max), st.session_state[f"freq_{i}"], key=f"freq_{i}")
             fase = st.slider(f"Fase", 0.0, float(fase_max), st.session_state[f"fase_{i}"], key=f"fase_{i}")
             params.append((amp, freq, fase))
-
     
+
     # Botones centrados en fila al final
     esp1, col1, col2, esp2 = st.sidebar.columns([1, 2, 2, 1])
 
