@@ -58,17 +58,24 @@ def mostrar():
     # Primera figura: ondas individuales
     fig1, axs1 = plt.subplots(num_ondas, 1, figsize=(10, num_ondas * 1.5))
 
-    # Fondo transparente
     fig1.patch.set_alpha(0)
     for ax in axs1:
         ax.patch.set_alpha(0)
+
+        ax.grid(True, alpha=0.10)              # Grid con alpha=0.10
+        ax.set_title(ax.get_ylabel(), color='white')  # Título blanco (usamos ylabel como título para cada plot)
+        ax.set_ylabel(ax.get_ylabel(), color='white')
+        ax.set_xlabel(ax.get_xlabel(), color='white')
+
+        ax.tick_params(axis='x', colors='white')
+        ax.tick_params(axis='y', colors='white')
 
     for i, (amp, freq, fase) in enumerate(params):
         y = amp * np.sin(2 * np.pi * freq * x + fase)
         suma_total += y
         axs1[i].plot(x, y, color=colores_pastel[i])
         axs1[i].set_ylim(-amp_max, amp_max)
-        axs1[i].set_ylabel(f"UM {i+1}", font_color=colores_pastel[i])
+        axs1[i].set_ylabel(f"UM {i+1}", color='white')
         axs1[i].set_xticks([])
 
     st.pyplot(fig1)
@@ -76,14 +83,17 @@ def mostrar():
     # Segunda figura: gráfico sumatoria total
     fig2, ax2 = plt.subplots(figsize=(10, 3))
 
-    # Fondo transparente
     fig2.patch.set_alpha(0)
     ax2.patch.set_alpha(0)
 
     ax2.plot(x, suma_total, color='white')
     ax2.set_ylim(-amp_max * num_ondas, amp_max * num_ondas)
-    ax2.set_ylabel("Suma", font_color='white')
-    ax2.set_xlabel("Tiempo (ms)", font_color='white')
-    ax2.set_title("Simulación de señal EMG compuesta", font_color='white')
+    ax2.set_ylabel("Suma", color='white')
+    ax2.set_xlabel("Tiempo (ms)", color='white')
+    ax2.set_title("Simulación de señal EMG compuesta", color='white')
+
+    ax2.grid(True, alpha=0.10)
+    ax2.tick_params(axis='x', colors='white')
+    ax2.tick_params(axis='y', colors='white')
 
     st.pyplot(fig2)
