@@ -68,7 +68,7 @@ def mostrar():
         suma_total += y
         axs1[i].plot(x, y, color=colores_pastel[i])
         axs1[i].set_ylim(-amp_max, amp_max)
-        axs1[i].set_ylabel(f"UM {i+1}")
+        axs1[i].set_ylabel(f"UM {i+1}", font_color=colores_pastel[i])
         axs1[i].set_xticks([])
 
     st.pyplot(fig1)
@@ -82,8 +82,8 @@ def mostrar():
 
     ax2.plot(x, suma_total, color='white')
     ax2.set_ylim(-amp_max * num_ondas, amp_max * num_ondas)
-    ax2.set_ylabel("Suma")
-    ax2.set_xlabel("Tiempo (ms)")
-    ax2.set_title("Simulación de señal EMG compuesta")
+    ax2.set_ylabel("Suma", font_color='white')
+    ax2.set_xlabel("Tiempo (ms)", font_color='white')
+    ax2.set_title("Simulación de señal EMG compuesta", font_color='white')
 
     st.pyplot(fig2)
