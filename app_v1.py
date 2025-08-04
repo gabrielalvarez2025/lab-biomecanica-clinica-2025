@@ -2,6 +2,10 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 
+# importar secciones
+from pag_bienvenida import mostrar as mostrar_bienvenida
+
+
 
 st.set_page_config(page_title="Bienvenida - Análisis Biomecánico del Movimiento", layout="centered")
 
@@ -50,9 +54,8 @@ st.sidebar.markdown("---")  # línea horizontal para separar
 
 # Mostrar contenido según la selección
 if pagina == pag_bienvenida:
-    st.title("Te damos la Bienvenida 👋")
-    st.write("Usa el menú de la izquierda para navegar.")
-
+    mostrar_bienvenida()
+    
 elif pagina == pag_introduccion:
     st.header("📘 Unidad 1: Introducción al análisis del movimiento")
     st.markdown("- Etapas del análisis\n- Cinemática\n- Cinética")
