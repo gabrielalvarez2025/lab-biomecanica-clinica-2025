@@ -59,7 +59,12 @@ def mostrar():
 
     st.pyplot(fig1)
 
-    # Segunda figura: suma total
+    st.markdown("""
+                Las ondas individuales representan las unidades motoras (UM) que se suman para formar una señal EMG compuesta. Cuando las {n_ondas} ondas ocurren simultáneamente (chocan, se combinan), interfieren entre sí constructivamente en algunas zonas y destructivamente en otras.
+                El resultado de sumar gráficamente esas {n_ondas} ondas que configuraste se muestra en la siguiente **onda resultante**:
+    """)
+    
+    # Segunda figura: grafico sumatoria total
     fig2, ax2 = plt.subplots(figsize=(10, 3))
     ax2.plot(x, suma_total, color='k')
     ax2.set_ylim(-amp_max * num_ondas, amp_max * num_ondas)
