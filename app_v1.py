@@ -55,8 +55,14 @@ st.info("Usa el menú lateral para navegar por las unidades cuando estén dispon
 
 
 
-# Título
-st.title("Electromiografía: Descomposición de señales")
+
+st.subheader("**Unidad 1**")
+st.markdown("### Introducción al análisis del movimiento")
+st.title("") # Título
+
+
+
+
 
 # Slider para cambiar la masa
 masa = st.slider("Masa del objeto (kg)", min_value=1.0, max_value=20.0, step=0.5, value=5.0)
