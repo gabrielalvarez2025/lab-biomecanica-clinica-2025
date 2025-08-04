@@ -57,6 +57,9 @@ Esta es una herramienta que recién estamos desarrollando, por lo que es posible
 A continuación, te presentamos una visión general de las **unidades** que abordaremos:
 """)
 
+# Pie de página o mensaje final
+st.info("Usa el menú lateral para navegar por las unidades cuando estén disponibles.")
+
 # Unidades del curso
 st.markdown("""
 ### Unidades del curso
@@ -84,41 +87,3 @@ st.markdown("""
 
 st.markdown("---")
 
-# Pie de página o mensaje final
-st.info("Usa el menú lateral para navegar por las unidades cuando estén disponibles.")
-
-
-
-
-st.subheader("**Unidad 1**")
-st.markdown("### Introducción al análisis del movimiento")
-st.title("") # Título
-
-
-
-
-
-# Slider para cambiar la masa
-masa = st.slider("Masa del objeto (kg)", min_value=1.0, max_value=20.0, step=0.5, value=5.0)
-
-# Constante de gravedad
-g = 9.81
-fuerza_peso = masa * g
-
-# Mostrar datos
-st.markdown(f"**Fuerza peso (F = m·g):** {masa} kg × 9.81 m/s² = **{fuerza_peso:.2f} N**")
-
-# Crear gráfico
-
-fig, ax = plt.subplots()
-ax.set_xlim(-1, 1)
-ax.set_ylim(-fuerza_peso * 1.1, 10)
-ax.axhline(0, color='black', linewidth=1)
-ax.arrow(0, 0, 0, -fuerza_peso, head_width=0.1, head_length=5, fc='blue', ec='blue')
-ax.text(0.1, -fuerza_peso/2, f'{fuerza_peso:.1f} N', color='blue')
-ax.set_xlabel("x")
-ax.set_ylabel("Fuerza (N)")
-ax.set_title("Fuerza peso hacia abajo")
-ax.grid(True)
-
-st.pyplot(fig)
