@@ -12,9 +12,12 @@ st.title("Espacio Interactivo LabBC")
 st.subheader("**Análisis Biomecánico del Movimiento**")
 
 st.markdown("Estimado/a estudiante. "
-            "Bienvenido/a a este espacio interactivo del curso de Análisis Biomecánico del Movimiento. Aquí encontrarás recursos y herramientas para complementar tu aprendizaje.")
+            "Bienvenido/a a este espacio interactivo del curso de Análisis Biomecánico del Movimiento." \
+            "Aquí encontrarás recursos y herramientas interactivas para complementar tu aprendizaje."
+            "---")
 
-st.markdown("---")
+st.info("Usa el menú lateral para navegar por las unidades cuando estén disponibles.")
+
 
 
 
@@ -30,8 +33,7 @@ pagina = st.sidebar.radio("Selecciona una sección:", [
 
 # Mostrar contenido según la selección
 if pagina == "Bienvenida":
-    st.title("👋 Bienvenidos y Bienvenidas")
-    st.write("Esta es la página de inicio.")
+    st.title("Te damos la Bienvenida 👋")
     st.write("Usa el menú de la izquierda para navegar.")
 
 
@@ -65,8 +67,6 @@ Esta es una herramienta que recién estamos desarrollando, por lo que es posible
 A continuación, te presentamos una visión general de las **unidades** que abordaremos:
 """)
 
-# Pie de página o mensaje final
-st.info("Usa el menú lateral para navegar por las unidades cuando estén disponibles.")
 
 # Unidades del curso
 st.markdown("""
