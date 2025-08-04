@@ -18,6 +18,8 @@ def mostrar():
 
     sns.set_theme(style="darkgrid", palette="pastel")
 
+    st.markdown("hola")
+
     
     
     # ELEMENTO INTERACTIVO: Descomposición de ondas
