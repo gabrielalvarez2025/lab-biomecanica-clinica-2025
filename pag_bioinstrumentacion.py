@@ -48,10 +48,13 @@ def mostrar():
 
     x = np.linspace(0, 2 * np.pi, 500)
     suma_total = np.zeros_like(x)
-    colores_pastel = sns.color_palette("pastel", num_ondas)
+    colores_pastel = sns.color_palette("pastel", num_ondas)    
 
-    
+
     # ---------------------- Sliders de cada onda (generarlos) ----------------------
+
+    # Instrucciones
+    st.sidebar.markdown("Cambia los parámetros de cada onda:")
 
     # Sliders por onda
     # Inicializar session_state para cada parámetro si no existe o si cambió num_ondas
