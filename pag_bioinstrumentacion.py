@@ -27,7 +27,7 @@ def mostrar():
 
     st.info("⬅ En la barra lateral encontrarás botones y _sliders_ que te permitirán interactuar con la simulación.")
     
-    st.markdown("Primero, selecciona el número de ondas que quieres simular.")
+    st.markdown("Primero, selecciona el número de ondas que quieres simular. Te sugiero comenzar con 2.")
     # st.markdown("Luego, ajusta sus parámetros (amplitud, frecuencia y fase) y observa cómo estas se combinan para formar una onda resultante.")
 
     st.markdown("""
