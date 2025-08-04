@@ -80,7 +80,7 @@ def mostrar():
     fig2.patch.set_alpha(0)
     ax2.patch.set_alpha(0)
 
-    ax2.plot(x, suma_total, color='k')
+    ax2.plot(x, suma_total, color='white')
     ax2.set_ylim(-amp_max * num_ondas, amp_max * num_ondas)
     ax2.set_ylabel("Suma")
     ax2.set_xlabel("Tiempo (ms)")
