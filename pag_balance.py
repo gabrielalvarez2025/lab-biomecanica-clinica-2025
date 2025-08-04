@@ -1,3 +1,5 @@
 import streamlit as st
 
-st.header("⚖️ Unidad 4: Sistema sensoriomotor y balance")
+def mostrar():
+    
+    st.header("⚖️ Unidad 4: Sistema sensoriomotor y balance")
