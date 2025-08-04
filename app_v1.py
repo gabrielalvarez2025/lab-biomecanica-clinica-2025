@@ -13,7 +13,7 @@ from pag_marcha import mostrar as mostrar_marcha
 
 
 
-st.set_page_config(page_title="Espacio LabBC", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Espacio LabBC", layout="centered", initial_sidebar_state="expanded")
 
 
 
@@ -24,6 +24,8 @@ pag_bioinstrumentacion  = "Sección 2: Bioinstrumentación"
 pag_control_motor       = "Sección 3: Teorías del control motor"
 pag_balance             = "Sección 4: Sistema sensoriomotor y balance"
 pag_marcha              = "Sección 5: Análisis de marcha"
+
+
 
 
 # Sidebar con selector de página
