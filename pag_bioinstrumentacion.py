@@ -19,7 +19,7 @@ def mostrar():
     
     
     # ELEMENTO INTERACTIVO: Descomposición de ondas
-    st.subheader("Descomposición de ondas")
+    st.subheader("Sumatoria y descomposición de ondas")
 
     st.markdown("""
     A continuación, puedes interactuar con una herramienta que simula la descomposición de una señal electromiográfica (EMG) en varias unidades motoras (UM).
