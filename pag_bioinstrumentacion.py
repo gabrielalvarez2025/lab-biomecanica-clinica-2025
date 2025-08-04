@@ -22,8 +22,8 @@ def mostrar():
     st.subheader("Sumatoria y descomposición de ondas")
 
     st.markdown("""
-    A continuación, puedes interactuar con una herramienta que simula la descomposición de una señal electromiográfica (EMG) en varias unidades motoras (UM).
-    Esta herramienta te permite simular la descomposición de una señal EMG en varias unidades motoras (UM).
+    A continuación, puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que (como veremos) es muy importante para entender cómo se genera la señal de electromiografía.
+    
     
     
     """)
