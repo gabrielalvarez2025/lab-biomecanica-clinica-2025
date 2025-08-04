@@ -1,6 +1,18 @@
 import streamlit as st
 
 def mostrar():
+    
+    # Título principal
+    st.title("Espacio Interactivo LabBC")
+    st.subheader("**Análisis Biomecánico del Movimiento**")
+
+    st.markdown("Estimado/a estudiante. "
+                "Bienvenido/a a este espacio interactivo del curso de Análisis Biomecánico del Movimiento. " \
+                "Aquí encontrarás recursos y herramientas interactivas para complementar tu aprendizaje."
+                )
+    st.info("⬅ Usa el menú lateral para navegar por las secciones que estén disponibles.")
+    st.markdown("---")
+    
     st.title("Te damos la Bienvenida 👋")
     st.write("Usa el menú de la izquierda para navegar.")
 
