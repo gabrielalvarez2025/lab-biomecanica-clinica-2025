@@ -10,7 +10,7 @@ def mostrar():
     st.header("Unidad 1: Bioinstrumentación")
 
     st.markdown(
-        "- Electromiografía (EMG) hola\n"
+        "- Electromiografía (EMG)\n"
         "- Plataforma de fuerza\n"
         "- Videofotogrametría\n"
         "- Goniometría"
@@ -55,7 +55,7 @@ def mostrar():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.markdown('<div class="card"><a href="/Pagina1">Ir a Página 1</a></div>', unsafe_allow_html=True)
+        st.markdown('<div class="card"><a href="/play_ondas_emg">Ir a Página 1</a></div>', unsafe_allow_html=True)
 
     with col2:
         st.markdown('<div class="card"><a href="/Pagina2">Ir a Página 2</a></div>', unsafe_allow_html=True)
