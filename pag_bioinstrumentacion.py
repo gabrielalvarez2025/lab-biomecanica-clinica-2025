@@ -122,7 +122,8 @@ def mostrar():
         axs1[i].plot(x, y, color=colores_pastel[i])
         axs1[i].set_ylim(-amp_max, amp_max)
         axs1[i].set_ylabel(f"Onda {i+1}", color='white')
-        axs1[i].set_xticks([])
+        axs1[i].tick_params(axis='x', colors='white')
+        axs1[i].grid(True, alpha=0.10)
 
         if i < num_ondas - 1:
             axs1[i].set_xticks([])
