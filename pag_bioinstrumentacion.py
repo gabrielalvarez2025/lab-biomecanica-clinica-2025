@@ -75,7 +75,7 @@ def mostrar():
         suma_total += y
         axs1[i].plot(x, y, color=colores_pastel[i])
         axs1[i].set_ylim(-amp_max, amp_max)
-        axs1[i].set_ylabel(f"UM {i+1}", color='white')
+        axs1[i].set_ylabel(f"Onda {i+1}", color='white')
         axs1[i].set_xticks([])
 
     st.pyplot(fig1)
