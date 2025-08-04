@@ -25,6 +25,8 @@ def mostrar():
     A continuación, puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que (como veremos) es muy importante para entender cómo se genera la señal de electromiografía.
     """)
 
+    st.info("⬅ En la barra lateral encontraras botones y barras deslizantes que te permitirán interactuar con la simulación.")
+    
     st.markdown("Selecciona el número de ondas que quieres simular y ajusta sus parámetros (amplitud, frecuencia y fase). Luego, observa cómo se combinan para formar una onda resultante.")
 
     st.info("⬅ En la barra lateral están los parámetros de cada onda.")
