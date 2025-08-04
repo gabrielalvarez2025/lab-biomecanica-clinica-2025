@@ -61,7 +61,7 @@ def mostrar():
     st.session_state["num_ondas_actual"] = num_ondas
 
     # Botones en fila
-    col1, col2 = st.sidebar.columns(2)
+    col1, col2, _ = st.sidebar.columns([1, 1, 2])
 
     with col1:
         if st.button("Reiniciar"):
