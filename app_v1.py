@@ -10,7 +10,12 @@ st.set_page_config(page_title="Bienvenida - Análisis Biomecánico del Movimient
 # Título principal
 st.title("Espacio Interactivo LabBC")
 st.subheader("**Análisis Biomecánico del Movimiento**")
+
+st.markdown("Estimado/a estudiante. "
+            "Bienvenido/a a este espacio interactivo del curso de Análisis Biomecánico del Movimiento. Aquí encontrarás recursos y herramientas para complementar tu aprendizaje.")
+
 st.markdown("---")
+
 
 
 # Sidebar con selector de página
