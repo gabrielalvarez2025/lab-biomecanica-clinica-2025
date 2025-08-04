@@ -13,7 +13,7 @@ from pag_marcha import mostrar as mostrar_marcha
 
 
 
-st.set_page_config(page_title="Espacio LabBC", layout="centered", initial_sidebar_state="expanded", theme="dark")
+st.set_page_config(page_title="Espacio LabBC", layout="centered", initial_sidebar_state="expanded")
 
 
 
