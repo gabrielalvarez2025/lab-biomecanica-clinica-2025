@@ -1,48 +1,45 @@
 import streamlit as st
 
-# Define los nombres de tus páginas
-paginas = [
-    "Página principal",
-    "Bienvenida",
-    "Introducción",
-    "Unidad 1: Bioinstrumentación",
-    "Unidad 1: Control motor",
-    "Unidad 2: Balance",
-    "Unidad 3: Marcha",
-]
+# Define tus páginas con nombres personalizados
+pag_principal = "Página principal"
+pag_bienvenida = "Bienvenida"
+pag_intro = "Introducción"
+pag_u1_bio = "Unidad 1: Bioinstrumentación"
+pag_u1_motor = "Unidad 1: Control motor"
+pag_u2_balance = "Unidad 2: Balance"
+pag_u3_marcha = "Unidad 3: Marcha"
 
-# Inicializa el estado si no existe aún
-if "indice_pagina" not in st.session_state:
-    st.session_state.indice_pagina = 0
+# Lista ordenada de páginas
+paginas = [pag_principal, pag_bienvenida, pag_intro, pag_u1_bio, pag_u1_motor, pag_u2_balance, pag_u3_marcha]
 
-# Muestra la página actual
-pagina_actual = paginas[st.session_state.indice_pagina]
-st.title(pagina_actual)
+# Selector de página
+pagina_seleccionada = st.radio("Selecciona una página:", paginas)
 
-# Aquí puedes condicionar el contenido por página si quieres
-if pagina_actual == "Página principal":
-    st.write("Bienvenido a la página principal.")
-elif pagina_actual == "Bienvenida":
-    st.write("¡Hola! Esta es la bienvenida.")
-elif pagina_actual == "Introducción":
-    st.write("Contenido de la introducción.")
-elif pagina_actual == "Unidad 1: Bioinstrumentación":
-    st.write("Contenido de Bioinstrumentación.")
-elif pagina_actual == "Unidad 1: Control motor":
-    st.write("Contenido de Control Motor.")
-elif pagina_actual == "Unidad 2: Balance":
-    st.write("Contenido de Balance.")
-elif pagina_actual == "Unidad 3: Marcha":
-    st.write("Contenido de Análisis de Marcha.")
+# Mostrar contenido según página
+if pagina_seleccionada == pag_principal:
+    st.title(pag_principal)
+    st.write("Contenido de la página principal.")
 
-# Botones de navegación
-col1, col2 = st.columns([1, 1])
-with col1:
-    if st.button("⬅️ Anterior", use_container_width=True):
-        if st.session_state.indice_pagina > 0:
-            st.session_state.indice_pagina -= 1
+elif pagina_seleccionada == pag_bienvenida:
+    st.title(pag_bienvenida)
+    st.write("¡Bienvenido/a!")
 
-with col2:
-    if st.button("Siguiente ➡️", use_container_width=True):
-        if st.session_state.indice_pagina < len(paginas) - 1:
-            st.session_state.indice_pagina += 1
+elif pagina_seleccionada == pag_intro:
+    st.title(pag_intro)
+    st.write("Contenido introductorio.")
+
+elif pagina_seleccionada == pag_u1_bio:
+    st.title(pag_u1_bio)
+    st.write("Aquí va el contenido de bioinstrumentación.")
+
+elif pagina_seleccionada == pag_u1_motor:
+    st.title(pag_u1_motor)
+    st.write("Contenido de control motor.")
+
+elif pagina_seleccionada == pag_u2_balance:
+    st.title(pag_u2_balance)
+    st.write("Contenido sobre balance.")
+
+elif pagina_seleccionada == pag_u3_marcha:
+    st.title(pag_u3_marcha)
+    st.write("Análisis de marcha.")
