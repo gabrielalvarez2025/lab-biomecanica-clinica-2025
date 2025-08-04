@@ -28,23 +28,50 @@ pag_marcha              = "Sección 5: Análisis de marcha"
 
 
 # Sidebar con selector de página
-pagina = st.sidebar.radio("Selecciona una sección:", [
+
+# Sidebar instrucción
+st.sidebar.markdown("Selecciona una sección:")  # línea horizontal para separar
+
+# Sidebar 1
+pagina = st.sidebar.radio("Página principal del espacio interactivo", [
     pag_bienvenida,
-    pag_introduccion,
+    
+])
+
+st.sidebar.markdown("---")  # línea horizontal para separar
+
+# Sidebar 2
+pagina = st.sidebar.radio("Para comenzar:", [
+    pag_introduccion
+])
+
+st.sidebar.markdown("---")  # línea horizontal para separar
+
+# Sidebar 3: Unidad 1
+pagina = st.sidebar.radio("Unidad 1:", [
     pag_bioinstrumentacion,
     pag_control_motor,
     pag_balance,
     pag_marcha
 ])
 
-pagina2 = st.sidebar.radio("Selecciona una sección:", [
-    pag_bienvenida,
-    pag_introduccion,
-    pag_bioinstrumentacion,
+st.sidebar.markdown("---")  # línea horizontal para separar
+
+# Sidebar: Unidad 2
+pagina = st.sidebar.radio("Unidad 2:", [
     pag_control_motor,
     pag_balance,
     pag_marcha
 ])
+
+st.sidebar.markdown("---")  # línea horizontal para separar
+
+# Sidebar: Unidad 3
+pagina = st.sidebar.radio("Unidad 3:", [
+    pag_marcha
+])
+
+
 
 # Mostrar contenido según la selección
 if pagina == pag_bienvenida:
