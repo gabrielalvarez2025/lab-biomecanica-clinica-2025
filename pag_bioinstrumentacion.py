@@ -174,6 +174,8 @@ def mostrar():
 
     st.markdown(" ")
 
+    st.subheader("Relación con la electromiografía")
+
     st.markdown("""
                 Esta misma lógica se aplica a la señal que vemos al tomar una **electromiografía (EMG)**.
                 
