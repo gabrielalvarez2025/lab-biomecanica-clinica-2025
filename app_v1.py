@@ -44,7 +44,8 @@ pagina = st.sidebar.radio("Selecciona una sección:", [
     pag_control_motor,
     pag_balance,
     pag_marcha
-])
+],
+"Hola")
 
 st.sidebar.markdown("---")  # línea horizontal para separar
 
@@ -55,7 +56,7 @@ st.sidebar.markdown("---")  # línea horizontal para separar
 # Mostrar contenido según la selección
 if pagina == pag_bienvenida:
     mostrar_bienvenida()
-    
+
 elif pagina == pag_introduccion:
     st.header("📘 Unidad 1: Introducción al análisis del movimiento")
     st.markdown("- Etapas del análisis\n- Cinemática\n- Cinética")
