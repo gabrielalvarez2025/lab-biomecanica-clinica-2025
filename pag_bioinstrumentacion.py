@@ -18,7 +18,7 @@ def mostrar():
     # archivo: streamlit_emg_sim.py
 
     # Configuración
-    st.set_page_config(layout="wide")
+    
     sns.set_theme(style="darkgrid", palette="pastel")
 
     # Parámetros de usuario
