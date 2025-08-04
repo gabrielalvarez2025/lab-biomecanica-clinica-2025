@@ -110,11 +110,8 @@ def mostrar():
             params.append((amp, freq, fase))
     
 
+    # ---------------------- Graficar cada onda ----------------------
     
-    
-     
-
-
     # Primera figura: ondas individuales
     fig1, axs1 = plt.subplots(num_ondas, 1, figsize=(10, num_ondas * 1.5))
 
@@ -155,6 +152,8 @@ def mostrar():
     st.markdown(f"El resultado de sumar gráficamente esas {num_ondas} ondas que configuraste se muestra en la siguiente **onda resultante**:")
     
     
+    # ---------------------- Graficar Onda Resultante ----------------------
+    
     # Segunda figura: gráfico sumatoria total
     fig2, ax2 = plt.subplots(figsize=(10, 3))
 
@@ -172,6 +171,8 @@ def mostrar():
     ax2.tick_params(axis='y', colors='white')
 
     st.pyplot(fig2)
+
+    st.markdown("---")
 
     st.markdown("""
                 Esta misma lógica se aplica a la señal que vemos al tomar una **electromiografía (EMG)**.
