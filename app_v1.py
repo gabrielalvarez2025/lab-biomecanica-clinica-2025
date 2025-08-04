@@ -9,7 +9,7 @@ st.set_page_config(page_title="Bienvenida - Análisis Biomecánico del Movimient
 
 # Título principal
 st.title("Espacio Interactivo LabBC")
-st.markdown("Análisis Biomecánico del Movimiento")
+st.markdown("**Análisis Biomecánico del Movimiento**")
 st.subheader("**Análisis Biomecánico del Movimiento**")
 st.markdown("---")
 
@@ -29,6 +29,9 @@ if pagina == "Bienvenida":
     st.title("👋 Bienvenidos y Bienvenidas")
     st.write("Esta es la página de inicio.")
     st.write("Usa el menú de la izquierda para navegar.")
+
+
+
 
 elif pagina == "Unidad 1: Introducción":
     st.header("📘 Unidad 1: Introducción al análisis del movimiento")
