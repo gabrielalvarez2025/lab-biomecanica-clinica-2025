@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Título
-st.title("Diagrama de Cuerpo Libre: Fuerza Peso Cambiada")
+st.title("Diagrama de Cuerpo Libre: Fuerza Peso Cambiada 2")
 
 # Slider para cambiar la masa
 masa = st.slider("Masa del objeto (kg)", min_value=1.0, max_value=20.0, step=0.5, value=5.0)
