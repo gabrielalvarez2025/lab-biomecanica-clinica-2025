@@ -2,15 +2,6 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 
-"""
-Para actualizar cambios en el script, escribir en terminal:
-
-    git status
-    git add app_v1.py
-    git commit -m "Introduccion al curso, redaccion 1"
-    git push
-
-"""
 
 import streamlit as st
 
@@ -61,7 +52,7 @@ st.info("Usa el menú lateral para navegar por las unidades cuando estén dispon
 
 
 
-"""# Título
+# Título
 st.title("Electromiografía: Descomposición de señales")
 
 # Slider para cambiar la masa
@@ -88,4 +79,3 @@ ax.set_title("Fuerza peso hacia abajo")
 ax.grid(True)
 
 st.pyplot(fig)
-"""
