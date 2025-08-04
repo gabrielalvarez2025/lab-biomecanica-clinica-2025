@@ -37,6 +37,15 @@ pagina = st.sidebar.radio("Selecciona una sección:", [
     pag_marcha
 ])
 
+pagina2 = st.sidebar.radio("Selecciona una sección:", [
+    pag_bienvenida,
+    pag_introduccion,
+    pag_bioinstrumentacion,
+    pag_control_motor,
+    pag_balance,
+    pag_marcha
+])
+
 # Mostrar contenido según la selección
 if pagina == pag_bienvenida:
     st.title("Te damos la Bienvenida 👋")
