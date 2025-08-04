@@ -126,7 +126,7 @@ def mostrar():
         axs1[i].grid(True, alpha=0.10)
 
         if i < num_ondas - 1:
-            axs1[i].set_xticks()  # mantiene las posiciones de ticks
+            
             axs1[i].set_xticklabels([])               # pero oculta los números
             
         else:
