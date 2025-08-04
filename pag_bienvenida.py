@@ -2,7 +2,6 @@ import streamlit as st
 
 def mostrar():
     
-    st.info("⬅ Usa el menú lateral para navegar por las secciones que estén disponibles.")
     
     # Título principal
     st.title("Espacio Interactivo LabBC")
