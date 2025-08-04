@@ -7,15 +7,29 @@ def mostrar():
     st.title("Espacio Interactivo LabBC")
     st.subheader("**Análisis Biomecánico del Movimiento**")
 
+    # Mensaje de bienvenida
     st.markdown("Estimado/a estudiante. "
                 "Bienvenido/a a este espacio interactivo del curso de Análisis Biomecánico del Movimiento. " \
                 "Aquí encontrarás recursos y herramientas interactivas para complementar tu aprendizaje."
                 )
+    
+    # Mensaje aclaración
+    st.markdown("""
+    ¡Hola! Este espacio está diseñado para acompañarte a lo largo del curso.  
+    Aquí encontrarás visualizaciones, animaciones y herramientas interactivas para reforzar los contenidos.
+                
+    Esta es una herramienta que recién estamos desarrollando, por lo que es posible que veas bastantes cambios durante el semestre, mientras aprendemos a perfeccionarla.
+
+    """)
+
+    # Sobre barra lateral
+    st.write("Usa el menú de la izquierda para navegar.")
     st.info("⬅ Usa el menú lateral para navegar por las secciones que estén disponibles.")
+    
     st.markdown("---")
     
     st.title("Te damos la Bienvenida 👋")
-    st.write("Usa el menú de la izquierda para navegar.")
+    
 
     # Unidades del curso
     st.markdown("""

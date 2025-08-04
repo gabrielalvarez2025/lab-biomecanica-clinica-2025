@@ -68,14 +68,7 @@ elif pagina == pag_balance:
 elif pagina == pag_marcha:
     mostrar_marcha()
 
-# Mensaje de bienvenida
-st.markdown("""
-¡Hola! Este espacio está diseñado para acompañarte a lo largo del curso.  
-Aquí encontrarás visualizaciones, animaciones y herramientas interactivas para reforzar los contenidos.
-            
-Esta es una herramienta que recién estamos desarrollando, por lo que es posible que veas bastantes cambios durante el semestre, mientras aprendemos a perfeccionarla.
 
-""")
 
 
 
