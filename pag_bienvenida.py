@@ -2,6 +2,8 @@ import streamlit as st
 
 def mostrar():
     
+    st.info("⬅ Usa el menú lateral para navegar por las secciones que estén disponibles.")
+    
     # Título principal
     st.title("Espacio Interactivo LabBC")
     st.subheader("**Análisis Biomecánico del Movimiento**")
@@ -21,7 +23,7 @@ def mostrar():
     A continuación, te presentamos una visión general de las **unidades** que abordaremos:            
     
     ### Unidades del curso
-
+                
     1. **Introducción al análisis del movimiento**
     - Etapas del análisis
     - Cinemática
