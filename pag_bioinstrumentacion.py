@@ -131,7 +131,7 @@ def mostrar():
         y = amp * np.sin(2 * np.pi * freq * x + fase)
         suma_total += y
         axs1[i].plot(x, y, color=colores_pastel[i])
-        axs1[i].set_ylim(-amp_max, amp_max)
+        axs1[i].set_ylim(-amp_max-0.5, amp_max+0.5)
         axs1[i].set_ylabel(f"Onda {i+1}", color='white')
         axs1[i].tick_params(axis='x', colors='white')
         axs1[i].grid(True, alpha=0.10)
@@ -161,7 +161,7 @@ def mostrar():
     ax2.patch.set_alpha(0)
 
     ax2.plot(x, suma_total, color='white')
-    ax2.set_ylim(-amp_max * num_ondas, amp_max * num_ondas)
+    ax2.set_ylim((-amp_max * num_ondas)-0.5, (amp_max * num_ondas)+0.5)  # Ajustar el límite y para que se vea bien
     ax2.set_ylabel("Amplitud", color='white', alpha=1)
     ax2.set_xlabel("Tiempo (ms)", color='white')
     ax2.set_title("Simulación de la onda resultante de la sumatoria", color='white')
