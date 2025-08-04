@@ -159,7 +159,7 @@ def mostrar():
 
     ax2.plot(x, suma_total, color='white')
     ax2.set_ylim(-amp_max * num_ondas, amp_max * num_ondas)
-    ax2.set_ylabel("Suma", color='white', alpha=1)
+    ax2.set_ylabel("Amplitud", color='white', alpha=1)
     ax2.set_xlabel("Tiempo (ms)", color='white')
     ax2.set_title("Simulación de la onda resultante de la sumatoria", color='white')
 
