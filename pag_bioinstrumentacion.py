@@ -64,11 +64,11 @@ def mostrar():
     col1, col2 = st.sidebar.columns(2)
 
     with col1:
-    if st.button("Reiniciar"):
-        for i in range(num_ondas):
-            st.session_state[f"amp_{i}"] = 1.0
-            st.session_state[f"freq_{i}"] = 1.0
-            st.session_state[f"fase_{i}"] = 0.0
+        if st.button("Reiniciar"):
+            for i in range(num_ondas):
+                st.session_state[f"amp_{i}"] = 1.0
+                st.session_state[f"freq_{i}"] = 1.0
+                st.session_state[f"fase_{i}"] = 0.0
 
     with col2:
         if st.button("Aleatorio"):
