@@ -103,7 +103,7 @@ def mostrar():
     # Leer sliders con los valores del session_state
     params = []
     for i in range(num_ondas):
-        with st.sidebar.expander(f"Onda {i+1}", expanded=False, font_color=colores_pastel[i]):
+        with st.sidebar.expander(f"Onda {i+1}", expanded=False):
             amp = st.slider(f"Amplitud (mV)", 0.0, float(amp_max), st.session_state[f"amp_{i}"], key=f"amp_{i}")
             freq = st.slider(f"Frecuencia (Hz)", 0.0, float(freq_max), st.session_state[f"freq_{i}"], key=f"freq_{i}")
             fase = st.slider(f"Fase", 0.0, float(fase_max), st.session_state[f"fase_{i}"], key=f"fase_{i}")
