@@ -177,7 +177,7 @@ def mostrar():
     st.subheader("Relación con la electromiografía")
 
     st.markdown("""
-                La misma lógica anterior se aplica a la señal que vemos al tomar una **electromiografía (EMG)**, que es una onda.
+                La misma lógica anterior se aplica a la señal que vemos al tomar una **electromiografía (EMG)**. Esta señal también es una onda.
                 
                 La actividad eléctrica de cada unidad motora (UM) genera una onda eléctrica sencilla, como las ondas sinusoidales que configuraste arriba.
                 Cada UM tiene una frecuencia de descarga y una amplitud distintas, por lo que cada onda es ligeramente diferente.
