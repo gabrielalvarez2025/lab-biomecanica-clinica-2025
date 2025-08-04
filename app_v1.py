@@ -16,7 +16,7 @@ st.markdown("Estimado/a estudiante. "
             "Aquí encontrarás recursos y herramientas interactivas para complementar tu aprendizaje."
             "---")
 
-st.info("Usa el menú lateral para navegar por las unidades cuando estén disponibles.")
+st.info("⬅ Usa el menú lateral para navegar por las unidades cuando estén disponibles.")
 
 
 
