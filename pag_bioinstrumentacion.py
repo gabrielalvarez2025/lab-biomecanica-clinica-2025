@@ -8,7 +8,7 @@ def mostrar():
     st.header("Unidad 1: Bioinstrumentación")
 
     st.markdown(
-        "- Electromiografía (EMG)\n"
+        "- Electromiografía (EMG) hola\n"
         "- Plataforma de fuerza\n"
         "- Videofotogrametría\n"
         "- Goniometría"
@@ -44,7 +44,7 @@ def mostrar():
     # Parámetros maximos
     freq_max    = 100 # st.sidebar.slider("Frecuencia máxima (Hz)", 10, 100, 20)
     amp_max     = 2
-    fase_max    = 20 # np.pi * 5
+    fase_max    = np.pi * 5
 
     x = np.linspace(0, 2 * np.pi, 500)
     suma_total = np.zeros_like(x)
