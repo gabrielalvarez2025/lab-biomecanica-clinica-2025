@@ -3,7 +3,7 @@ import streamlit as st
 def mostrar():
     
     
-    st.header("🧪 Unidad 2: Bioinstrumentación")
+    st.header("Unidad 1: Bioinstrumentación")
 
     st.markdown(
         "- Electromiografía (EMG)\n"
