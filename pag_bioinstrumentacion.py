@@ -49,10 +49,10 @@ def mostrar():
     # Sliders por onda
     params = []
     for i in range(num_ondas):
-        with st.sidebar.expander(f"Onda n° {i+1}", expanded=False):
-            amp = st.slider(f"Amplitud {i+1}", 0.0, float(amp_max), 1.0, key=f"amp_{i}")
-            freq = st.slider(f"Frecuencia {i+1} (Hz)", 0.0, float(freq_max), 1.0, key=f"freq_{i}")
-            fase = st.slider(f"Fase {i+1}", 0.0, float(fase_max), 0.0, key=f"fase_{i}")
+        with st.sidebar.expander(f"Onda {i+1}", expanded=False):
+            amp = st.slider(f"Amplitud (mV)", 0.0, float(amp_max), 1.0, key=f"amp_{i}")
+            freq = st.slider(f"Frecuencia (Hz)", 0.0, float(freq_max), 1.0, key=f"freq_{i}")
+            fase = st.slider(f"Fase", 0.0, float(fase_max), 0.0, key=f"fase_{i}")
             params.append((amp, freq, fase))
 
     # Primera figura: ondas individuales
