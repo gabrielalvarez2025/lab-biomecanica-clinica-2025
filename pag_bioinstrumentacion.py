@@ -127,6 +127,7 @@ def mostrar():
 
         if i < num_ondas - 1:
             axs1[i].set_xticks([])
+            axs1[i].tick_params(axis='x', colors='white')
         else:
             axs1[i].set_xlabel("Tiempo (ms)", color='white')
             axs1[i].tick_params(axis='x', colors='white')
