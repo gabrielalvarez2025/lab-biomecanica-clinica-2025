@@ -126,6 +126,8 @@ def mostrar():
         axs1[i].grid(True, alpha=0.10)
 
         if i == num_ondas:
+            axs1[i].set_xticks([])
+        else:
             axs1[i].set_xlabel("Tiempo (ms)", color='white')
 
     st.pyplot(fig1)
