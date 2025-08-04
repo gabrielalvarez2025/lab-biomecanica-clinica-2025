@@ -23,7 +23,9 @@ def mostrar():
 
     st.markdown("""
     
-        Esta herramienta te permite simular la descomposición de una señal EMG en varias unidades motoras (UM).
+    A continuación, puedes interactuar con una herramienta que simula la descomposición de una señal electromiográfica (EMG) en varias unidades motoras (UM).
+                
+    Esta herramienta te permite simular la descomposición de una señal EMG en varias unidades motoras (UM).
     Puedes ajustar la amplitud, frecuencia y fase de cada UM para ver cómo se combinan en una señal compuesta.
                 
     """)
