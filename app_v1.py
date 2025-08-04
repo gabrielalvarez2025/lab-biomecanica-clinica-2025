@@ -38,14 +38,14 @@ pagina = st.sidebar.radio("Página principal del espacio interactivo", [
     
 ])
 
-st.sidebar.markdown("---")  # línea horizontal para separar
+#st.sidebar.markdown("---")  # línea horizontal para separar
 
 # Sidebar 2
 pagina = st.sidebar.radio("Para comenzar:", [
     pag_introduccion
 ])
 
-st.sidebar.markdown("---")  # línea horizontal para separar
+#st.sidebar.markdown("---")  # línea horizontal para separar
 
 # Sidebar 3: Unidad 1
 pagina = st.sidebar.radio("Unidad 1:", [
@@ -55,7 +55,7 @@ pagina = st.sidebar.radio("Unidad 1:", [
     pag_marcha
 ])
 
-st.sidebar.markdown("---")  # línea horizontal para separar
+#st.sidebar.markdown("---")  # línea horizontal para separar
 
 # Sidebar: Unidad 2
 pagina = st.sidebar.radio("Unidad 2:", [
@@ -64,7 +64,7 @@ pagina = st.sidebar.radio("Unidad 2:", [
     pag_marcha
 ])
 
-st.sidebar.markdown("---")  # línea horizontal para separar
+#st.sidebar.markdown("---")  # línea horizontal para separar
 
 # Sidebar: Unidad 3
 pagina = st.sidebar.radio("Unidad 3:", [
