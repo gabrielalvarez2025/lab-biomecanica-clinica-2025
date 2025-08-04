@@ -189,7 +189,7 @@ def mostrar():
                 Como la actividad de cada UM es ligeramente distinta (descargan a distintas frecuencias o se encuentran a diferentes profundidades) las ondas individuales no son iguales, sino que tienen distintas amplitudes, frecuencias y fases.
                 
                 Por lo tanto, la señal EMG resultante (con su forma "extraña" e irregular) es una **combinación de todas las ondas individuales**.
-                Los potenciales de acción (PA) de muchas unidades motoras (UM) se suman para formar una señal EMG (lo que llamamos PAUMs).
+                Los potenciales de acción (PA) de muchas unidades motoras (UM) se suman para formar una señal EMG (lo que podrás encontrar en los textos como "PAUMs").
                 
                 """)
     st.markdown("---")
