@@ -15,15 +15,17 @@ st.markdown("---")
 
 # Mensaje de bienvenida
 st.markdown("""
-¡Hola! Esta aplicación está diseñada para acompañarte a lo largo del curso.  
+¡Hola! Este espacio está diseñado para acompañarte a lo largo del curso.  
 Aquí encontrarás visualizaciones, animaciones y herramientas interactivas para reforzar los contenidos.
+            
+Esta es una herramienta que recién estamos desarrollando, por lo que es posible que veas bastantes cambios durante el semestre, mientras aprendemos a perfeccionarla.
 
 A continuación, te presentamos una visión general de las **unidades** que abordaremos:
 """)
 
 # Unidades del curso
 st.markdown("""
-### 📚 Unidades del curso
+### Unidades del curso
 
 1. **Introducción al análisis del movimiento**
    - Etapas del análisis
