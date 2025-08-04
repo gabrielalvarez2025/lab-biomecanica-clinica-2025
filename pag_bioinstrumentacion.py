@@ -50,6 +50,16 @@ def mostrar():
     suma_total = np.zeros_like(x)
     colores_pastel = sns.color_palette("pastel", num_ondas)
 
+    # ---------------------- Inicialización de parámetros ----------------------
+
+    # Detectar si cambió el número de ondas
+    if st.session_state.get("num_ondas_actual") != num_ondas:
+        st.session_state["num_ondas_actual"] = num_ondas
+        for i in range(num_ondas):
+            st.session_state[f"amp_{i}"] = 1.0
+            st.session_state[f"freq_{i}"] = 1.0
+            st.session_state[f"fase_{i}"] = 0.0
+
     # ---------------------- Botones: Aleatorio y Reiniciar ----------------------
 
     # Instrucciones botones random y reiniciar
