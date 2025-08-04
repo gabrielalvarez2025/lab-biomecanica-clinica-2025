@@ -65,21 +65,7 @@ def mostrar():
     
     st.session_state["num_ondas_actual"] = num_ondas
 
-    
-   
-
-    # ---------------------- Sliders de cada onda (lectura) ----------------------
-    
-    # Leer sliders con los valores del session_state
-    params = []
-    for i in range(num_ondas):
-        with st.sidebar.expander(f"Onda {i+1}", expanded=False):
-            amp = st.slider(f"Amplitud (mV)", 0.0, float(amp_max), st.session_state[f"amp_{i}"], key=f"amp_{i}")
-            freq = st.slider(f"Frecuencia (Hz)", 0.0, float(freq_max), st.session_state[f"freq_{i}"], key=f"freq_{i}")
-            fase = st.slider(f"Fase", 0.0, float(fase_max), st.session_state[f"fase_{i}"], key=f"fase_{i}")
-            params.append((amp, freq, fase))
-    
-     # ---------------------- Botones de reinicio y aleatorio ----------------------
+    # ---------------------- Botones de reinicio y aleatorio ----------------------
     
     # Instrucciones botones random y reiniciar
     st.sidebar.markdown("""
@@ -105,6 +91,22 @@ def mostrar():
                 st.session_state[f"amp_{i}"] = random.uniform(0, amp_max)
                 st.session_state[f"freq_{i}"] = random.uniform(0, freq_max)
                 st.session_state[f"fase_{i}"] = random.uniform(0, fase_max)
+
+    
+   
+
+    # ---------------------- Sliders de cada onda (lectura) ----------------------
+    
+    # Leer sliders con los valores del session_state
+    params = []
+    for i in range(num_ondas):
+        with st.sidebar.expander(f"Onda {i+1}", expanded=False):
+            amp = st.slider(f"Amplitud (mV)", 0.0, float(amp_max), st.session_state[f"amp_{i}"], key=f"amp_{i}")
+            freq = st.slider(f"Frecuencia (Hz)", 0.0, float(freq_max), st.session_state[f"freq_{i}"], key=f"freq_{i}")
+            fase = st.slider(f"Fase", 0.0, float(fase_max), st.session_state[f"fase_{i}"], key=f"fase_{i}")
+            params.append((amp, freq, fase))
+    
+     
 
 
     # Primera figura: ondas individuales
