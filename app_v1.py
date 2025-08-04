@@ -3,15 +3,49 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-import streamlit as st
-
 st.set_page_config(page_title="Bienvenida - Análisis Biomecánico del Movimiento", layout="centered")
+
+
 
 # Título principal
 st.title("Espacio Interactivo LabBC")
 st.subheader("**Análisis Biomecánico del Movimiento**")
 st.markdown("---")
-# Hola
+
+
+# Sidebar con selector de página
+pagina = st.sidebar.radio("Selecciona una sección:", [
+    "Bienvenida",
+    "Unidad 1: Introducción",
+    "Unidad 2: Bioinstrumentación",
+    "Unidad 3: Teorías del control motor",
+    "Unidad 4: Sistema sensoriomotor y balance",
+    "Unidad 5: Análisis de marcha"
+])
+
+# Mostrar contenido según la selección
+if pagina == "Bienvenida":
+    st.title("👋 Bienvenidos y Bienvenidas")
+    st.write("Esta es la página de inicio.")
+    st.write("Usa el menú de la izquierda para navegar.")
+
+elif pagina == "Unidad 1: Introducción":
+    st.header("📘 Unidad 1: Introducción al análisis del movimiento")
+    st.markdown("- Etapas del análisis\n- Cinemática\n- Cinética")
+
+elif pagina == "Unidad 2: Bioinstrumentación":
+    st.header("🧪 Unidad 2: Bioinstrumentación")
+    st.markdown("- Electromiografía (EMG)\n- Plataforma de fuerza\n- Videofotogrametría\n- Goniometría")
+
+elif pagina == "Unidad 3: Teorías del control motor":
+    st.header("🧠 Unidad 3: Teorías del control motor")
+    st.markdown("- Teorías antiguas\n- Teoría de sistemas dinámicos\n- Teoría de modelos internos")
+
+elif pagina == "Unidad 4: Sistema sensoriomotor y balance":
+    st.header("⚖️ Unidad 4: Sistema sensoriomotor y balance")
+
+elif pagina == "Unidad 5: Análisis de marcha":
+    st.header("🚶 Unidad 5: Análisis de marcha")
 
 # Mensaje de bienvenida
 st.markdown("""
