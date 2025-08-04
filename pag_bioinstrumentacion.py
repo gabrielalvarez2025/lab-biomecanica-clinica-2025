@@ -151,7 +151,7 @@ def mostrar():
 
     # ---------------------- Texto pre - Onda Sumatoria ----------------------
 
-    st.markdown(f"Las ondas individuales representan las unidades motoras (UM) que se suman para formar una señal EMG compuesta. Cuando las {num_ondas} ondas ocurren simultáneamente (chocan, se combinan), interfieren entre sí constructivamente en algunas zonas y destructivamente en otras.")
+    st.markdown(f"Cuando las {num_ondas} ondas ocurren simultáneamente (chocan, se combinan), interfieren entre sí constructivamente en algunas zonas y destructivamente en otras.")
     st.markdown(f"El resultado de sumar gráficamente esas {num_ondas} ondas que configuraste se muestra en la siguiente **onda resultante**:")
     
     
@@ -172,3 +172,22 @@ def mostrar():
     ax2.tick_params(axis='y', colors='white')
 
     st.pyplot(fig2)
+
+    st.markdown("""
+                Esta misma lógica se aplica a la señal que vemos al tomar una **electromiografía (EMG)**.
+                
+                La actividad eléctrica de cada unidad motora (UM) genera una onda eléctrica sencilla, como las ondas sinusoidales que configuraste arriba.
+                Cada UM tiene una frecuencia de descarga y una amplitud distintas, por lo que cada onda es ligeramente diferente.
+                Cuando estas ondas individuales se combinan, se suman para formar una señal EMG compuesta.
+
+                Cuando el electrodo de superficie sensa la actividad eléctrica muscular, detecta la señal proveniente de varias UM cercanas al mismo tiempo (todas las que están bajo ese electrodo). 
+                Por lo tanto, la señal EMG resultante que vemos en el computador es la que resulta de **sumar gráficamente todas las ondas individuales** provenientes de las distintas UM.
+                
+                Como la actividad de cada UM es ligeramente distinta (descargan a distintas frecuencias o se encuentran a diferentes profundidades) las ondas individuales no son iguales, sino que tienen distintas amplitudes, frecuencias y fases.
+                
+                Por lo tanto, la señal EMG resultante (con su forma "extraña" e irregular) es una **combinación de todas las ondas individuales**.
+                Los potenciales de acción (PA) de muchas unidades motoras (UM) se suman para formar una señal EMG (lo que llamamos PAUMs).
+                
+                """)
+    st.markdown("---")
+    
