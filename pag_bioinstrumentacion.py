@@ -124,6 +124,12 @@ def mostrar():
         axs1[i].set_ylabel(f"Onda {i+1}", color='white')
         axs1[i].set_xticks([])
 
+        if i < num_ondas - 1:
+            axs1[i].set_xticks([])
+        else:
+            axs1[i].set_xlabel("Tiempo (ms)", color='white')
+            axs1[i].tick_params(axis='x', colors='white')
+
     st.pyplot(fig1)
 
     # ---------------------- Texto pre - Onda Sumatoria ----------------------
