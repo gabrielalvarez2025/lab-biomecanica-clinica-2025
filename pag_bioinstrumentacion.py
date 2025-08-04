@@ -35,25 +35,57 @@ def mostrar():
                 
     """)
 
-    # Parámetros de usuario
+    # Parámetros de la simulación, sidebar
     st.sidebar.title("Parámetros de simulación")
-    num_ondas = st.sidebar.slider("Número de ondas (UM)", 1, 15, 6)
-    freq_max = 100 # st.sidebar.slider("Frecuencia máxima (Hz)", 10, 100, 20)
-    amp_max = 2
-    fase_max = np.pi * 5
+    num_ondas = st.sidebar.slider("Número de ondas", 1, 15, 6)
+    
+    # Parámetros maximos
+    freq_max    = 100 # st.sidebar.slider("Frecuencia máxima (Hz)", 10, 100, 20)
+    amp_max     = 2
+    fase_max    = np.pi * 5
 
     x = np.linspace(0, 2 * np.pi, 500)
     suma_total = np.zeros_like(x)
     colores_pastel = sns.color_palette("pastel", num_ondas)
 
     # Sliders por onda
+   # Inicializar session_state para cada parámetro si no existe o si cambió num_ondas
+    for i in range(num_ondas):
+        if f"amp_{i}" not in st.session_state or st.session_state.get("num_ondas_actual", None) != num_ondas:
+            st.session_state[f"amp_{i}"] = 1.0
+        if f"freq_{i}" not in st.session_state or st.session_state.get("num_ondas_actual", None) != num_ondas:
+            st.session_state[f"freq_{i}"] = 1.0
+        if f"fase_{i}" not in st.session_state or st.session_state.get("num_ondas_actual", None) != num_ondas:
+            st.session_state[f"fase_{i}"] = 0.0
+    
+    st.session_state["num_ondas_actual"] = num_ondas
+
+    # Botones en fila
+    col1, col2 = st.sidebar.columns(2)
+
+    with col1:
+    if st.button("Reiniciar"):
+        for i in range(num_ondas):
+            st.session_state[f"amp_{i}"] = 1.0
+            st.session_state[f"freq_{i}"] = 1.0
+            st.session_state[f"fase_{i}"] = 0.0
+
+    with col2:
+        if st.button("Aleatorio"):
+            for i in range(num_ondas):
+                st.session_state[f"amp_{i}"] = random.uniform(0, amp_max)
+                st.session_state[f"freq_{i}"] = random.uniform(0, freq_max)
+                st.session_state[f"fase_{i}"] = random.uniform(0, fase_max)
+
+    # Leer sliders con los valores del session_state
     params = []
     for i in range(num_ondas):
         with st.sidebar.expander(f"Onda {i+1}", expanded=False):
-            amp = st.slider(f"Amplitud (mV)", 0.0, float(amp_max), 1.0, key=f"amp_{i}")
-            freq = st.slider(f"Frecuencia (Hz)", 0.0, float(freq_max), 1.0, key=f"freq_{i}")
-            fase = st.slider(f"Fase", 0.0, float(fase_max), 0.0, key=f"fase_{i}")
+            amp = st.slider(f"Amplitud (mV)", 0.0, float(amp_max), st.session_state[f"amp_{i}"], key=f"amp_{i}")
+            freq = st.slider(f"Frecuencia (Hz)", 0.0, float(freq_max), st.session_state[f"freq_{i}"], key=f"freq_{i}")
+            fase = st.slider(f"Fase", 0.0, float(fase_max), st.session_state[f"fase_{i}"], key=f"fase_{i}")
             params.append((amp, freq, fase))
+
 
     # Primera figura: ondas individuales
     fig1, axs1 = plt.subplots(num_ondas, 1, figsize=(10, num_ondas * 1.5))
