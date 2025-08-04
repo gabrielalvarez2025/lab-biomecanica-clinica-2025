@@ -1,126 +1,48 @@
 import streamlit as st
-import matplotlib.pyplot as plt
-import numpy as np
 
+# Define los nombres de tus páginas
+paginas = [
+    "Página principal",
+    "Bienvenida",
+    "Introducción",
+    "Unidad 1: Bioinstrumentación",
+    "Unidad 1: Control motor",
+    "Unidad 2: Balance",
+    "Unidad 3: Marcha",
+]
 
-st.set_page_config(page_title="Bienvenida - Análisis Biomecánico del Movimiento", layout="centered")
+# Inicializa el estado si no existe aún
+if "indice_pagina" not in st.session_state:
+    st.session_state.indice_pagina = 0
 
+# Muestra la página actual
+pagina_actual = paginas[st.session_state.indice_pagina]
+st.title(pagina_actual)
 
+# Aquí puedes condicionar el contenido por página si quieres
+if pagina_actual == "Página principal":
+    st.write("Bienvenido a la página principal.")
+elif pagina_actual == "Bienvenida":
+    st.write("¡Hola! Esta es la bienvenida.")
+elif pagina_actual == "Introducción":
+    st.write("Contenido de la introducción.")
+elif pagina_actual == "Unidad 1: Bioinstrumentación":
+    st.write("Contenido de Bioinstrumentación.")
+elif pagina_actual == "Unidad 1: Control motor":
+    st.write("Contenido de Control Motor.")
+elif pagina_actual == "Unidad 2: Balance":
+    st.write("Contenido de Balance.")
+elif pagina_actual == "Unidad 3: Marcha":
+    st.write("Contenido de Análisis de Marcha.")
 
-# Título principal
-st.title("Espacio Interactivo LabBC")
-st.subheader("**Análisis Biomecánico del Movimiento**")
+# Botones de navegación
+col1, col2 = st.columns([1, 1])
+with col1:
+    if st.button("⬅️ Anterior", use_container_width=True):
+        if st.session_state.indice_pagina > 0:
+            st.session_state.indice_pagina -= 1
 
-st.markdown("Estimado/a estudiante. "
-            "Bienvenido/a a este espacio interactivo del curso de Análisis Biomecánico del Movimiento. " \
-            "Aquí encontrarás recursos y herramientas interactivas para complementar tu aprendizaje."
-            )
-st.info("⬅ Usa el menú lateral para navegar por las secciones que estén disponibles.")
-st.markdown("---")
-
-# Nombres de las páginas
-pag_bienvenida          = "Bienvenida"
-pag_introduccion        = "Sección 1: Introducción"
-pag_bioinstrumentacion  = "Sección 2: Bioinstrumentación"
-pag_control_motor       = "Sección 3: Teorías del control motor"
-pag_balance             = "Sección 4: Sistema sensoriomotor y balance"
-pag_marcha              = "Sección 5: Análisis de marcha"
-
-
-# Sidebar con selector de página
-
-# Título general de la sidebar
-st.sidebar.title("Navegación del contenido")
-
-# ====================
-# Página de bienvenida
-# ====================
-st.sidebar.markdown("### Página principal")
-pagina = st.sidebar.radio("", [pag_bienvenida])
-
-# Espacio
-st.sidebar.markdown("---")
-
-# ====================
-# Introducción
-# ====================
-st.sidebar.markdown("### Para comenzar")
-pagina = st.sidebar.radio("", [pag_introduccion], index=0)
-
-# Espacio
-st.sidebar.markdown("---")
-
-# ====================
-# Unidad 1
-# ====================
-st.sidebar.markdown("### Unidad 1")
-pagina = st.sidebar.radio("", [
-    pag_bioinstrumentacion,
-    pag_control_motor,
-    pag_balance,
-    pag_marcha
-])
-
-# Espacio
-st.sidebar.markdown("---")
-
-# ====================
-# Unidad 2
-# ====================
-st.sidebar.markdown("### Unidad 2")
-pagina = st.sidebar.radio("", [
-    pag_control_motor,
-    pag_balance,
-    pag_marcha
-])
-
-# Espacio
-st.sidebar.markdown("---")
-
-# ====================
-# Unidad 3
-# ====================
-st.sidebar.markdown("### Unidad 3")
-pagina = st.sidebar.radio("", [pag_marcha])
-
-
-
-
-
-
-
-
-# Mostrar contenido según la selección
-if pagina == pag_bienvenida:
-    st.title("Te damos la Bienvenida 👋")
-    st.write("Usa el menú de la izquierda para navegar.")
-
-elif pagina == pag_introduccion:
-    st.header("📘 Unidad 1: Introducción al análisis del movimiento")
-    st.markdown("- Etapas del análisis\n- Cinemática\n- Cinética")
-
-elif pagina == pag_bioinstrumentacion:
-    st.header("🧪 Unidad 2: Bioinstrumentación")
-    st.markdown("- Electromiografía (EMG)\n- Plataforma de fuerza\n- Videofotogrametría\n- Goniometría")
-
-elif pagina == pag_control_motor:
-    st.header("🧠 Unidad 3: Teorías del control motor")
-    st.markdown("- Teorías antiguas\n- Teoría de sistemas dinámicos\n- Teoría de modelos internos")
-
-elif pagina == pag_balance:
-    st.header("⚖️ Unidad 4: Sistema sensoriomotor y balance")
-
-elif pagina == pag_marcha:
-    st.header("🚶 Unidad 5: Análisis de marcha")
-
-# Mensaje de bienvenida
-st.markdown("""
-¡Hola! Este espacio está diseñado para acompañarte a lo largo del curso.  
-Aquí encontrarás visualizaciones, animaciones y herramientas interactivas para reforzar los contenidos.
-            
-Esta es una herramienta que recién estamos desarrollando, por lo que es posible que veas bastantes cambios durante el semestre, mientras aprendemos a perfeccionarla.
-
-A continuación, te presentamos una visión general de las **unidades** que abordaremos:
-""")
-
-
+with col2:
+    if st.button("Siguiente ➡️", use_container_width=True):
+        if st.session_state.indice_pagina < len(paginas) - 1:
+            st.session_state.indice_pagina += 1
