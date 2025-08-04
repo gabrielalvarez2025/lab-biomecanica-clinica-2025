@@ -38,7 +38,7 @@ def mostrar():
     # Parámetros de usuario
     st.sidebar.title("Parámetros de simulación")
     num_ondas = st.sidebar.slider("Número de ondas (UM)", 1, 15, 6)
-    freq_max = st.sidebar.slider("Frecuencia máxima (Hz)", 10, 100, 20)
+    freq_max = 100 # st.sidebar.slider("Frecuencia máxima (Hz)", 10, 100, 20)
     amp_max = 2
     fase_max = np.pi * 5
 
@@ -49,7 +49,7 @@ def mostrar():
     # Sliders por onda
     params = []
     for i in range(num_ondas):
-        with st.sidebar.expander(f"Unidad motora {i+1}", expanded=False):
+        with st.sidebar.expander(f"Onda n° {i+1}", expanded=False):
             amp = st.slider(f"Amplitud {i+1}", 0.0, float(amp_max), 1.0, key=f"amp_{i}")
             freq = st.slider(f"Frecuencia {i+1} (Hz)", 0.0, float(freq_max), 1.0, key=f"freq_{i}")
             fase = st.slider(f"Fase {i+1}", 0.0, float(fase_max), 0.0, key=f"fase_{i}")
