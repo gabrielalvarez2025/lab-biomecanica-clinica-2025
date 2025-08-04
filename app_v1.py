@@ -33,7 +33,7 @@ pag_marcha              = "Sección 5: Análisis de marcha"
 st.sidebar.markdown("Selecciona una sección:")  # línea horizontal para separar
 
 # Sidebar 1
-pagina = st.sidebar.radio("Página principal del espacio interactivo", [
+seleccion_sidebar = st.sidebar.radio("Página principal del espacio interactivo", [
     pag_bienvenida,
     
 ])
@@ -41,14 +41,14 @@ pagina = st.sidebar.radio("Página principal del espacio interactivo", [
 #st.sidebar.markdown("---")  # línea horizontal para separar
 
 # Sidebar 2
-pagina = st.sidebar.radio("Para comenzar:", [
+seleccion_sidebar = st.sidebar.radio("Para comenzar:", [
     pag_introduccion
 ])
 
 #st.sidebar.markdown("---")  # línea horizontal para separar
 
 # Sidebar 3: Unidad 1
-pagina = st.sidebar.radio("Unidad 1:", [
+seleccion_sidebar = st.sidebar.radio("Unidad 1:", [
     pag_bioinstrumentacion,
     pag_control_motor,
     pag_balance,
@@ -58,7 +58,7 @@ pagina = st.sidebar.radio("Unidad 1:", [
 #st.sidebar.markdown("---")  # línea horizontal para separar
 
 # Sidebar: Unidad 2
-pagina = st.sidebar.radio("Unidad 2:", [
+seleccion_sidebar = st.sidebar.radio("Unidad 2:", [
     pag_control_motor,
     pag_balance,
     pag_marcha
@@ -67,33 +67,33 @@ pagina = st.sidebar.radio("Unidad 2:", [
 #st.sidebar.markdown("---")  # línea horizontal para separar
 
 # Sidebar: Unidad 3
-pagina = st.sidebar.radio("Unidad 3:", [
+seleccion_sidebar = st.sidebar.radio("Unidad 3:", [
     pag_marcha
 ])
 
 
 
 # Mostrar contenido según la selección
-if pagina == pag_bienvenida:
+if seleccion_sidebar == pag_bienvenida:
     st.title("Te damos la Bienvenida 👋")
     st.write("Usa el menú de la izquierda para navegar.")
 
-elif pagina == pag_introduccion:
+elif seleccion_sidebar == pag_introduccion:
     st.header("📘 Unidad 1: Introducción al análisis del movimiento")
     st.markdown("- Etapas del análisis\n- Cinemática\n- Cinética")
 
-elif pagina == pag_bioinstrumentacion:
+elif seleccion_sidebar == pag_bioinstrumentacion:
     st.header("🧪 Unidad 2: Bioinstrumentación")
     st.markdown("- Electromiografía (EMG)\n- Plataforma de fuerza\n- Videofotogrametría\n- Goniometría")
 
-elif pagina == pag_control_motor:
+elif seleccion_sidebar == pag_control_motor:
     st.header("🧠 Unidad 3: Teorías del control motor")
     st.markdown("- Teorías antiguas\n- Teoría de sistemas dinámicos\n- Teoría de modelos internos")
 
-elif pagina == pag_balance:
+elif seleccion_sidebar == pag_balance:
     st.header("⚖️ Unidad 4: Sistema sensoriomotor y balance")
 
-elif pagina == pag_marcha:
+elif seleccion_sidebar == pag_marcha:
     st.header("🚶 Unidad 5: Análisis de marcha")
 
 # Mensaje de bienvenida
