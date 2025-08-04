@@ -16,6 +16,19 @@ def mostrar():
 
     sns.set_theme(style="darkgrid", palette="pastel")
 
+    
+    
+    # ELEMENTO INTERACTIVO: Descomposición de ondas
+    st.subheader("Descomposición de ondas")
+
+    st.markdown("""
+    
+        Esta herramienta te permite simular la descomposición de una señal EMG en varias unidades motoras (UM).
+    Puedes ajustar la amplitud, frecuencia y fase de cada UM para ver cómo se combinan en una señal compuesta.
+                
+    """)
+
+
     # Parámetros de usuario
     st.sidebar.title("Parámetros de simulación")
     num_ondas = st.sidebar.slider("Número de ondas (UM)", 1, 15, 6)
