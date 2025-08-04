@@ -69,7 +69,7 @@ def mostrar():
     # ---------------------- Botones de reinicio y aleatorio ----------------------
     
     # Instrucciones botones random y reiniciar
-    st.sidebar.markdown('Presiona "ALEATORIO" para establecer parámetros aleatorios para cada onda, o  "REINICIAR" para volver a los valores default.')
+    st.sidebar.markdown('Presiona **ALEATORIO** para establecer parámetros aleatorios para cada onda, o **REINICIAR** para volver a los valores default.')
     
     
     # Configurar botones random y reiniciar en la sidebar
