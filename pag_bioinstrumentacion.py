@@ -39,7 +39,7 @@ def mostrar():
 
     # Parámetros de la simulación, sidebar
     st.sidebar.title("Parámetros de simulación")
-    num_ondas = st.sidebar.slider("Número de ondas", 1, 15, 6)
+    num_ondas = st.sidebar.slider("Número de ondas", 1, 15, 2)
     
     # Parámetros maximos
     freq_max    = 100 # st.sidebar.slider("Frecuencia máxima (Hz)", 10, 100, 20)
