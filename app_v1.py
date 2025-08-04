@@ -8,9 +8,10 @@ import streamlit as st
 st.set_page_config(page_title="Bienvenida - Análisis Biomecánico del Movimiento", layout="centered")
 
 # Título principal
-st.title("👋 Bienvenidos y Bienvenidas")
-st.subheader("Asignatura: **Análisis Biomecánico del Movimiento**")
+st.title("Bienvenida al Espacio Interactivo LabBC")
+st.subheader("**Análisis Biomecánico del Movimiento**")
 st.markdown("---")
+# Hola
 
 # Mensaje de bienvenida
 st.markdown("""
