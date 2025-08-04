@@ -44,8 +44,7 @@ pagina = st.sidebar.radio("Selecciona una sección:", [
     pag_control_motor,
     pag_balance,
     pag_marcha
-],
-"Hola")
+])
 
 st.sidebar.markdown("---")  # línea horizontal para separar
 
