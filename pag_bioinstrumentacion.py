@@ -70,7 +70,7 @@ def mostrar():
     # Instrucciones botones random y reiniciar
     st.sidebar.markdown("""
                         
-                        Presiona **ALEATORIO** para establecer parámetros al azar para cada onda, o **REINICIAR** para volver a los valores default.
+                        Puedes presionar **ALEATORIO** para establecer parámetros al azar para cada onda. Presiona **REINICIAR** para volver a los valores iniciales.
                         """)
     
     
