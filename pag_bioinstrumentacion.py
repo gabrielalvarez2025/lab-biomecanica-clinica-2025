@@ -172,7 +172,7 @@ def mostrar():
 
     st.pyplot(fig2)
 
-    st.markdown("---")
+    st.markdown(" ")
 
     st.markdown("""
                 Esta misma lógica se aplica a la señal que vemos al tomar una **electromiografía (EMG)**.
