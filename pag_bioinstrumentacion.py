@@ -22,14 +22,10 @@ def mostrar():
     st.subheader("Descomposición de ondas")
 
     st.markdown("""
-    
     A continuación, puedes interactuar con una herramienta que simula la descomposición de una señal electromiográfica (EMG) en varias unidades motoras (UM).
-                
     Esta herramienta te permite simular la descomposición de una señal EMG en varias unidades motoras (UM).
     Puedes ajustar la amplitud, frecuencia y fase de cada UM para ver cómo se combinan en una señal compuesta.
-                
     """)
-
 
     # Parámetros de usuario
     st.sidebar.title("Parámetros de simulación")
@@ -51,20 +47,24 @@ def mostrar():
             fase = st.slider(f"Fase {i+1}", 0.0, float(fase_max), 0.0, key=f"fase_{i}")
             params.append((amp, freq, fase))
 
-    # Gráfico
-    fig, axs = plt.subplots(num_ondas + 1, 1, figsize=(10, num_ondas * 1.5))
+    # Primera figura: ondas individuales
+    fig1, axs1 = plt.subplots(num_ondas, 1, figsize=(10, num_ondas * 1.5))
     for i, (amp, freq, fase) in enumerate(params):
         y = amp * np.sin(2 * np.pi * freq * x + fase)
         suma_total += y
-        axs[i].plot(x, y, color=colores_pastel[i])
-        axs[i].set_ylim(-amp_max, amp_max)
-        axs[i].set_ylabel(f"UM {i+1}")
-        axs[i].set_xticks([])
+        axs1[i].plot(x, y, color=colores_pastel[i])
+        axs1[i].set_ylim(-amp_max, amp_max)
+        axs1[i].set_ylabel(f"UM {i+1}")
+        axs1[i].set_xticks([])
 
-    axs[-1].plot(x, suma_total, color='k')
-    axs[-1].set_ylim(-amp_max * num_ondas, amp_max * num_ondas)
-    axs[-1].set_ylabel("Suma")
-    axs[-1].set_xlabel("Tiempo (ms)")
-    axs[-1].set_title("Simulación de señal EMG compuesta")
+    st.pyplot(fig1)
 
-    st.pyplot(fig)
+    # Segunda figura: suma total
+    fig2, ax2 = plt.subplots(figsize=(10, 3))
+    ax2.plot(x, suma_total, color='k')
+    ax2.set_ylim(-amp_max * num_ondas, amp_max * num_ondas)
+    ax2.set_ylabel("Suma")
+    ax2.set_xlabel("Tiempo (ms)")
+    ax2.set_title("Simulación de señal EMG compuesta")
+
+    st.pyplot(fig2)
