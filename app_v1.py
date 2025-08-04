@@ -4,6 +4,12 @@ import numpy as np
 
 # importar secciones
 from pag_bienvenida import mostrar as mostrar_bienvenida
+from pag_introduccion import mostrar as mostrar_introduccion
+from pag_bioinstrumentacion import mostrar as mostrar_bioinstrumentacion
+from pag_control_motor import mostrar as mostrar_control_motor
+from pag_balance import mostrar as mostrar_balance
+from pag_marcha import mostrar as mostrar_marcha
+
 
 
 
@@ -57,22 +63,19 @@ if pagina == pag_bienvenida:
     mostrar_bienvenida()
 
 elif pagina == pag_introduccion:
-    st.header("📘 Unidad 1: Introducción al análisis del movimiento")
-    st.markdown("- Etapas del análisis\n- Cinemática\n- Cinética")
+    mostrar_introduccion()
 
 elif pagina == pag_bioinstrumentacion:
-    st.header("🧪 Unidad 2: Bioinstrumentación")
-    st.markdown("- Electromiografía (EMG)\n- Plataforma de fuerza\n- Videofotogrametría\n- Goniometría")
+    mostrar_bioinstrumentacion()
 
 elif pagina == pag_control_motor:
-    st.header("🧠 Unidad 3: Teorías del control motor")
-    st.markdown("- Teorías antiguas\n- Teoría de sistemas dinámicos\n- Teoría de modelos internos")
+    mostrar_control_motor()
 
 elif pagina == pag_balance:
-    st.header("⚖️ Unidad 4: Sistema sensoriomotor y balance")
+    mostrar_balance()
 
 elif pagina == pag_marcha:
-    st.header("🚶 Unidad 5: Análisis de marcha")
+    mostrar_marcha()
 
 # Mensaje de bienvenida
 st.markdown("""
@@ -81,34 +84,8 @@ Aquí encontrarás visualizaciones, animaciones y herramientas interactivas para
             
 Esta es una herramienta que recién estamos desarrollando, por lo que es posible que veas bastantes cambios durante el semestre, mientras aprendemos a perfeccionarla.
 
-A continuación, te presentamos una visión general de las **unidades** que abordaremos:
 """)
 
 
-# Unidades del curso
-st.markdown("""
-### Unidades del curso
 
-1. **Introducción al análisis del movimiento**
-   - Etapas del análisis
-   - Cinemática
-   - Cinética
-
-2. **Bioinstrumentación**
-   - Electromiografía (EMG)
-   - Plataforma de fuerza
-   - Videofotogrametría
-   - Goniometría
-
-3. **Teorías del control motor**
-   - Teorías antiguas
-   - Teoría de sistemas dinámicos
-   - Teoría de modelos internos
-
-4. **Sistema sensoriomotor y balance**
-
-5. **Análisis de marcha**
-""")
-
-st.markdown("---")
 
