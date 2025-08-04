@@ -51,10 +51,7 @@ def mostrar():
     colores_pastel = sns.color_palette("pastel", num_ondas)    
 
 
-    # ---------------------- Sliders de cada onda (generarlos) ----------------------
-
-    # Instrucciones
-    st.sidebar.markdown("Cambia los parámetros de cada onda:")
+    # ---------------------- Generar y configurar los sliders de cada onda (no mostrarlos) ----------------------
 
     # Sliders por onda
     # Inicializar session_state para cada parámetro si no existe o si cambió num_ondas
@@ -98,7 +95,10 @@ def mostrar():
     
    
 
-    # ---------------------- Sliders de cada onda (lectura) ----------------------
+    # ---------------------- Mostrar los sliders de cada onda ----------------------
+
+    # Instrucciones
+    st.sidebar.markdown("Cambia los parámetros de cada onda:")
     
     # Leer sliders con los valores del session_state
     params = []
