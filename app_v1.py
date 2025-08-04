@@ -2,8 +2,67 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Título
-st.title("Diagrama de Cuerpo Libre: Fuerza Peso Cambiada 2")
+"""
+Para actualizar cambios en el script, escribir en terminal:
+
+    git status
+    git add app_v1.py
+    git commit -m "Introduccion al curso, redaccion 1"
+    git push
+
+"""
+
+import streamlit as st
+
+st.set_page_config(page_title="Bienvenida - Análisis Biomecánico del Movimiento", layout="centered")
+
+# Título principal
+st.title("👋 Bienvenidos y Bienvenidas")
+st.subheader("Asignatura: **Análisis Biomecánico del Movimiento**")
+st.markdown("---")
+
+# Mensaje de bienvenida
+st.markdown("""
+¡Hola! Esta aplicación está diseñada para acompañarte a lo largo del curso.  
+Aquí encontrarás visualizaciones, animaciones y herramientas interactivas para reforzar los contenidos.
+
+A continuación, te presentamos una visión general de las **unidades** que abordaremos:
+""")
+
+# Unidades del curso
+st.markdown("""
+### 📚 Unidades del curso
+
+1. **Introducción al análisis del movimiento**
+   - Etapas del análisis
+   - Cinemática
+   - Cinética
+
+2. **Bioinstrumentación**
+   - Electromiografía (EMG)
+   - Plataforma de fuerza
+   - Videofotogrametría
+   - Goniometría
+
+3. **Teorías del control motor**
+   - Teorías antiguas
+   - Teoría de sistemas dinámicos
+   - Teoría de modelos internos
+
+4. **Sistema sensoriomotor y balance**
+
+5. **Análisis de marcha**
+""")
+
+st.markdown("---")
+
+# Pie de página o mensaje final
+st.info("Usa el menú lateral para navegar por las unidades cuando estén disponibles.")
+
+
+
+"""# Título
+st.title("Electromiografía: Descomposición de señales")
 
 # Slider para cambiar la masa
 masa = st.slider("Masa del objeto (kg)", min_value=1.0, max_value=20.0, step=0.5, value=5.0)
@@ -29,3 +88,4 @@ ax.set_title("Fuerza peso hacia abajo")
 ax.grid(True)
 
 st.pyplot(fig)
+"""
