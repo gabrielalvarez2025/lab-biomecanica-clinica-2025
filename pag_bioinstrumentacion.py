@@ -145,7 +145,7 @@ def mostrar():
 
     # ---------------------- Texto pre - Onda Sumatoria ----------------------
 
-    st.markdown("""
+    st.markdown(f"""
                 Las ondas individuales representan las unidades motoras (UM) que se suman para formar una señal EMG compuesta. Cuando las {n_ondas} ondas ocurren simultáneamente (chocan, se combinan), interfieren entre sí constructivamente en algunas zonas y destructivamente en otras.
                 El resultado de sumar gráficamente esas {n_ondas} ondas que configuraste se muestra en la siguiente **onda resultante**:
     """)
