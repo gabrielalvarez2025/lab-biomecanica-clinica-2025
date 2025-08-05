@@ -241,14 +241,12 @@ def botones_tarjeta():
     }
     </style>
     """, unsafe_allow_html=True)
-
-    # Contenedor HTML para ese botón con id único
-    st.markdown('<div id="boton-tarjeta">', unsafe_allow_html=True)
     
     
     col1, col2 = st.columns(2)
 
     
+    st.markdown('<div id="boton-tarjeta">', unsafe_allow_html=True)
     with col1:
         with st.container():
             if st.button("Sumatoria de ondas"):
