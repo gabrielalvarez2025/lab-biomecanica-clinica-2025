@@ -20,7 +20,8 @@ def mostrar():
 
     st.markdown("hola")
 
-    
+    # ELEMENTO INTERACTIVO: Descomposición de ondas
+    interactivo_sumatoria()
     
     
 
@@ -65,7 +66,6 @@ def mostrar():
     
     st.markdown("---")
     
-    # ELEMENTO INTERACTIVO: Descomposición de ondas
-    interactivo_sumatoria()
+    
     
     
