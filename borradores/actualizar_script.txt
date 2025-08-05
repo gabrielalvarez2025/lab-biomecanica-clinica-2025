@@ -1,0 +1,18 @@
+Para actualizar cambios en el script, escribir en terminal:
+
+git status
+git add app_v1.py
+git commit -m "Actualizacion main"
+git push
+
+
+
+git status
+git add app_v1.py
+git commit -m "Actualizacion main"
+git push
+
+git status
+git add app_v1.py requirements.txt pag_bienvenida.py pag_introduccion.py pag_bioinstrumentacion.py pag_control_motor.py pag_balance.py pag_marcha.py
+git commit -m "Actualizar"
+git push
