@@ -227,7 +227,7 @@ def botones_tarjeta():
         
         st.markdown("""
                     Si tienes dudas de por qué la forma de la señal de EMG es tan irregular o qué son los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
-                    """)
+                    """, color="gray")
         
         
 
