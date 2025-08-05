@@ -226,7 +226,7 @@ def botones_tarjeta():
                 text-align: center;
                 box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
                 transition: transform 0.1s ease-in-out;
-                margin-top: 0px;
+                margin-top: 2px;
             }
 
             div.stButton > button.custom-boton:hover {
