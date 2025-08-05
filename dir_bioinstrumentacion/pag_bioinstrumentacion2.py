@@ -22,8 +22,7 @@ def mostrar():
 
     
     
-    # ELEMENTO INTERACTIVO: Descomposición de ondas
-    #interactivo_sumatoria()
+    
 
     # Estilo CSS personalizado para los botones tipo tarjeta
     card_style = """
@@ -63,5 +62,10 @@ def mostrar():
 
     with col3:
         st.markdown('<div class="card"><a href="/Home">Volver al Inicio</a></div>', unsafe_allow_html=True)
+    
+    st.markdown("---")
+    
+    # ELEMENTO INTERACTIVO: Descomposición de ondas
+    interactivo_sumatoria()
     
     
