@@ -210,12 +210,7 @@ def play_emg_sumatoria():
                 """)
     st.markdown("---")
 
-def botones_tarjeta_3():
-    """
-    Muestra botones tipo tarjeta que ejecutan funciones en lugar de redirigir.
-    """
-
-    # Estilo para simular tarjetas en botones
+def botones_tarjeta():
     card_style = """
     <style>
     div.stButton > button {
@@ -240,27 +235,22 @@ def botones_tarjeta_3():
     """
     st.markdown(card_style, unsafe_allow_html=True)
 
-    # Crear columnas para botones en fila
     col1, col2, col3 = st.columns(3)
 
     with col1:
         if st.button("Sumatoria de ondas"):
-            play_emg_sumatoria()
+            st.session_state["mostrar_sumatoria"] = True
 
     with col2:
         if st.button("Ir a Página 2"):
-            play_emg_sumatoria()
-            #func2()
+            st.session_state["mostrar_sumatoria"] = False
+            st.info("Aquí podrías mostrar otra función (func2)")
 
     with col3:
         if st.button("Volver al Inicio"):
-            #func3()
-            play_emg_sumatoria()
-
+            st.session_state["mostrar_sumatoria"] = False
+            st.success("Inicio")
 
     st.markdown("---")
-
-    
-    
     
     
