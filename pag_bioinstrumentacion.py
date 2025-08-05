@@ -217,10 +217,11 @@ def botones_tarjeta():
 
     col1, col2 = st.columns(2)
 
+    st.markdown("### **Simulación de sumatoria de ondas**")
+    st.markdown("En esta sección puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que es muy importante para entender cómo se genera la señal de electromiografía.")
+    st.markdown("---")
     with col1:
-        st.markdown("### **Material interactivo:**")
-
-        st.markdown("---")
+        
         if st.button("Sumatoria de ondas"):
             st.session_state["mostrar_sumatoria"] = True
             st.info("Estas viendo esta simulación.")
