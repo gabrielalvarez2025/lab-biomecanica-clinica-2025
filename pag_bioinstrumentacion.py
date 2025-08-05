@@ -219,48 +219,69 @@ def botones_tarjeta():
     st.markdown("En esta sección puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que es muy importante para entender cómo se genera la señal de electromiografía.")
     st.empty()
 
+    # CSS de la tarjeta y el botón (solo afecta este bloque)
     st.markdown("""
-    <style>
-    /* Aplica el estilo solo a botones dentro del div con id 'boton-tarjeta' */
-    #boton-tarjeta div.stButton > button {
-        background-color: #f5f5f5;
-        border: 1px solid #d3d3d3;
-        padding: 20px;
-        border-radius: 12px;
-        color: #444;
-        font-size: 18px;
-        width: 50px;
-        text-align: center;
-        box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-        transition: transform 0.1s ease-in-out;
-    }
-    #boton-tarjeta div.stButton > button:hover {
-        background-color: #e0e0e0;
-        transform: scale(1.02);
-        cursor: pointer;
-    }
-    </style>
+        <style>
+        /* Estilo para el contenedor tipo tarjeta */
+        .tarjeta {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .tarjeta:hover {
+            transform: scale(1.01);
+        }
+
+        /* Estilo solo para el botón dentro de esa tarjeta */
+        .tarjeta div.stButton > button {
+            background-color: #f5f5f5;
+            border: 1px solid #d3d3d3;
+            padding: 16px;
+            border-radius: 10px;
+            color: #444;
+            font-size: 18px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .tarjeta div.stButton > button:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.02);
+            cursor: pointer;
+        }
+        </style>
     """, unsafe_allow_html=True)
-    
-    
+
+    # Columnas
     col1, col2 = st.columns(2)
 
     
     st.markdown('<div id="boton-tarjeta">', unsafe_allow_html=True)
     with col1:
-        with st.container():
-            if st.button("Sumatoria de ondas"):
-                st.session_state["mostrar_sumatoria"] = True
-                st.info("Estás viendo esta simulación.")
+        st.markdown('<div class="tarjeta">', unsafe_allow_html=True)
 
-            st.markdown("""
+        if st.button("Sumatoria de ondas"):
+            st.session_state["mostrar_sumatoria"] = True
+            st.info("Estás viendo esta simulación.")
+
+        st.markdown("""
+            <p style="color: #666; font-size: 16px; margin-top: 10px;">
             Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
-            """)
-        
+            </p>
+        """, unsafe_allow_html=True)
 
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    # Relleno en col2
     with col2:
-        
-        st.markdown(" ")
+        st.markdown("Contenido adicional u otra tarjeta aquí...")
         
     st.markdown("---")    
 
