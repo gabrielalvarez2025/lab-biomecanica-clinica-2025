@@ -225,7 +225,7 @@ def botones_tarjeta():
             st.session_state["mostrar_sumatoria"] = True
             st.info("Estas viendo esta simulación.")
         
-        
+        st.markdown("h")
         
         
 
