@@ -247,7 +247,7 @@ def botones_tarjeta():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.markdown("Presiona este botón para activar una actividad de sumatoria de ondas.", font_size="10px")
+        st.markdown("Presiona este botón para activar una actividad de sumatoria de ondas.")
         if st.button("Sumatoria de ondas"):
             st.session_state["mostrar_sumatoria"] = True
             st.info("Estas viendo esta simulación.")
