@@ -215,7 +215,7 @@ def play_emg_sumatoria():
     st.markdown("---")
 
 def botones_tarjeta():
-    card_style = """
+    card_style1 = """
     <style>
     div.stButton > button {
         background-color: #1f1f1f;
@@ -237,7 +237,7 @@ def botones_tarjeta():
     }
     </style>
     """
-    st.markdown(card_style, unsafe_allow_html=True)
+    st.markdown(card_style1, unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns(3)
 
