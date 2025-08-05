@@ -215,11 +215,13 @@ def play_emg_sumatoria():
 def botones_tarjeta():
     
 
-    col1, col2 = st.columns(2)
-
     st.markdown("### **Simulación de sumatoria de ondas**")
     st.markdown("En esta sección puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que es muy importante para entender cómo se genera la señal de electromiografía.")
     st.markdown("---")
+    
+    col1, col2 = st.columns(2)
+
+    
     with col1:
         
         if st.button("Sumatoria de ondas"):
