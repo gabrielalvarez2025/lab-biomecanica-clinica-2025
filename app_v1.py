@@ -10,6 +10,8 @@ from pag_control_motor import mostrar as mostrar_control_motor
 from pag_balance import mostrar as mostrar_balance
 from pag_marcha import mostrar as mostrar_marcha
 
+from pag_practico_cinematica import mostrar as mostrar_practico_cinematica
+
 
 
 
@@ -24,6 +26,7 @@ pag_bioinstrumentacion  = "Sección 2: Bioinstrumentación"
 pag_control_motor       = "Sección 3: Teorías del control motor"
 pag_balance             = "Sección 4: Sistema sensoriomotor y balance"
 pag_marcha              = "Sección 5: Análisis de marcha"
+pag_practico_cinematica = "Sección 6: Práctico de cinemática"
 
 
 
@@ -53,6 +56,9 @@ st.sidebar.markdown("---")  # línea horizontal para separar
 if pagina == pag_bienvenida:
     mostrar_bienvenida()
 
+elif pagina == pag_practico_cinematica:
+    mostrar_practico_cinematica()
+    
 elif pagina == pag_introduccion:
     mostrar_introduccion()
 
