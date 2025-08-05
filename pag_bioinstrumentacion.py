@@ -16,8 +16,13 @@ def mostrar():
 
     sns.set_theme(style="darkgrid", palette="pastel")
 
+    
+    
+    
     # ELEMENTO INTERACTIVO: Descomposición de ondas
-    play_emg_sumatoria()
+    #play_emg_sumatoria()
+
+    botones_tarjeta_3()
     
 
     st.markdown("---")
@@ -205,45 +210,52 @@ def play_emg_sumatoria():
                 """)
     st.markdown("---")
 
-    # Estilo CSS personalizado para los botones tipo tarjeta
+def botones_tarjeta_3():
+    """
+    Muestra botones tipo tarjeta que ejecutan funciones en lugar de redirigir.
+    """
+
+    # Estilo para simular tarjetas en botones
     card_style = """
     <style>
-    .card {
+    div.stButton > button {
         background-color: #1f1f1f;
+        color: white;
         padding: 30px;
         border-radius: 15px;
+        font-size: 20px;
+        font-weight: bold;
         text-align: center;
         box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
         transition: 0.3s;
-        cursor: pointer;
+        width: 100%;
+        height: 100%;
     }
-    .card:hover {
+
+    div.stButton > button:hover {
         background-color: #333333;
         transform: scale(1.02);
-    }
-    .card a {
-        color: white;
-        text-decoration: none;
-        font-size: 24px;
-        font-weight: bold;
     }
     </style>
     """
     st.markdown(card_style, unsafe_allow_html=True)
 
-    # Crear columnas para mostrar los botones en horizontal
+    # Crear columnas para botones en fila
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        mensaje_boton1 = "Sumatoria de ondas"
-        st.markdown(f'<div class="card"><a href="/play_ondas_emg">{mensaje_boton1}</a></div>', unsafe_allow_html=True)
+        if st.button("Sumatoria de ondas"):
+            play_emg_sumatoria()
 
     with col2:
-        st.markdown('<div class="card"><a href="/Pagina2">Ir a Página 2</a></div>', unsafe_allow_html=True)
+        if st.button("Ir a Página 2"):
+            #func2()
 
     with col3:
-        st.markdown('<div class="card"><a href="/Home">Volver al Inicio</a></div>', unsafe_allow_html=True)
-    
+        if st.button("Volver al Inicio"):
+            #func3()
+
+
     st.markdown("---")
 
     
