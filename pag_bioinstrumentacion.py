@@ -3,8 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
-from dir_bioinstrumentacion.play_ondas_emg import play as interactivo_sumatoria
+from play_ondas_emg import play as interactivo_sumatoria
 
 def mostrar():
     st.header("Unidad 1: Bioinstrumentación")
