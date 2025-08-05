@@ -219,17 +219,19 @@ def botones_tarjeta():
 
     with col1:
         st.markdown("**Descripción:**")
-        st.markdown("""
-                    1. **Simulación de la sumatoria de ondas**:\n
-                    Si tienes dudas de por qué la forma de la señal de EMG es tan irregular, esta simulación te ayudará a entenderlo." \
-                    """)
+        
         
 
     with col2:
         st.markdown("**Simulaciones:**")
+
         if st.button("Sumatoria de ondas"):
             st.session_state["mostrar_sumatoria"] = True
             st.info("Estas viendo esta simulación.")
+        st.markdown("""
+                    1. **Simulación de la sumatoria de ondas**:\n
+                    Si tienes dudas de por qué la forma de la señal de EMG es tan irregular, esta simulación te ayudará a entenderlo." \
+                    """)
         
         
 
