@@ -19,13 +19,19 @@ def mostrar():
     
     
     
-    # ELEMENTO INTERACTIVO: Descomposición de ondas
-    #play_emg_sumatoria()
+    
+    # Inicializar variable de sesión en False al principio
+    if "mostrar_sumatoria" not in st.session_state:
+        st.session_state["mostrar_sumatoria"] = False
 
-    st.title("Simulación Interactiva de EMG")
+    # Mostrar botones
     botones_tarjeta()
 
-    # Mostrar contenido solo si está activado
+    # Mostrar contenido si fue activado
+    if st.session_state["mostrar_sumatoria"]:
+        play_emg_sumatoria()
+
+    # ELEMENTO INTERACTIVO: Descomposición de ondas
     if st.session_state.get("mostrar_sumatoria", False):
         play_emg_sumatoria()
     
@@ -242,7 +248,7 @@ def botones_tarjeta():
 
     with col1:
         if st.button("Sumatoria de ondas"):
-            st.session_state["mostrar_sumatoria"] = False
+            st.session_state["mostrar_sumatoria"] = True
             st.info("Estas viendo esta simulación.")
 
     with col2:
