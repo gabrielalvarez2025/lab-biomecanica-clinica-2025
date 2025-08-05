@@ -220,53 +220,13 @@ def botones_tarjeta():
     st.empty()
 
     # CSS de la tarjeta y el botón (solo afecta este bloque)
-    st.markdown("""
-        <style>
-        /* Estilo para el contenedor tipo tarjeta */
-        .tarjeta {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-            transition: transform 0.1s ease-in-out;
-        }
-
-        .tarjeta:hover {
-            transform: scale(1.01);
-        }
-
-        /* Estilo solo para el botón dentro de esa tarjeta */
-        .tarjeta div.stButton > button {
-            background-color: #f5f5f5;
-            border: 1px solid #d3d3d3;
-            padding: 16px;
-            border-radius: 10px;
-            color: #444;
-            font-size: 18px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.1s ease-in-out;
-        }
-
-        .tarjeta div.stButton > button:hover {
-            background-color: #e0e0e0;
-            transform: scale(1.02);
-            cursor: pointer;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-
+    
     # Columnas
     col1, col2 = st.columns(2)
 
     
-    st.markdown('<div id="boton-tarjeta">', unsafe_allow_html=True)
     with col1:
-        st.markdown('<div class="tarjeta">', unsafe_allow_html=True)
-
+        
         if st.button("Sumatoria de ondas"):
             st.session_state["mostrar_sumatoria"] = True
             st.info("Estás viendo esta simulación.")
