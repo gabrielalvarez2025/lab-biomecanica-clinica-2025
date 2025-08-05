@@ -227,9 +227,8 @@ def botones_tarjeta():
         
 
     with col2:
-        
+        st.markdown("**Simulaciones:**")
         if st.button("Sumatoria de ondas"):
-            st.markdown("**Simulaciones:**")
             st.session_state["mostrar_sumatoria"] = True
             st.info("Estas viendo esta simulación.")
         
