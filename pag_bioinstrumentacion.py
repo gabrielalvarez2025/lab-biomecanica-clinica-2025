@@ -236,7 +236,7 @@ def botones_tarjeta():
 
     with col2:
         
-        st.markdown("### **Contenido adicional:**")
+        st.markdown(" ")
         
     st.markdown("---")    
 
