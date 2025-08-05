@@ -217,7 +217,7 @@ def botones_tarjeta():
 
     st.markdown("### **Simulación de sumatoria de ondas**")
     st.markdown("En esta sección puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que es muy importante para entender cómo se genera la señal de electromiografía.")
-    st.markdown("---")
+    
     
     col1, col2 = st.columns(2)
 
@@ -231,15 +231,13 @@ def botones_tarjeta():
         st.markdown("""<div style='color: gray; font-size: 16px;'>
                     Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
                     </div>""", unsafe_allow_html=True)
-        st.markdown("---")
-        
         
 
     with col2:
         
         st.markdown("### **Contenido adicional:**")
         
-        
+    st.markdown("---")    
 
 
     st.markdown("---")
