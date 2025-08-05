@@ -224,6 +224,7 @@ def botones_tarjeta():
 
     with col2:
         st.markdown("Simulación de la sumatoria de ondas:")
+        st.session_state["mostrar_sumatoria"] = True
         
 
 
