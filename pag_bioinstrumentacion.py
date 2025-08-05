@@ -249,11 +249,13 @@ def botones_tarjeta_3():
 
     with col2:
         if st.button("Ir a Página 2"):
+            play_emg_sumatoria()
             #func2()
 
     with col3:
         if st.button("Volver al Inicio"):
             #func3()
+            play_emg_sumatoria()
 
 
     st.markdown("---")
