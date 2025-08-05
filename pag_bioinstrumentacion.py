@@ -215,7 +215,7 @@ def play_emg_sumatoria():
 def botones_tarjeta():
     
 
-    col1, col2 = st.columns(3)
+    col1, col2 = st.columns(2)
 
     with col1:
         if st.button("Sumatoria de ondas"):
@@ -224,7 +224,7 @@ def botones_tarjeta():
 
     with col2:
         st.markdown("Simulación de la sumatoria de ondas:")
-        st.session_state["mostrar_sumatoria"] = True
+        
         
 
 
