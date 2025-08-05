@@ -23,7 +23,6 @@ pag_bioinstrumentacion  = "Sección 2: Bioinstrumentación"
 pag_control_motor       = "Sección 3: Teorías del control motor"
 pag_balance             = "Sección 4: Sistema sensoriomotor y balance"
 pag_marcha              = "Sección 5: Análisis de marcha"
-pag_practico_cinematica = "Sección 6: Práctico de cinemática"
 
 
 
