@@ -220,26 +220,30 @@ def botones_tarjeta():
     st.empty()
 
     st.markdown("""
-        <style>
-        div.stButton > button {
-            background-color: #f5f5f5;
-            border: 1px solid #d3d3d3;
-            padding: 20px;
-            border-radius: 12px;
-            color: #444;
-            font-size: 18px;
-            width: 100%;
-            text-align: left;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.1s ease-in-out;
-        }
-        div.stButton > button:hover {
-            background-color: #e0e0e0;
-            transform: scale(1.02);
-            cursor: pointer;
-        }
-        </style>
-        """, unsafe_allow_html=True)
+    <style>
+    /* Aplica el estilo solo a botones dentro del div con id 'boton-tarjeta' */
+    #boton-tarjeta div.stButton > button {
+        background-color: #f5f5f5;
+        border: 1px solid #d3d3d3;
+        padding: 20px;
+        border-radius: 12px;
+        color: #444;
+        font-size: 18px;
+        width: 100%;
+        text-align: left;
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.1s ease-in-out;
+    }
+    #boton-tarjeta div.stButton > button:hover {
+        background-color: #e0e0e0;
+        transform: scale(1.02);
+        cursor: pointer;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    # Contenedor HTML para ese botón con id único
+    st.markdown('<div id="boton-tarjeta">', unsafe_allow_html=True)
     
     
     col1, col2 = st.columns(2)
