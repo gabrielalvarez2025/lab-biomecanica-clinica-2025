@@ -216,7 +216,7 @@ def botones_tarjeta():
     st.markdown("""
             <style>
             div.stButton > button.custom-boton {
-                background-color: #22293b;
+                background-color: #f5f5f5;
                 border: 1px solid #d3d3d3;
                 padding: 30px 40px;  /* <---- padding aquí */
                 border-radius: 12px;
