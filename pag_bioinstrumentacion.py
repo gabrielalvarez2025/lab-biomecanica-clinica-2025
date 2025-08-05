@@ -22,7 +22,12 @@ def mostrar():
     # ELEMENTO INTERACTIVO: Descomposición de ondas
     #play_emg_sumatoria()
 
-    botones_tarjeta_3()
+    st.title("Simulación Interactiva de EMG")
+    botones_tarjeta()
+
+    # Mostrar contenido solo si está activado
+    if st.session_state.get("mostrar_sumatoria", False):
+        play_emg_sumatoria()
     
 
     st.markdown("---")
