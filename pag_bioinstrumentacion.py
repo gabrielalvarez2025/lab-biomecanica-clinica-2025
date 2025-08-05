@@ -31,11 +31,6 @@ def mostrar():
     if st.session_state["mostrar_sumatoria"]:
         play_emg_sumatoria()
 
-    # ELEMENTO INTERACTIVO: Descomposición de ondas
-    if st.session_state.get("mostrar_sumatoria", True):
-        play_emg_sumatoria()
-    
-
     st.markdown("---")
 
 
