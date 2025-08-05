@@ -215,29 +215,7 @@ def play_emg_sumatoria():
     st.markdown("---")
 
 def botones_tarjeta():
-    card_style1 = """
-    <style>
-    div.stButton > button {
-        background-color: #1f1f1f;
-        color: white;
-        padding: 30px;
-        border-radius: 15px;
-        font-size: 20px;
-        font-weight: bold;
-        text-align: center;
-        box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
-        transition: 0.3s;
-        width: 100%;
-        height: 100%;
-    }
-
-    div.stButton > button:hover {
-        background-color: #333333;
-        transform: scale(1.02);
-    }
-    </style>
-    """
-    st.markdown(card_style1, unsafe_allow_html=True)
+    
 
     col1, col2, col3 = st.columns(3)
 
