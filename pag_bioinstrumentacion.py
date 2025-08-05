@@ -224,22 +224,36 @@ def botones_tarjeta():
 
     
     with col1:
-        if st.button("Sumatoria de ondas"):
-            st.session_state["mostrar_sumatoria"] = True
-            st.info("Estas viendo esta simulación.")
-
         st.markdown("""
-            <div style="
-                background-color: #f5f5f5;
-                border: 1px solid #d3d3d3;
-                padding: 16px;
-                border-radius: 8px;
-                color: #444;
-                font-size: 16px;
-                margin-top: 10px;">
-                Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
-            </div>
-            """, unsafe_allow_html=True)
+        <style>
+        div.stButton > button {
+            background-color: #f5f5f5;
+            border: 1px solid #d3d3d3;
+            padding: 20px;
+            border-radius: 12px;
+            color: #444;
+            font-size: 18px;
+            width: 100%;
+            text-align: left;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.1s ease-in-out;
+        }
+        div.stButton > button:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.02);
+            cursor: pointer;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+        with st.container():
+            if st.button("Sumatoria de ondas"):
+                st.session_state["mostrar_sumatoria"] = True
+                st.info("Estás viendo esta simulación.")
+
+            st.markdown("""
+            Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
+            """)
         
 
     with col2:
