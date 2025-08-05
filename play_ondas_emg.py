@@ -8,6 +8,11 @@ def play():
     
     sns.set_theme(style="darkgrid", palette="pastel")
     
+    toggle_estado = st.toggle("Activar opción")
+
+    if toggle_estado:
+        st.markdown("toggle activado")
+
     # ELEMENTO INTERACTIVO: Descomposición de ondas
     st.subheader("Sumatoria y descomposición de ondas")
 
