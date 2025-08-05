@@ -215,7 +215,7 @@ def play_emg_sumatoria():
 def botones_tarjeta():
     
 
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(3)
 
     with col1:
         if st.button("Sumatoria de ondas"):
@@ -223,14 +223,9 @@ def botones_tarjeta():
             st.info("Estas viendo esta simulación.")
 
     with col2:
-        if st.button("Simulación 2"):
-            st.session_state["mostrar_sumatoria"] = False
-            st.info("Este botón aún no cuenta con una simulación.")
+        st.markdown("Simulación de la sumatoria de ondas:")
+        
 
-    with col3:
-        if st.button("Simulación 3"):
-            st.session_state["mostrar_sumatoria"] = False
-            st.info("Este botón aún no cuenta con una simulación.")
 
     st.markdown("---")
     
