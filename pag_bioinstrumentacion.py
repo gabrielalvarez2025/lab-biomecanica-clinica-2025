@@ -231,7 +231,7 @@ def botones_tarjeta():
 
             div.stButton > button.custom-boton:hover {
                 background-color: #e0e0e0;
-                transform: scale(1.102);
+                transform: scale(1.06);
                 cursor: pointer;
             }
             </style>
