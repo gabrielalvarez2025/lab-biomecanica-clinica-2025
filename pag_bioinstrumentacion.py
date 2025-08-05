@@ -37,8 +37,6 @@ def play_emg_sumatoria():
     
     sns.set_theme(style="darkgrid", palette="pastel")
     
-    st.markdown("probando")
-
     # ELEMENTO INTERACTIVO: Descomposición de ondas
     st.subheader("Sumatoria y descomposición de ondas")
 
