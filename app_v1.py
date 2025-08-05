@@ -10,9 +10,6 @@ from pag_control_motor import mostrar as mostrar_control_motor
 from pag_balance import mostrar as mostrar_balance
 from pag_marcha import mostrar as mostrar_marcha
 
-from pag_practico_cinematica import mostrar as mostrar_practico_cinematica
-
-
 
 
 st.set_page_config(page_title="Espacio LabBC", layout="centered", initial_sidebar_state="expanded")
@@ -56,9 +53,6 @@ st.sidebar.markdown("---")  # línea horizontal para separar
 if pagina == pag_bienvenida:
     mostrar_bienvenida()
 
-elif pagina == pag_practico_cinematica:
-    mostrar_practico_cinematica()
-    
 elif pagina == pag_introduccion:
     mostrar_introduccion()
 
