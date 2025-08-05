@@ -218,7 +218,7 @@ def botones_tarjeta():
     col1, col2 = st.columns(2)
 
     with col1:
-        st.markdown(" ")
+        st.markdown("**Descripción:**")
         st.markdown("""
                     1. **Simulación de la sumatoria de ondas**:
                     Si tienes dudas de por qué la forma de la señal de EMG es tan irregular, esta simulación te ayudará a entenderlo." \
