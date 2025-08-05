@@ -226,6 +226,7 @@ def botones_tarjeta():
                 text-align: center;
                 box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
                 transition: transform 0.1s ease-in-out;
+                margin-top: 10px;
             }
 
             div.stButton > button.custom-boton:hover {
@@ -241,7 +242,7 @@ def botones_tarjeta():
 
     with col1:
         # Este bloque añade la clase personalizada al botón
-        #st.markdown(" ")
+        st.markdown(" ")
         st.markdown('<div class="stButton"><button class="custom-boton">Sumatoria de ondas</button></div>', unsafe_allow_html=True)
 
         # Si quieres que este botón active la función en Python, usa st.button y el estilo afectará a todos los botones.
