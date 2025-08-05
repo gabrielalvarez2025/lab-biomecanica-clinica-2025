@@ -8,3 +8,5 @@ def mostrar():
     st.markdown("""
                 En esta sección exploraremos el sistema sensoriomotor y su papel crucial en el mantenimiento del balance y la postura.
     """)
+
+    st.subheader("Objetivos de Aprendizaje")
