@@ -18,11 +18,11 @@ st.set_page_config(page_title="Espacio LabBC", layout="centered", initial_sideba
 
 # Nombres de las páginas
 pag_bienvenida          = "Bienvenida"
-pag_introduccion        = "Sección 1: Introducción"
-pag_bioinstrumentacion  = "Sección 2: Bioinstrumentación"
-pag_control_motor       = "Sección 3: Teorías del control motor"
-pag_balance             = "Sección 4: Sistema sensoriomotor y balance"
-pag_marcha              = "Sección 5: Análisis de marcha"
+pag_introduccion        = "Introducción"
+pag_bioinstrumentacion  = "Bioinstrumentación"
+pag_control_motor       = "Teorías del control motor"
+pag_balance             = "Sistema sensoriomotor y balance"
+pag_marcha              = "Análisis de marcha"
 
 
 
@@ -66,9 +66,3 @@ elif pagina == pag_balance:
 
 elif pagina == pag_marcha:
     mostrar_marcha()
-
-
-
-
-
-
