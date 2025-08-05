@@ -17,7 +17,7 @@ st.set_page_config(page_title="Espacio LabBC", layout="centered", initial_sideba
 
 
 # Nombres de las páginas
-pag_bienvenida          = "Bienvenida\n g"
+pag_bienvenida          = "Bienvenida"
 pag_introduccion        = "Introducción"
 pag_bioinstrumentacion  = "Bioinstrumentación"
 pag_control_motor       = "Teorías del control motor"
