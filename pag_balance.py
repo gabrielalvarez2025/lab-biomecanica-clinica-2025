@@ -11,6 +11,4 @@ def mostrar():
 
     st.subheader("Objetivos de Aprendizaje")
 
-    st.markdown("hola")
-
-    st.markdown("ggcfhvjbknlmñ,{.cw")
+    
