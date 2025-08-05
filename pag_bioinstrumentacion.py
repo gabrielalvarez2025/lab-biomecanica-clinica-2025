@@ -220,7 +220,7 @@ def botones_tarjeta():
     with col1:
         st.markdown("### **Material interactivo:**")
 
-        st.markdown("**1. **Simulación de la sumatoria de ondas**:**")
+        #st.markdown("**1. **Simulación de la sumatoria de ondas**:**")
         if st.button("Sumatoria de ondas"):
             st.session_state["mostrar_sumatoria"] = True
             st.info("Estas viendo esta simulación.")
