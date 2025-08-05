@@ -225,7 +225,9 @@ def botones_tarjeta():
             st.session_state["mostrar_sumatoria"] = True
             st.info("Estas viendo esta simulación.")
         
-        st.markdown("h")
+        st.markdown("""<div style='color: gray; font-size: 10px;'>
+                    Si tienes dudas de por qué la forma de la señal de EMG es tan irregular o qué son los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
+                    </div>""", unsafe_allow_html=True)
         
         
 
