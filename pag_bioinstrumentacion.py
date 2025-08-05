@@ -251,7 +251,7 @@ def botones_tarjeta():
             st.info("Este botón aún no cuenta con una simulación.")
 
     with col3:
-        if st.button("Simulación 2"):
+        if st.button("Simulación 3"):
             st.session_state["mostrar_sumatoria"] = False
             st.info("Este botón aún no cuenta con una simulación.")
 
