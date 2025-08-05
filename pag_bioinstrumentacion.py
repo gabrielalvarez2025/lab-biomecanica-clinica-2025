@@ -227,7 +227,7 @@ def botones_tarjeta():
     
     with col1:
         
-        if st.button("Sumatoria de ondas: Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo."):
+        if st.button("                                  Sumatoria de ondas: Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo."):
             st.session_state["mostrar_sumatoria"] = True
             st.info("Estás viendo esta simulación.")
 
