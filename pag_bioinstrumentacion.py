@@ -242,7 +242,7 @@ def botones_tarjeta():
 
     with col1:
         if st.button("Sumatoria de ondas"):
-            st.session_state["mostrar_sumatoria"] = True
+            st.session_state["mostrar_sumatoria"] = False
             st.info("Estas viendo esta simulación.")
 
     with col2:
