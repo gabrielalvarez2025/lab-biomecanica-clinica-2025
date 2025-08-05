@@ -213,24 +213,38 @@ def play_emg_sumatoria():
     st.markdown("---")
 
 def botones_tarjeta():
-    
+    st.markdown("""
+            <style>
+            div.stButton > button.custom-boton {
+                background-color: #f5f5f5;
+                border: 1px solid #d3d3d3;
+                padding: 30px 40px;  /* <---- padding aquí */
+                border-radius: 12px;
+                color: #444;
+                font-size: 18px;
+                width: 100%;
+                text-align: center;
+                box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+                transition: transform 0.1s ease-in-out;
+            }
 
-    st.markdown("### **Simulación de sumatoria de ondas**")
-    st.markdown("En esta sección puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que es muy importante para entender cómo se genera la señal de electromiografía.")
-    st.empty()
+            div.stButton > button.custom-boton:hover {
+                background-color: #e0e0e0;
+                transform: scale(1.02);
+                cursor: pointer;
+            }
+            </style>
+        """, unsafe_allow_html=True)
 
-    # CSS de la tarjeta y el botón (solo afecta este bloque)
-    
     # Columnas
     col1, col2 = st.columns(2)
 
-    
     with col1:
-        
-        if st.button(".                                ." \
-        "Sumatoria de ondas: Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo."):
-            st.session_state["mostrar_sumatoria"] = True
-            st.info("Estás viendo esta simulación.")
+        # Este bloque añade la clase personalizada al botón
+        st.markdown('<div class="stButton"><button class="custom-boton">Sumatoria de ondas</button></div>', unsafe_allow_html=True)
+
+        # Si quieres que este botón active la función en Python, usa st.button y el estilo afectará a todos los botones.
+        # O bien, con JavaScript puedes detectar clics en el botón HTML (más avanzado).
 
         st.markdown("""
             <p style="color: #666; font-size: 16px; margin-top: 10px;">
@@ -238,14 +252,8 @@ def botones_tarjeta():
             </p>
         """, unsafe_allow_html=True)
 
-        st.markdown('</div>', unsafe_allow_html=True)
-
-    # Relleno en col2
     with col2:
         st.markdown("Contenido adicional u otra tarjeta aquí...")
-        
-    st.markdown("---")    
-
 
     st.markdown("---")
     
