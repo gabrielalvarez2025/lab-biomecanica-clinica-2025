@@ -223,7 +223,7 @@ def botones_tarjeta():
         
 
     with col2:
-        st.markdown("###**Simulaciones:**")
+        st.markdown("### **Simulaciones:**")
         st.markdown("**1. **Simulación de la sumatoria de ondas**:**")
 
         if st.button("Sumatoria de ondas"):
