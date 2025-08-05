@@ -220,7 +220,7 @@ def botones_tarjeta():
                 border: 1px solid #d3d3d3;
                 padding: 30px 40px;  /* <---- padding aquí */
                 border-radius: 12px;
-                color: #444;
+                color: #233a3d;
                 font-size: 18px;
                 width: 100%;
                 text-align: center;
@@ -241,7 +241,7 @@ def botones_tarjeta():
 
     with col1:
         # Este bloque añade la clase personalizada al botón
-        st.markdown('<div class="stButton"><button class="custom-boton">Sumatoria de onda</button></div>', unsafe_allow_html=True)
+        st.markdown('<div class="stButton"><button class="custom-boton">Sumatoria de ondas</button></div>', unsafe_allow_html=True)
 
         # Si quieres que este botón active la función en Python, usa st.button y el estilo afectará a todos los botones.
         # O bien, con JavaScript puedes detectar clics en el botón HTML (más avanzado).
