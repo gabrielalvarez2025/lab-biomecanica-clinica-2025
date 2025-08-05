@@ -32,7 +32,7 @@ def mostrar():
         play_emg_sumatoria()
 
     # ELEMENTO INTERACTIVO: Descomposición de ondas
-    if st.session_state.get("mostrar_sumatoria", False):
+    if st.session_state.get("mostrar_sumatoria", True):
         play_emg_sumatoria()
     
 
@@ -247,7 +247,6 @@ def botones_tarjeta():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        #st.markdown("Presiona este botón para activar una actividad de sumatoria de ondas.")
         if st.button("Sumatoria de ondas"):
             st.session_state["mostrar_sumatoria"] = True
             st.info("Estas viendo esta simulación.")
