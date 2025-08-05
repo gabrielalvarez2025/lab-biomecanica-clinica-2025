@@ -229,13 +229,13 @@ def botones_tarjeta():
         border-radius: 12px;
         color: #444;
         font-size: 18px;
-        width: 100%;
+        width: 50px;
         text-align: center;
         box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
         transition: transform 0.1s ease-in-out;
     }
     #boton-tarjeta div.stButton > button:hover {
-        background-color: #e2bf23;
+        background-color: #e0e0e0;
         transform: scale(1.02);
         cursor: pointer;
     }
