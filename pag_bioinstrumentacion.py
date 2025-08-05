@@ -235,7 +235,7 @@ def botones_tarjeta():
         transition: transform 0.1s ease-in-out;
     }
     #boton-tarjeta div.stButton > button:hover {
-        background-color: #e0e0e0;
+        background-color: #e2bf23;
         transform: scale(1.02);
         cursor: pointer;
     }
