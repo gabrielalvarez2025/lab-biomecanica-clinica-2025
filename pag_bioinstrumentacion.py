@@ -243,7 +243,7 @@ def botones_tarjeta():
     with col1:
         # Este bloque añade la clase personalizada al botón
         #st.markdown(" ")
-        st.markdown('<div class="stButton"><button class="custom-boton">Sumatoria de ondas<br>〰️</button></div>', unsafe_allow_html=True)
+        st.markdown('<div class="stButton"><button class="custom-boton">Sumatoria de ondas<br>•၊၊||၊|။|။|။||။• |</button></div>', unsafe_allow_html=True)
 
     with col2:
         st.markdown("""
