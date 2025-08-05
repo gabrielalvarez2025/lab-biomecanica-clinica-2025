@@ -218,13 +218,8 @@ def botones_tarjeta():
     st.markdown("### **Simulación de sumatoria de ondas**")
     st.markdown("En esta sección puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que es muy importante para entender cómo se genera la señal de electromiografía.")
     st.empty()
-    
-    
-    col1, col2 = st.columns(2)
 
-    
-    with col1:
-        st.markdown("""
+    st.markdown("""
         <style>
         div.stButton > button {
             background-color: #f5f5f5;
@@ -245,7 +240,12 @@ def botones_tarjeta():
         }
         </style>
         """, unsafe_allow_html=True)
+    
+    
+    col1, col2 = st.columns(2)
 
+    
+    with col1:
         with st.container():
             if st.button("Sumatoria de ondas"):
                 st.session_state["mostrar_sumatoria"] = True
