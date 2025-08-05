@@ -5,7 +5,7 @@ import numpy as np
 # importar secciones
 from pag_bienvenida import mostrar as mostrar_bienvenida
 from pag_introduccion import mostrar as mostrar_introduccion
-from dir_bioinstrumentacion.pag_bioinstrumentacion import mostrar as mostrar_bioinstrumentacion
+from dir_bioinstrumentacion.pag_bioinstrumentacion2 import mostrar as mostrar_bioinstrumentacion
 from pag_control_motor import mostrar as mostrar_control_motor
 from pag_balance import mostrar as mostrar_balance
 from pag_marcha import mostrar as mostrar_marcha
