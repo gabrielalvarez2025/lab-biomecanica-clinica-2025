@@ -217,7 +217,7 @@ def botones_tarjeta():
 
     st.markdown("### **Simulación de sumatoria de ondas**")
     st.markdown("En esta sección puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que es muy importante para entender cómo se genera la señal de electromiografía.")
-    st.divider()
+    st.empty()
     
     
     col1, col2 = st.columns(2)
