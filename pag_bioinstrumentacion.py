@@ -26,7 +26,7 @@ def mostrar():
     botones_tarjeta()
 
     # Mostrar contenido solo si está activado
-    if st.session_state.get("mostrar_sumatoria", False):
+    if st.session_state.get("interactivos", False):
         play_emg_sumatoria()
     
 
@@ -242,17 +242,18 @@ def botones_tarjeta():
 
     with col1:
         if st.button("Sumatoria de ondas"):
-            st.session_state["mostrar_sumatoria"] = True
+            st.session_state["interactivos"] = True
+            st.info("Estas viendo esta simulación.")
 
     with col2:
-        if st.button("Ir a Página 2"):
-            st.session_state["mostrar_sumatoria"] = False
-            st.info("Aquí podrías mostrar otra función (func2)")
+        if st.button("Simulación 2"):
+            st.session_state["interactivos"] = False
+            st.info("Este botón aún no cuenta con una simulación.")
 
     with col3:
-        if st.button("Volver al Inicio"):
-            st.session_state["mostrar_sumatoria"] = False
-            st.success("Inicio")
+        if st.button("Simulación 2"):
+            st.session_state["interactivos"] = False
+            st.info("Este botón aún no cuenta con una simulación.")
 
     st.markdown("---")
     
