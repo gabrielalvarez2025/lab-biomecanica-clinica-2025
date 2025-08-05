@@ -15,10 +15,8 @@ def mostrar():
     )
 
     sns.set_theme(style="darkgrid", palette="pastel")
-
     
-    
-    
+    st.markdown("---")
     
     # Inicializar variable de sesión en False al principio
     if "mostrar_sumatoria" not in st.session_state:
