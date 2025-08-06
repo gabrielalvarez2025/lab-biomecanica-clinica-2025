@@ -281,7 +281,7 @@ def botones_tarjeta():
         """, unsafe_allow_html=True)
 
         if st.button("Sumatoria de ondas"):
-            st.session_state["mostrar_sumatoria"] = True  # ✅ cambia solo el estado
+            st.session_state["mostrar_sumatoria"] = not st.session_state["mostrar_sumatoria"]
 
     with col2:
         st.markdown(f"""
