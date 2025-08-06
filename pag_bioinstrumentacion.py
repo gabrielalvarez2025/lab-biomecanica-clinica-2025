@@ -209,16 +209,20 @@ def mostrar():
     presentar_botones_tarjeta()
     
     # Mostrar botones
-
+    
+    # Tarjeta 1: Sumatoria de PAUMs
     parrafo_sumatoria = "Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo."
-    botones_tarjeta(texto_boton="Sumatoria de ondas",
+    botones_tarjeta(nombre_estado="mostrar_sumatoria",
+                    texto_boton="Sumatoria de ondas",
                     texto_parrafo=parrafo_sumatoria,
                     color_boton= "#368581",
                     color_parrafo= "#89BBB8"
                     )
     
+    # Tarjeta 2
     parrafo_interactivo2 = "parrafo lorem ipsem"
-    botones_tarjeta(texto_boton="Palancas y torques",
+    botones_tarjeta(nombre_estado="mostrar_torques",
+                    texto_boton="Palancas y torques",
                     texto_parrafo=parrafo_interactivo2,
                     color_boton= "#81B238",
                     color_parrafo= "#95E082"
@@ -228,6 +232,12 @@ def mostrar():
     if st.session_state["mostrar_sumatoria"]:
         play_emg_sumatoria()
         st.info("Estás viendo esta simulación.")
+    elif st.session_state["mostrar_torques"]:
+        st.markdown("### Palancas y torques")
+        st.markdown("""
+                    En esta sección exploraremos el concepto de palancas y torques, fundamentales para entender cómo se generan los movimientos en el cuerpo humano.
+                    """)
+        st.markdown("Puedes interactuar con la simulación de palancas y torques en la barra lateral.")
 
     st.markdown("---")
 
@@ -237,7 +247,7 @@ def presentar_botones_tarjeta():
     st.empty()
 
 
-def botones_tarjeta(color_boton, color_parrafo, texto_boton, texto_parrafo):
+def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, texto_parrafo):
     
     # Columnas con col2 el doble de ancho que col1
     col1, col2 = st.columns([0.30, 0.70])
@@ -299,8 +309,12 @@ def botones_tarjeta(color_boton, color_parrafo, texto_boton, texto_parrafo):
             </style>
         """, unsafe_allow_html=True)
 
-        if st.button(f"{texto_boton}"):
-            st.session_state["mostrar_sumatoria"] = not st.session_state["mostrar_sumatoria"]
+        # Inicializar si no existe
+        if nombre_estado not in st.session_state:
+            st.session_state[nombre_estado] = False
+
+        if st.button(texto_boton):
+            st.session_state[nombre_estado] = not st.session_state[nombre_estado]
 
     with col2:
         st.markdown(f"""
