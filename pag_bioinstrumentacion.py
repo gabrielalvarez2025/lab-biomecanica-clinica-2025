@@ -215,16 +215,27 @@ def play_emg_sumatoria():
 def botones_tarjeta():
     st.markdown("""
         <style>
-        /* Estilo para el botón invisible */
-        button#boton_invisible {
-            position: absolute;  /* Fuera del flujo */
-            width: 1px;
-            height: 1px;
-            opacity: 0;
-            pointer-events: auto;  /* Captura clicks */
+        /* Contenedor relativo para que el botón absoluto se posicione respecto a este */
+        .boton-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;  /* ajusta al ancho que quieras */
+            margin-top: 10px;
         }
 
-        /* Estilo para el recuadro visible que hará trigger al botón */
+        /* El botón de Streamlit invisible, posición absoluta y cubriendo todo el contenedor */
+        button#boton_invisible {
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        /* El div que se ve, debajo del botón invisible */
         #boton_estilizado {
             background-color: #f5f5f5;
             border: 1px solid #d3d3d3;
@@ -232,13 +243,11 @@ def botones_tarjeta():
             border-radius: 12px;
             color: #233a3d;
             font-size: 18px;
-            width: 100%;
             text-align: center;
             box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-            cursor: pointer;
             user-select: none;
             transition: transform 0.1s ease-in-out;
-            margin-top: 6px;
+            z-index: 1;
         }
         #boton_estilizado:hover {
             background-color: #e0e0e0;
@@ -247,15 +256,19 @@ def botones_tarjeta():
         </style>
     """, unsafe_allow_html=True)
 
-    # Botón invisible de Streamlit, que será disparado
-    clicked = st.button("", key="boton_invisible", help="Invisible button")
-
-    # Bloque visible personalizado, que simula el botón y dispara el invisible
+    # Contenedor para posicionar botón y div juntos
     st.markdown("""
-        <div id="boton_estilizado" onclick="document.getElementById('boton_invisible').click()">
-            <b>Sumatoria de ondas</b><br>∑  ----•၊၊|၊၊၊|၊|မှု|။|မှု||မှု•----
+        <div class="boton-container">
+            <div id="boton_estilizado">
+                <b>Sumatoria de ondas</b><br>∑  ----•၊၊|၊၊၊|၊|မှု|။|မှု||မှု•----
+            </div>
         </div>
     """, unsafe_allow_html=True)
+
+    # Botón invisible de Streamlit (por fuera del markdown pero dentro del container)
+    clicked = st.button("", key="boton_invisible")
+
+    
 
     # Acción que quieres ejecutar al presionar el botón invisible
     if clicked:
