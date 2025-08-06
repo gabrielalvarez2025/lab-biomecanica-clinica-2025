@@ -200,10 +200,12 @@ def mostrar():
     sns.set_theme(style="darkgrid", palette="pastel")
 
     # Inicialización segura SOLO una vez (para botones que usan session_state)
-    if "mostrar_sumatoria" not in st.session_state:
-        st.session_state["mostrar_sumatoria"] = False
     if "mostrar_torques" not in st.session_state:
         st.session_state["mostrar_torques"] = False
+    
+    if "mostrar_sumatoria" not in st.session_state:
+        st.session_state["mostrar_sumatoria"] = False
+    
 
 
 
@@ -242,7 +244,6 @@ def mostrar():
     # ✅ Mostrar contenido si fue activado
     if st.session_state["mostrar_sumatoria"]:
         play_emg_sumatoria()
-        st.info("Estás viendo esta simulación.")
     
     elif st.session_state["mostrar_torques"]:
         st.markdown("### Palancas y torques")
