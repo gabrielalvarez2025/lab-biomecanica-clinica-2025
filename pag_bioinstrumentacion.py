@@ -221,44 +221,23 @@ def botones_tarjeta():
 
     # CSS de la tarjeta y el botón (solo afecta este bloque)
     
-    st.markdown("""
-        <div style="
-            background-color: #f0f0f0;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;">
-            
-            <style>
-                .custom-text {
-                    color: #666;
-                    font-size: 16px;
-                    margin-top: 10px;
-                }
-            </style>
-
-            <div style="display: flex; gap: 20px;">
-                <div style="flex: 1;">
-                    <!-- Aquí va el botón -->
-                    <!-- Para usar un botón Streamlit normal dentro de este div hay que hacerlo en código separado -->
-                </div>
-                <div style="flex: 2;">
-                    <p class="custom-text">
-                        Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
-                    </p>
-                </div>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
-
-    # Luego definimos las columnas y el botón normales (debido a limitaciones de Streamlit):
+   # Columnas con col2 el doble de ancho que col1
     col1, col2 = st.columns([1, 2])
 
     with col1:
         if st.button("Sumatoria de ondas"):
             st.session_state["mostrar_sumatoria"] = True
             st.info("Estás viendo esta simulación.")
-            
+
+        st.markdown('</div>', unsafe_allow_html=True)
+
     with col2:
-        st.markdown("")  # No hace falta poner texto acá porque ya está dentro del div gris
+        st.markdown("""
+            <p style="color: #666; font-size: 16px; margin-top: 10px;">
+            Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
+            </p>
+        """, unsafe_allow_html=True)
+
+    st.markdown("---")
     
     
