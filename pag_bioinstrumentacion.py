@@ -264,7 +264,7 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
         # CSS personalizado
         st.markdown(f"""
             <style>
-                .big-button-container {{
+                .big-button-container button {{
                     display: flex;
                     align-items: stretch;
                     justify-content: center;
@@ -304,7 +304,7 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
         if nombre_estado not in st.session_state:
             st.session_state[nombre_estado] = False
 
-        if st.button(texto_boton):
+        if st.button(texto_boton, use_container_width=True, key=nombre_estado, help="Haz clic para activar o desactivar este elemento interactivo.", ):
             st.session_state[nombre_estado] = not st.session_state[nombre_estado]
 
     with col2:
