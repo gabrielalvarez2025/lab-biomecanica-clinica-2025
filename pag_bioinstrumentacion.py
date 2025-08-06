@@ -312,7 +312,7 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
             </style>
         """, unsafe_allow_html=True)
 
-        if st.button(texto_boton, use_container_width=True, information=f"boton_{nombre_estado}":
+        if st.button(texto_boton, use_container_width=True, information=f"jkboton_"":
             st.session_state[nombre_estado] = not st.session_state[nombre_estado]
 
     with col2:
