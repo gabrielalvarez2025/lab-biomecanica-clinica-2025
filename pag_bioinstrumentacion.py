@@ -267,7 +267,7 @@ def botones_tarjeta():
 
     with col2:
         st.markdown("""
-            <p style="color: #666; font-size: 16px; margin-top: 10px;">
+            <p style="font-size: 16px; margin-top: 10px;">
             Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
             </p>
         """, unsafe_allow_html=True)
