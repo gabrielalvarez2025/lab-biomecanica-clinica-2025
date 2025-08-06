@@ -213,41 +213,36 @@ def mostrar():
     st.markdown("---")
 
 def botones_tarjeta():
-    
-
     st.markdown("### **Elementos interactivos**")
     st.markdown("En esta sección puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que es muy importante para entender cómo se genera la señal de electromiografía.")
     st.empty()
 
-    # CSS de la tarjeta y el botón (solo afecta este bloque)
-    
     st.markdown("""
     <style>
     div.stButton > button {
         width: 100%;
-        min-height: 120px;  /* altura */
+        min-height: 120px;
         padding: 12px 0;
         font-size: 16px;
         display: flex;
         justify-content: center;
         align-items: center;
-        white-space: pre-wrap; /* para saltos de línea */
-        
-        background-color: #ffffff;  /* fondo normal (blanco) */
-        border: 2px solid #4a90e2;  /* borde azul */
-        color: #222222;  /* texto negro oscuro */
+        white-space: pre-wrap;
+        background-color: #ffffff;
+        border: 2px solid #4a90e2;
+        color: #222222;
         border-radius: 8px;
         transition: background-color 0.3s ease, border-color 0.3s ease;
     }
 
     div.stButton > button:hover {
-        background-color: #e6f0ff;  /* fondo azul claro al hover */
+        background-color: #e6f0ff;
         cursor: pointer;
     }
 
     div.stButton > button:active {
-        background-color: #c0d6ff;  /* fondo azul más oscuro al presionar */
-        border-color: #357ABD;  /* borde azul más fuerte */
+        background-color: #c0d6ff;
+        border-color: #357ABD;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -255,9 +250,10 @@ def botones_tarjeta():
     col1, col2 = st.columns([1, 2])
 
     with col1:
+        # Al presionar el botón, se actualiza el estado
         if st.button("Sumatoria de ondas"):
-            st.session_state["mostrar_sumatoria"] = True
-            st.info("Estás viendo esta simulación.")
+            st.session_state["mostrar_sumatoria"] = True  # Activar
+            st.rerun()  # <<--- ¡Forzar la recarga para que se vea inmediatamente!
 
     with col2:
         st.markdown("""
@@ -267,5 +263,3 @@ def botones_tarjeta():
         """, unsafe_allow_html=True)
 
     st.markdown("---")
-    
-    
