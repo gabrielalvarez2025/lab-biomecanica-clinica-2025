@@ -270,7 +270,7 @@ def botones_tarjeta():
                 div.stButton > button:active {{
                     background-color: {color_fondo_active};
                     color: {color_fuente_active};
-                    border-color: #062E4D;
+                    border-color: {color_fondo_active};
                 }}
             </style>
         """, unsafe_allow_html=True)
