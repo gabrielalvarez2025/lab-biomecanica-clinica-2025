@@ -221,19 +221,19 @@ def botones_tarjeta():
 
     # CSS de la tarjeta y el botón (solo afecta este bloque)
     
-   st.markdown("""
-    <style>
-    div.stButton > button {
-        width: 100%;
-        min-height: 120px;  /* ajusta este valor para igualar la altura del texto */
-        padding: 12px 0;
-        font-size: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        white-space: pre-wrap; /* para que respete saltos de línea */
-    }
-    </style>
+    st.markdown("""
+        <style>
+        div.stButton > button {
+            width: 100%;
+            min-height: 120px;  /* ajusta este valor para igualar la altura del texto */
+            padding: 12px 0;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            white-space: pre-wrap; /* para que respete saltos de línea */
+        }
+        </style>
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1, 2])
