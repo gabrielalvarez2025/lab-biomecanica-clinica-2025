@@ -236,25 +236,25 @@ def botones_tarjeta():
             </style>
         """, unsafe_allow_html=True)
 
-        # Columnas
-        col1, col2 = st.columns(2)
+    # Columnas
+    col1, col2 = st.columns(2)
 
-        with col1:
-            # Este bloque añade la clase personalizada al botón
-            st.markdown('<div class="stButton"><button class="custom-boton">Sumatoria de ondas</button></div>', unsafe_allow_html=True)
+    with col1:
+        # Este bloque añade la clase personalizada al botón
+        st.markdown('<div class="stButton"><button class="custom-boton">Sumatoria de ondas</button></div>', unsafe_allow_html=True)
 
-            # Si quieres que este botón active la función en Python, usa st.button y el estilo afectará a todos los botones.
-            # O bien, con JavaScript puedes detectar clics en el botón HTML (más avanzado).
+        # Si quieres que este botón active la función en Python, usa st.button y el estilo afectará a todos los botones.
+        # O bien, con JavaScript puedes detectar clics en el botón HTML (más avanzado).
 
-            st.markdown("""
-                <p style="color: #666; font-size: 16px; margin-top: 10px;">
-                Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
-                </p>
-            """, unsafe_allow_html=True)
+        st.markdown("""
+            <p style="color: #666; font-size: 16px; margin-top: 10px;">
+            Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
+            </p>
+        """, unsafe_allow_html=True)
 
-        with col2:
-            st.markdown("Contenido adicional u otra tarjeta aquí...")
+    with col2:
+        st.markdown("Contenido adicional u otra tarjeta aquí...")
 
-        st.markdown("---")
+    st.markdown("---")
     
     
