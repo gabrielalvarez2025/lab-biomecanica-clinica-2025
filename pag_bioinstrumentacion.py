@@ -226,7 +226,7 @@ def botones_tarjeta():
         altura_boton = 70  # Altura del botón
         font_size = 16  # Tamaño de fuente del botón
         
-        color_fondo_base = "#d6cc5e"
+        color_fondo_base = "#427f7b"
         color_fondo_hover = "#FFFFFF"
         color_fondo_active = "#0C8C1F"
 
