@@ -258,6 +258,7 @@ def botones_tarjeta():
                     font-size: {font_size}px;
                     padding: 20px;
                     transition: 0.3s;
+                    border-radius: 10px;
                 }}
 
                 div.stButton > button:hover {{
