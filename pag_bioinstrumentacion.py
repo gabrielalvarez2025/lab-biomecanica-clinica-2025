@@ -199,16 +199,17 @@ def mostrar():
     
     st.markdown("---")
     
-    # No sobreescribas si ya existe
+    # Inicializar si no existe
     if "mostrar_sumatoria" not in st.session_state:
         st.session_state["mostrar_sumatoria"] = False
 
     # Mostrar botones
     botones_tarjeta()
 
-    # Mostrar contenido si fue activado
+    # ✅ Mostrar contenido si fue activado
     if st.session_state["mostrar_sumatoria"]:
         play_emg_sumatoria()
+        st.info("Estás viendo esta simulación.")
 
     st.markdown("---")
 
@@ -244,11 +245,7 @@ def botones_tarjeta():
         """, unsafe_allow_html=True)
 
         if st.button("Sumatoria de ondas"):
-            st.session_state["mostrar_sumatoria"] = True
-
-    if st.session_state.get("mostrar_sumatoria", False):
-        play_emg_sumatoria()
-        st.info("Estás viendo esta simulación.")
+            st.session_state["mostrar_sumatoria"] = True  # ✅ cambia solo el estado
 
     with col2:
         st.markdown("""
