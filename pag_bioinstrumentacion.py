@@ -213,30 +213,32 @@ def play_emg_sumatoria():
     st.markdown("---")
 
 def botones_tarjeta():
-    # CSS para personalizar solo este botón
     st.markdown("""
-        <style>
-        div.stButton > button.custom-boton {
-            background-color: #f5f5f5;
-            border: 1px solid #d3d3d3;
-            padding: 30px 50px;
-            border-radius: 12px;
-            color: #233a3d;
-            font-size: 18px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.1s ease-in-out;
-            margin-top: 6px;
-        }
+            <style>
+            div.stButton > button.custom-boton {
+                background-color: #f5f5f5;
+                border: 1px solid #d3d3d3;
+                padding: 30px 50px;  /* <---- padding aquí */
+                border-radius: 12px;
+                color: #233a3d;
+                font-size: 18px;
+                width: 100%;
+                text-align: center;
+                box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+                transition: transform 0.1s ease-in-out;
+                margin-top: 6px;
+            }
 
-        div.stButton > button.custom-boton:hover {
-            background-color: #e0e0e0;
-            transform: scale(1.05);
-            cursor: pointer;
-        }
-        </style>
-    """, unsafe_allow_html=True)
+            div.stButton > button.custom-boton:hover {
+                background-color: #e0e0e0;
+                transform: scale(1.05);
+                cursor: pointer;
+            }
+            </style>
+        """, unsafe_allow_html=True)
+
+    # Columnas
+    
 
     col1, col2 = st.columns(2)
 
