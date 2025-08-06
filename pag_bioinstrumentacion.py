@@ -9,6 +9,8 @@ def play_emg_sumatoria():
     
     sns.set_theme(style="darkgrid", palette="pastel")
     
+    st.markdown("---")
+    
     # ELEMENTO INTERACTIVO: Descomposición de ondas
     st.subheader("Sumatoria y descomposición de ondas")
 
@@ -287,5 +289,3 @@ def botones_tarjeta():
             Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
             </p>
         """, unsafe_allow_html=True)
-
-    st.markdown("---")
