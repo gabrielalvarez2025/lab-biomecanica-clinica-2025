@@ -219,7 +219,7 @@ def botones_tarjeta():
     st.empty()
 
     # Columnas con col2 el doble de ancho que col1
-    col1, col2 = st.columns([1, 2])
+    col1, col2 = st.columns([1, 3])
 
     with col1:
 
@@ -233,7 +233,7 @@ def botones_tarjeta():
                     }
 
                     .big-button-container > div {
-                        width: 140%;
+                        width: 100%;
                     }
 
                     div.stButton > button {
