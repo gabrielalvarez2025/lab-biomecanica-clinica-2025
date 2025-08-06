@@ -247,7 +247,7 @@ def botones_tarjeta():
             st.session_state["mostrar_sumatoria"] = True
 
     if st.session_state.get("mostrar_sumatoria", False):
-        play()
+        play_emg_sumatoria()
         st.info("Estás viendo esta simulación.")
 
     with col2:
