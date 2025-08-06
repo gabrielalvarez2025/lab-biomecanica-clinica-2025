@@ -198,6 +198,15 @@ def mostrar():
     )
 
     sns.set_theme(style="darkgrid", palette="pastel")
+
+    # Inicialización segura SOLO una vez (para botones que usan session_state)
+    if "mostrar_sumatoria" not in st.session_state:
+        st.session_state["mostrar_sumatoria"] = False
+    if "mostrar_torques" not in st.session_state:
+        st.session_state["mostrar_torques"] = False
+
+
+
     
     st.markdown("---")
     
@@ -302,10 +311,6 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
                 }}
             </style>
         """, unsafe_allow_html=True)
-
-        # Inicializar si no existe
-        if nombre_estado not in st.session_state:
-            st.session_state[nombre_estado] = False
 
         if st.button(texto_boton, use_container_width=True):
             st.session_state[nombre_estado] = not st.session_state[nombre_estado]
