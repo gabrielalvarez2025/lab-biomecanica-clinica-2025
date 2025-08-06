@@ -224,25 +224,41 @@ def botones_tarjeta():
     with col1:
         # Estilos CSS para el botón
         st.markdown("""
-            <style>
-                div.stButton > button {
-                    width: 100%;
-                    border: 2px solid #0C5C8C;
-                    color: white;
-                    background-color: #0C5C8C;
-                    font-weight: bold;
-                    transition: 0.3s;
-                }
-                div.stButton > button:hover {
-                    background-color: #084C72;
-                    border-color: #084C72;
-                }
-                div.stButton > button:active {
-                    background-color: #062E4D;
-                    border-color: #062E4D;
-                }
-            </style>
-        """, unsafe_allow_html=True)
+                <style>
+                    .big-button-container {
+                        display: flex;
+                        align-items: stretch;
+                    }
+
+                    .big-button-container > div {
+                        width: 100%;
+                    }
+
+                    div.stButton > button {
+                        width: 100%;
+                        height: 100%;
+                        min-height: 150px;
+                        border: 2px solid #0C5C8C;
+                        color: white;
+                        background-color: #0C5C8C;
+                        font-weight: bold;
+                        font-size: 16px;
+                        padding: 20px;
+                        transition: 0.3s;
+                    }
+
+                    div.stButton > button:hover {
+                        background-color: #084C72;
+                        border-color: #084C72;
+                        cursor: pointer;
+                    }
+
+                    div.stButton > button:active {
+                        background-color: #062E4D;
+                        border-color: #062E4D;
+                    }
+                </style>
+            """, unsafe_allow_html=True)
 
         if st.button("Sumatoria de ondas"):
             st.session_state["mostrar_sumatoria"] = True  # ✅ cambia solo el estado
