@@ -231,6 +231,7 @@ def botones_tarjeta():
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #d6cc5e;
             white-space: pre-wrap; /* para que respete saltos de línea */
         }
         </style>
