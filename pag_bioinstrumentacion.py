@@ -221,15 +221,24 @@ def botones_tarjeta():
 
     # CSS de la tarjeta y el botón (solo afecta este bloque)
     
-   # Columnas con col2 el doble de ancho que col1
+   # Primero inyecta CSS para que el botón dentro de col1 tenga width 100%
+    st.markdown("""
+        <style>
+        /* Seleccionamos todos los botones, pero luego solo usaremos este si quieres */
+        div.stButton > button {
+            width: 100%;
+            padding: 12px 0;  /* padding vertical para aumentar altura */
+            font-size: 16px;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
     col1, col2 = st.columns([1, 2])
 
     with col1:
         if st.button("Sumatoria de ondas"):
             st.session_state["mostrar_sumatoria"] = True
             st.info("Estás viendo esta simulación.")
-
-        st.markdown('</div>', unsafe_allow_html=True)
 
     with col2:
         st.markdown("""
