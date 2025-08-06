@@ -208,7 +208,7 @@ def mostrar():
 
     # ✅ Mostrar contenido si fue activado
     if st.session_state["mostrar_sumatoria"]:
-        #play_emg_sumatoria()
+        play_emg_sumatoria()
         st.info("Estás viendo esta simulación.")
 
     st.markdown("---")
