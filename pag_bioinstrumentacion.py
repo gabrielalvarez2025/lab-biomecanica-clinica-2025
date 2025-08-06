@@ -4,33 +4,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import random
 
-def mostrar():
-    st.header("Unidad 1: Bioinstrumentación")
-
-    st.markdown(
-        "- Electromiografía (EMG)\n"
-        "- Plataforma de fuerza\n"
-        "- Videofotogrametría\n"
-        "- Goniometría"
-    )
-
-    sns.set_theme(style="darkgrid", palette="pastel")
-    
-    st.markdown("---")
-    
-    # Inicializar variable de sesión en False al principio
-    if "mostrar_sumatoria" not in st.session_state:
-        st.session_state["mostrar_sumatoria"] = False
-
-    # Mostrar botones
-    botones_tarjeta()
-
-    # Mostrar contenido si fue activado
-    if st.session_state["mostrar_sumatoria"]:
-        play_emg_sumatoria()
-
-    st.markdown("---")
-
 
 def play_emg_sumatoria():
     
@@ -210,6 +183,33 @@ def play_emg_sumatoria():
                 Los potenciales de acción (PA) de muchas unidades motoras (UM) se suman para formar una señal EMG (lo que podrás encontrar en los textos como "PAUMs").
                 
                 """)
+    st.markdown("---")
+
+def mostrar():
+    st.header("Unidad 1: Bioinstrumentación")
+
+    st.markdown(
+        "- Electromiografía (EMG)\n"
+        "- Plataforma de fuerza\n"
+        "- Videofotogrametría\n"
+        "- Goniometría"
+    )
+
+    sns.set_theme(style="darkgrid", palette="pastel")
+    
+    st.markdown("---")
+    
+    # No sobreescribas si ya existe
+    if "mostrar_sumatoria" not in st.session_state:
+        st.session_state["mostrar_sumatoria"] = False
+
+    # Mostrar botones
+    botones_tarjeta()
+
+    # Mostrar contenido si fue activado
+    if st.session_state["mostrar_sumatoria"]:
+        play_emg_sumatoria()
+
     st.markdown("---")
 
 def botones_tarjeta():
