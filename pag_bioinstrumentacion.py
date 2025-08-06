@@ -257,6 +257,8 @@ def presentar_botones_tarjeta():
     st.markdown("### **Elementos interactivos**")
     st.markdown("""
                 En esta sección encontrarás elementos interactivos que te ayudarán a comprender mejor algunos de los conceptos relacionados a bioinstrumentación que vimos en clases.
+
+                Presiona uno de los botones a continuación para activar el elemento interactivo que te interese revisar. Al presionar el botón una vez, se desplegará el elemento interactivo. Presiona nuevamente el botón para ocultarlo.
                 """)
     st.empty()
 
