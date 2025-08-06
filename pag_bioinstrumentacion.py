@@ -225,11 +225,12 @@ def botones_tarjeta():
 
         altura_boton = 70  # Altura del botón
         font_size = 16  # Tamaño de fuente del botón
+        
         color_fondo_base = "#d6cc5e"
         color_fondo_hover = "#FFFFFF"
         color_fondo_active = "#0C8C1F"
 
-        color_fuente_active = "#2A2727"  # Color de fuente del botón activo
+        color_fuente_hover = "#2A2727"  # Color de fuente del botón activo
 
         
         # Estilos CSS para el botón
@@ -250,7 +251,7 @@ def botones_tarjeta():
                     min-height: {altura_boton}px;
                     border: 2px solid #0C5C8C;
                     color: white;
-                    background-color: #0C5C8C;
+                    background-color: {color_fondo_base};
                     font-weight: bold;
                     font-size: {font_size}px;
                     padding: 20px;
@@ -260,13 +261,13 @@ def botones_tarjeta():
                 div.stButton > button:hover {{
                     background-color: {color_fondo_hover};
                     border-color: #084C72;
+                    color: {color_fuente_hover};
                     cursor: pointer;
                 }}
 
                 div.stButton > button:active {{
                     background-color: {color_fondo_active};
                     border-color: #062E4D;
-                    color: {color_fuente_active};
                 }}
             </style>
         """, unsafe_allow_html=True)
