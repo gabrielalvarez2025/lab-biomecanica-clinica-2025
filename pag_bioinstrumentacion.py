@@ -326,3 +326,5 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
             {texto_parrafo}
             </p>
         """, unsafe_allow_html=True)
+
+
