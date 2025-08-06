@@ -231,6 +231,8 @@ def botones_tarjeta():
         color_fondo_active = "#0C8C1F"
 
         color_fuente_hover = "#2A2727"  # Color de fuente del botón activo
+        color_fuente_active = "#FFFFFF"  # Color de fuente del botón activo
+
 
         
         # Estilos CSS para el botón
@@ -267,6 +269,7 @@ def botones_tarjeta():
 
                 div.stButton > button:active {{
                     background-color: {color_fondo_active};
+                    color: {color_fuente_active};
                     border-color: #062E4D;
                 }}
             </style>
