@@ -26,30 +26,53 @@ def obtener_acc_desde_phyphox(ip: str) -> pd.DataFrame:
         st.error(f"❌ Error al obtener datos: {e}")
         return pd.DataFrame()
 
-PASTEL_COLORES = ["#AEC6CF", "#FFB347", "#77DD77"]
+PASTEL_PALETTE = sns.color_palette("pastel")
 
 def play_acc_phyphox():
-    st.subheader("🔄 Acelerómetro en tiempo real desde Phyphox")
+    st.subheader("🔁 Acelerómetro - Phyphox")
 
-    ip = st.text_input("📱 IP de tu celular (sin 'http://')", value="192.168.1.5:8080")
+    ip = st.text_input("Introduce la IP del dispositivo Phyphox (ej. http://192.168.0.25:8080)", key="phyphox_ip")
 
-    if st.button("📡 Obtener datos"):
-        df = obtener_acc_desde_phyphox(ip)
+    if st.button("Conectar y graficar"):
+        if not ip:
+            st.warning("Por favor, ingresa una IP válida.")
+            return
 
-        if df.empty:
-            st.warning("⚠ No se pudieron obtener datos. Revisa la IP o que el experimento esté corriendo.")
-        else:
-            st.success("✅ Datos recibidos correctamente.")
+        try:
+            url = f"{ip}/get"
+            response = requests.get(url, timeout=3)  # timeout para evitar espera infinita
+            response.raise_for_status()
 
-            # Formatear y graficar
-            df_melt = df.melt(id_vars=["Tiempo (s)"], var_name="Eje", value_name="Aceleración")
+            data_json = response.json()
 
-            fig, ax = plt.subplots()
-            sns.lineplot(data=df_melt, x="Tiempo (s)", y="Aceleración", hue="Eje", palette=PASTEL_COLORES, ax=ax)
-            ax.set_title("📊 Aceleración en Ejes X, Y, Z", fontsize=14)
-            ax.set_xlabel("Tiempo (s)")
-            ax.set_ylabel("Aceleración (m/s²)")
-            st.pyplot(fig)
+            if "buffer" not in data_json:
+                st.error("No se encontró el buffer en la respuesta.")
+                return
+
+            acc_data = data_json["buffer"]
+
+            # Convertir a DataFrame
+            df = pd.DataFrame(acc_data)
+            df = df.rename(columns={
+                'accX': 'X', 'accY': 'Y', 'accZ': 'Z'
+            })
+            df = df.tail(100)  # últimos 100 valores
+
+            st.write("Datos recibidos:")
+            st.dataframe(df)
+
+            # Gráfico
+            plt.figure(figsize=(10, 4))
+            sns.lineplot(data=df, palette=PASTEL_PALETTE)
+            plt.title("Acelerómetro (últimos 100 datos)")
+            plt.xlabel("Tiempo (muestras)")
+            plt.ylabel("Aceleración (m/s²)")
+            st.pyplot(plt.gcf())
+
+        except requests.exceptions.RequestException as e:
+            st.error(f"Error de conexión: {e}")
+        except Exception as e:
+            st.error(f"Otro error: {e}")
 
 def mostrar():
     st.title("Unidad 5: Análisis de marcha")
