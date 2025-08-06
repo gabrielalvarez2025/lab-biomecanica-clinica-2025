@@ -249,7 +249,7 @@ def botones_tarjeta():
                     width: 100%;
                     height: 100%;
                     min-height: {altura_boton}px;
-                    border: 2px solid #0C5C8C;
+                    border: 2px solid {color_fondo_base};
                     color: white;
                     background-color: {color_fondo_base};
                     font-weight: bold;
