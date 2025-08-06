@@ -222,19 +222,34 @@ def botones_tarjeta():
     col1, col2 = st.columns([0.30, 0.70])
 
     with col1:
-        altura_boton = 70
-        font_size = 16
-            
+
+        altura_boton = 70  # Altura del botón
+        font_size = 16  # Tamaño de fuente del botón
+        
         color_fondo_base = "#368581"
         color_fondo_hover = "#FFFFFF"
         color_fondo_active = "#0C8C1F"
 
-        color_fuente_hover = "#2A2727"
-        color_fuente_active = "#FFFFFF"
+        color_fuente_hover = "#2A2727"  # Color de fuente del botón activo
+        color_fuente_active = "#FFFFFF"  # Color de fuente del botón activo
 
+        color_fuente_parrafo = "#89BBB8"  # Color de fuente del párrafo
+
+
+        
+        # Estilos CSS para el botón
         st.markdown(f"""
             <style>
-                .boton-sumatoria button {{
+                .big-button-container {{
+                    display: flex;
+                    align-items: stretch;
+                }}
+
+                .big-button-container > div {{
+                    width: 100%;
+                }}
+
+                div.stButton > button {{
                     width: 100%;
                     height: 100%;
                     min-height: {altura_boton}px;
@@ -245,16 +260,17 @@ def botones_tarjeta():
                     font-size: {font_size}px;
                     padding: 20px;
                     transition: 0.3s;
+                    
                 }}
 
-                .boton-sumatoria button:hover {{
+                div.stButton > button:hover {{
                     background-color: {color_fondo_hover};
                     border-color: {color_fondo_hover};
                     color: {color_fuente_hover};
                     cursor: pointer;
                 }}
 
-                .boton-sumatoria button:active {{
+                div.stButton > button:active {{
                     background-color: {color_fondo_active};
                     color: {color_fuente_active};
                     border-color: {color_fondo_active};
@@ -262,12 +278,8 @@ def botones_tarjeta():
             </style>
         """, unsafe_allow_html=True)
 
-        # Envolver el botón en un contenedor con clase personalizada
-        with st.container():
-            st.markdown('<div class="boton-sumatoria">', unsafe_allow_html=True)
-            if st.button("Sumatoria de ondas", key="sumatoria_boton"):
-                st.session_state["mostrar_sumatoria"] = True
-            st.markdown("</div>", unsafe_allow_html=True)
+        if st.button("Sumatoria de ondas"):
+            st.session_state["mostrar_sumatoria"] = True  # ✅ cambia solo el estado
 
     with col2:
         st.markdown(f"""
