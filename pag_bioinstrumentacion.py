@@ -9,7 +9,7 @@ def play_emg_sumatoria():
     
     sns.set_theme(style="darkgrid", palette="pastel")
     
-    st.markdown("---")
+    
     
     # ELEMENTO INTERACTIVO: Descomposición de ondas
     st.subheader("Sumatoria y descomposición de ondas")
@@ -227,11 +227,14 @@ def mostrar():
                     color_boton= "#81B238",
                     color_parrafo= "#95E082"
                     )
+    
+    st.markdown("---")
 
     # ✅ Mostrar contenido si fue activado
     if st.session_state["mostrar_sumatoria"]:
         play_emg_sumatoria()
         st.info("Estás viendo esta simulación.")
+    
     elif st.session_state["mostrar_torques"]:
         st.markdown("### Palancas y torques")
         st.markdown("""
