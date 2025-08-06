@@ -7,23 +7,25 @@ import seaborn as sns
 def obtener_acc_desde_phyphox(ip: str) -> pd.DataFrame:
     url = f"http://{ip}/get?accX&accY&accZ"
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=3)
         data = response.json()
 
-        accX = data['buffer']['accX']['data']
-        accY = data['buffer']['accY']['data']
-        accZ = data['buffer']['accZ']['data']
-        timestamps = data['buffer']['accX']['time']
+        accX = data['buffer']['accX']['buffer']
+        accY = data['buffer']['accY']['buffer']
+        accZ = data['buffer']['accZ']['buffer']
+
+        # Crear un eje de tiempo simple (índice)
+        tiempo = list(range(len(accX)))
 
         df = pd.DataFrame({
-            "Tiempo (s)": timestamps,
+            "Tiempo": tiempo,
             "AccX": accX,
             "AccY": accY,
             "AccZ": accZ
         })
         return df
     except Exception as e:
-        st.error(f"❌ Error al obtener datos: {e}")
+        print(f"Error: {e}")
         return pd.DataFrame()
 
 PASTEL_PALETTE = sns.color_palette("pastel")
