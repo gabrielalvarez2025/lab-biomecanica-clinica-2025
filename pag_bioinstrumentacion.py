@@ -264,7 +264,7 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
         # CSS personalizado
         st.markdown(f"""
             <style>
-                .big-button-container button {{
+                .big-button-container {{
                     display: flex;
                     align-items: stretch;
                     justify-content: center;
