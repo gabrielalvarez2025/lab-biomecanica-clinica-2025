@@ -217,47 +217,42 @@ def botones_tarjeta():
     st.markdown("En esta sección puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que es muy importante para entender cómo se genera la señal de electromiografía.")
     st.empty()
 
-    st.markdown("""
-    <style>
-    div.stButton > button {
-        width: 100%;
-        min-height: 120px;
-        padding: 12px 0;
-        font-size: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        white-space: pre-wrap;
-        background-color: #ffffff;
-        border: 2px solid #4a90e2;
-        color: #222222;
-        border-radius: 8px;
-        transition: background-color 0.3s ease, border-color 0.3s ease;
-    }
-
-    div.stButton > button:hover {
-        background-color: #e6f0ff;
-        cursor: pointer;
-    }
-
-    div.stButton > button:active {
-        background-color: #c0d6ff;
-        border-color: #357ABD;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
+    # Columnas con col2 el doble de ancho que col1
     col1, col2 = st.columns([1, 2])
 
     with col1:
-        # Al presionar el botón, se actualiza el estado
+        # Estilos CSS para el botón
+        st.markdown("""
+            <style>
+                div.stButton > button {
+                    width: 100%;
+                    border: 2px solid #0C5C8C;
+                    color: white;
+                    background-color: #0C5C8C;
+                    font-weight: bold;
+                    transition: 0.3s;
+                }
+                div.stButton > button:hover {
+                    background-color: #084C72;
+                    border-color: #084C72;
+                }
+                div.stButton > button:active {
+                    background-color: #062E4D;
+                    border-color: #062E4D;
+                }
+            </style>
+        """, unsafe_allow_html=True)
+
         if st.button("Sumatoria de ondas"):
-            st.session_state["mostrar_sumatoria"] = True  # Activar
-            st.rerun()  # <<--- ¡Forzar la recarga para que se vea inmediatamente!
+            st.session_state["mostrar_sumatoria"] = True
+
+    if st.session_state.get("mostrar_sumatoria", False):
+        play()
+        st.info("Estás viendo esta simulación.")
 
     with col2:
         st.markdown("""
-            <p style="color: #666; font-size: 16px; margin-top: 0px;">
+            <p style="color: #666; font-size: 16px; margin-top: 10px;">
             Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
             </p>
         """, unsafe_allow_html=True)
