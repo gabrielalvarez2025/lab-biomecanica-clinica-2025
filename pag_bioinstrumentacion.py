@@ -267,6 +267,8 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
                 .big-button-container {{
                     display: flex;
                     align-items: stretch;
+                    justify-content: center;
+                    height: {altura_boton}px;
                 }}
                 .big-button-container > div {{
                     width: 100%;
