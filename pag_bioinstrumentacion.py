@@ -255,7 +255,9 @@ def mostrar():
 
 def presentar_botones_tarjeta():
     st.markdown("### **Elementos interactivos**")
-    st.markdown("En esta sección puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que es muy importante para entender cómo se genera la señal de electromiografía.")
+    st.markdown("""
+                En esta sección encontrarás elementos interactivos que te ayudarán a comprender mejor algunos de los conceptos relacionados a bioinstrumentación que vimos en clases.
+                """)
     st.empty()
 
 
@@ -312,7 +314,7 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
             </style>
         """, unsafe_allow_html=True)
 
-        if st.button(texto_boton, use_container_width=True, information="Press click h"):
+        if st.button(texto_boton, use_container_width=True):
             st.session_state[nombre_estado] = not st.session_state[nombre_estado]
 
     with col2:
