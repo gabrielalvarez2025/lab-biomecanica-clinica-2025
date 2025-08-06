@@ -262,21 +262,12 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
         color_fuente_parrafo = color_parrafo
 
         boton_key = f"boton_{nombre_estado}"
+        custom_class = f"custom-button-{nombre_estado}"
 
         # CSS personalizado
         st.markdown(f"""
             <style>
-                .big-button-container {{
-                    display: flex;
-                    align-items: stretch;
-                    justify-content: center;
-                    height: {altura_boton}px;
-                    
-                }}
-                .big-button-container > div {{
-                    width: 100%;
-                }}
-                button[data-testid="baseButton"][data-streamlit-key="{boton_key}"] {{
+                div.{custom_class} button {{
                     width: 100%;
                     height: 100%;
                     min-height: {altura_boton}px;
@@ -288,13 +279,13 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
                     padding: 20px;
                     transition: 0.3s;
                 }}
-                button[data-testid="baseButton"][data-streamlit-key="{boton_key}"]:hover {{
+                div.{custom_class} button:hover {{
                     background-color: {color_fondo_hover};
                     border-color: {color_fondo_hover};
                     color: {color_fuente_hover};
                     cursor: pointer;
                 }}
-                button[data-testid="baseButton"][data-streamlit-key="{boton_key}"]:active {{
+                div.{custom_class} button:active {{
                     background-color: {color_fondo_active};
                     color: {color_fuente_active};
                     border-color: {color_fondo_active};
@@ -306,8 +297,10 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
         if nombre_estado not in st.session_state:
             st.session_state[nombre_estado] = False
 
+        st.markdown(f'<div class="{custom_class}">', unsafe_allow_html=True)
         if st.button(texto_boton, key=boton_key, use_container_width=True):
             st.session_state[nombre_estado] = not st.session_state[nombre_estado]
+        st.markdown("</div>", unsafe_allow_html=True)
 
     with col2:
         st.markdown(f"""
