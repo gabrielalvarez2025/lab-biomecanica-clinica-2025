@@ -213,36 +213,59 @@ def play_emg_sumatoria():
     st.markdown("---")
 
 def botones_tarjeta():
-    
-
     st.markdown("### **Elementos interactivos**")
     st.markdown("En esta sección puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que es muy importante para entender cómo se genera la señal de electromiografía.")
     st.empty()
 
-    # CSS de la tarjeta y el botón (solo afecta este bloque)
-    
+    # CSS para el botón con clase custom-boton
     st.markdown("""
-        <style>
-        div.stButton > button {
-            width: 100%;
-            min-height: 120px;  /* ajusta este valor para igualar la altura del texto */
-            padding: 12px 0;
-            font-size: 16px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #d6cc5e;
-            white-space: pre-wrap; /* para que respete saltos de línea */
-        }
-        </style>
+    <style>
+    div.stButton > button.custom-boton {
+        width: 100%;
+        min-height: 120px;
+        padding: 12px 0;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        white-space: pre-wrap;
+
+        background-color: #ffffff;
+        border: 2px solid #4a90e2;
+        color: #222222;
+        border-radius: 8px;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    div.stButton > button.custom-boton:hover {
+        background-color: #e6f0ff;
+        cursor: pointer;
+    }
+
+    div.stButton > button.custom-boton:active {
+        background-color: #c0d6ff;
+        border-color: #357ABD;
+    }
+    </style>
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1, 2])
 
     with col1:
-        if st.button("Sumatoria de ondas"):
+        # Crear botón con key para control y luego inyectar clase CSS
+        btn = st.button("Sumatoria de ondas", key="sumatoria_boton")
+        st.markdown("""
+        <script>
+        const btn = window.parent.document.querySelector('button[kind="secondary"]');
+        if (btn) {
+            btn.classList.add("custom-boton");
+        }
+        </script>
+        """, unsafe_allow_html=True)
+
+        if btn:
             st.session_state["mostrar_sumatoria"] = True
-            #st.info("Estás viendo esta simulación.")
+            st.info("Estás viendo esta simulación.")
 
     with col2:
         st.markdown("""
@@ -252,5 +275,3 @@ def botones_tarjeta():
         """, unsafe_allow_html=True)
 
     st.markdown("---")
-    
-    
