@@ -262,7 +262,7 @@ def botones_tarjeta():
 
                 div.stButton > button:hover {{
                     background-color: {color_fondo_hover};
-                    border-color: #084C72;
+                    border-color: {color_fondo_hover};
                     color: {color_fuente_hover};
                     cursor: pointer;
                 }}
