@@ -216,6 +216,13 @@ def mostrar():
                     color_boton= "#368581",
                     color_parrafo= "#89BBB8"
                     )
+    
+    parrafo_interactivo2 = "parrafo lorem ipsem"
+    botones_tarjeta(texto_boton="Palancas y torques",
+                    texto_parrafo=parrafo_interactivo2,
+                    color_boton= "#81B238",
+                    color_parrafo= "#95E082"
+                    )
 
     # ✅ Mostrar contenido si fue activado
     if st.session_state["mostrar_sumatoria"]:
