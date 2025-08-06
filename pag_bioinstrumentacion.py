@@ -223,7 +223,6 @@ def botones_tarjeta():
 
     with col1:
 
-        altura_boton = "150px"  # altura del botón en píxeles
         
         # Estilos CSS para el botón
         st.markdown("""
@@ -234,7 +233,7 @@ def botones_tarjeta():
                     }
 
                     .big-button-container > div {
-                        width: 100%;
+                        width: 140%;
                     }
 
                     div.stButton > button {
