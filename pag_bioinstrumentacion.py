@@ -231,17 +231,17 @@ def botones_tarjeta():
             st.session_state["mostrar_sumatoria"] = True
             st.info("Estás viendo esta simulación.")
 
-        st.markdown("""
-            <p style="color: #666; font-size: 16px; margin-top: 10px;">
-            Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
-            </p>
-        """, unsafe_allow_html=True)
+        
 
         st.markdown('</div>', unsafe_allow_html=True)
 
     # Relleno en col2
     with col2:
-        st.markdown("Contenido adicional u otra tarjeta aquí...")
+        st.markdown("""
+            <p style="color: #666; font-size: 16px; margin-top: 10px;">
+            Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
+            </p>
+        """, unsafe_allow_html=True)
         
     st.markdown("---")
     
