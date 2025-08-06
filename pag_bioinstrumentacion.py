@@ -267,7 +267,7 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
         # CSS personalizado
         st.markdown(f"""
             <style>
-                div.{custom_class} button {{
+                [data-testid="baseButton-element"][data-streamlit-key="{boton_key}"] {{
                     width: 100%;
                     height: 100%;
                     min-height: {altura_boton}px;
@@ -279,13 +279,13 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
                     padding: 20px;
                     transition: 0.3s;
                 }}
-                div.{custom_class} button:hover {{
+                [data-testid="baseButton-element"][data-streamlit-key="{boton_key}"]:hover {{
                     background-color: {color_fondo_hover};
                     border-color: {color_fondo_hover};
                     color: {color_fuente_hover};
                     cursor: pointer;
                 }}
-                div.{custom_class} button:active {{
+                [data-testid="baseButton-element"][data-streamlit-key="{boton_key}"]:active {{
                     background-color: {color_fondo_active};
                     color: {color_fuente_active};
                     border-color: {color_fondo_active};
@@ -294,13 +294,12 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
         """, unsafe_allow_html=True)
 
         # Inicializar si no existe
+        # Inicializar si no existe
         if nombre_estado not in st.session_state:
             st.session_state[nombre_estado] = False
 
-        st.markdown(f'<div class="{custom_class}">', unsafe_allow_html=True)
         if st.button(texto_boton, key=boton_key, use_container_width=True):
             st.session_state[nombre_estado] = not st.session_state[nombre_estado]
-        st.markdown("</div>", unsafe_allow_html=True)
 
     with col2:
         st.markdown(f"""
