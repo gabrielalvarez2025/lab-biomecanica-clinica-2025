@@ -307,7 +307,7 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
         if nombre_estado not in st.session_state:
             st.session_state[nombre_estado] = False
 
-        if st.button(texto_boton):
+        if st.button(texto_boton, use_container_width=True):
             st.session_state[nombre_estado] = not st.session_state[nombre_estado]
 
     with col2:
