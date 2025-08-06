@@ -233,6 +233,8 @@ def botones_tarjeta():
         color_fuente_hover = "#2A2727"  # Color de fuente del botón activo
         color_fuente_active = "#FFFFFF"  # Color de fuente del botón activo
 
+        color_fuente_parrafo = "#89BBB8"  # Color de fuente del párrafo
+
 
         
         # Estilos CSS para el botón
@@ -281,7 +283,7 @@ def botones_tarjeta():
 
     with col2:
         st.markdown(f"""
-            <p style="font-size: 16px; margin-top: 10px; color: {color_fondo_base}">
+            <p style="font-size: 16px; margin-top: 10px; color: {color_fondo_parrafo};">
             Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
             </p>
         """, unsafe_allow_html=True)
