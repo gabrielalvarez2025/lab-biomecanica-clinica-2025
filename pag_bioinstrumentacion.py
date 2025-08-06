@@ -205,8 +205,17 @@ def mostrar():
     if "mostrar_sumatoria" not in st.session_state:
         st.session_state["mostrar_sumatoria"] = False
 
+    # Presentar botones
+    presentar_botones_tarjeta()
+    
     # Mostrar botones
-    botones_tarjeta()
+
+    parrafo_sumatoria = "Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo."
+    botones_tarjeta(texto_boton="Sumatoria de ondas",
+                    texto_parrafo=parrafo_sumatoria,
+                    color_boton= "#368581",
+                    color_parrafo= "#89BBB8"
+                    )
 
     # ✅ Mostrar contenido si fue activado
     if st.session_state["mostrar_sumatoria"]:
@@ -215,11 +224,14 @@ def mostrar():
 
     st.markdown("---")
 
-def botones_tarjeta():
+def presentar_botones_tarjeta():
     st.markdown("### **Elementos interactivos**")
     st.markdown("En esta sección puedes interactuar con una herramienta que simula cómo varias ondas pueden sumarse entre sí para generar una nueva onda resultante, principio que es muy importante para entender cómo se genera la señal de electromiografía.")
     st.empty()
 
+
+def botones_tarjeta(color_boton, color_parrafo, texto_boton, texto_parrafo):
+    
     # Columnas con col2 el doble de ancho que col1
     col1, col2 = st.columns([0.30, 0.70])
 
@@ -228,14 +240,14 @@ def botones_tarjeta():
         altura_boton = 70  # Altura del botón
         font_size = 16  # Tamaño de fuente del botón
         
-        color_fondo_base = "#368581"
+        color_fondo_base = color_boton
         color_fondo_hover = "#FFFFFF"
         color_fondo_active = "#0C8C1F"
 
         color_fuente_hover = "#2A2727"  # Color de fuente del botón activo
         color_fuente_active = "#FFFFFF"  # Color de fuente del botón activo
 
-        color_fuente_parrafo = "#89BBB8"  # Color de fuente del párrafo
+        color_fuente_parrafo = color_parrafo  # Color de fuente del párrafo
 
 
         
@@ -280,12 +292,12 @@ def botones_tarjeta():
             </style>
         """, unsafe_allow_html=True)
 
-        if st.button("Sumatoria de ondas"):
+        if st.button(f"{texto_boton}"):
             st.session_state["mostrar_sumatoria"] = not st.session_state["mostrar_sumatoria"]
 
     with col2:
         st.markdown(f"""
             <p style="font-size: 16px; margin-top: 10px; color: {color_fuente_parrafo};">
-            Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
+            {texto_parrafo}
             </p>
         """, unsafe_allow_html=True)
