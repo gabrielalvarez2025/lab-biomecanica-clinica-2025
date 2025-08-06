@@ -225,7 +225,9 @@ def botones_tarjeta():
 
         altura_boton = 70  # Altura del botón
         font_size = 16  # Tamaño de fuente del botón
-        color_fondo = "#d6cc5e"
+        color_fondo_base = "#d6cc5e"
+        color_fondo_hover = "#57C0C8"
+        color_fondo_active = "#0C8C1F"
 
         
         # Estilos CSS para el botón
@@ -254,13 +256,13 @@ def botones_tarjeta():
                 }}
 
                 div.stButton > button:hover {{
-                    background-color: #d6cc5e;
+                    background-color: {color_fondo_hover};
                     border-color: #084C72;
                     cursor: pointer;
                 }}
 
                 div.stButton > button:active {{
-                    background-color: #062E4D;
+                    background-color: {color_fondo_active};
                     border-color: #062E4D;
                 }}
             </style>
