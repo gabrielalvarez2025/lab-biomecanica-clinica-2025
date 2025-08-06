@@ -219,7 +219,7 @@ def botones_tarjeta():
     st.empty()
 
     # Columnas con col2 el doble de ancho que col1
-    col1, col2 = st.columns([1, 2])
+    col1, col2 = st.columns([0.30, 0.70])
 
     with col1:
 
