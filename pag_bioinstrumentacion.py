@@ -261,17 +261,13 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
         color_fuente_active = "#FFFFFF"
         color_fuente_parrafo = color_parrafo
 
-        # CSS personalizado
+        # Usa la key para identificar el botón en el DOM
+        boton_key = f"boton_{nombre_estado}"
+
+        # CSS personalizado que solo afecta a este botón (según la key)
         st.markdown(f"""
             <style>
-                .big-button-container {{
-                    display: flex;
-                    align-items: stretch;
-                }}
-                .big-button-container > div {{
-                    width: 100%;
-                }}
-                div.stButton > button {{
+                button[data-testid="baseButton"][data-streamlit-key="{boton_key}"] {{
                     width: 100%;
                     height: 100%;
                     min-height: {altura_boton}px;
@@ -283,13 +279,15 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
                     padding: 20px;
                     transition: 0.3s;
                 }}
-                div.stButton > button:hover {{
+
+                button[data-testid="baseButton"][data-streamlit-key="{boton_key}"]:hover {{
                     background-color: {color_fondo_hover};
                     border-color: {color_fondo_hover};
                     color: {color_fuente_hover};
                     cursor: pointer;
                 }}
-                div.stButton > button:active {{
+
+                button[data-testid="baseButton"][data-streamlit-key="{boton_key}"]:active {{
                     background-color: {color_fondo_active};
                     color: {color_fuente_active};
                     border-color: {color_fondo_active};
@@ -301,7 +299,7 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
         if nombre_estado not in st.session_state:
             st.session_state[nombre_estado] = False
 
-        if st.button(texto_boton):
+        if st.button(texto_boton, key=boton_key):
             st.session_state[nombre_estado] = not st.session_state[nombre_estado]
 
     with col2:
