@@ -263,7 +263,7 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
     col1, col2 = st.columns([0.30, 0.70])
 
     with col1:
-        altura_boton = 70
+        altura_boton = 30
         font_size = 16
 
         color_fondo_base = color_boton
