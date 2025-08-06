@@ -72,14 +72,14 @@ def play_emg_sumatoria():
 
 
     with col1:
-        if st.button("Reiniciar"):
+        if st.button("Reiniciar", key="boton_reiniciar"):
             for i in range(num_ondas):
                 st.session_state[f"amp_{i}"] = 1.0
                 st.session_state[f"freq_{i}"] = 1.0
                 st.session_state[f"fase_{i}"] = 0.0
 
     with col2:
-        if st.button("Aleatorio"):
+        if st.button("Aleatorio", key="boton_aleatorio"):
             for i in range(num_ondas):
                 st.session_state[f"amp_{i}"] = random.uniform(0, amp_max)
                 st.session_state[f"freq_{i}"] = random.uniform(0, freq_max)
