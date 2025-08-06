@@ -223,44 +223,48 @@ def botones_tarjeta():
 
     with col1:
 
+        altura_boton = 70  # Altura del botón
+        font_size = 16  # Tamaño de fuente del botón
+        color_fondo = "#d6cc5e"
+
         
         # Estilos CSS para el botón
-        st.markdown("""
-                <style>
-                    .big-button-container {
-                        display: flex;
-                        align-items: stretch;
-                    }
+        st.markdown(f"""
+            <style>
+                .big-button-container {{
+                    display: flex;
+                    align-items: stretch;
+                }}
 
-                    .big-button-container > div {
-                        width: 100%;
-                    }
+                .big-button-container > div {{
+                    width: 100%;
+                }}
 
-                    div.stButton > button {
-                        width: 100%;
-                        height: 100%;
-                        min-height: 70px;              # modificar altura del botón
-                        border: 2px solid #0C5C8C;
-                        color: white;
-                        background-color: #0C5C8C;
-                        font-weight: bold;
-                        font-size: 16px;
-                        padding: 20px;
-                        transition: 0.3s;
-                    }
+                div.stButton > button {{
+                    width: 100%;
+                    height: 100%;
+                    min-height: {altura_boton}px;
+                    border: 2px solid #0C5C8C;
+                    color: white;
+                    background-color: #0C5C8C;
+                    font-weight: bold;
+                    font-size: {font_size}px;
+                    padding: 20px;
+                    transition: 0.3s;
+                }}
 
-                    div.stButton > button:hover {
-                        background-color: #084C72;
-                        border-color: #084C72;
-                        cursor: pointer;
-                    }
+                div.stButton > button:hover {{
+                    background-color: #d6cc5e;
+                    border-color: #084C72;
+                    cursor: pointer;
+                }}
 
-                    div.stButton > button:active {
-                        background-color: #062E4D;
-                        border-color: #062E4D;
-                    }
-                </style>
-            """, unsafe_allow_html=True)
+                div.stButton > button:active {{
+                    background-color: #062E4D;
+                    border-color: #062E4D;
+                }}
+            </style>
+        """, unsafe_allow_html=True)
 
         if st.button("Sumatoria de ondas"):
             st.session_state["mostrar_sumatoria"] = True  # ✅ cambia solo el estado
