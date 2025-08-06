@@ -222,18 +222,41 @@ def botones_tarjeta():
         # Botón funcional con clase custom
         custom_btn = st.button("Sumatoria de ondas\n∑  ----•၊၊|၊၊၊|၊|မှု|။|မှု||မှု•----", key="sumatoria_boton")
 
-        # Inyectar la clase CSS directamente al botón
+        # Inyectar la clase CSS directamente al botón buscando por texto
         st.markdown("""
-            <script>
-            const btn = window.parent.document.querySelector('button[data-testid="stButton"][key="sumatoria_boton"]');
-            if (btn) {
-                btn.classList.add("custom-boton");
+            <style>
+            div.stButton > button.custom-boton {
+                background-color: #ffffff;
+                border: 1px solid #d3d3d3;
+                padding: 40px 50px;
+                border-radius: 12px;
+                color: #000000;
+                font-size: 18px;
+                width: 100%;
+                text-align: center;
+                box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+                transition: transform 0.1s ease-in-out;
+                margin-top: 6px;
+                white-space: pre-line;
             }
+            div.stButton > button.custom-boton:hover {
+                background-color: #e0e0e0;
+                transform: scale(1.05);
+                cursor: pointer;
+            }
+            </style>
+            <script>
+            const buttons = window.parent.document.querySelectorAll('button[data-testid="stButton"]');
+            buttons.forEach(btn => {
+              if(btn.innerText.includes("Sumatoria de ondas")) {
+                btn.classList.add("custom-boton");
+              }
+            });
             </script>
         """, unsafe_allow_html=True)
 
         if custom_btn:
-            func1()
+            play_emg_sumatoria()
 
     with col2:
         st.markdown("""
