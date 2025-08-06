@@ -212,68 +212,52 @@ def play_emg_sumatoria():
                 """)
     st.markdown("---")
 
-def botones_tarjeta():
+def botones_tarjeta2():
     st.markdown("""
-        <style>
-        /* Contenedor relativo para que el botón absoluto se posicione respecto a este */
-        .boton-container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;  /* ajusta al ancho que quieras */
-            margin-top: 10px;
-        }
+            <style>
+            div.stButton > button.custom-boton {
+                background-color: #f5f5f5;
+                border: 1px solid #d3d3d3;
+                padding: 30px 50px;  /* <---- padding aquí */
+                border-radius: 12px;
+                color: #233a3d;
+                font-size: 18px;
+                width: 100%;
+                text-align: center;
+                box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+                transition: transform 0.1s ease-in-out;
+                margin-top: 6px;
+            }
 
-        /* El botón de Streamlit invisible, posición absoluta y cubriendo todo el contenedor */
-        button#boton_invisible {
-            position: absolute !important;
-            top: 0;
-            left: 0;
-            width: 100% !important;
-            height: 100% !important;
-            opacity: 0;
-            cursor: pointer;
-            z-index: 2;
-        }
+            div.stButton > button.custom-boton:hover {
+                background-color: #e0e0e0;
+                transform: scale(1.05);
+                cursor: pointer;
+            }
+            </style>
+        """, unsafe_allow_html=True)
 
-        /* El div que se ve, debajo del botón invisible */
-        #boton_estilizado {
-            background-color: #f5f5f5;
-            border: 1px solid #d3d3d3;
-            padding: 30px 50px;
-            border-radius: 12px;
-            color: #233a3d;
-            font-size: 18px;
-            text-align: center;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-            user-select: none;
-            transition: transform 0.1s ease-in-out;
-            z-index: 1;
-        }
-        #boton_estilizado:hover {
-            background-color: #e0e0e0;
-            transform: scale(1.05);
-        }
-        </style>
-    """, unsafe_allow_html=True)
+    # Columnas
+    col1, col2 = st.columns(2)
 
-    # Contenedor para posicionar botón y div juntos
-    st.markdown("""
-        <div class="boton-container">
-            <div id="boton_estilizado">
-                <b>Sumatoria de ondas</b><br>∑  ----•၊၊|၊၊၊|၊|မှု|။|မှု||မှု•----
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
+    with col1:
+        # Este bloque añade la clase personalizada al botón
+        #st.markdown(" ")
+        titulo_boton = "<b>Sumatoria de ondas</b><br>∑  ----•၊၊|၊၊၊|၊|။|၊|။||။•----"
+        st.markdown(f'<div class="stButton"><button class="custom-boton">{titulo_boton}</button></div>', unsafe_allow_html=True)
 
-    # Botón invisible de Streamlit (por fuera del markdown pero dentro del container)
-    clicked = st.button("", key="boton_invisible")
+    with col2:
+        st.markdown("""
+            <p style="color: #dbdbdb; font-size: 16px; margin-top: 5px;">
+            Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo.
+            </p>
+        """, unsafe_allow_html=True)
 
-    
+    st.markdown("---")
 
-    # Acción que quieres ejecutar al presionar el botón invisible
-    if clicked:
-        play_emg_sumatoria()
 
+
+    ######
 
 
     
