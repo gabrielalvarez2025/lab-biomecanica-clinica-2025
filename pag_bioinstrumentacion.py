@@ -68,7 +68,7 @@ def play_emg_sumatoria():
     
     
     # Configurar botones random y reiniciar en la sidebar
-    esp1, col1, col2, esp2 = st.sidebar.columns([0.05, 0.45 0.45, 0.05])  # proporciones
+    esp1, col1, col2, esp2 = st.sidebar.columns([0.05, 0.45, 0.45, 0.05])  # proporciones
 
 
     with col1:
