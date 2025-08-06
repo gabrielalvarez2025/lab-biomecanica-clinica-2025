@@ -213,42 +213,38 @@ def play_emg_sumatoria():
     st.markdown("---")
 
 def botones_tarjeta():
-    # CSS personalizado solo para el botón con id específico
     st.markdown("""
-        <style>
-        .custom-boton button {
-            background-color: #f5f5f5;
-            border: 1px solid #d3d3d3;
-            padding: 30px 50px;
-            border-radius: 12px;
-            color: #233a3d;
-            font-size: 18px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.1s ease-in-out;
-            margin-top: 6px;
-        }
+            <style>
+            div.stButton > button.custom-boton {
+                background-color: #f5f5f5;
+                border: 1px solid #d3d3d3;
+                padding: 30px 50px;  /* <---- padding aquí */
+                border-radius: 12px;
+                color: #233a3d;
+                font-size: 18px;
+                width: 100%;
+                text-align: center;
+                box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+                transition: transform 0.1s ease-in-out;
+                margin-top: 6px;
+            }
 
-        .custom-boton button:hover {
-            background-color: #e0e0e0;
-            transform: scale(1.05);
-            cursor: pointer;
-        }
-        </style>
-    """, unsafe_allow_html=True)
+            div.stButton > button.custom-boton:hover {
+                background-color: #e0e0e0;
+                transform: scale(1.05);
+                cursor: pointer;
+            }
+            </style>
+        """, unsafe_allow_html=True)
 
     # Columnas
     col1, col2 = st.columns(2)
 
     with col1:
-        # Envolver el botón con una clase única
-        with st.container():
-            custom_btn = st.markdown('<div class="custom-boton">', unsafe_allow_html=True)
-            if st.button("Sumatoria de ondas\n∑  ~𓂃〰️𓂃~"):
-                st.session_state["mostrar_sumatoria"] = True
-                st.success("¡Estás viendo la simulación de sumatoria de ondas!")
-            st.markdown("</div>", unsafe_allow_html=True)
+        # Este bloque añade la clase personalizada al botón
+        #st.markdown(" ")
+        titulo_boton = "<b>Sumatoria de ondas</b><br>∑  ----•၊၊|၊၊၊|၊|။|၊|။||။•----"
+        st.markdown(f'<div class="stButton"><button class="custom-boton">{titulo_boton}</button></div>', unsafe_allow_html=True)
 
     with col2:
         st.markdown("""
