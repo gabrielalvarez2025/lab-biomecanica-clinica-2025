@@ -222,19 +222,34 @@ def botones_tarjeta():
     # CSS de la tarjeta y el botón (solo afecta este bloque)
     
     st.markdown("""
-        <style>
-        div.stButton > button {
-            width: 100%;
-            min-height: 120px;  /* ajusta este valor para igualar la altura del texto */
-            padding: 12px 0;
-            font-size: 16px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #d6cc5e;
-            white-space: pre-wrap; /* para que respete saltos de línea */
-        }
-        </style>
+    <style>
+    div.stButton > button {
+        width: 100%;
+        min-height: 120px;  /* altura */
+        padding: 12px 0;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        white-space: pre-wrap; /* para saltos de línea */
+        
+        background-color: #ffffff;  /* fondo normal (blanco) */
+        border: 2px solid #4a90e2;  /* borde azul */
+        color: #222222;  /* texto negro oscuro */
+        border-radius: 8px;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    div.stButton > button:hover {
+        background-color: #e6f0ff;  /* fondo azul claro al hover */
+        cursor: pointer;
+    }
+
+    div.stButton > button:active {
+        background-color: #c0d6ff;  /* fondo azul más oscuro al presionar */
+        border-color: #357ABD;  /* borde azul más fuerte */
+    }
+    </style>
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1, 2])
@@ -242,7 +257,7 @@ def botones_tarjeta():
     with col1:
         if st.button("Sumatoria de ondas"):
             st.session_state["mostrar_sumatoria"] = True
-            st.info("Estás viendo esta simulación.")
+            #st.info("Estás viendo esta simulación.")
 
     with col2:
         st.markdown("""
