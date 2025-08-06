@@ -248,38 +248,29 @@ def presentar_botones_tarjeta():
 
 
 def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, texto_parrafo):
-    
-    # Columnas con col2 el doble de ancho que col1
     col1, col2 = st.columns([0.30, 0.70])
 
     with col1:
+        altura_boton = 70
+        font_size = 16
 
-        altura_boton = 70  # Altura del botón
-        font_size = 16  # Tamaño de fuente del botón
-        
         color_fondo_base = color_boton
         color_fondo_hover = "#FFFFFF"
         color_fondo_active = "#0C8C1F"
+        color_fuente_hover = "#2A2727"
+        color_fuente_active = "#FFFFFF"
+        color_fuente_parrafo = color_parrafo
 
-        color_fuente_hover = "#2A2727"  # Color de fuente del botón activo
-        color_fuente_active = "#FFFFFF"  # Color de fuente del botón activo
-
-        color_fuente_parrafo = color_parrafo  # Color de fuente del párrafo
-
-
-        
-        # Estilos CSS para el botón
+        # CSS personalizado
         st.markdown(f"""
             <style>
                 .big-button-container {{
                     display: flex;
                     align-items: stretch;
                 }}
-
                 .big-button-container > div {{
                     width: 100%;
                 }}
-
                 div.stButton > button {{
                     width: 100%;
                     height: 100%;
@@ -291,16 +282,13 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
                     font-size: {font_size}px;
                     padding: 20px;
                     transition: 0.3s;
-                    
                 }}
-
                 div.stButton > button:hover {{
                     background-color: {color_fondo_hover};
                     border-color: {color_fondo_hover};
                     color: {color_fuente_hover};
                     cursor: pointer;
                 }}
-
                 div.stButton > button:active {{
                     background-color: {color_fondo_active};
                     color: {color_fuente_active};
