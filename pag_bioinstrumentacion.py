@@ -213,8 +213,16 @@ def mostrar():
         "- Goniometría"
     )
 
-    
-    st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+
+    # Video embebido de YouTube
+
+    col1, col2 = st.columns([70, 30])
+
+    with col1:
+        st.markdown("### Video relacionado")
+        
+    with col2:
+        st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
     
     # Configuración tema seaborn
@@ -343,21 +351,3 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
             {texto_parrafo}
             </p>
         """, unsafe_allow_html=True)
-
-
-def embeded_video_youtube(youtube_url: str, titulo: str = "Video de YouTube"):
-    
-    st.title(titulo)
-
-    video_width = 560  # Ancho del reproductor
-    video_height = 315  # Alto del reproductor
-    
-    # Tamaño del reproductor (ancho x alto)
-    components.html(
-        f"""
-        <iframe width="{video_width}" height="{video_height}" src="{youtube_url}" 
-        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen></iframe>
-        """, height=video_height
-    )
-
