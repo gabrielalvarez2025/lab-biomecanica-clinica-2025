@@ -56,6 +56,7 @@ def instrucciones():
         """
     )
 
-    st.image("laptop-open-icon.svg", width=100)
+    svg_file = open("img_laptop.svg", "r").read()
+    st.image(svg_file, format="svg")
 
     
