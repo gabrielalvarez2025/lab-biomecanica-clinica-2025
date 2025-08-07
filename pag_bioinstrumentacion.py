@@ -201,6 +201,9 @@ def play_2():
 
 
 def mostrar():
+    
+    
+
     st.header("Unidad 1: Bioinstrumentación")
 
     st.markdown(
@@ -210,14 +213,14 @@ def mostrar():
         "- Goniometría"
     )
 
+    
     st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
     
-    embeded_video_youtube(youtube_url="https://www.youtube.com/watch?v=Dykkubb-Qus",
-                          titulo="Video de prueba")
-
+    # Configuración tema seaborn
     sns.set_theme(style="darkgrid", palette="pastel")
 
+    
     # Fin listado de contenidos
     st.markdown("---")
     # Inicio de elementos interactivos
