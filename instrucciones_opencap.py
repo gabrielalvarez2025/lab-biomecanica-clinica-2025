@@ -64,8 +64,8 @@ def instrucciones():
     
 
 
-    col1_laptop, col2_laptop = st.columns([10, 90])
-    col1_cellphone, col2_cellphone = st.columns([10, 90])
+    col1_laptop, col2_laptop = st.columns([20, 80])
+    col1_cellphone, col2_cellphone = st.columns([20, 80])
     
     with col1_laptop:
         st.image(img_laptop, use_container_width=True)
