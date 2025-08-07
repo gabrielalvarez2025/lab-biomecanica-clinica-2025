@@ -188,6 +188,17 @@ def play_emg_sumatoria():
     st.markdown("---")
     st.markdown("fin play sumatoria")
 
+
+def play_2():
+    st.markdown("### Palancas y torques")
+    st.markdown("""
+                En esta sección exploraremos el concepto de palancas y torques, fundamentales para entender cómo se generan los movimientos en el cuerpo humano.
+                """)
+    st.markdown("Puedes interactuar con la simulación de palancas y torques en la barra lateral.")
+    st.markdown("---")
+    st.markdown("fin play 2")
+
+
 def mostrar():
     st.header("Unidad 1: Bioinstrumentación")
 
@@ -241,11 +252,7 @@ def mostrar():
         play_emg_sumatoria()
     
     if st.session_state["mostrar_torques"]:
-        st.markdown("### Palancas y torques")
-        st.markdown("""
-                    En esta sección exploraremos el concepto de palancas y torques, fundamentales para entender cómo se generan los movimientos en el cuerpo humano.
-                    """)
-        st.markdown("Puedes interactuar con la simulación de palancas y torques en la barra lateral.")
+        play_2()
 
     st.markdown("---")
 
