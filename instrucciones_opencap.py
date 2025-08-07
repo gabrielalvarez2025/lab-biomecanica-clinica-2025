@@ -52,7 +52,7 @@ def instrucciones():
         st.markdown(" ")
     
     with col2_laptop:
-        st.markdown("""[] Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.""")
+        st.markdown("""- Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.""")
     
     ###
 
