@@ -52,6 +52,6 @@ def instrucciones():
     st.markdown(
         """
         Luego, debes asegurart de que:
-        - Los +2 dispositivos iOS estén conectados a la misma red Wi-Fi.
+        - Los +2 dispositivos iOS estén conectados a la misma red Wi-Fi. x
         """
     )
