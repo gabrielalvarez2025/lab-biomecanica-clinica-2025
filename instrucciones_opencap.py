@@ -21,15 +21,6 @@ def instrucciones():
         """
     )
 
-    st.markdown(
-        """
-        Para utilizar OpenCap, primero debes:
-        
-        
-        - Disponer de un espacio bien iluminado y más bien amplio para realizar las grabaciones.
-        """
-    )
-
     proporcion = [15, 85]  # Proporción de columnas
     
     # imagenes
