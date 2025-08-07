@@ -10,6 +10,7 @@ def instrucciones():
 
     st.markdown(
         """
-       
+       En esta sección encontrarás las instrucciones para el uso de OpenCap, una herramienta de análisis del movimiento humano.
+       Asegúrate de seguir cada paso cuidadosamente para obtener los mejores resultados en tus análisis.
         """
     )
