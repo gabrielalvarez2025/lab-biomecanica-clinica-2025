@@ -43,7 +43,7 @@ pagina = st.sidebar.radio("Selecciona una sección:", [
     pag_bioinstrumentacion,
     pag_control_motor,
     pag_balance,
-    pag_marcha
+    pag_marcha,
     pag_instrucciones_opencap
 ])
 
