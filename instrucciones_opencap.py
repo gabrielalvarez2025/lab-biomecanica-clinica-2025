@@ -75,10 +75,12 @@ def instrucciones():
             """
         )
 
-    with col1:
+    col11, col22 = st.columns([10, 90])
+    
+    with col11:
         st.image(img_cellphone, use_container_width=True)
     
-    with col2:
+    with col22:
         st.markdown(
             """
             - Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.
