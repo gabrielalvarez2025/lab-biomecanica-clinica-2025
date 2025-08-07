@@ -60,12 +60,12 @@ def instrucciones():
 
     # imagenes
     img_laptop = open("img_laptop.svg", "r").read()
-    img_laptop = st.image(img_laptop, use_container_width=True)
+    
 
     col1, col2 = st.columns([10, 90])
 
     with col1:
-        img_laptop
+        st.image(img_laptop, use_container_width=True)
     
     with col2:
         st.markdown(
