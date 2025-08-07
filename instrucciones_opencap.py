@@ -43,16 +43,30 @@ def instrucciones():
     img_cellphones2 = open("img_cellphones2.svg", "r").read()
     
     
+    
     st.markdown("---")
 
     st.subheader("Dispositivos necesarios:")
     st.markdown(" ")
     
     # Esto determina el orden de las filas, modificar acá
+    col1_opencap,    col2_opencap   = st.columns(proporcion)
     col1_cellphone, col2_cellphone  = st.columns(proporcion)
     col1_laptop,    col2_laptop     = st.columns(proporcion)
     
     
+    
+    # Fila cuenta opencap
+    with col1_opencap:
+        st.image("img_opencap_logo.png", use_container_width=True)
+        st.markdown(" ")
+        st.markdown(" ")
+
+    with col2_opencap:
+        st.markdown("""- Al menos 2 dispositivos iOS (iPhone, iPad, etc) con cámara, que usarás para registrar los videos. Estos necesariamente **deben** ser iOS (marca Apple).""")
+    
+
+
     # Fila cellphones
     with col1_cellphone:
         st.image(img_cellphones2, use_container_width=True)
