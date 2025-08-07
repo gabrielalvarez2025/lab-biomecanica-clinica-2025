@@ -46,7 +46,7 @@ def instrucciones():
     
     st.markdown("---")
 
-    st.subheader("Dispositivos necesarios:")
+    st.subheader("Requisitos para comenzar:")
     st.markdown(" ")
     
     # Esto determina el orden de las filas, modificar acá
@@ -59,11 +59,10 @@ def instrucciones():
     # Fila cuenta opencap
     with col1_opencap:
         st.image("img_opencap_logo.png", use_container_width=True)
-        st.markdown(" ")
-        st.markdown(" ")
 
     with col2_opencap:
         st.markdown("""- Al menos 2 dispositivos iOS (iPhone, iPad, etc) con cámara, que usarás para registrar los videos. Estos necesariamente **deben** ser iOS (marca Apple).""")
+        st.markdown(" ")
     
 
 
