@@ -43,6 +43,9 @@ def instrucciones():
     img_cellphones2 = open("img_cellphones2.svg", "r").read()
     
     
+    st.subheader("Dispositivos necesarios:")
+    
+    # Esto determina el orden de las filas, modificar acá
     col1_cellphone, col2_cellphone  = st.columns(proporcion)
     col1_laptop,    col2_laptop     = st.columns(proporcion)
     
