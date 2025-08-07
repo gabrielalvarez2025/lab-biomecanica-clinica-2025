@@ -11,12 +11,14 @@ def obtener_acc_desde_phyphox(ip: str, timeout=10):
     #/get?accX&accY&accZ"
     try:
         response = requests.get(url, timeout=timeout)
+        st.markdown(response.text)
         response.raise_for_status()
         data = response.json()
 
         accX = data['buffer']['accX']['buffer']
         accY = data['buffer']['accY']['buffer']
         accZ = data['buffer']['accZ']['buffer']
+
         timestamps = data['buffer']['accX'].get('time', list(range(len(accX))))  # si no hay 'time', usa índice
 
         df = pd.DataFrame({
