@@ -27,6 +27,7 @@ def instrucciones():
     img_laptop = open("img_laptop.svg", "r").read()
     img_cellphones2 = open("img_cellphones2.svg", "r").read()
     img_appstore = open("img_appstore_logo.svg", "r").read()
+    img_wifi = open("img_wifi_icon.svg", "r").read()
     
     
     
@@ -41,6 +42,7 @@ def instrucciones():
     col1_laptop,    col2_laptop     = st.columns(proporcion)
     col1_opencap,   col2_opencap    = st.columns(proporcion)
     col1_appstore,  col2_appstore   = st.columns(proporcion)
+    col1_wifi,      col2_wifi       = st.columns(proporcion)
     
     # Fila cellphones
     with col1_cellphone:
@@ -81,6 +83,15 @@ def instrucciones():
 
     with col2_appstore:
         st.markdown("""- Descargar la App de OpenCap  desde la App Store en todos los dispositivos iOS que usarás como cámara.""")
+        st.markdown(" ")
+
+    # Fila wifi
+    with col1_wifi:
+        st.markdown(" ")
+        st.image(img_wifi, use_container_width=True)
+
+    with col2_wifi:
+        st.markdown("""- El computador y todos los dispositivos iOS deben estar conectados a la **misma red WiFi**. Esto es fundamental para que los dispositivos puedan comunicarse entre sí y con la plataforma de OpenCap.""")
         st.markdown(" ")
     
     
