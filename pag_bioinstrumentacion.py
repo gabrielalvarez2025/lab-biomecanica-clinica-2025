@@ -239,7 +239,7 @@ def mostrar():
     if st.session_state["mostrar_sumatoria"]:
         play_emg_sumatoria()
     
-    elif st.session_state["mostrar_torques"]:
+    if st.session_state["mostrar_torques"]:
         st.markdown("### Palancas y torques")
         st.markdown("""
                     En esta sección exploraremos el concepto de palancas y torques, fundamentales para entender cómo se generan los movimientos en el cuerpo humano.
