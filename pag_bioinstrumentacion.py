@@ -212,14 +212,8 @@ def mostrar():
     
     st.markdown("---")
     
-    # Inicializar si no existe
-    if "mostrar_sumatoria" not in st.session_state:
-        st.session_state["mostrar_sumatoria"] = False
-
-    # Presentar botones
+    # Presentar botones tarjeta
     presentar_botones_tarjeta()
-    
-    # Mostrar botones
     
     # Tarjeta 1: Sumatoria de PAUMs
     parrafo_sumatoria = "Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (PAUMs), esta simulación te ayudará a entenderlo."
@@ -239,7 +233,7 @@ def mostrar():
                     color_parrafo= "#95E082"
                     )
     
-    st.markdown("---")
+    
 
     # ✅ Mostrar contenido si fue activado
     if st.session_state["mostrar_sumatoria"]:
