@@ -223,6 +223,7 @@ def mostrar():
 
     
     st.markdown("---")
+    st.markdown("## Elementos interactivos")
     
     # Presentar botones tarjeta
     presentar_botones_tarjeta()
