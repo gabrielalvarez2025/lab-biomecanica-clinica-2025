@@ -103,6 +103,8 @@ def instrucciones():
         st.image(img_board, use_container_width=True)
 
     with col2_tablero:
+        st.markdown(" ")
+        st.markdown(" ")
         st.markdown("""- Tener impreso el tablero de calibración, que usarás para la calibración de las cámaras. Puedes descargarlo e imprimirlo desde [aquí](https://cdn.prod.website-files.com/62468717bed6b421c89bbf36/6258dd3518244b061c1b02f5_Checkerboard_4x5_35mm.pdf)""")
 
         #st.markdown(" ")
