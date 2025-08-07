@@ -26,7 +26,7 @@ def instrucciones():
     # imagenes
     img_laptop = open("img_laptop.svg", "r").read()
     img_cellphones2 = open("img_cellphones2.svg", "r").read()
-    img_appstore = open("img_appstore.svg", "r").read()
+    img_appstore = open("img_appstore_logo.svg", "r").read()
     
     
     
