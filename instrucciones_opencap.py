@@ -39,6 +39,8 @@ def instrucciones():
 
     #st.image("img_laptop.png")
 
+    
+
     st.markdown(
         """
         - 📱📱 Al menos 2 dispositivos iOS (iPhone, iPad, etc) con cámara, que usarás para registrar los videos. Estos necesariamente **deben** ser iOS (marca Apple).
@@ -56,7 +58,23 @@ def instrucciones():
         """
     )
 
-    svg_file = open("img_laptop.svg", "r").read()
-    st.image(svg_file)
+    # imagenes
+    img_laptop = open("img_laptop.svg", "r").read()
+    img_laptop = st.image(img_laptop, use_container_width=True)
+
+    col1, col2 = st.columns([10, 90])
+
+    with col1:
+        img_laptop
+    
+    with col2:
+        st.markdown(
+            """
+            - Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.
+            """
+        )
+
+
+    
 
     
