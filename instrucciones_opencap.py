@@ -63,7 +63,6 @@ def instrucciones():
                     Te recomendamos usar un computador.
                     """)
         st.markdown(" ")
-        st.markdown(" ")
         
     
     # Fila cuenta opencap
