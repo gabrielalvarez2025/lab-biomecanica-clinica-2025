@@ -42,20 +42,6 @@ def instrucciones():
     col1_opencap,   col2_opencap    = st.columns(proporcion)
     col1_appstore,  col2_appstore   = st.columns(proporcion)
     
-    
-    
-    
-    # Fila cuenta opencap
-    with col1_opencap:
-        st.markdown(" ")
-        st.image("img_opencap_logo.png", use_container_width=True)
-
-    with col2_opencap:
-        st.markdown("""- Tener creada una **cuenta en OpenCap**. Si aún no tienes una, puedes crearla de forma gratuita en https://www.opencap.ai/ con tu correo electrónico.""")
-        st.markdown(" ")
-    
-
-
     # Fila cellphones
     with col1_cellphone:
         st.image(img_cellphones2, use_container_width=True)
@@ -63,16 +49,6 @@ def instrucciones():
 
     with col2_cellphone:
         st.markdown("""- Al menos **2 dispositivos iOS** (iPhone, iPad, etc) con cámara, que usarás para registrar los videos. Estos necesariamente **deben** ser iOS (marca Apple).""")
-        
-    
-    # Fila descargar app en appstore
-    with col1_appstore:
-        st.markdown(" ")
-        st.image(img_appstore, use_container_width=True)
-
-    with col2_appstore:
-        st.markdown("""- Descargar la App de OpenCap  desde la App Store en todos los dispositivos iOS que usarás como cámara.""")
-        st.markdown(" ")
     
     
     # Fila laptop
@@ -86,6 +62,27 @@ def instrucciones():
                     Eventualmente puedes usar un celular o una tablet para este propósito, pero este debe ser distinto a los dispositivos que usarás como cámaras, ya que las cámaras no las puedes mover.
                     Te recomendamos usar un computador.
                     """)
+        st.markdown(" ")
+        st.markdown(" ")
+        
+    
+    # Fila cuenta opencap
+    with col1_opencap:
+        st.markdown(" ")
+        st.image("img_opencap_logo.png", use_container_width=True)
+
+    with col2_opencap:
+        st.markdown("""- Tener creada una **cuenta en OpenCap**. Si aún no tienes una, puedes crearla de forma gratuita en https://www.opencap.ai/ con tu correo electrónico.""")
+        st.markdown(" ")
+
+    # Fila descargar app en appstore
+    with col1_appstore:
+        st.markdown(" ")
+        st.image(img_appstore, use_container_width=True)
+
+    with col2_appstore:
+        st.markdown("""- Descargar la App de OpenCap  desde la App Store en todos los dispositivos iOS que usarás como cámara.""")
+        st.markdown(" ")
     
     
 
