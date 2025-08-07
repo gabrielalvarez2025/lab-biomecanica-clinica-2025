@@ -46,21 +46,28 @@ def instrucciones():
     col1_laptop,    col2_laptop     = st.columns(proporcion)
     col1_cellphone, col2_cellphone  = st.columns(proporcion)
     
+    # Fila cellphones
     with col1_cellphone:
         st.image(img_cellphones2, use_container_width=True)
         st.markdown(" ")
         st.markdown(" ")
+
     with col2_cellphone:
         st.markdown("""- Al menos 2 dispositivos iOS (iPhone, iPad, etc) con cámara, que usarás para registrar los videos. Estos necesariamente **deben** ser iOS (marca Apple).""")
     
+    
+    # Fila laptop
     with col1_laptop:
         st.image(img_laptop, use_container_width=True)
         st.markdown(" ")
         st.markdown(" ")
+    
     with col2_laptop:
         st.markdown("""- Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.""")
     
     ###
+
+    st.markdown("cambio")
 
     
 
