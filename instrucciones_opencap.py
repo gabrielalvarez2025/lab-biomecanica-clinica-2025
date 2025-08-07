@@ -23,4 +23,29 @@ def instrucciones():
 
     st.markdown("---")
 
-    st.subheader("Contenido")
+    st.subheader("Antes de comenzar: Preparación")
+
+    st.markdown(
+        """
+        Para utilizar OpenCap, asegúrate de tener lo siguiente:
+        - Crear una cuenta en OpenCap. Puedes crear una cuenta gratuita en https://opencap con tu correo electrónico.
+        - Contar con **dos o más** dispositivos iOS (iPhone, iPad, etc) con cámara. Estos deben ser iOS (marca Apple).
+        - Descargar la aplicación de OpenCap en ambos dispositivos iOS desde la App Store.
+        - Disponer de un espacio bien iluminado y más bien amplio para realizar las grabaciones.
+        """
+    )
+
+    st.markdown(
+        """
+        - Al menos 2 dispositivos iOS (iPhone, iPad, etc) con cámara, que usarás para registrar los videos. Estos __deben__ ser iOS (marca Apple).
+        - Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.
+        - Disponer de un espacio bien iluminado y más bien amplio para realizar las grabaciones.
+        """
+    )
+
+    st.markdown(
+        """
+        Luego, debes asegurart de que:
+        - Los +2 dispositivos iOS estén conectados a la misma red Wi-Fi.
+        """
+    )
