@@ -60,8 +60,7 @@ def instrucciones():
 
     # imagenes
     img_laptop = open("img_laptop.svg", "r").read()
-    with open("img_cellphone.svg", "r", encoding="utf-8") as f:
-        img_cellphone = f.read()
+    img_cellphone = open("img_cellphone.svg", "r").read()
     
 
     col1, col2 = st.columns([10, 90])
