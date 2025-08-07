@@ -9,6 +9,7 @@ from pag_bioinstrumentacion import mostrar as mostrar_bioinstrumentacion
 from pag_control_motor import mostrar as mostrar_control_motor
 from pag_balance import mostrar as mostrar_balance
 from pag_marcha import mostrar as mostrar_marcha
+from instrucciones_opencap import instrucciones as mostrar_instrucciones_opencap
 
 
 
@@ -23,6 +24,9 @@ pag_bioinstrumentacion  = "Bioinstrumentación"
 pag_control_motor       = "Teorías del control motor"
 pag_balance             = "Sistema sensoriomotor y balance"
 pag_marcha              = "Análisis de marcha"
+
+# Paginas adicionales
+pag_instrucciones_opencap = "Instrucciones OpenCap"
 
 
 
@@ -40,6 +44,7 @@ pagina = st.sidebar.radio("Selecciona una sección:", [
     pag_control_motor,
     pag_balance,
     pag_marcha
+    pag_instrucciones_opencap
 ])
 
 st.sidebar.markdown("---")  # línea horizontal para separar
@@ -66,3 +71,6 @@ elif pagina == pag_balance:
 
 elif pagina == pag_marcha:
     mostrar_marcha()
+
+elif pagina == pag_instrucciones_opencap:
+    mostrar_instrucciones_opencap()
