@@ -36,10 +36,11 @@ def instrucciones():
     st.markdown(" ")
     
     # Esto determina el orden de las filas, modificar acá
-    col1_opencap,   col2_opencap    = st.columns(proporcion)
+    
     col1_cellphone, col2_cellphone  = st.columns(proporcion)
-    col1_appstore,  col2_appstore   = st.columns(proporcion)
     col1_laptop,    col2_laptop     = st.columns(proporcion)
+    col1_opencap,   col2_opencap    = st.columns(proporcion)
+    col1_appstore,  col2_appstore   = st.columns(proporcion)
     
     
     
