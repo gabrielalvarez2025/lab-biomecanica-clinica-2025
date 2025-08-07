@@ -37,8 +37,10 @@ def instrucciones():
 
     st.markdown(
         """
-        - Al menos 2 dispositivos iOS (iPhone, iPad, etc) con cámara, que usarás para registrar los videos. Estos necesariamente **deben** ser iOS (marca Apple).
-        - Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.
+        - 📱📱 Al menos 2 dispositivos iOS (iPhone, iPad, etc) con cámara, que usarás para registrar los videos. Estos necesariamente **deben** ser iOS (marca Apple).
+        
+        - ‍💻 Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.
+        
         - Disponer de un espacio bien iluminado y más bien amplio para realizar las grabaciones.
         """
     )
