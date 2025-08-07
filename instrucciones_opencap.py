@@ -65,8 +65,8 @@ def instrucciones():
     
     # Fila laptop
     with col1_laptop:
-        st.image(img_laptop, use_container_width=True)
         st.markdown(" ")
+        st.image(img_laptop, use_container_width=True)
         st.markdown(" ")
     
     with col2_laptop:
