@@ -232,7 +232,7 @@ def mostrar():
     presentar_botones_tarjeta()
     
     # Tarjeta 1: Sumatoria de PAUMs
-    parrafo_sumatoria = "Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras (**PAUMs**), esta simulación te ayudará a entenderlo."
+    parrafo_sumatoria = "Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras <b>(PAUMs)</b>, esta simulación te ayudará a entenderlo."
     botones_tarjeta(nombre_estado="mostrar_sumatoria",
                     texto_boton="Sumatoria de ondas",
                     texto_parrafo=parrafo_sumatoria,
