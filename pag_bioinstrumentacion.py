@@ -219,7 +219,7 @@ def mostrar():
     col1, col2 = st.columns([50, 50])
 
     with col1:
-        st.markdown("### Video relacionado")
+        st.markdown("lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ip")
         
     with col2:
         st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
