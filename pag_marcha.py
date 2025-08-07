@@ -54,8 +54,7 @@ def play_acc_phyphox():
             st.pyplot(fig)
 
 
-#def mostrar():
-st.title("Unidad 5: Análisis de marcha")
-print('conexion ok con terminal')
-play_acc_phyphox()
+def mostrar():
+    st.title("Unidad 5: Análisis de marcha")
+    play_acc_phyphox()
 
