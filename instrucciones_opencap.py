@@ -60,12 +60,23 @@ def instrucciones():
 
     # imagenes
     img_laptop = open("img_laptop.svg", "r").read()
+    img_cellphone = open("img_cellphone.svg", "r").read()
     
 
     col1, col2 = st.columns([10, 90])
 
     with col1:
         st.image(img_laptop, use_container_width=True)
+    
+    with col2:
+        st.markdown(
+            """
+            - Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.
+            """
+        )
+
+    with col1:
+        st.image(img_cellphone, use_container_width=True)
     
     with col2:
         st.markdown(
