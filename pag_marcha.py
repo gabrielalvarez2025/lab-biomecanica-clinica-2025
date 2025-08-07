@@ -6,32 +6,32 @@ import seaborn as sns
 
 PASTEL_COLORES = ["#AEC6CF", "#FFB347", "#77DD77"]  # azul pastel, naranja pastel, verde pastel
 
-def obtener_acc_desde_phyphox(ip: str) -> pd.DataFrame:
+def obtener_acc_desde_phyphox(ip: str, timeout=10):
     url = f"http://{ip}/get?accX&accY&accZ"
     try:
-        response = requests.get(url, timeout=3)
+        response = requests.get(url, timeout=timeout)
+        response.raise_for_status()
         data = response.json()
 
         accX = data['buffer']['accX']['buffer']
         accY = data['buffer']['accY']['buffer']
         accZ = data['buffer']['accZ']['buffer']
-
-        # Si no hay datos, devolver DataFrame vacío
-        if not accX or not accY or not accZ:
-            return pd.DataFrame()
-
-        tiempo = list(range(len(accX)))  # índice artificial para tiempo
+        timestamps = data['buffer']['accX'].get('time', list(range(len(accX))))  # si no hay 'time', usa índice
 
         df = pd.DataFrame({
-            "Tiempo": tiempo,
+            "Tiempo (s)": timestamps,
             "AccX": accX,
             "AccY": accY,
             "AccZ": accZ
         })
         return df
+    except requests.exceptions.ConnectTimeout:
+        print(f"Timeout: No se pudo conectar a {ip} en {timeout} segundos")
+    except requests.exceptions.ConnectionError as e:
+        print(f"Error de conexión: {e}")
     except Exception as e:
-        st.error(f"Error al obtener datos: {e}")
-        return pd.DataFrame()
+        print(f"Error inesperado: {e}")
+    return pd.DataFrame()
 
 def play_acc_phyphox():
     st.header("🔄 Acelerómetro desde Phyphox")
@@ -54,6 +54,8 @@ def play_acc_phyphox():
             st.pyplot(fig)
 
 
-def mostrar():
-    st.title("Unidad 5: Análisis de marcha")
-    play_acc_phyphox()
+#def mostrar():
+st.title("Unidad 5: Análisis de marcha")
+print('conexion ok con terminal')
+play_acc_phyphox()
+
