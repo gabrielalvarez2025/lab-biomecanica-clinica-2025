@@ -92,7 +92,7 @@ def instrucciones():
 
     with col2_wifi:
         st.markdown("""- El computador y todos los dispositivos iOS deben estar conectados a la **misma red WiFi**. Esto es fundamental para que los dispositivos puedan comunicarse entre sí y con la plataforma de OpenCap.""")
-        st.markdown(" ")
+        #st.markdown(" ")
     
     
 
