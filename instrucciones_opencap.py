@@ -37,7 +37,7 @@ def instrucciones():
 
     st.markdown("---")
 
-    st.image("img_laptop.pmg")
+    st.image("img_laptop.png")
 
     st.markdown(
         """
