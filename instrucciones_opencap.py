@@ -60,7 +60,7 @@ def instrucciones():
 
     # imagenes
     img_laptop = open("img_laptop.svg", "r").read()
-    img_cellphone = open("img_cellphone.svg", "r").read()
+    #img_cellphone = open("img_cellphone.svg", "r").read()
     
 
     col1, col2 = st.columns([10, 90])
