@@ -210,7 +210,7 @@ def mostrar():
         "- Goniometría"
     )
 
-    embeded_video_youtube(youtube_url="https://www.youtube.com/watch?v=Dykkubb-Qus&pp=ugUHEgVlbi1VUw%3D%3D",
+    embeded_video_youtube(youtube_url="https://www.youtube.com/watch?v=Dykkubb-Qus",
                           titulo="Video de prueba")
 
     sns.set_theme(style="darkgrid", palette="pastel")
