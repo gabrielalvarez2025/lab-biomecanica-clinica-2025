@@ -216,7 +216,7 @@ def mostrar():
 
     # Video embebido de YouTube
 
-    col1, col2 = st.columns([30, 70])
+    col1, col2 = st.columns([20, 80])
 
     with col1:
         st.markdown("lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ip")
