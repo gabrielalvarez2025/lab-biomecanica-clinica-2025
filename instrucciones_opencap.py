@@ -43,8 +43,9 @@ def instrucciones():
     img_cellphones2 = open("img_cellphones2.svg", "r").read()
     
     
-    col1_laptop,    col2_laptop     = st.columns(proporcion)
     col1_cellphone, col2_cellphone  = st.columns(proporcion)
+    col1_laptop,    col2_laptop     = st.columns(proporcion)
+    
     
     # Fila cellphones
     with col1_cellphone:
