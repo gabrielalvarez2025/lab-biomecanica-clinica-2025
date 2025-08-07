@@ -11,6 +11,12 @@ def instrucciones():
     st.markdown(
         """
        En esta sección encontrarás las instrucciones para el uso de OpenCap, una herramienta de análisis del movimiento humano.
-       Asegúrate de seguir cada paso cuidadosamente para obtener los mejores resultados en tus análisis.
+       OpenCap es una plataforma que permite capturar datos cinemáticos a partir de videofotogrametría sin necesidad de marcadores.
+        """
+    )
+
+    st.markdown(
+        """
+        El objetivo de este espacio es guiarte a través de los pasos necesarios para utilizar OpenCap de manera efectiva.
         """
     )
