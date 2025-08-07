@@ -71,8 +71,8 @@ def instrucciones():
     
     with col1_laptop:
         st.image(img_laptop, use_container_width=True)
-        st.empty()
-        st.empty()
+        st.markdown(" ")
+        st.markdown(" ")
     
     with col2_laptop:
         st.markdown("""- Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.""")
