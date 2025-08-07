@@ -60,6 +60,7 @@ def instrucciones():
 
     # imagenes
     img_laptop = open("img_laptop.svg", "r").read()
+    img_cellphone = open("img_cellphone.svg", "r").read()
     
 
     
@@ -68,7 +69,8 @@ def instrucciones():
     col1, col2 = st.columns([10, 90])
 
     with col1:
-        st.image(img_laptop, use_container_width=True)
+        #st.image(img_laptop, use_container_width=True)
+        st.image(img_cellphone, use_container_width=True)
         
     
     with col2:
