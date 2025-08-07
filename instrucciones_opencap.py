@@ -60,39 +60,27 @@ def instrucciones():
 
     # imagenes
     img_laptop = open("img_laptop.svg", "r").read()
-    img_cellphone = open("img_cellphone.svg", "r").read()
+    img_cellphone2 = open("img_cellphone2.svg", "r").read()
     
 
-    
-    
 
-    col1, col2 = st.columns([10, 90])
+    col1_laptop, col2_laptop = st.columns([10, 90])
+    col1_cellphone, col2_cellphone = st.columns([10, 90])
+    
+    with col1_laptop:
+        st.image(img_laptop, use_container_width=True)
+    
+    with col2_laptop:
+        st.markdown("""- Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.""")
+    
+    ###
 
-    with col1:
-        #st.image(img_laptop, use_container_width=True)
-        st.image(img_cellphone, use_container_width=True)
-        
-    
-    with col2:
-        st.markdown(
-            """
-            - Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.
-            """
-        )
+    with col1_cellphone:
+        st.image(img_cellphone2, use_container_width=True)
+    with col2_cellphone:
+        st.markdown("""- Al menos 2 dispositivos iOS (iPhone, iPad, etc) con cámara, que usarás para registrar los videos. Estos necesariamente **deben** ser iOS (marca Apple).""")
 
     
-    
-    with col1:
-        #st.image(img_laptop, use_container_width=True)
-        st.image(img_cellphone, use_container_width=True)
-        
-    
-    with col2:
-        st.markdown(
-            """
-            - Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.
-            """
-        )
 
     
 
