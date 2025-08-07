@@ -58,14 +58,16 @@ def instrucciones():
         """
     )
 
+    proporcion = [15, 85]  # Proporción de columnas
+    
     # imagenes
     img_laptop = open("img_laptop.svg", "r").read()
     img_cellphones2 = open("img_cellphones2.svg", "r").read()
     
 
 
-    col1_laptop, col2_laptop = st.columns([20, 80])
-    col1_cellphone, col2_cellphone = st.columns([20, 80])
+    col1_laptop, col2_laptop = st.columns(proporcion)
+    col1_cellphone, col2_cellphone = st.columns(proporcion)
     
     with col1_laptop:
         st.image(img_laptop, use_container_width=True)
