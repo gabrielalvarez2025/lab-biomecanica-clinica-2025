@@ -5,6 +5,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def mostrar():
-    st.title("Unidad 5: Análisis de marcha")
+    st.title("Análisis de marcha")
     
 
