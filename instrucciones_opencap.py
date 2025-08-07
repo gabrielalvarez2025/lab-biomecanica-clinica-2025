@@ -37,7 +37,7 @@ def instrucciones():
 
     st.markdown("---")
 
-    st.image("https://www.google.com/url?sa=i&url=https%3A%2F%2Ftoppng.com%2Ffree-image%2Fsamsung-laptop-png-PNG-free-PNG-Images_119598&psig=AOvVaw1AyZDkl24rcN9inODwZqSh&ust=1754677573669000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCOiq4r2p-Y4DFQAAAAAdAAAAABAE")
+    st.image("https://toppng.com/uploads/preview/samsung-laptop-png-11552846920ggjwoxjcy6.png")
 
     st.markdown(
         """
