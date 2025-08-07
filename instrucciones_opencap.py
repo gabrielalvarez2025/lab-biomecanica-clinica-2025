@@ -70,7 +70,7 @@ def instrucciones():
 
     with col1:
         #st.image(img_laptop, use_container_width=True)
-        st.image("img_cellphone.svg", use_container_width=True)
+        #st.image("img_cellphone.svg", use_container_width=True)
     
     with col2:
         st.markdown(
