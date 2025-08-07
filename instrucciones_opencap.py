@@ -60,7 +60,7 @@ def instrucciones():
 
     # imagenes
     img_laptop = open("img_laptop.svg", "r").read()
-    img_cellphone2 = open("img_cellphone2.svg", "r").read()
+    img_cellphones2 = open("img_cellphones2.svg", "r").read()
     
 
 
@@ -76,7 +76,7 @@ def instrucciones():
     ###
 
     with col1_cellphone:
-        st.image(img_cellphone2, use_container_width=True)
+        st.image(img_cellphones2, use_container_width=True)
     with col2_cellphone:
         st.markdown("""- Al menos 2 dispositivos iOS (iPhone, iPad, etc) con cámara, que usarás para registrar los videos. Estos necesariamente **deben** ser iOS (marca Apple).""")
 
