@@ -35,6 +35,8 @@ def instrucciones():
         """
     )
 
+    st.markdown("---")
+
     st.markdown(
         """
         - 📱📱 Al menos 2 dispositivos iOS (iPhone, iPad, etc) con cámara, que usarás para registrar los videos. Estos necesariamente **deben** ser iOS (marca Apple).
