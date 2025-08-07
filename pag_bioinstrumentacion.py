@@ -216,7 +216,7 @@ def mostrar():
 
     # Video embebido de YouTube
 
-    col1, col2 = st.columns([70, 30])
+    col1, col2 = st.columns([30, 70])
 
     with col1:
         st.image("img1.png", use_container_width=True)
