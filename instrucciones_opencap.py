@@ -85,7 +85,7 @@ def instrucciones():
     with col2_laptop:
         st.markdown("""- **Un computador**. Puede ser Windows o Mac. Aquí utilizarás la página Web de OpenCap para iniciar y detener las grabaciones, así como para manejar los datos capturados.
                     Eventualmente puedes usar un celular o una tablet para este propósito, pero este debe ser distinto a los dispositivos que usarás como cámaras, ya que las cámaras no las puedes mover.
-                    Dentro de lo posible, te recomendamos usar un computador.
+                    Te recomendamos usar un computador.
                     """)
 
 
