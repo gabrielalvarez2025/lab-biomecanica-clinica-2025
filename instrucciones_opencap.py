@@ -44,6 +44,7 @@ def instrucciones():
     
     
     st.subheader("Dispositivos necesarios:")
+    st.markdown(" ")
     
     # Esto determina el orden de las filas, modificar acá
     col1_cellphone, col2_cellphone  = st.columns(proporcion)
