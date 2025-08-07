@@ -57,6 +57,6 @@ def instrucciones():
     )
 
     svg_file = open("img_laptop.svg", "r").read()
-    st.image(svg_file, format="svg")
+    st.image(svg_file)
 
     
