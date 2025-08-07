@@ -216,13 +216,13 @@ def mostrar():
 
     # Video embebido de YouTube
 
-    col1, col2 = st.columns([40, 60])
+    col1, col2 = st.columns([70, 30])
 
     with col1:
         st.markdown("lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ip")
         
     with col2:
-        st.image("img1.png")
+        st.image("img1.png", use_column_width=True)
         # st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
     
