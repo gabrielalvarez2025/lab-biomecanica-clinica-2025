@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import random
+import streamlit.components.v1 as components
 
 
 def play_emg_sumatoria():
@@ -209,6 +210,9 @@ def mostrar():
         "- Goniometría"
     )
 
+    embeded_video_youtube(youtube_url="https://www.youtube.com/watch?v=Dykkubb-Qus&pp=ugUHEgVlbi1VUw%3D%3D",
+                          titulo="Video de prueba")
+
     sns.set_theme(style="darkgrid", palette="pastel")
 
     # Fin listado de contenidos
@@ -334,4 +338,20 @@ def botones_tarjeta(nombre_estado, color_boton, color_parrafo, texto_boton, text
             </p>
         """, unsafe_allow_html=True)
 
+
+def embeded_video_youtube(youtube_url: str, titulo: str = "Video de YouTube"):
+    
+    st.title(titulo)
+
+    video_width = 560  # Ancho del reproductor
+    video_height = 315  # Alto del reproductor
+    
+    # Tamaño del reproductor (ancho x alto)
+    components.html(
+        f"""
+        <iframe width="{video_width}" height="{video_height}" src="{youtube_url}" 
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen></iframe>
+        """, height=video_height
+    )
 
