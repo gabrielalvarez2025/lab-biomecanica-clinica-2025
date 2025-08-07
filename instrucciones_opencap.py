@@ -70,7 +70,6 @@ def instrucciones():
     with col1_cellphone:
         st.image(img_cellphones2, use_container_width=True)
         st.markdown(" ")
-        st.markdown(" ")
 
     with col2_cellphone:
         st.markdown("""- Al menos 2 dispositivos iOS (iPhone, iPad, etc) con cámara, que usarás para registrar los videos. Estos necesariamente **deben** ser iOS (marca Apple).""")
