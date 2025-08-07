@@ -4,6 +4,8 @@ import requests
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+PASTEL_COLORES = ["#AEC6CF", "#FFB347", "#77DD77"]  # azul pastel, naranja pastel, verde pastel
+
 def obtener_acc_desde_phyphox(ip: str) -> pd.DataFrame:
     url = f"http://{ip}/get?accX&accY&accZ"
     try:
@@ -14,8 +16,11 @@ def obtener_acc_desde_phyphox(ip: str) -> pd.DataFrame:
         accY = data['buffer']['accY']['buffer']
         accZ = data['buffer']['accZ']['buffer']
 
-        # Crear un eje de tiempo simple (índice)
-        tiempo = list(range(len(accX)))
+        # Si no hay datos, devolver DataFrame vacío
+        if not accX or not accY or not accZ:
+            return pd.DataFrame()
+
+        tiempo = list(range(len(accX)))  # índice artificial para tiempo
 
         df = pd.DataFrame({
             "Tiempo": tiempo,
@@ -25,56 +30,29 @@ def obtener_acc_desde_phyphox(ip: str) -> pd.DataFrame:
         })
         return df
     except Exception as e:
-        print(f"Error: {e}")
+        st.error(f"Error al obtener datos: {e}")
         return pd.DataFrame()
 
-PASTEL_PALETTE = sns.color_palette("pastel")
-
 def play_acc_phyphox():
-    st.subheader("🔁 Acelerómetro - Phyphox")
+    st.header("🔄 Acelerómetro desde Phyphox")
 
-    ip = st.text_input("Introduce la IP del dispositivo Phyphox (ej. http://192.168.0.25:8080)", key="phyphox_ip")
+    ip = st.text_input("Ingresa la IP de tu celular (sin http://)", value="192.168.1.5:8080")
 
-    if st.button("Conectar y graficar"):
-        if not ip:
-            st.warning("Por favor, ingresa una IP válida.")
-            return
+    if st.button("📡 Obtener datos"):
+        df = obtener_acc_desde_phyphox(ip)
 
-        try:
-            url = f"{ip}/get"
-            response = requests.get(url, timeout=3)  # timeout para evitar espera infinita
-            response.raise_for_status()
+        if df.empty:
+            st.warning("No se pudieron obtener datos. Verifica la IP y que Phyphox esté corriendo.")
+        else:
+            st.success("Datos recibidos correctamente 🎉")
 
-            data_json = response.json()
+            df_melt = df.melt(id_vars=["Tiempo"], var_name="Eje", value_name="Aceleración")
 
-            if "buffer" not in data_json:
-                st.error("No se encontró el buffer en la respuesta.")
-                return
+            fig, ax = plt.subplots(figsize=(10, 5))
+            sns.lineplot(data=df_melt, x="Tiempo", y="Aceleración", hue="Eje", palette=PASTEL_COLORES, ax=ax)
+            ax.set_title("Aceleración en Ejes X, Y, Z")
+            st.pyplot(fig)
 
-            acc_data = data_json["buffer"]
-
-            # Convertir a DataFrame
-            df = pd.DataFrame(acc_data)
-            df = df.rename(columns={
-                'accX': 'X', 'accY': 'Y', 'accZ': 'Z'
-            })
-            df = df.tail(100)  # últimos 100 valores
-
-            st.write("Datos recibidos:")
-            st.dataframe(df)
-
-            # Gráfico
-            plt.figure(figsize=(10, 4))
-            sns.lineplot(data=df, palette=PASTEL_PALETTE)
-            plt.title("Acelerómetro (últimos 100 datos)")
-            plt.xlabel("Tiempo (muestras)")
-            plt.ylabel("Aceleración (m/s²)")
-            st.pyplot(plt.gcf())
-
-        except requests.exceptions.RequestException as e:
-            st.error(f"Error de conexión: {e}")
-        except Exception as e:
-            st.error(f"Otro error: {e}")
 
 def mostrar():
     st.title("Unidad 5: Análisis de marcha")
