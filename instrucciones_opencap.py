@@ -43,6 +43,8 @@ def instrucciones():
     img_cellphones2 = open("img_cellphones2.svg", "r").read()
     
     
+    st.markdown("---")
+    
     st.subheader("Dispositivos necesarios:")
     st.markdown(" ")
     
@@ -69,14 +71,6 @@ def instrucciones():
     
     with col2_laptop:
         st.markdown("""- Un computador. Eventualmente puede ser un celular o una tablet, pero debe ser distinto a los dispositivos que usarás como cámaras.""")
-    
-    ###
-
-    st.markdown("cambio")
-
-    
-
-    
 
 
     st.markdown("---")
