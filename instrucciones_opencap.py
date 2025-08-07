@@ -26,6 +26,7 @@ def instrucciones():
     # imagenes
     img_laptop = open("img_laptop.svg", "r").read()
     img_cellphones2 = open("img_cellphones2.svg", "r").read()
+    img_appstore = open("img_appstore.svg", "r").read()
     
     
     
@@ -35,9 +36,10 @@ def instrucciones():
     st.markdown(" ")
     
     # Esto determina el orden de las filas, modificar acá
-    col1_opencap,    col2_opencap   = st.columns(proporcion)
+    col1_opencap,   col2_opencap    = st.columns(proporcion)
     col1_cellphone, col2_cellphone  = st.columns(proporcion)
     col1_laptop,    col2_laptop     = st.columns(proporcion)
+    col1_appstore,  col2_appstore   = st.columns(proporcion)
     
     
     
@@ -59,7 +61,7 @@ def instrucciones():
 
     with col2_cellphone:
         st.markdown("""- Al menos **2 dispositivos iOS** (iPhone, iPad, etc) con cámara, que usarás para registrar los videos. Estos necesariamente **deben** ser iOS (marca Apple).""")
-        st.markdown("""- Debes descargar la App de OpenCap en ambos dispositivos iOS desde la App Store.""")
+        
     
     
     # Fila laptop
@@ -73,6 +75,15 @@ def instrucciones():
                     Eventualmente puedes usar un celular o una tablet para este propósito, pero este debe ser distinto a los dispositivos que usarás como cámaras, ya que las cámaras no las puedes mover.
                     Te recomendamos usar un computador.
                     """)
+    
+    # Fila descargar app en appstore
+    with col1_appstore:
+        st.markdown(" ")
+        st.image(img_appstore, use_container_width=True)
+
+    with col2_appstore:
+        st.markdown("""- Debes descargar la App de OpenCap  desde la App Store en todos los dispositivos iOS que usarás como cámara.""")
+        st.markdown(" ")
 
 
     st.markdown("---")
