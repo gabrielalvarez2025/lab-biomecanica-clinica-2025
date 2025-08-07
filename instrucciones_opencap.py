@@ -37,7 +37,7 @@ def instrucciones():
 
     st.markdown("---")
 
-    #st.image("https://toppng.com/uploads/preview/samsung-laptop-png-11552846920ggjwoxjcy6.png")
+    st.image("img_laptop.pmg")
 
     st.markdown(
         """
