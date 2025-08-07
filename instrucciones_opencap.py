@@ -17,6 +17,10 @@ def instrucciones():
 
     st.markdown(
         """
-        El objetivo de este espacio es guiarte a través de los pasos necesarios para utilizar OpenCap de manera efectiva.
+        El objetivo de este espacio es guiarte a través de los pasos necesarios para utilizar OpenCap de manera fácil, rápida y efectiva.
         """
     )
+
+    st.markdown("---")
+
+    st.subheader("Contenido")
