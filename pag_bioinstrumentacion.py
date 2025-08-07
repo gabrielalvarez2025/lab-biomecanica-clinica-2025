@@ -186,6 +186,7 @@ def play_emg_sumatoria():
                 
                 """)
     st.markdown("---")
+    st.markdown("fin play sumatoria")
 
 def mostrar():
     st.header("Unidad 1: Bioinstrumentación")
