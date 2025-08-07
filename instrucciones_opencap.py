@@ -61,7 +61,7 @@ def instrucciones():
         st.image("img_opencap_logo.png", use_container_width=True)
 
     with col2_opencap:
-        st.markdown("""- Debes **crear una cuenta en OpenCap**. Puedes crear una cuenta gratuita en https://www.opencap.ai/ con tu correo electrónico.""")
+        st.markdown("""- Debes **crear una cuenta en OpenCap**. Puedes hacerlo de forma gratuita en https://www.opencap.ai/ con tu correo electrónico.""")
         st.markdown(" ")
     
 
