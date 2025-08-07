@@ -58,6 +58,7 @@ def instrucciones():
     
     # Fila cuenta opencap
     with col1_opencap:
+        st.markdown(" ")
         st.image("img_opencap_logo.png", use_container_width=True)
 
     with col2_opencap:
