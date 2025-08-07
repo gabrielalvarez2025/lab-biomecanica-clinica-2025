@@ -219,11 +219,12 @@ def mostrar():
     col1, col2 = st.columns([70, 30])
 
     with col1:
-        st.markdown("lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ip")
+        st.image("img1.png", use_container_width=True)
+        
         
     with col2:
-        st.image("img1.png", use_container_width=True)
-        # st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+        st.markdown("lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ip")
+        
 
     
     # Configuración tema seaborn
