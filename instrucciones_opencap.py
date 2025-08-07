@@ -63,14 +63,14 @@ def instrucciones():
     with open("img_cellphone.svg", "r", encoding="utf-8") as f:
         svg_code = f.read()
 
-    st.markdown(svg_code, unsafe_allow_html=True)
+    
     
 
     col1, col2 = st.columns([10, 90])
 
     with col1:
         #st.image(img_laptop, use_container_width=True)
-        #st.image("img_cellphone.svg", use_container_width=True)
+        st.markdown(svg_code, unsafe_allow_html=True)
     
     with col2:
         st.markdown(
