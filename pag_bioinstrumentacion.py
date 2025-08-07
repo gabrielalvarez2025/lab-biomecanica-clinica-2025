@@ -222,7 +222,8 @@ def mostrar():
         st.markdown("lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ipsem lorem ip")
         
     with col2:
-        st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+        st.image(img1.png)
+        # st.video("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 
     
     # Configuración tema seaborn
