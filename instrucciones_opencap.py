@@ -28,7 +28,7 @@ def instrucciones():
     st.markdown(
         """
         Para utilizar OpenCap, asegúrate de tener lo siguiente:
-        - Crear una cuenta en OpenCap. Puedes crear una cuenta gratuita en https://opencap con tu correo electrónico.
+        - Crear una cuenta en OpenCap. Puedes crear una cuenta gratuita en https://www.opencap.ai/ con tu correo electrónico.
         - Contar con **dos o más** dispositivos iOS (iPhone, iPad, etc) con cámara. Estos deben ser iOS (marca Apple).
         - Descargar la aplicación de OpenCap en ambos dispositivos iOS desde la App Store.
         - Disponer de un espacio bien iluminado y más bien amplio para realizar las grabaciones.
