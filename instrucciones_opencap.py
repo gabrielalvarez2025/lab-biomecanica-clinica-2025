@@ -43,6 +43,7 @@ def instrucciones():
     col1_opencap,   col2_opencap    = st.columns(proporcion)
     col1_appstore,  col2_appstore   = st.columns(proporcion)
     col1_wifi,      col2_wifi       = st.columns(proporcion)
+    col1_tablero,   col2_tablero    = st.columns(proporcion)
     
     # Fila cellphones
     with col1_cellphone:
@@ -93,6 +94,17 @@ def instrucciones():
     with col2_wifi:
         st.markdown("""- El computador y todos los dispositivos iOS deben estar conectados a la **misma red WiFi**. Esto es fundamental para que los dispositivos puedan comunicarse entre sí y con la plataforma de OpenCap.""")
         #st.markdown(" ")
+
+    
+    # Fila tablero calibración
+    with col1_tablero:
+        st.markdown(" ")
+        st.image(img_wifi, use_container_width=True)
+
+    with col2_tablero:
+        st.markdown("""- Tener impreso este tablero, que usarás para la calibración de las cámaras. Puedes descargarlo e imprimirlo desde [aquí]("https://cdn.prod.website-files.com/62468717bed6b421c89bbf36/6258dd3518244b061c1b02f5_Checkerboard_4x5_35mm.pdf")""")"""
+        #st.markdown(" ")
+    
     
     
 
