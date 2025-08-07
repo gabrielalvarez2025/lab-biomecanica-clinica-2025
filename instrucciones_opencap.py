@@ -60,7 +60,10 @@ def instrucciones():
 
     # imagenes
     img_laptop = open("img_laptop.svg", "r").read()
-    #img_cellphone = open("img_cellphone.svg", "r").read()
+    with open("img_cellphone.svg", "r", encoding="utf-8") as f:
+        svg_code = f.read()
+
+    st.markdown(svg_code, unsafe_allow_html=True)
     
 
     col1, col2 = st.columns([10, 90])
