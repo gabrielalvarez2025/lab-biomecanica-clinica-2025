@@ -24,7 +24,7 @@ def main_phyphox():
         st.dataframe(df, hide_index=True)
 
         # Inputs para rango de tiempo
-        min_time = float(df["Time (s)"].min())
+        min_time = 0 #float(df["Time (s)"].min())
         max_time = float(df["Time (s)"].max())
 
         # Presentar graficos
