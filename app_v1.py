@@ -18,7 +18,7 @@ def mostrar(func, mostrar: bool = True):
     Si mostrar es True, se muestra el contenido; de lo contrario, se muestra un mensaje de construcción.
     """
     if mostrar:
-        func
+        func()
     else:
         st.markdown("## Esta sección está en construcción :)")
         st.image("images/img_gears.gif")  # Imagen de engranajes animados
