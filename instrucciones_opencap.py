@@ -121,6 +121,8 @@ def main_instrucciones_opencap():
     st.markdown("---")
 
     st.subheader("Preparando el espacio de trabajo")
+
+    st. markdown("OpenCap es bastante flexible y generalmente no tiene problemas para capturar buenos datos en la mayoría de los casos. Te dejamos algunos requisitos infaltables y algunas recomendaciones de buenas prácticas para que te asegures de que OpenCap no tenga conflictos al momento de tomar los datos")
     
     col_espacio1, col_espacio2 = st.columns([40, 60])
 
@@ -138,7 +140,7 @@ def main_instrucciones_opencap():
             """
             ##### Persona:
 
-            OpenCap es bastante flexible y generalmente no tiene problemas para capturar buenos datos en la mayoría de los casos. Sin embargo, te dejamos algunas recomendaciones para optimizar la captura y que OpenCap no tenga conflictos al tomar datos:
+            
             
             - Ropa ajustada es mejor que holgada
 
