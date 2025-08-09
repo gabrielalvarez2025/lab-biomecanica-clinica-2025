@@ -6,7 +6,7 @@ import random
 import streamlit.components.v1 as components
 
 from probando_phyphox import main_phyphox_transmission
-from play_emg_sumatoria import emg_sumatoria as play_emg_sumatoria
+from play_emg_sumatoria import emg_sumatoria
 
 
 
@@ -80,7 +80,7 @@ def main_bioinstrumentacion():
 
     # ✅ Mostrar contenido si fue activado
     if st.session_state["mostrar_sumatoria"]:
-        play_emg_sumatoria()
+        emg_sumatoria()
     
     if st.session_state["mostrar_torques"]:
         main_phyphox_transmission()
