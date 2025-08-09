@@ -25,6 +25,8 @@ def main_phyphox():
         st.dataframe(df, hide_index=True)
 
         # Presentar graficos
+        st.markdown(" ")
+        st.markdown(" ")
         st.markdown("###  Representación gráfica de los datos:")
         
         # Configuración de Seaborn y Matplotlib
