@@ -138,7 +138,13 @@ def main_instrucciones_opencap():
             """
             ##### Persona:
 
-            asjvblbxsjlanbxlsdbcjl
+            OpenCap es bastante flexible y generalmente no tiene problemas para capturar buenos datos en la mayoría de los casos. Sin embargo, te dejamos algunas recomendaciones para optimizar la captura y que OpenCap no tenga conflictos al tomar datos:
+            
+            - Ropa ajustada es mejor que holgada
+
+            - Ropa de colores que contrasten con el fondo.
+
+            - Zapatillas que contrasten con el suelo y el pantalón.
             """
         )
 
