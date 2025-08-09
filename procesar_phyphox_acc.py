@@ -67,10 +67,10 @@ def main_phyphox():
 
         # Fondo transparente también para la leyenda
         legend = ax.legend()
-        legend.get_frame().set_facecolor("none")
+        legend.get_frame().set_facecolor("white")
         legend.get_frame().set_edgecolor("white")
         for text in legend.get_texts():
-            text.set_color("white")
+            text.set_color("k")
 
         # Mostrar gráfico en Streamlit
         st.pyplot(fig, transparent=True)
