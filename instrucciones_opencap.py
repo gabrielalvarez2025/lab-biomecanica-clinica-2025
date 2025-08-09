@@ -127,7 +127,7 @@ def main_instrucciones_opencap():
     col_espacio1, col_espacio2 = st.columns([40, 60])
 
     with col_espacio1:
-        st.success(
+        st.markdown(
             """
             ##### Espacio físico:
 
