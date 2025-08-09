@@ -330,5 +330,5 @@ def main_bioinstrumentacion():
     if st.session_state["mostrar_torques"]:
         main_phyphox()
 
-    st.markdown("---")
+    #st.markdown("---")
 
