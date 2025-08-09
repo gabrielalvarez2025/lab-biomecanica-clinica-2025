@@ -126,7 +126,7 @@ def main_instrucciones_opencap():
 
     with col_espacio1:
     
-        st.markdown("### Espacio físico:")
+        st.markdown("#### Espacio físico:")
         st.markdown(
             """
             Antes de comenzar a grabar, asegúrate de que el espacio donde realizarás las grabaciones esté bien iluminado y libre de obstáculos. 
