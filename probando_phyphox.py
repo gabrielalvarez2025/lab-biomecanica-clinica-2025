@@ -22,6 +22,9 @@ def main_phyphox_transmission():
         st.write("Vista previa de los datos:")
         st.dataframe(df)
 
+        # Presentar graficos
+        st.markdown("###  Representación gráfica de los datos:")
+        
         # Configuración de Seaborn y Matplotlib
         sns.set_theme(style="whitegrid", palette="pastel")
 
