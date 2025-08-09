@@ -141,7 +141,7 @@ def main_instrucciones_opencap():
             
             Coloca tus cámaras (iPhones, iPads, etc) alrededor del área de grabación. Usaremos la cámara trasera de tus dispositivos.
             
-            Todas la cámaras deben:
+            **Todas la cámaras deben:**
              
             - Estar fijas, estáticas, idealmente en trípodes.
 
