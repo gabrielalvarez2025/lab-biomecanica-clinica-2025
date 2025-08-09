@@ -5,7 +5,7 @@ import seaborn as sns
 
 def main_phyphox_transmission():
     
-    st.title("Visualización de Aceleraciones en el Tiempo")
+    st.title("Procesando Datos del acelerómetro del celular con Phyphox")
 
     uploaded_file = st.file_uploader("Sube un archivo CSV", type=["csv"])
 
