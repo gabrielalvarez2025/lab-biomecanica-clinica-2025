@@ -172,6 +172,12 @@ def main_instrucciones_opencap():
             - Evita que la persona entre/salga de la zona de grabación.
             """
         )
+
+        st.error(
+            """
+            ##### Tablero de calibración
+            """
+        )
     
 
     st.markdown(
