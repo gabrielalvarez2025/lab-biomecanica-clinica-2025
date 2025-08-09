@@ -12,7 +12,7 @@ from pag_marcha import mostrar as mostrar_marcha
 from instrucciones_opencap import instrucciones as mostrar_instrucciones_opencap
 
 
-def mostrar(func: function, mostrar: bool = True):
+def mostrar(func, mostrar: bool = True):
     """
     Función para mostrar la página principal del espacio interactivo LabBC.
     Si mostrar es True, se muestra el contenido; de lo contrario, se muestra un mensaje de construcción.
