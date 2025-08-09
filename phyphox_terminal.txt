@@ -1,0 +1,4 @@
+while true; do
+  curl -s 'http://192.168.1.119:8080/get?accX&accY&accZ' | jq -r '"AccX: \(.buffer.accX.buffer[0]) | AccY: \(.buffer.accY.buffer[0]) | AccZ: \(.buffer.accZ.buffer[0])"'
+  sleep 0.2
+done
