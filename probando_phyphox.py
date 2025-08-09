@@ -8,12 +8,10 @@ import time
 
 PASTEL_COLORES = ["#AEC6CF", "#FFB347", "#77DD77"]  # azul pastel, naranja pastel, verde pastel
 
-def obtener_acc_desde_phyphox(ip: str, timeout=10):
-    url = f"http://{ip}/get?"
-    #/get?accX&accY&accZ"
+def obtener_acc_desde_phyphox(ip: str, timeout=5):
+    url = f"http://{ip}/get?accX&accY&accZ"
     try:
         response = requests.get(url, timeout=timeout)
-        st.markdown(response.text)
         response.raise_for_status()
         data = response.json()
 
@@ -21,42 +19,44 @@ def obtener_acc_desde_phyphox(ip: str, timeout=10):
         accY = data['buffer']['accY']['buffer']
         accZ = data['buffer']['accZ']['buffer']
 
-        timestamps = data['buffer']['accX']['buffer'].get('time', list(range(len(accX))))  # si no hay 'time', usa índice
+        # Si no tienes timestamps, usar índice
+        tiempo = list(range(len(accX)))
 
         df = pd.DataFrame({
-            "Tiempo (s)": timestamps,
+            "Tiempo": tiempo,
             "AccX": accX,
             "AccY": accY,
             "AccZ": accZ
         })
         return df
-    except requests.exceptions.ConnectTimeout:
-        print(f"Timeout: No se pudo conectar a {ip} en {timeout} segundos")
-    except requests.exceptions.ConnectionError as e:
-        print(f"Error de conexión: {e}")
     except Exception as e:
-        print(f"Error inesperado: {e}")
-    return pd.DataFrame()
+        st.error(f"Error al obtener datos: {e}")
+        return pd.DataFrame()
 
 def play_acc_phyphox():
-    st.header("🔄 Acelerómetro desde Phyphox")
+    st.header("🔄 Acelerómetro en vivo desde Phyphox")
 
-    ip = st.text_input("Ingresa la IP de tu celular (sin http://)", value="192.168.1.5:8080")
+    ip = st.text_input("IP de tu celular (sin http://)", value="192.168.1.119:8080")
 
-    if st.button("📡 Obtener datos"):
-        df = obtener_acc_desde_phyphox(ip)
+    if st.button("📡 Iniciar"):
+        contenedor_grafico = st.empty()
+        df_acumulado = pd.DataFrame(columns=["Tiempo", "AccX", "AccY", "AccZ"])
 
-        if df.empty:
-            st.warning("No se pudieron obtener datos. Verifica la IP y que Phyphox esté corriendo.")
-        else:
-            st.success("Datos recibidos correctamente 🎉")
+        while True:
+            df = obtener_acc_desde_phyphox(ip)
+            if not df.empty:
+                # Tomamos solo la última fila recibida
+                ultima_fila = df.iloc[[-1]]
+                df_acumulado = pd.concat([df_acumulado, ultima_fila], ignore_index=True)
 
-            df_melt = df.melt(id_vars=["Tiempo"], var_name="Eje", value_name="Aceleración")
+                # Graficar
+                df_melt = df_acumulado.melt(id_vars=["Tiempo"], var_name="Eje", value_name="Aceleración")
+                fig, ax = plt.subplots(figsize=(10, 5))
+                sns.lineplot(data=df_melt, x="Tiempo", y="Aceleración", hue="Eje", palette=PASTEL_COLORES, ax=ax)
+                ax.set_title("Aceleración en Ejes X, Y, Z")
+                contenedor_grafico.pyplot(fig)
 
-            fig, ax = plt.subplots(figsize=(10, 5))
-            sns.lineplot(data=df_melt, x="Tiempo", y="Aceleración", hue="Eje", palette=PASTEL_COLORES, ax=ax)
-            ax.set_title("Aceleración en Ejes X, Y, Z")
-            st.pyplot(fig)
+            time.sleep(0.2)  # Actualización cada 200 ms
 
 
 
