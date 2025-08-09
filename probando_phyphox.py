@@ -99,5 +99,5 @@ def probando2():
 
 def main_phyphox():
     st.title("Unidad 5: Análisis de marcha")
-    probando2()
+    play_acc_phyphox()
 
