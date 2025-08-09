@@ -134,7 +134,7 @@ def main_instrucciones_opencap():
             """
         )
 
-        st.markdown("### Cámaras:")
+        st.markdown("##### Cámaras:")
         st.markdown(
             """
             Coloca tus dispositivos iOS (iPhones, iPads, etc) en posiciones estratégicas alrededor del área de grabación.
