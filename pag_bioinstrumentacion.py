@@ -324,10 +324,10 @@ def main_bioinstrumentacion():
 
     # ✅ Mostrar contenido si fue activado
     if st.session_state["mostrar_sumatoria"]:
-        emg_sumatoria()
+        play_emg_sumatoria()
     
     if st.session_state["mostrar_torques"]:
-        main_phyphox_transmission()
+        main_phyphox()
 
     st.markdown("---")
 
