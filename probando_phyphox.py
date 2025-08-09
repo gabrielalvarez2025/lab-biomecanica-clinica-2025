@@ -20,7 +20,7 @@ def main_phyphox_transmission():
         df.columns = df.columns.str.strip()
 
         st.write("Vista previa de los datos:")
-        st.dataframe(df.head())
+        st.dataframe(df)
 
         # Configuración de Seaborn y Matplotlib
         sns.set_theme(style="whitegrid", palette="pastel")
