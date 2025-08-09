@@ -137,15 +137,21 @@ def main_instrucciones_opencap():
         st.markdown("##### Cámaras:")
         st.markdown(
             """
-            Coloca tus cámaras (iPhones, iPads, etc) sobre trípodes o superficies fijas alrededor del área de grabación.
-            Todas la cámaras deben estar fijas y apuntando al lugar donde se ubicará la persona.
+            Coloca tus cámaras (iPhones, iPads, etc) sobre trípodes o superficies fijas alrededor del área de grabación. Usaremos la cámara trasera de los. dispositivos.
             
-            Todas las cámaras deben:
+            Todas la cámaras deben:
+             
+            - Estar fijas, estáticas, idealmente en trípodes.
 
-            - Estar estáticas, idealmente en trípodes.
+            - Orientarse para grabación vertical.
+
             - Apuntar a la zona donde se ubicará la persona.
+            
             - Estar posicionadas de forma que durante el movimiento todo el cuerpo de la persona aparezca en la grabación. La persona no debe "salirse de cuadro".
-            - Si estás usando sólo 2 cámaras, se recomienda que estas apunten en 45° hacia la persona.
+        
+            - Evita que otras personas se crucen o aparezcan en el video.
+
+            - Evita que la persona entre/salga de la zona de grabación.
             """
         )
 
@@ -156,12 +162,8 @@ def main_instrucciones_opencap():
     st.markdown(
         """
         
-        - Usaremos la cámara trasera.
-        
-        - Evita que otras personas se crucen o aparezcan en el video.
+       
 
-        - Evita que la persona entre/salga de la zona de grabación.
-        
         """
     )
         
