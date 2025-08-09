@@ -143,7 +143,7 @@ def main_instrucciones_opencap():
         )
     
     with col_espacio2:
-        st.video("https://www.youtube.com/watch?v=LPHeq7bxP38&t=47s", start_time="2s", end_time="4s")
+        st.video("https://www.youtube.com/watch?v=LPHeq7bxP38&t=47s", start_time="15s", end_time="32s")
         
 
 
