@@ -129,7 +129,7 @@ def main_instrucciones_opencap():
             """
             ##### Espacio físico:
 
-            Asegúrate de que el espacio donde realizarás las grabaciones esté bien iluminado y libre de obstáculos. 
+            Asegúrate de que el espacio donde realizarás las grabaciones esté **bien iluminado** 💡 y libre de obstáculos. 
             Es importante que el área sea lo suficientemente amplia para que puedas moverte con libertad y que las cámaras puedan capturar todo el movimiento sin obstrucciones.
             """
         )
