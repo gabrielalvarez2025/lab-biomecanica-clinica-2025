@@ -140,13 +140,11 @@ def main_instrucciones_opencap():
             """
             ##### Persona:
 
-            **Recomendaciones:**
-            
-            - Ropa ajustada es mejor que holgada
+            - Prefiere ropa ajustada por sobre holgada
 
-            - Ropa de colores que contrasten con el fondo.
+            - Prefiere ropa de un color que contraste con el fondo.
 
-            - Zapatillas que contrasten con el suelo y el pantalón.
+            - Prefiere zapatillas que contrasten con el suelo y con el pantalón.
             """
         )
 
