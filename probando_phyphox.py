@@ -12,7 +12,7 @@ def main_phyphox_transmission():
     if uploaded_file is not None:
         # Leer CSV (intenta con tabulador primero)
         try:
-            df = pd.read_csv(uploaded_file, sep="\t")
+            df = pd.read_csv(uploaded_file, sep=",")
         except:
             df = pd.read_csv(uploaded_file, sep=",")
 
