@@ -6,7 +6,7 @@ import random
 import streamlit.components.v1 as components
 
 
-def play_emg_sumatoria():
+def emg_sumatoria():
     
     sns.set_theme(style="darkgrid", palette="pastel")
     
