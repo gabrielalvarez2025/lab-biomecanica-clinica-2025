@@ -24,11 +24,11 @@ def instrucciones():
     proporcion = [15, 85]  # Proporción de columnas
     
     # imagenes
-    img_laptop = open("img_laptop.svg", "r").read()
-    img_cellphones2 = open("img_cellphones2.svg", "r").read()
-    img_appstore = open("img_appstore_logo.svg", "r").read()
-    img_wifi = open("img_wifi_icon.svg", "r").read()
-    img_board = open("img_board.svg", "r").read()
+    img_laptop = open("images/img_laptop.svg", "r").read()
+    img_cellphones2 = open("images/img_cellphones2.svg", "r").read()
+    img_appstore = open("images/img_appstore_logo.svg", "r").read()
+    img_wifi = open("images/img_wifi_icon.svg", "r").read()
+    img_board = open("images/img_board.svg", "r").read()
     
     
     
