@@ -32,7 +32,7 @@ def main_phyphox():
         st.markdown(" ")
         st.markdown("###  Representación gráfica de los datos:")
 
-        col1, col2 = st.columns(2)
+        esp1, col1, col2, esp2 = st.columns([5, 45, 45, 5]])
 
         with col1:
             start_time = st.number_input("Tiempo inicial (s)", min_value=min_time, max_value=max_time, value=min_time, step=0.1)
