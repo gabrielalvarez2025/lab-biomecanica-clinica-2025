@@ -141,7 +141,7 @@ def main_instrucciones_opencap():
             
             Todas la cámaras deben:
              
-            - Estar fijas, estáticas, idealmente en trípodes. Si no tienes trípode puedes dejarlas apoyadas en un mueble, siempre que no las pases a llevar.
+            - Estar fijas, estáticas, idealmente en trípodes.
 
             - Orientarse para grabación vertical.
 
