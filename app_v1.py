@@ -55,7 +55,7 @@ st.sidebar.markdown("---")  # línea horizontal para separar
 
 # Mostrar contenido según la selección
 if pagina == pag_bienvenida:
-    mostrar_bienvenida()
+    mostrar_bienvenida(False)
 
 elif pagina == pag_introduccion:
     mostrar_introduccion()

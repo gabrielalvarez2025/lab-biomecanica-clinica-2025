@@ -1,7 +1,12 @@
 import streamlit as st
 
-def mostrar():
-    
+def mostrar(boolean=True):
+    if boolean:
+        main()
+    else:
+        st.write("Esta sección está en construcción :)")
+
+def main():
     
     # Título principal
     st.title("Espacio Interactivo LabBC")
