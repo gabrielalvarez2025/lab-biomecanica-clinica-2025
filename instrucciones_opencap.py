@@ -127,14 +127,14 @@ def main_instrucciones_opencap():
     col_espacio1, col_espacio2 = st.columns([40, 60])
 
     with col_espacio1:
-        st.markdown(
+        st.success(
             """
             ##### Espacio físico:
 
             Asegúrate de que el espacio donde <u>realizarás</u> las grabaciones esté **bien iluminado** 💡 y libre de obstáculos. 
             
             Es importante que el área sea lo suficientemente amplia para que la persona pueda moverse con libertad y que las cámaras puedan capturar todo el movimiento sin obstrucciones.
-            """, unsafe_allow_html=True
+            """
         )
         st.warning(
             """
