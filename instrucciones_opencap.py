@@ -23,8 +23,7 @@ def main_instrucciones_opencap():
 
     st.markdown(
         """
-        Para instrucciones más detalladas, puedes consultar la documentación y tutoriales oficiales de OpenCap en:
-        [**aquí**](https://www.opencap.ai/best-practices).
+        Para instrucciones más detalladas, puedes consultar la documentación y tutoriales oficiales de OpenCap [**aquí**](https://www.opencap.ai/best-practices).
         """
     )
 
