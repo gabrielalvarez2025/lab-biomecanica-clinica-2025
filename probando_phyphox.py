@@ -24,10 +24,10 @@ def main_phyphox():
                 else:
                     valores.append(None)
             return valores
-        except Exception as e:
+        except Exception:
             return [None] * len(CHANNELS)
 
-    st.title("Acelerómetro en tiempo real con Phyphox")
+    st.title("Acelerómetro en tiempo real (solo texto)")
 
     if 'running' not in st.session_state:
         st.session_state.running = False
@@ -37,36 +37,15 @@ def main_phyphox():
 
     boton = st.button("Iniciar / Detener lectura", on_click=toggle_running)
 
-    texto_contenedor = st.empty()
-    grafico_contenedor = st.empty()
-
-    datos = {"Tiempo": [], "accX": [], "accY": [], "accZ": []}
-    tiempo_inicio = time.time()
+    contenedor = st.empty()
 
     while st.session_state.running:
         valores = obtener_valores()
-        tiempo_actual = time.time() - tiempo_inicio
-
         if None not in valores:
-            datos["Tiempo"].append(tiempo_actual)
-            datos["accX"].append(valores[0])
-            datos["accY"].append(valores[1])
-            datos["accZ"].append(valores[2])
-
-            texto_contenedor.text(f"AccX: {valores[0]:.3f} | AccY: {valores[1]:.3f} | AccZ: {valores[2]:.3f}")
-
-            df = pd.DataFrame(datos)
-            df_melt = df.melt(id_vars=["Tiempo"], value_vars=["accX", "accY", "accZ"], var_name="Eje", value_name="Valor")
-
-            fig, ax = plt.subplots(figsize=(10, 5))
-            sns.lineplot(data=df_melt, x="Tiempo", y="Valor", hue="Eje", ax=ax)
-            ax.set_xlabel("Tiempo (s)")
-            ax.set_ylabel("Aceleración")
-            ax.set_title("Acelerómetro en tiempo real")
-            grafico_contenedor.pyplot(fig)
+            texto = f"AccX: {valores[0]:.3f} | AccY: {valores[1]:.3f} | AccZ: {valores[2]:.3f}"
         else:
-            texto_contenedor.text("No se recibieron datos completos.")
-
+            texto = "No se recibieron datos completos."
+        contenedor.text(texto)
         time.sleep(0.2)
 
     if not st.session_state.running:
