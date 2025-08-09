@@ -22,7 +22,7 @@ def main_phyphox():
         df.columns = df.columns.str.strip()
 
         st.write("Vista previa de los datos:")
-        st.dataframe(df)
+        st.dataframe(df, index=False)
 
         # Presentar graficos
         st.markdown("###  Representación gráfica de los datos:")
