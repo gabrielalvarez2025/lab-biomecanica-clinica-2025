@@ -140,7 +140,7 @@ def main_instrucciones_opencap():
             """
             ##### Persona:
 
-            
+            **Recomendaciones:**
             
             - Ropa ajustada es mejor que holgada
 
