@@ -21,7 +21,7 @@ def obtener_acc_desde_phyphox(ip: str, timeout=10):
         accY = data['buffer']['accY']['buffer']
         accZ = data['buffer']['accZ']['buffer']
 
-        timestamps = data['buffer']['accX'].get('time', list(range(len(accX))))  # si no hay 'time', usa índice
+        timestamps = data['buffer']['accX']['buffer'].get('time', list(range(len(accX))))  # si no hay 'time', usa índice
 
         df = pd.DataFrame({
             "Tiempo (s)": timestamps,
