@@ -4,8 +4,11 @@ import time
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import subprocess
 
-def main_phyphox():
+def main_phyphox2():
+
+
 
     PP_ADDRESS = "http://192.168.1.119:8080"
     CHANNELS = ["accX", "accY", "accZ"]
@@ -50,3 +53,9 @@ def main_phyphox():
 
     if not st.session_state.running:
         st.write("La lectura está detenida. Presiona el botón para iniciar.")
+
+def main_phyphox():
+    
+    if st.button("Abrir juego Pygame"):
+        subprocess.Popen(["python", "pygame_acc.py"])
+        st.write("Juego abierto en una ventana nueva.")
