@@ -14,8 +14,12 @@ from instrucciones_opencap import main_instrucciones_opencap
 
 def mostrar(func, mostrar: bool = True):
     """
-    Función para mostrar la página principal del espacio interactivo LabBC.
-    Si mostrar es True, se muestra el contenido; de lo contrario, se muestra un mensaje de construcción.
+    Función para mostrar una página a través de su función func=main().
+    Si mostrar=True, se muestra el contenido; si False, muestra mensaje de "en construcción".
+
+    **func**: función que contiene el contenido de la página.
+    **mostrar**: booleano que indica si se debe mostrar el contenido o no.
+    
     """
     if mostrar:
         func()
@@ -23,8 +27,7 @@ def mostrar(func, mostrar: bool = True):
         st.markdown("## Esta sección está en construcción :)")
         st.image("images/img_gears.gif")  # Imagen de engranajes animados
 
-
-
+# Configuración de la página
 st.set_page_config(page_title="Espacio LabBC", layout="centered", initial_sidebar_state="expanded")
 
 
@@ -85,4 +88,4 @@ elif pagina == pag_marcha:
     mostrar(main_marcha, False)
 
 elif pagina == pag_instrucciones_opencap:
-    mostrar(main_instrucciones_opencap, False)
+    mostrar(main_instrucciones_opencap, True)
