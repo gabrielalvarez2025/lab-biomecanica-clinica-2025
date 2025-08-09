@@ -9,7 +9,7 @@ import time
 PASTEL_COLORES = ["#AEC6CF", "#FFB347", "#77DD77"]  # azul pastel, naranja pastel, verde pastel
 
 def obtener_acc_desde_phyphox(ip: str, timeout=10):
-    url = f"http://{ip}"
+    url = f"http://{ip}/get?"
     #/get?accX&accY&accZ"
     try:
         response = requests.get(url, timeout=timeout)
