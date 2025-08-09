@@ -14,7 +14,7 @@ def main_phyphox_transmission():
 
     if uploaded_file is not None:
         # Leer CSV
-        df = pd.read_csv(uploaded_file, sep="\t")  # usa tabulador como separador
+        df = pd.read_csv(uploaded_file, sep=",")  # usa tabulador como separador
         
         # Renombrar columnas si es necesario (eliminar espacios y asegurar nombres correctos)
         df.columns = df.columns.str.strip()
