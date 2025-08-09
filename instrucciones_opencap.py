@@ -137,7 +137,7 @@ def main_instrucciones_opencap():
         #st.markdown("##### Cámaras:", font_color="")
         st.info(
             """
-            ##### Cámaras:"
+            ##### Cámaras:
             
             Coloca tus cámaras (iPhones, iPads, etc) sobre trípodes o superficies fijas alrededor del área de grabación. Usaremos la cámara trasera de tus dispositivos.
             
