@@ -6,7 +6,7 @@ import random
 import streamlit.components.v1 as components
 
 from probando_phyphox import main_phyphox_transmission
-import play_emg_sumatoria.emg_sumatoria as play_emg_sumatoria
+from play_emg_sumatoria import emg_sumatoria as play_emg_sumatoria
 
 
 
