@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 
 
-def main_instrucciones():
+def main_instrucciones_opencap():
     st.header("Instrucciones para el uso de OpenCap")
 
     st.markdown(
