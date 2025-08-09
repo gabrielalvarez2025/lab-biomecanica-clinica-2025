@@ -140,9 +140,9 @@ def main_instrucciones_opencap():
             """
             ##### Persona:
 
-            - Prefiere ropa ajustada por sobre holgada
+            - Prefiere ropa ajustada 👖 por sobre holgada
 
-            - Prefiere ropa de un color que contraste con el fondo.
+            - Prefiere ropa de un color que contraste ◑ con el fondo.
 
             - Prefiere zapatillas que contrasten con el suelo y con el pantalón.
             """
