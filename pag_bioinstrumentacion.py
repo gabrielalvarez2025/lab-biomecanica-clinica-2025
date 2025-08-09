@@ -189,7 +189,7 @@ def play_emg_sumatoria():
                 Los potenciales de acción (PA) de muchas unidades motoras (UM) se suman para formar una señal EMG (lo que podrás encontrar en los textos como "PAUMs").
                 
                 """)
-    st.markdown("---")
+    #st.markdown("---")
     
 
 def presentar_botones_tarjeta():
@@ -330,5 +330,5 @@ def main_bioinstrumentacion():
     if st.session_state["mostrar_torques"]:
         main_phyphox()
 
-    #st.markdown("---")
+    st.markdown("---")
 
