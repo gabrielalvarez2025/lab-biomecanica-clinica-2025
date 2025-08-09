@@ -71,7 +71,7 @@ def main_phyphox():
         with open(ruta_juego, "r", encoding="utf-8") as f:
             html_juego = f.read()
         # Mostrar el juego empaquetado con pygbag dentro del app
-        components.html(html_juego, height=600, width=600 scrolling=False)
+        components.html(html_juego, height=600, width=600, scrolling=False)
 
     st.title("Juego pygame-web integrado en Streamlit")
 
