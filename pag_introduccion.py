@@ -1,6 +1,6 @@
 import streamlit as st
 
-def mostrar():
+def main_introduccion():
     
     
     st.header("Introducción al análisis del movimiento")

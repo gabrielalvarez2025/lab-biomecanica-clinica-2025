@@ -200,7 +200,7 @@ def play_2():
     st.markdown("fin play 2")
 
 
-def mostrar():
+def main_bioinstrumentacion():
     
     
 

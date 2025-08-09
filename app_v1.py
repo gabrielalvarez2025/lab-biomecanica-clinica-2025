@@ -4,12 +4,12 @@ import numpy as np
 
 # importar secciones
 from pag_bienvenida import main_bienvenida
-from pag_introduccion import mostrar as mostrar_introduccion
-from pag_bioinstrumentacion import mostrar as mostrar_bioinstrumentacion
-from pag_control_motor import mostrar as mostrar_control_motor
-from pag_balance import mostrar as mostrar_balance
-from pag_marcha import mostrar as mostrar_marcha
-from instrucciones_opencap import instrucciones as mostrar_instrucciones_opencap
+from pag_introduccion import main_introduccion
+from pag_bioinstrumentacion import main_bioinstrumentacion
+from pag_control_motor import main_control_motor
+from pag_balance import main_balance
+from pag_marcha import main_marcha
+from instrucciones_opencap import main_instrucciones_opencap
 
 
 def mostrar(func, mostrar: bool = True):
@@ -67,22 +67,22 @@ st.sidebar.markdown("---")  # línea horizontal para separar
 
 # Mostrar contenido según la selección
 if pagina == pag_bienvenida:
-    mostrar(main_bienvenida, False)
+    mostrar(main_bienvenida, True)
 
 elif pagina == pag_introduccion:
-    mostrar_introduccion()
+    mostrar(main_introduccion, True)
 
 elif pagina == pag_bioinstrumentacion:
-    mostrar_bioinstrumentacion()
+    mostrar(main_bioinstrumentacion, False)
 
 elif pagina == pag_control_motor:
-    mostrar_control_motor()
+    mostrar(main_control_motor, False)
 
 elif pagina == pag_balance:
-    mostrar_balance()
+    mostrar(main_balance, False)
 
 elif pagina == pag_marcha:
-    mostrar_marcha()
+    mostrar(main_marcha, False)
 
 elif pagina == pag_instrucciones_opencap:
-    mostrar_instrucciones_opencap()
+    mostrar(main_instrucciones_opencap, False)

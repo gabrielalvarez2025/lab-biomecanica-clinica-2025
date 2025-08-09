@@ -1,6 +1,6 @@
 import streamlit as st
 
-def mostrar():
+def main_control_motor():
     
     
     st.header("Unidad 3: Teorías del control motor")

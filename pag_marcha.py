@@ -4,7 +4,7 @@ import requests
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def mostrar():
+def main_marcha():
     st.title("Análisis de marcha")
     
 
