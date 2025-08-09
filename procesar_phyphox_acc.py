@@ -27,8 +27,12 @@ def main_phyphox():
         min_time = float(df["Time (s)"].min())
         max_time = float(df["Time (s)"].max())
 
-        start_time = st.number_input("Tiempo inicial (s)", min_value=min_time, max_value=max_time, value=min_time, step=0.1)
-        end_time = st.number_input("Tiempo final (s)", min_value=min_time, max_value=max_time, value=max_time, step=0.1)
+        col1, col2 = st.columns(2)
+
+        with col1:
+            start_time = st.number_input("Tiempo inicial (s)", min_value=min_time, max_value=max_time, value=min_time, step=0.1)
+        with col2:
+            end_time = st.number_input("Tiempo final (s)", min_value=min_time, max_value=max_time, value=max_time, step=0.1)
 
         # Filtrar datos según rango seleccionado
         df_filtered = df[(df["Time (s)"] >= start_time) & (df["Time (s)"] <= end_time)]
