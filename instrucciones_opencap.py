@@ -122,7 +122,7 @@ def main_instrucciones_opencap():
 
     st.subheader("Preparando el espacio de trabajo")
     
-    col_espacio1, col_espacio2 = st.columns([70, 30])
+    col_espacio1, col_espacio2 = st.columns([50, 50])
 
     with col_espacio1:
     
@@ -130,13 +130,15 @@ def main_instrucciones_opencap():
         st.success(
             """
             ##### Espacio físico:
-            
+
             Asegúrate de que el espacio donde realizarás las grabaciones esté bien iluminado y libre de obstáculos. 
             Es importante que el área sea lo suficientemente amplia para que puedas moverte con libertad y que las cámaras puedan capturar todo el movimiento sin obstrucciones.
             """
         )
 
-        #st.markdown("##### Cámaras:", font_color="")
+        
+
+    with col_espacio2:
         st.info(
             """
             ##### Cámaras:
@@ -158,9 +160,6 @@ def main_instrucciones_opencap():
             - Evita que la persona entre/salga de la zona de grabación.
             """
         )
-
-    with col_espacio2:
-        st.video("https://www.youtube.com/watch?v=LPHeq7bxP38&t=47s", start_time="15s", end_time="32s")
     
 
     st.markdown(
