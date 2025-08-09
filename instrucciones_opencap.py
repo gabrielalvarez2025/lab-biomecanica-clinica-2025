@@ -122,7 +122,7 @@ def main_instrucciones_opencap():
 
     st.subheader("Preparando el espacio de trabajo")
     
-    col_espacio1, col_espacio2 = st.columns([50, 50])
+    col_espacio1, col_espacio2 = st.columns([40, 60])
 
     with col_espacio1:
         st.success(
