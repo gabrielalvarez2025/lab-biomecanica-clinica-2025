@@ -1,10 +1,12 @@
 import streamlit as st
 import pandas as pd
+import seaborn as sns
 import requests
 from io import StringIO
 
 
 def main_phyphox_transmission():
+    
     st.title("Visualización de Aceleraciones en el Tiempo")
 
     uploaded_file = st.file_uploader("Sube un archivo CSV", type=["csv"])
