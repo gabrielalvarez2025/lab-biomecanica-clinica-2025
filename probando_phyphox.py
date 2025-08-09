@@ -17,4 +17,4 @@ def main_phyphox_transmission():
         
         # Mostrar tabla
         st.write("Vista previa del CSV:")
-        st.dataframe(df)
+        st.dataframe(df, use_container_width=True)
