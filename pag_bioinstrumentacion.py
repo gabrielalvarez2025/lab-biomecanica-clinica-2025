@@ -5,6 +5,8 @@ import seaborn as sns
 import random
 import streamlit.components.v1 as components
 
+from probando_phyphox import main_phyphox_transmission
+
 
 def play_emg_sumatoria():
     
@@ -248,9 +250,9 @@ def main_bioinstrumentacion():
                     )
     
     # Tarjeta 2
-    parrafo_interactivo2 = "parrafo lorem ipsem"
+    parrafo_interactivo2 = "Manos en la masa"
     botones_tarjeta(nombre_estado="mostrar_torques",
-                    texto_boton="Palancas y torques",
+                    texto_boton="Procesamiento con PhyPhox",
                     texto_parrafo=parrafo_interactivo2,
                     color_boton= "#81B238",
                     color_parrafo= "#95E082"
@@ -263,7 +265,7 @@ def main_bioinstrumentacion():
         play_emg_sumatoria()
     
     if st.session_state["mostrar_torques"]:
-        play_2()
+        main_phyphox_transmission()
 
     st.markdown("---")
 
