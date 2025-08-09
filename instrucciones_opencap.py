@@ -106,6 +106,7 @@ def main_instrucciones_opencap():
     
     # Fila tablero calibración
     with col1_tablero:
+        st.markdown(" ")
         st.image(img_board, use_container_width=True)
 
     with col2_tablero:
@@ -124,8 +125,6 @@ def main_instrucciones_opencap():
     col_espacio1, col_espacio2 = st.columns([50, 50])
 
     with col_espacio1:
-    
-        st.markdown("")
         st.success(
             """
             ##### Espacio físico:
