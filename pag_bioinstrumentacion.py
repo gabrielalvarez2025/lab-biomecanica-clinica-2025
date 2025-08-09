@@ -10,6 +10,7 @@ from procesar_phyphox_acc import main_phyphox
 
 def play_emg_sumatoria():
     
+    st.markdown("---")
     sns.set_theme(style="darkgrid", palette="pastel")
     
     
@@ -327,6 +328,7 @@ def main_bioinstrumentacion():
         play_emg_sumatoria()
     
     if st.session_state["mostrar_torques"]:
+        st.markdown("---")
         main_phyphox()
 
     st.markdown("---")
