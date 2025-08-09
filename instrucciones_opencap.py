@@ -145,6 +145,7 @@ def main_instrucciones_opencap():
             - Estar estáticas, idealmente en trípodes.
             - Apuntar a la zona donde se ubicará la persona.
             - Estar posicionadas de forma que durante el movimiento todo el cuerpo de la persona aparezca en la grabación. La persona no debe "salirse de cuadro".
+            - Si estás usando sólo 2 cámaras, se recomienda que estas apunten en 45° hacia la persona.
             """
         )
 
@@ -157,17 +158,10 @@ def main_instrucciones_opencap():
         
         - Usaremos la cámara trasera.
         
-        - Posiciona las cámaras de forma que no haya 
+        - Evita que otras personas se crucen o aparezcan en el video.
 
-        Avoid people in the background, although OpenCap is built to handle this.
-
-        Avoid having the participant exit and re-enter the capture volume.
-
-        At least two cameras need to see every body segment at all times during the movement. Two cameras is sufficient for many tasks, but tasks where segments get occluded may benefit from an additional front-facing camera.
-
-        For a two-camera setup, cameras at 30-45° off of the line facing forward from the participant is typically best. Pure sagittal views do not work well due to limb occlusion.
-
-        We recommend watching the participant perform the task of interest in each camera before calibration, to ensure that they remain within the field of view.
+        - Evita que la persona entre/salga de la zona de grabación.
+        
         """
     )
         
