@@ -1,7 +1,7 @@
 import streamlit as st
 
-def mostrar(boolean=True):
-    if boolean:
+def mostrar(mostrar=True):
+    if mostrar:
         main()
     else:
         st.write("Esta sección está en construcción :)")
