@@ -137,11 +137,11 @@ def main_instrucciones_opencap():
         st.markdown("##### Cámaras:")
         st.markdown(
             """
-            Coloca tus cámaras (iPhones, iPads, etc) sobre trípodes o superficies fijas alrededor del área de grabación. Usaremos la cámara trasera de los. dispositivos.
+            Coloca tus cámaras (iPhones, iPads, etc) sobre trípodes o superficies fijas alrededor del área de grabación. Usaremos la cámara trasera de tus dispositivos.
             
             Todas la cámaras deben:
              
-            - Estar fijas, estáticas, idealmente en trípodes.
+            - Estar fijas, estáticas, idealmente en trípodes. Si no tienes trípode puedes dejarlas apoyadas en un mueble, siempre que no las pases a llevar.
 
             - Orientarse para grabación vertical.
 
