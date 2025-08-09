@@ -5,6 +5,9 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import subprocess
+import streamlit.components.v1 as components
+import os
+
 
 def main_phyphox2():
 
@@ -56,6 +59,21 @@ def main_phyphox2():
 
 def main_phyphox():
     
-    if st.button("Abrir juego Pygame"):
-        subprocess.Popen(["python", "pygame_acc.py"])
-        st.write("Juego abierto en una ventana nueva.")
+    """
+    Intentar usar libreria pygbag para: pygame -> browser HTML -> stramlit embeded component HTML
+    """
+    
+    # Ruta relativa a la carpeta del juego web
+    #ruta_juego = os.path.join("pygame_web", "index.html")
+    ruta_juego = "build/web/index.html"
+
+    def mostrar_juego():
+        with open(ruta_juego, "r", encoding="utf-8") as f:
+            html_juego = f.read()
+        # Mostrar el juego empaquetado con pygbag dentro del app
+        components.html(html_juego, height=600, scrolling=False)
+
+    st.title("Juego pygame-web integrado en Streamlit")
+
+    if st.button("Cargar juego"):
+        mostrar_juego()
