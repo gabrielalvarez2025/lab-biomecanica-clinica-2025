@@ -131,7 +131,7 @@ def main_instrucciones_opencap():
 
             Asegúrate de que el espacio donde realizarás las grabaciones esté **bien iluminado** 💡 y libre de obstáculos. 
             
-            Es importante que el área sea lo suficientemente amplia para que puedas moverte con libertad y que las cámaras puedan capturar todo el movimiento sin obstrucciones.
+            Es importante que el área sea lo suficientemente amplia para que la persona pueda moverse con libertad y que las cámaras puedan capturar todo el movimiento sin obstrucciones.
             """
         )
         st.warning(
