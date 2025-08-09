@@ -20,7 +20,7 @@ def mostrar(func, mostrar: bool = True):
     if mostrar:
         func
     else:
-        st.write("Esta sección está en construcción :)")
+        st.markdown("##Esta sección está en construcción :)")
         st.image("images/img_gears.gif")  # Imagen de engranajes animados
 
 
