@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # importar secciones
-from pag_bienvenida import mostrar as mostrar_bienvenida
+from pag_bienvenida import main_bienvenida
 from pag_introduccion import mostrar as mostrar_introduccion
 from pag_bioinstrumentacion import mostrar as mostrar_bioinstrumentacion
 from pag_control_motor import mostrar as mostrar_control_motor
@@ -21,7 +21,7 @@ def mostrar(func: function, mostrar: bool = True):
         func
     else:
         st.write("Esta sección está en construcción :)")
-        st.image("images/img_gears.gif")
+        #st.image("images/img_gears.gif")
 
 
 
@@ -67,7 +67,7 @@ st.sidebar.markdown("---")  # línea horizontal para separar
 
 # Mostrar contenido según la selección
 if pagina == pag_bienvenida:
-    mostrar_bienvenida(False)
+    mostrar(main_bienvenida, False)
 
 elif pagina == pag_introduccion:
     mostrar_introduccion()
