@@ -140,11 +140,11 @@ def main_instrucciones_opencap():
             Coloca tus cámaras (iPhones, iPads, etc) sobre trípodes o superficies fijas alrededor del área de grabación.
             Todas la cámaras deben estar fijas y apuntando al lugar donde se ubicará la persona.
             
-            Considera:
+            Todas las cámaras deben:
 
-            - Deben quedar estáticas, idealmente en trípodes. No pueden moverse durante la medición.
-            - Todas deben apuntar a la zona donde se ubicará la persona.
-            - Posiciona las cámaras de forma que durante el movimiento todo el cuerpo de la persona aparezca en la grabación, en todas la cámaras. La persona no debe "salirse de cuadro".
+            - Estar estáticas, idealmente en trípodes.
+            - Apuntar a la zona donde se ubicará la persona.
+            - Puestas de forma que durante el movimiento todo el cuerpo de la persona aparezca en la grabación. La persona no debe "salirse de cuadro".
             """
         )
     
