@@ -120,7 +120,7 @@ def main_instrucciones_opencap():
 
     st.markdown("---")
 
-    st.subheader("Preparando el espacio de trabajo")
+    st.subheader("Preparando el espacio de trabajo", justify="center")
     
     col_espacio1, col_espacio2 = st.columns([60, 40])
 
