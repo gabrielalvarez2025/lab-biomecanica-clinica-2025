@@ -1,6 +1,12 @@
 import streamlit as st
 
-def mostrar():
+def mostrar(mostrar=True):
+    if mostrar:
+        main()
+    else:
+        st.write("Esta sección está en construcción :)")
+
+def main():
 
     
     st.header("Unidad 4: Sistema sensoriomotor y balance")

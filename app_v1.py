@@ -12,6 +12,18 @@ from pag_marcha import mostrar as mostrar_marcha
 from instrucciones_opencap import instrucciones as mostrar_instrucciones_opencap
 
 
+def mostrar(func: function, mostrar: bool = True):
+    """
+    Función para mostrar la página principal del espacio interactivo LabBC.
+    Si mostrar es True, se muestra el contenido; de lo contrario, se muestra un mensaje de construcción.
+    """
+    if mostrar:
+        func
+    else:
+        st.write("Esta sección está en construcción :)")
+        st.image("images/gears.gif")
+
+
 
 st.set_page_config(page_title="Espacio LabBC", layout="centered", initial_sidebar_state="expanded")
 
