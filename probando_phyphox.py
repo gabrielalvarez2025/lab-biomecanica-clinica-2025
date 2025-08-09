@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import subprocess
 import streamlit.components.v1 as components
 import os
+import time
 
 
 def main_phyphox2():
@@ -77,3 +78,52 @@ def main_phyphox():
 
     if st.button("Cargar juego"):
         mostrar_juego()
+
+def main_phyphox_transmission():
+ 
+
+    PP_ADDRESS = "http://192.168.1.119:8080"
+    CHANNELS = ["accX", "accY", "accZ"]
+
+    def obtener_valores():
+        url = PP_ADDRESS + "/get?" + "&".join(CHANNELS)
+        try:
+            r = requests.get(url, timeout=2)
+            r.raise_for_status()
+            data = r.json()
+            valores = []
+            for ch in CHANNELS:
+                buffer = data["buffer"].get(ch, {}).get("buffer", [])
+                if buffer:
+                    valores.append(buffer[0])
+                else:
+                    valores.append(None)
+            return valores
+        except Exception:
+            return [None] * len(CHANNELS)
+
+    st.title("Registro de acelerómetro")
+
+    if 'datos' not in st.session_state:
+        st.session_state.datos = []
+
+    if st.button("Registrar un valor"):
+        valores = obtener_valores()
+        if None not in valores:
+            st.session_state.datos.append(valores)
+            st.success(f"Registrado: {valores}")
+        else:
+            st.warning("No se recibieron datos completos.")
+
+    if st.session_state.datos:
+        df = pd.DataFrame(st.session_state.datos, columns=CHANNELS)
+        st.write(df)
+
+        csv = df.to_csv(index=False).encode('utf-8')
+        st.download_button(
+            label="Guardar CSV",
+            data=csv,
+            file_name="acelerometro.csv",
+            mime="text/csv"
+        )
+

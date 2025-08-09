@@ -23,6 +23,7 @@ git commit -m "Actualizar todo"
 git push
 
 
+git status
 git add -A
 git commit -m "Actualizar todo"
 git push

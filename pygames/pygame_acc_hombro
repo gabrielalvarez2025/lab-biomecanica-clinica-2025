@@ -1,0 +1,158 @@
+import pygame
+import random
+import sys
+import requests
+import math
+
+# Configuración Phyphox
+PP_ADDRESS = "http://192.168.1.119:8080"
+CHANNELS = ["accX", "accY", "accZ"]
+
+def obtener_valores():
+    url = PP_ADDRESS + "/get?" + "&".join(CHANNELS)
+    try:
+        r = requests.get(url, timeout=1)
+        r.raise_for_status()
+        data = r.json()
+        valores = []
+        for ch in CHANNELS:
+            buffer = data["buffer"].get(ch, {}).get("buffer", [])
+            if buffer:
+                valores.append(buffer[0])
+            else:
+                valores.append(0.0)
+        return valores
+    except Exception as e:
+        #print(f"Error al obtener datos: {e}")
+        return [0.0, 0.0, 0.0]
+
+def calcular_pitch_roll(accX, accY, accZ):
+    pitch = math.atan2(accX, math.sqrt(accY**2 + accZ**2)) * 180 / math.pi
+    roll = math.atan2(accY, accZ) * 180 / math.pi
+    return pitch, roll
+
+pygame.init()
+
+ANCHO, ALTO = 400, 600
+pantalla = pygame.display.set_mode((ANCHO, ALTO))
+pygame.display.set_caption("Flappy Bird Control Pitch")
+
+# Colores
+BLANCO = (255, 255, 255)
+AZUL_CIELO = (135, 206, 235)
+VERDE = (0, 200, 0)
+NEGRO = (0, 0, 0)
+ROJO = (255, 0, 0)
+
+# Pájaro
+bird_size = 30
+bird_x = 50
+bird_y = ALTO // 2
+bird_rect = pygame.Rect(bird_x, bird_y, bird_size, bird_size)
+
+# Tubos
+tubo_ancho = 70
+tubo_gap = 300
+tubo_vel = 4
+tubos = []
+
+# Generar tubos (posición vertical aleatoria)
+def crear_tubo(x_pos):
+    altura_arriba = random.randint(50, ALTO - tubo_gap - 50)
+    tubo_arriba = pygame.Rect(x_pos, 0, tubo_ancho, altura_arriba)
+    tubo_abajo = pygame.Rect(x_pos, altura_arriba + tubo_gap, tubo_ancho, ALTO - (altura_arriba + tubo_gap))
+    return tubo_arriba, tubo_abajo
+
+espacio_entre_tubos = 500
+for i in range(3):
+    tubos.extend(crear_tubo(ANCHO + i * espacio_entre_tubos))
+
+clock = pygame.time.Clock()
+font = pygame.font.SysFont(None, 48)
+
+juego_terminado = False
+puntuacion = 0
+
+def mostrar_texto(texto, x, y, color=NEGRO):
+    img = font.render(texto, True, color)
+    pantalla.blit(img, (x, y))
+
+def reiniciar():
+    global bird_y, bird_rect, tubos, puntuacion, juego_terminado
+    bird_y = ALTO // 2
+    bird_rect.y = int(bird_y)
+    tubos.clear()
+    for i in range(3):
+        tubos.extend(crear_tubo(ANCHO + i * espacio_entre_tubos))
+    puntuacion = 0
+    juego_terminado = False
+
+eje_control = "roll"
+
+while True:
+    for evento in pygame.event.get():
+        if evento.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if evento.type == pygame.KEYDOWN and juego_terminado:
+            if evento.key == pygame.K_r:
+                reiniciar()
+
+    if not juego_terminado:
+        # Obtener datos de acelerómetro
+        accX, accY, accZ = obtener_valores()
+        pitch, roll = calcular_pitch_roll(accX, accY, accZ)
+
+        # Control vertical del pájaro con pitch
+        # Ajustar sensibilidad y rango para que quede cómodo
+        sensibilidad = 0.5
+
+        if eje_control == "pitch":
+            valor = pitch
+        elif eje_control == "roll":
+            valor = roll
+        else:
+            valor = 0  # Por si la variable tiene otro valor no esperado
+
+        delta_y = int(valor * sensibilidad)
+        #delta_y = max(min(delta_y, 5), -5)  # limitar velocidad vertical
+
+        bird_y += delta_y
+        bird_rect.y = int(bird_y)
+
+        # Mover tubos a la izquierda
+        for tubo in tubos:
+            tubo.x -= tubo_vel
+
+        # Quitar tubos fuera de pantalla y agregar nuevos
+        if tubos[0].right < 0:
+            tubos.pop(0)
+            tubos.pop(0)
+            nuevos_tubos = crear_tubo(tubos[-1].x + espacio_entre_tubos)
+            tubos.extend(nuevos_tubos)
+            puntuacion += 1
+
+        # Colisiones
+        if bird_rect.top < 0 or bird_rect.bottom > ALTO:
+            juego_terminado = True
+
+        for tubo in tubos:
+            if bird_rect.colliderect(tubo):
+                juego_terminado = True
+                break
+
+    # Dibujar
+    pantalla.fill(AZUL_CIELO)
+    pygame.draw.rect(pantalla, (255, 255, 0), bird_rect)  # pájaro amarillo
+
+    for tubo in tubos:
+        pygame.draw.rect(pantalla, VERDE, tubo)
+
+    mostrar_texto(f"Puntaje: {puntuacion}", 10, 10)
+
+    if juego_terminado:
+        mostrar_texto("¡Juego terminado!", ANCHO//2 - 150, ALTO//2 - 50, ROJO)
+        mostrar_texto("Presiona R para reiniciar", ANCHO//2 - 180, ALTO//2, ROJO)
+
+    pygame.display.flip()
+    clock.tick(30)
