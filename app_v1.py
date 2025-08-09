@@ -76,7 +76,7 @@ elif pagina == pag_introduccion:
     mostrar(main_introduccion, True)
 
 elif pagina == pag_bioinstrumentacion:
-    mostrar(main_bioinstrumentacion, False)
+    mostrar(main_bioinstrumentacion, True)
 
 elif pagina == pag_control_motor:
     mostrar(main_control_motor, False)
