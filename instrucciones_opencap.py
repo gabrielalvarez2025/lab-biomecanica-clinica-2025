@@ -123,22 +123,24 @@ def main_instrucciones_opencap():
     st.subheader("Preparando el espacio de trabajo")
     
     col_espacio1, col_espacio2 = st.columns([60, 40])
-    
-    st.markdown("### Espacio físico:")
-    st.markdown(
-        """
-        Antes de comenzar a grabar, asegúrate de que el espacio donde realizarás las grabaciones esté bien iluminado y libre de obstáculos. 
-        Es importante que el área sea lo suficientemente amplia para que puedas moverte con libertad y que las cámaras puedan capturar todo el movimiento sin obstrucciones.
-        """
-    )
 
-    st.markdown("### Cámaras:")
-    st.markdown(
-        """
-        Coloca tus dispositivos iOS (iPhones, iPads, etc) en posiciones estratégicas alrededor del área de grabación.
-        Todas la cámaras deben estar fijas y apuntando al lugar donde se ubicará la persona.
-        """
-    )
+    with col_espacio1:
+    
+        st.markdown("### Espacio físico:")
+        st.markdown(
+            """
+            Antes de comenzar a grabar, asegúrate de que el espacio donde realizarás las grabaciones esté bien iluminado y libre de obstáculos. 
+            Es importante que el área sea lo suficientemente amplia para que puedas moverte con libertad y que las cámaras puedan capturar todo el movimiento sin obstrucciones.
+            """
+        )
+
+        st.markdown("### Cámaras:")
+        st.markdown(
+            """
+            Coloca tus dispositivos iOS (iPhones, iPads, etc) en posiciones estratégicas alrededor del área de grabación.
+            Todas la cámaras deben estar fijas y apuntando al lugar donde se ubicará la persona.
+            """
+        )
 
 
     
