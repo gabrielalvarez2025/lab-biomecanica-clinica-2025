@@ -21,7 +21,7 @@ def mostrar(func, mostrar: bool = True):
         func
     else:
         st.write("Esta sección está en construcción :)")
-        #st.image("images/img_gears.gif")
+        st.image("images/img_gears.gif")
 
 
 
