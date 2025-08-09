@@ -100,7 +100,6 @@ def instrucciones():
     # Fila tablero calibración
     with col1_tablero:
         st.markdown(" ")
-        st.markdown(" ")
         st.image(img_board, use_container_width=True)
 
     with col2_tablero:
