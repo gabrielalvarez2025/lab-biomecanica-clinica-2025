@@ -328,7 +328,6 @@ def main_bioinstrumentacion():
         play_emg_sumatoria()
     
     if st.session_state["mostrar_torques"]:
-        st.markdown("---")
         main_phyphox()
 
     st.markdown("---")
