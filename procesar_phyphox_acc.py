@@ -27,6 +27,11 @@ def main_phyphox():
         min_time = float(df["Time (s)"].min())
         max_time = float(df["Time (s)"].max())
 
+        # Presentar graficos
+        st.markdown(" ")
+        st.markdown(" ")
+        st.markdown("###  Representación gráfica de los datos:")
+
         col1, col2 = st.columns(2)
 
         with col1:
@@ -36,11 +41,6 @@ def main_phyphox():
 
         # Filtrar datos según rango seleccionado
         df_filtered = df[(df["Time (s)"] >= start_time) & (df["Time (s)"] <= end_time)]
-
-        # Presentar graficos
-        st.markdown(" ")
-        st.markdown(" ")
-        st.markdown("###  Representación gráfica de los datos:")
         
         # Configuración de Seaborn y Matplotlib
         sns.set_theme(style="whitegrid", palette="pastel")
