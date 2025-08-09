@@ -129,7 +129,7 @@ def main_instrucciones_opencap():
         st.markdown("##### Espacio físico:")
         st.markdown(
             """
-            Antes de comenzar a grabar, asegúrate de que el espacio donde realizarás las grabaciones esté bien iluminado y libre de obstáculos. 
+            Asegúrate de que el espacio donde realizarás las grabaciones esté bien iluminado y libre de obstáculos. 
             Es importante que el área sea lo suficientemente amplia para que puedas moverte con libertad y que las cámaras puedan capturar todo el movimiento sin obstrucciones.
             """
         )
@@ -137,8 +137,13 @@ def main_instrucciones_opencap():
         st.markdown("##### Cámaras:")
         st.markdown(
             """
-            Coloca tus dispositivos iOS (iPhones, iPads, etc) en posiciones estratégicas alrededor del área de grabación.
+            Coloca tus cámaras (iPhones, iPads, etc) sobre trípodes o superficies fijas alrededor del área de grabación.
             Todas la cámaras deben estar fijas y apuntando al lugar donde se ubicará la persona.
+            Procura:
+
+            - Mantenerlas quietas, sin moverlas. Idealmente en trípodes.
+            - Todas deben apuntar a la zona donde se ubicará la persona.
+            - Posiciona las cámaras de forma que durante el movimiento todo el cuerpo de la persona aparezca en la grabación, en todas la cámaras. La persona no debe "salirse de cuadro".
             """
         )
     
