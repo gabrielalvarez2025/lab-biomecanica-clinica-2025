@@ -29,6 +29,7 @@ def main_instrucciones_opencap():
     img_appstore = open("images/img_appstore_logo.svg", "r").read()
     img_wifi = open("images/img_wifi_icon.svg", "r").read()
     img_board = open("images/img_board.svg", "r").read()
+    img_opencap_logo = "images/img_opencap_logo.png"
     
     
     
@@ -72,7 +73,7 @@ def main_instrucciones_opencap():
     # Fila cuenta opencap
     with col1_opencap:
         st.markdown(" ")
-        st.image("img_opencap_logo.png", use_container_width=True)
+        st.image(img_opencap_logo, use_container_width=True)
 
     with col2_opencap:
         st.markdown("""- Tener creada una **cuenta en OpenCap**. Si aún no tienes una, puedes crearla de forma gratuita en https://www.opencap.ai/ con tu correo electrónico.""")
