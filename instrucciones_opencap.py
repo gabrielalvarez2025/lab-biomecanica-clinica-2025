@@ -125,6 +125,7 @@ def main_instrucciones_opencap():
     st. markdown("OpenCap es bastante flexible y generalmente no tiene problemas para capturar buenos datos en la mayoría de los casos. Te dejamos algunos requisitos infaltables y algunas recomendaciones de buenas prácticas para que te asegures de que OpenCap no tenga conflictos al momento de tomar los datos")
     
     col_espacio1, col_espacio2 = st.columns([40, 60])
+    subcol1, subcol2 = st.columns([70, 30])
 
     with col_espacio1:
         st.success(
@@ -175,7 +176,7 @@ def main_instrucciones_opencap():
 
         st.error(
             """
-            ##### Tablero de calibración
+            ##### WiFi. Conexión estable
             """
         )
     
