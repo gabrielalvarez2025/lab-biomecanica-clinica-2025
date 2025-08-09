@@ -133,6 +133,13 @@ def main_instrucciones_opencap():
             Es importante que el área sea lo suficientemente amplia para que puedas moverte con libertad y que las cámaras puedan capturar todo el movimiento sin obstrucciones.
             """
         )
+        st.warning(
+            """
+            ##### Persona:
+
+            asjvblbxsjlanbxlsdbcjl
+            """
+        )
 
         
 
