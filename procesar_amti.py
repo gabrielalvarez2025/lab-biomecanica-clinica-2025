@@ -13,8 +13,7 @@ def main_forceplate():
         
         st.success("¡Excelente! Subiste exitosamenteun archivo CSV con los datos tomados de la plataforma :)")
 
-        st.markdown("---")
-        st.markdown("### ¿Qué son estos datos?")
+        
         
         # Intentamos leer el CSV, omitiendo las dos primeras filas de metadata
         df = pd.read_csv(uploaded_file, skiprows=3)
@@ -33,9 +32,12 @@ def main_forceplate():
         df = df[cols]
 
 
+        st.markdown("---")
+        st.markdown("### ¿Qué son estos datos?")
+        
         st.markdown(
             """
-            La plataforma de fuerza que está en el laboratorio toma datos de tres tipos:
+            La plataforma de fuerza que está en el laboratorio captura tres tipos de dato:
             
             - Fuerza de reacción del suelo en cada eje (anteroposterior, mediolateral y vertical)
             
