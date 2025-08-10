@@ -22,6 +22,11 @@ def main_forceplate():
         df = df.drop(columns=["Frame", "Sub Frame"])
         df = df.rename(columns={"Frame_n": "Frame"})
 
+        # Dejar col "Frame" como 1° col
+        cols = df.columns.tolist()
+        cols = ["Frame"] + [col for col in cols if col != "Frame"]
+        df = df[cols]
+
 
         
         
