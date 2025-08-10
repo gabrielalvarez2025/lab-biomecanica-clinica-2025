@@ -57,11 +57,11 @@ def main_forceplate():
                 """)
         
 
-        df["Time (s)"] = (df["Frame"] - 1) / 1000
+        df["Tiempo"] = (df["Frame"] - 1) / 1000
 
         # Dejar col "Time" como 1° col
         cols = df.columns.tolist()
-        cols = ["Time (s)"] + [col for col in cols if col != "Time (s)"]
+        cols = ["Tiempo"] + [col for col in cols if col != "Tiempo"]
         df = df[cols]
 
         st.write("Vista previa de los datos:")
