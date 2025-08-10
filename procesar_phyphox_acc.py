@@ -76,7 +76,7 @@ def main_phyphox():
 
         st.markdown("###### Puedes ajustar la ventana de tiempo que te interesa mirar:")
 
-        _, col_tiempo1, _, col_tiempo2, _ = st.columns([10, 30, 60, 30, 15])
+        esp_t_izq, col_tiempo1, esp_t_ed, col_tiempo2, esp_t_der = st.columns([10, 30, 60, 30, 15])
 
         with col_tiempo1:
             start_time = st.number_input("**Desde** (seg):", min_value=min_time, max_value=max_time, value=min_time, step=0.1)
