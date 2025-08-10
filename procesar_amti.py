@@ -37,10 +37,12 @@ def main_forceplate():
             - Torques generados en el contacto con el suelo, en cada eje (por ejemplo, durante giros).
             
             - Posición del centro de presión, en cada eje (anteroposterior y mediolateral).
+
+
             """
         )
         
-        st.write("Vista previa de los datos:")
+        st.write("Veamos cómo se ven los datos:")
         st.dataframe(df, hide_index=True)
 
         st.markdown("---")
