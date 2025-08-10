@@ -35,15 +35,15 @@ def main_phyphox():
 
             st.markdown("Selecciona los ejes que quieres observar:")
             
-            bloq1, bloq2 = st.columns(2)
+            col_check1, col_check2, col_check3 = st.columns(3)
 
-            with bloq1:
+            with col_check1:
                 show_x = st.checkbox("Acc Eje X", value=True)
+            with col_check2:
                 show_y = st.checkbox("Acc Eje Y", value=True)
+            with col_check3:
                 show_z = st.checkbox("Acc Eje Z", value=True)
-            
-            with bloq2:
-                
+        
                 show_abs = st.checkbox("Acc absoluto", value=True)    
         
         with col_B:
