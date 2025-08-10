@@ -122,6 +122,7 @@ def main_phyphox():
 
                 #st.markdown(f"### Ajuste de eje Y para {label}")
                 y_max = st.number_input(
+                    label=None,#f"max:", 
                     value=float(df_filtered[col].max()),
                     step=0.5,
                     key=f"ymax_{col}"
