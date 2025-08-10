@@ -12,6 +12,9 @@ def main_forceplate():
     if uploaded_file is not None:
         
         st.success("¡Excelente! Subiste exitosamenteun archivo CSV con los datos tomados de la plataforma :)")
+
+        st.markdown("---")
+        st.markdown("### Tus datos")
         
         # Intentamos leer el CSV, omitiendo las dos primeras filas de metadata
         df = pd.read_csv(uploaded_file, skiprows=3)
