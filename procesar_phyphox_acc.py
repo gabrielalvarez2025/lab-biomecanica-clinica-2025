@@ -45,9 +45,13 @@ def main_phyphox():
         #elif 9.5 < base_z < 10.5:
         #    df["Acceleration z (m/s^2)"] = df["Acceleration z (m/s^2)"] - acc_g
 
-        df["Acceleration x (m/s^2)"] = df["Acceleration x (m/s^2)"].abs()
-        df["Acceleration y (m/s^2)"] = df["Acceleration y (m/s^2)"].abs()
-        df["Acceleration z (m/s^2)"] = df["Acceleration z (m/s^2)"].abs()
+        # --- Detección automática del eje vertical ---
+        avg_abs = {
+            "X": df["Acceleration x (m/s^2)"].abs().mean(),
+            "Y": df["Acceleration y (m/s^2)"].abs().mean(),
+            "Z": df["Acceleration z (m/s^2)"].abs().mean()
+        }
+        eje_vertical = min(avg_abs, key=lambda eje: abs(avg_abs[eje] - 9.8))
 
         st.markdown("### Graficando tus datos:")
         
@@ -71,7 +75,8 @@ def main_phyphox():
 
             st.markdown(" ")
             st.markdown("###### ¿Quieres quitar la aceleración de gravedad?")
-            restar_g = st.checkbox("Restar g = 9,8 m/s² de la acc vertical", value=False)    
+            restar_g = st.checkbox("Restar g = 9,8 m/s² de la acc vertical", value=False)
+            st.success(f"Eje vertical detectado: **Eje {eje_vertical}**")    
         
         with col_B:
 
@@ -87,19 +92,7 @@ def main_phyphox():
         # Filtrar datos
         df_filtered = df[(df["Time (s)"] >= start_time) & (df["Time (s)"] <= end_time)]
 
-        # --- Detección automática del eje vertical ---
-        avg_abs = {
-            "X": df_filtered["Acceleration x (m/s^2)"].abs().mean(),
-            "Y": df_filtered["Acceleration y (m/s^2)"].abs().mean(),
-            "Z": df_filtered["Acceleration z (m/s^2)"].abs().mean()
-        }
-        eje_vertical = min(avg_abs, key=lambda eje: abs(avg_abs[eje] - 9.8))
-
-        st.markdown("### Detección automática del eje vertical")
-        st.write(f"Promedio absoluto Acc X: {avg_abs['X']:.3f} m/s²")
-        st.write(f"Promedio absoluto Acc Y: {avg_abs['Y']:.3f} m/s²")
-        st.write(f"Promedio absoluto Acc Z: {avg_abs['Z']:.3f} m/s²")
-        st.success(f"Eje vertical detectado: **Eje {eje_vertical}**")
+        
 
         # Restar gravedad si está activado
         if restar_g:
