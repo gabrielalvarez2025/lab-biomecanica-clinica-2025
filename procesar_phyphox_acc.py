@@ -14,7 +14,7 @@ def main_phyphox():
         uploaded_file = st.file_uploader("📂 Sube un archivo CSV", type=["csv"])
     
     with col_upload2:
-        #st.markdown("O puedes probar con un archivo de ejemplo:")
+        st.markdown(" ")
         example_file = "ejemplo_data_acc_phyphox.csv"
         if os.path.exists(example_file):
             if st.button("Probar con datos de ejemplo"):
