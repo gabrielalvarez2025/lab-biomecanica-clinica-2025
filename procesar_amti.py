@@ -14,6 +14,7 @@ def main_forceplate():
         df = pd.read_csv(uploaded_file, skiprows=3)
         df = df.iloc[:, 0:11] # solo datos plataforma, no EMG
         df.columns = df.columns.str.strip()  # limpiar nombres
+        df = df.drop[1]
 
         
         
