@@ -101,27 +101,7 @@ def main_forceplate():
 
             st.pyplot(fig, transparent=True)
         
-        for sig, color in signals:
-            st.markdown(f"### Ajusta eje Y para {sig}")
-            y_min = st.number_input(f"Mínimo eje Y ({sig})", value=float(df_filtered[sig].min()), key=f"ymin_{sig}")
-            y_max = st.number_input(f"Máximo eje Y ({sig})", value=float(df_filtered[sig].max()), key=f"ymax_{sig}")
-
-            fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
-            ax.set_facecolor("none")
-
-            ax.tick_params(colors="black")
-            ax.xaxis.label.set_color("black")
-            ax.yaxis.label.set_color("black")
-            ax.title.set_color("black")
-
-            sns.lineplot(x=df_filtered["Frame"], y=df_filtered[sig], ax=ax, color=color)
-
-            ax.set_ylim(y_min, y_max)
-            ax.set_title(f"{sig} en función del Frame", fontsize=14)
-            ax.set_xlabel("Frame")
-            ax.set_ylabel(sig)
-
-            st.pyplot(fig, transparent=True)
+        
         
         # Graficar Estatocinesiograma (trayectoria COP)
 
