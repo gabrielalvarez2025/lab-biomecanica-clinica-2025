@@ -35,35 +35,43 @@ def main_phyphox():
         # Filtrar datos
         df_filtered = df[(df["Time (s)"] >= start_time) & (df["Time (s)"] <= end_time)]
 
-        # Checkboxes
         st.markdown("### Selección de datos a graficar:")
+
+        # cols
+        col_plots1, col_plots2 = st.columns(2)
         col_cb1, col_cb2, col_cb3, col_cb4 = st.columns(4)
+
+        
+        
+        # Checkboxes
         with col_cb1:
             show_x = st.checkbox("Acc X (verde)", value=True)
         with col_cb2:
-            show_y = st.checkbox("Acc Y (azul)")
+            show_y = st.checkbox("Acc Y (azul)", value=True)
         with col_cb3:
-            show_z = st.checkbox("Acc Z (amarillo)")
+            show_z = st.checkbox("Acc Z (amarillo)", value=True)
         with col_cb4:
-            show_abs = st.checkbox("Absolute (blanco)")
+            show_abs = st.checkbox("Absolute (blanco)", value=True)
 
         # Configuración de estilo
         sns.set_theme(style="whitegrid", palette="pastel")
 
-        # Lista de ejes a mostrar
-        selected_axes = []
-        if show_x:
-            selected_axes.append(("Acceleration x (m/s^2)", "#7EB87E", "Acc X"))
-        if show_y:
-            selected_axes.append(("Acceleration y (m/s^2)", "#6EBDE2", "Acc Y"))
-        if show_z:
-            selected_axes.append(("Acceleration z (m/s^2)",  "#B3B87E", "Acc Z"))
-        if show_abs and "Absolute acceleration (m/s^2)" in df_filtered.columns:
-            selected_axes.append(("Absolute acceleration (m/s^2)", "white", "Abs"))
+        with col_plots1:
+        
+            # Lista de ejes a mostrar
+            selected_axes = []
+            if show_x:
+                selected_axes.append(("Acceleration x (m/s^2)", "#7EB87E", "Acc X"))
+            if show_y:
+                selected_axes.append(("Acceleration y (m/s^2)", "#6EBDE2", "Acc Y"))
+            if show_z:
+                selected_axes.append(("Acceleration z (m/s^2)",  "#B3B87E", "Acc Z"))
+            if show_abs and "Absolute acceleration (m/s^2)" in df_filtered.columns:
+                selected_axes.append(("Absolute acceleration (m/s^2)", "white", "Abs"))
 
-        if not selected_axes:
-            st.warning("Selecciona al menos una opción para graficar.")
-            return
+            if not selected_axes:
+                st.warning("Selecciona al menos una opción para graficar.")
+                return
 
         # Dibujar cada gráfico por separado
         for col, color, label in selected_axes:
