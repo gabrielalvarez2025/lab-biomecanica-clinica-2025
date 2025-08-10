@@ -6,6 +6,7 @@ import random
 import streamlit.components.v1 as components
 
 from procesar_phyphox_acc import main_phyphox
+from procesar_amti import main_forceplate
 
 
 def play_emg_sumatoria():
@@ -313,10 +314,19 @@ def main_bioinstrumentacion():
                     )
     
     # Tarjeta 2
-    parrafo_interactivo2 = "Manos en la masa"
+    parrafo_interactivo2 = "Procesar datos de acelerometría tomados con el celular usando Phyphox"
     botones_tarjeta(nombre_estado="mostrar_torques",
                     texto_boton="Procesamiento con PhyPhox",
                     texto_parrafo=parrafo_interactivo2,
+                    color_boton= "#368581",
+                    color_parrafo= "#89BBB8"
+                    )
+    
+    # Tarjeta 3
+    parrafo_interactivo3 = "Procesar datos de la plataforma del laboratorio (plataforma AMTI)"
+    botones_tarjeta(nombre_estado="mostrar_amti",
+                    texto_boton="Procesamiento de datos plataforma",
+                    texto_parrafo=parrafo_interactivo3,
                     color_boton= "#368581",
                     color_parrafo= "#89BBB8"
                     )
@@ -329,6 +339,10 @@ def main_bioinstrumentacion():
     
     if st.session_state["mostrar_torques"]:
         main_phyphox()
+    
+    if st.session_state["mostrar_amti"]:
+        main_forceplate()
+
 
     st.markdown("---")
 

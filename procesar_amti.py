@@ -1,0 +1,91 @@
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+def main_forceplate():
+    st.markdown("---")
+    st.subheader("Procesando Datos de Plataforma de Fuerzas AMTI")
+
+    uploaded_file = st.file_uploader("📂 Sube un archivo CSV con datos de plataforma AMTI", type=["csv"])
+
+    if uploaded_file is not None:
+        # Intentamos leer el CSV, omitiendo las dos primeras filas de metadata
+        df = pd.read_csv(uploaded_file, skiprows=2)
+        df.columns = df.columns.str.strip()  # limpiar nombres
+
+        st.write("Vista previa de los datos:")
+        st.dataframe(df.head(), hide_index=True)
+
+        # Rango para Frame
+        min_frame = int(df["Frame"].min())
+        max_frame = int(df["Frame"].max())
+
+        st.markdown("### Ajusta ventana de frames para graficar:")
+        start_frame = st.number_input("Desde Frame:", min_value=min_frame, max_value=max_frame, value=min_frame, step=1)
+        end_frame = st.number_input("Hasta Frame:", min_value=min_frame, max_value=max_frame, value=max_frame, step=1)
+
+        df_filtered = df[(df["Frame"] >= start_frame) & (df["Frame"] <= end_frame)]
+
+        st.markdown("### Selecciona las señales a graficar:")
+
+        # Checkboxes para fuerzas
+        col_f1, col_f2, col_f3 = st.columns(3)
+        with col_f1:
+            show_Fx = st.checkbox("Fx (N)", True)
+        with col_f2:
+            show_Fy = st.checkbox("Fy (N)", True)
+        with col_f3:
+            show_Fz = st.checkbox("Fz (N)", True)
+
+        # Checkboxes para momentos
+        col_m1, col_m2, col_m3 = st.columns(3)
+        with col_m1:
+            show_Mx = st.checkbox("Mx (mm.N)", False)
+        with col_m2:
+            show_My = st.checkbox("My (mm.N)", False)
+        with col_m3:
+            show_Mz = st.checkbox("Mz (mm.N)", False)
+
+        # Lista de señales a graficar
+        signals = []
+        if show_Fx:
+            signals.append(("Fx", "tab:blue"))
+        if show_Fy:
+            signals.append(("Fy", "tab:orange"))
+        if show_Fz:
+            signals.append(("Fz", "tab:green"))
+        if show_Mx:
+            signals.append(("Mx", "tab:red"))
+        if show_My:
+            signals.append(("My", "tab:purple"))
+        if show_Mz:
+            signals.append(("Mz", "tab:brown"))
+
+        if not signals:
+            st.warning("Selecciona al menos una señal para graficar.")
+            return
+
+        sns.set_theme(style="whitegrid")
+
+        for sig, color in signals:
+            st.markdown(f"### Ajusta eje Y para {sig}")
+            y_min = st.number_input(f"Mínimo eje Y ({sig})", value=float(df_filtered[sig].min()), key=f"ymin_{sig}")
+            y_max = st.number_input(f"Máximo eje Y ({sig})", value=float(df_filtered[sig].max()), key=f"ymax_{sig}")
+
+            fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
+            ax.set_facecolor("none")
+
+            ax.tick_params(colors="black")
+            ax.xaxis.label.set_color("black")
+            ax.yaxis.label.set_color("black")
+            ax.title.set_color("black")
+
+            sns.lineplot(x=df_filtered["Frame"], y=df_filtered[sig], ax=ax, color=color)
+
+            ax.set_ylim(y_min, y_max)
+            ax.set_title(f"{sig} en función del Frame", fontsize=14)
+            ax.set_xlabel("Frame")
+            ax.set_ylabel(sig)
+
+            st.pyplot(fig, transparent=True)
