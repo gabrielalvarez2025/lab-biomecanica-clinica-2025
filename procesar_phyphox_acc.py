@@ -28,8 +28,12 @@ def main_phyphox():
 
         esp1, col1, col2, esp2 = st.columns([20, 30, 30, 20])
         with col1:
-            start_time = st.number_input("Tiempo inicial (s)", min_value=min_time, max_value=max_time, value=min_time, step=0.1)
+            show_x = st.checkbox("Acc X (verde)", value=True)
+            show_y = st.checkbox("Acc Y (azul)", value=True)
+            show_z = st.checkbox("Acc Z (amarillo)", value=True)
+            show_abs = st.checkbox("Absolute (blanco)", value=True)
         with col2:
+            start_time = st.number_input("Tiempo inicial (s)", min_value=min_time, max_value=max_time, value=min_time, step=0.1)
             end_time = st.number_input("Tiempo final (s)", min_value=min_time, max_value=max_time, value=max_time, step=0.1)
 
         # Filtrar datos
@@ -37,58 +41,41 @@ def main_phyphox():
 
         st.markdown("### Selección de datos a graficar:")
 
-        # cols
-        
-        col_cb1, col_cb2, col_cb3, col_cb4 = st.columns(4)
-        col_plots1, col_plots2 = st.columns(2)
-        
-        
-        # Checkboxes
-        with col_cb1:
-            show_x = st.checkbox("Acc X (verde)", value=True)
-            show_y = st.checkbox("Acc Y (azul)", value=True)
-            show_z = st.checkbox("Acc Z (amarillo)", value=True)
-        with col_cb2:
-            show_abs = st.checkbox("Absolute (blanco)", value=True)
-       
-
         # Configuración de estilo
         sns.set_theme(style="whitegrid", palette="pastel")
 
-        with col_plots1:
-        
-            # Lista de ejes a mostrar
-            selected_axes = []
-            if show_x:
-                selected_axes.append(("Acceleration x (m/s^2)", "#7EB87E", "Acc X"))
-            if show_y:
-                selected_axes.append(("Acceleration y (m/s^2)", "#6EBDE2", "Acc Y"))
-            if show_z:
-                selected_axes.append(("Acceleration z (m/s^2)",  "#B3B87E", "Acc Z"))
-            if show_abs and "Absolute acceleration (m/s^2)" in df_filtered.columns:
-                selected_axes.append(("Absolute acceleration (m/s^2)", "white", "Abs"))
+        # Lista de ejes a mostrar
+        selected_axes = []
+        if show_x:
+            selected_axes.append(("Acceleration x (m/s^2)", "#7EB87E", "Acc X"))
+        if show_y:
+            selected_axes.append(("Acceleration y (m/s^2)", "#6EBDE2", "Acc Y"))
+        if show_z:
+            selected_axes.append(("Acceleration z (m/s^2)",  "#B3B87E", "Acc Z"))
+        if show_abs and "Absolute acceleration (m/s^2)" in df_filtered.columns:
+            selected_axes.append(("Absolute acceleration (m/s^2)", "white", "Abs"))
 
-            if not selected_axes:
-                st.warning("Selecciona al menos una opción para graficar.")
-                return
+        if not selected_axes:
+            st.warning("Selecciona al menos una opción para graficar.")
+            return
 
-            # Dibujar cada gráfico por separado
-            for col, color, label in selected_axes:
-                fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
-                ax.set_facecolor("none")
+        # Dibujar cada gráfico por separado
+        for col, color, label in selected_axes:
+            fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
+            ax.set_facecolor("none")
 
-                # Cambiar colores del texto
-                ax.tick_params(colors="white")
-                ax.xaxis.label.set_color("white")
-                ax.yaxis.label.set_color("white")
-                ax.title.set_color("white")
+            # Cambiar colores del texto
+            ax.tick_params(colors="white")
+            ax.xaxis.label.set_color("white")
+            ax.yaxis.label.set_color("white")
+            ax.title.set_color("white")
 
-                # Graficar
-                sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[col], ax=ax, color=color)
+            # Graficar
+            sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[col], ax=ax, color=color)
 
-                # Títulos
-                ax.set_title(f"{label} en el Tiempo", fontsize=14)
-                ax.set_xlabel("Tiempo (s)")
-                ax.set_ylabel("Aceleración (m/s²)")
+            # Títulos
+            ax.set_title(f"{label} en el Tiempo", fontsize=14)
+            ax.set_xlabel("Tiempo (s)")
+            ax.set_ylabel("Aceleración (m/s²)")
 
-                st.pyplot(fig, transparent=True)
+            st.pyplot(fig, transparent=True)
