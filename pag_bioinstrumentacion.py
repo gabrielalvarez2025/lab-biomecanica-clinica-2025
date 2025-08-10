@@ -326,7 +326,7 @@ def main_bioinstrumentacion():
                     )
     
     # Tarjeta 3
-    parrafo_interactivo3 = "Procesar datos de la plataforma del laboratorio (plataforma AMTI)"
+    parrafo_interactivo3 = "Procesar datos x de la plataforma del laboratorio (plataforma AMTI)"
     botones_tarjeta(nombre_estado="mostrar_amti",
                     texto_boton="Procesamiento de datos plataforma",
                     texto_parrafo=parrafo_interactivo3,
