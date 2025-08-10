@@ -61,6 +61,10 @@ def main_phyphox():
         
             show_abs = st.checkbox("Acc absoluta (X + Y + Z)", value=False)
 
+            
+        
+        with col_B:
+
             st.markdown(" ")
             st.markdown("###### ¿Quieres quitar la aceleración de gravedad?")
             restar_g = st.checkbox(f"Restar g = 9,8 m/s² de la acc vertical (eje {eje_vertical})", value=True)
@@ -68,10 +72,6 @@ def main_phyphox():
             st.markdown(" ")
             st.markdown("###### ¿Quieres aplicar un filtro a la señal?")
             filtrar_check = st.checkbox(f"Filtrar", value=True)
-        
-        with col_B:
-
-            st.markdown("###### Puedes ajustar la ventana de tiempo que te interesa mirar:")
             
             
 
