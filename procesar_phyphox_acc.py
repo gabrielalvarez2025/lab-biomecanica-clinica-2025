@@ -50,6 +50,7 @@ def main_phyphox():
         # Configuración de estilo
         sns.set_theme(style="whitegrid", palette="pastel")
 
+        # Lista de ejes a mostrar
         selected_axes = []
         if show_x:
             selected_axes.append(("Acceleration x (m/s^2)", "green", "Acc X"))
@@ -64,42 +65,21 @@ def main_phyphox():
             st.warning("Selecciona al menos una opción para graficar.")
             return
 
-        # Si hay más de uno, los graficamos juntos en un solo plot
-        if len(selected_axes) > 1:
-            fig, ax = plt.subplots(figsize=(10, 6), facecolor="none")
-            ax.set_facecolor("none")
-            ax.tick_params(colors="white")
-            ax.xaxis.label.set_color("white")
-            ax.yaxis.label.set_color("white")
-            ax.title.set_color("white")
-
-            for col, color, label in selected_axes:
-                sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[col], ax=ax, color=color, label=label)
-
-            ax.set_title("Aceleraciones en el Tiempo", fontsize=16)
-            ax.set_xlabel("Tiempo (s)")
-            ax.set_ylabel("Aceleración (m/s²)")
-
-            legend = ax.legend()
-            legend.get_frame().set_facecolor("none")
-            legend.get_frame().set_edgecolor("white")
-            for text in legend.get_texts():
-                text.set_color("white")
-
-            st.pyplot(fig, transparent=True)
-
-        # Si solo hay uno, plot individual
-        else:
-            col, color, label = selected_axes[0]
+        # Dibujar cada gráfico por separado
+        for col, color, label in selected_axes:
             fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
             ax.set_facecolor("none")
+
+            # Cambiar colores del texto
             ax.tick_params(colors="white")
             ax.xaxis.label.set_color("white")
             ax.yaxis.label.set_color("white")
             ax.title.set_color("white")
 
+            # Graficar
             sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[col], ax=ax, color=color)
 
+            # Títulos
             ax.set_title(f"{label} en el Tiempo", fontsize=14)
             ax.set_xlabel("Tiempo (s)")
             ax.set_ylabel("Aceleración (m/s²)")
