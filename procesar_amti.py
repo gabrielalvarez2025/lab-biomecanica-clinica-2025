@@ -13,7 +13,7 @@ def main_forceplate():
         
         # Intentamos leer el CSV, omitiendo las dos primeras filas de metadata
         df = pd.read_csv(uploaded_file, skiprows=3)
-        df = df.iloc[:, 0:11] # solo datos plataforma, no EMG
+        df = df.iloc[:, 0:10] # solo datos plataforma, no EMG
         df.columns = df.columns.str.strip()  # limpiar nombres
         df = df.drop(0)
 
@@ -103,7 +103,7 @@ def main_forceplate():
             st.markdown("###### Posición del COP:")
             show_Cx = st.checkbox("Cx (mm)", False)
             show_Cy = st.checkbox("Cy (mm)", False)
-            show_Cz = st.checkbox("Cz (mm)", False)
+            #show_Cz = st.checkbox("Cz (mm)", False)
 
         # Lista de señales a graficar
         signals = []
