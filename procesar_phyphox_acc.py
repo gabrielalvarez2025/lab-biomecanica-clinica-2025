@@ -127,14 +127,14 @@ def main_phyphox():
                     step=0.5,
                     key=f"ymax_{col}"
                 )
-                st.markdown(" ")
+                st.markdown("max ↑")
                 st.markdown(" ")
                 st.markdown(" ")
                 st.markdown(" ")
                 st.markdown(" ")
                 st.markdown(" ")
                 y_min = st.number_input(
-                    f"min:",
+                    f"min ↓",
                     value=float(df_filtered[col].min()),
                     step=0.5,
                     key=f"ymin_{col}"
