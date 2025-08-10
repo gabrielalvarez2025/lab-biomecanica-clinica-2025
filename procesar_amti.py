@@ -34,10 +34,8 @@ def main_forceplate():
 
         col_frame1, col_frame2 = st.columns(2)
 
-        with col_frame1:
-            start_frame = st.number_input("Desde Frame:", min_value=min_frame, max_value=max_frame, value=min_frame, step=1)
-        with col_frame2:
-            end_frame = st.number_input("Hasta Frame:", min_value=min_frame, max_value=max_frame, value=max_frame, step=1)
+        start_frame = st.number_input("Desde Frame:", min_value=min_frame, max_value=max_frame, value=min_frame, step=1)
+        end_frame = st.number_input("Hasta Frame:", min_value=min_frame, max_value=max_frame, value=max_frame, step=1)
 
         df_filtered = df[(df["Frame"] >= start_frame) & (df["Frame"] <= end_frame)]
 
