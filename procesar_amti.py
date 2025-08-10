@@ -35,19 +35,19 @@ def main_forceplate():
         col_select_1, col_select_2, col_select_3 = st.columns(3)
 
         with col_select_1:
-            st.markdown("##### Graficar fuerzas:")
+            st.markdown("###### Fuerzas:")
             show_Fx = st.checkbox("Fx (N)", True)
             show_Fy = st.checkbox("Fy (N)", True)
             show_Fz = st.checkbox("Fz (N)", True)
         
         with col_select_2:
-            st.markdown("##### Graficar torques:")
+            st.markdown("###### Torques:")
             show_Mx = st.checkbox("Mx (N mm)", False)
             show_My = st.checkbox("My (N mm)", False)
             show_Mz = st.checkbox("Mz (N mm)", False)
         
         with col_select_3:
-            st.markdown("##### Graficar posición del COP:")
+            st.markdown("###### Posición del COP:")
             show_Cx = st.checkbox("Cx (mm)", False)
             show_Cy = st.checkbox("Cy (mm)", False)
             show_Cz = st.checkbox("Cz (mm)", False)
