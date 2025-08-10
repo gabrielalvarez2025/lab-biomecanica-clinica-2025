@@ -31,27 +31,14 @@ def main_phyphox():
         base_y = df["Acceleration y (m/s^2)"].abs().min()
         base_z = df["Acceleration z (m/s^2)"].abs().min()
 
-        st.markdown("mostrando base")
-        st.markdown(f"base x: {base_x}")
-        st.markdown(f"base y: {base_y}")
-        st.markdown(f"base z: {base_z}")
-
         acc_g = 9.8  # m/s2
         
-        #if 9.5 < base_x < 10.5:
-        #    df["Acceleration x (m/s^2)"] = df["Acceleration x (m/s^2)"] - acc_g
-        #elif 9.5 < base_y < 10.5:
-        #    df["Acceleration y (m/s^2)"] = df["Acceleration y (m/s^2)"] - acc_g
-        #elif 9.5 < base_z < 10.5:
-        #    df["Acceleration z (m/s^2)"] = df["Acceleration z (m/s^2)"] - acc_g
-
-        # --- Detección automática del eje vertical ---
         avg_abs = {
             "X": df["Acceleration x (m/s^2)"].abs().mean(),
             "Y": df["Acceleration y (m/s^2)"].abs().mean(),
             "Z": df["Acceleration z (m/s^2)"].abs().mean()
         }
-        eje_vertical = min(avg_abs, key=lambda eje: abs(avg_abs[eje] - 9.8))
+        eje_vertical = min(avg_abs, key=lambda eje: abs(avg_abs[eje] - acc_g))
 
         st.markdown("### Graficando tus datos:")
         
@@ -75,7 +62,7 @@ def main_phyphox():
 
             st.markdown(" ")
             st.markdown("###### ¿Quieres quitar la aceleración de gravedad?")
-            restar_g = st.checkbox("Restar g = 9,8 m/s² de la acc vertical", value=False)
+            restar_g = st.checkbox(f"Restar g = {acc_g} m/s² de la acc vertical", value=False)
             st.success(f"Eje vertical detectado: **Eje {eje_vertical}**")    
         
         with col_B:
