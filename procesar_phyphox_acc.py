@@ -116,19 +116,20 @@ def main_phyphox():
         # Dibujar cada gráfico por separado
         for col, color, label in selected_axes:
             
-            col_plot1, col_plot2 = st.columns([60, 40])
+            col_plot1, col_plot2 = st.columns([90, 10])
 
             with col_plot2:
 
-                st.markdown(f"### Ajuste de eje Y para {label}")
+                #st.markdown(f"### Ajuste de eje Y para {label}")
+                st.markdown(f"Ajusta el eje Y:")
                 y_min = st.number_input(
-                    f"Mínimo eje Y ({label})",
+                    f"min:",
                     value=float(df_filtered[col].min()),
                     step=0.5,
                     key=f"ymin_{col}"
                 )
                 y_max = st.number_input(
-                    f"Máximo eje Y ({label})",
+                    f"max:",
                     value=float(df_filtered[col].max()),
                     step=0.5,
                     key=f"ymax_{col}"
