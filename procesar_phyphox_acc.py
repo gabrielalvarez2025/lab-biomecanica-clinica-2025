@@ -28,7 +28,7 @@ def main_phyphox():
 
         st.markdown("### Selección de datos a graficar:")
         
-        col_A, col_B = st.columns([60, 40])
+        col_A, col_B = st.columns(2)
         
         
         with col_A:
