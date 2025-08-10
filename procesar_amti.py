@@ -160,10 +160,10 @@ def main_forceplate():
             ax.yaxis.label.set_color("black")
             ax.title.set_color("black")
 
-            sns.lineplot(x=df_filtered["Frame"], y=df_filtered[sig], ax=ax, color=color)
+            sns.lineplot(x=df_filtered["Tiempo"], y=df_filtered[sig], ax=ax, color=color)
 
             ax.set_ylim(y_min, y_max)
-            ax.set_title(f"{sig} en función del Frame", fontsize=14)
+            ax.set_title(f"{sig} en función del Tiempo", fontsize=14)
             ax.set_xlabel("Frame")
             ax.set_ylabel(sig)
 
