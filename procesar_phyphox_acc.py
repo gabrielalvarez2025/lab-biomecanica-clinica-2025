@@ -27,9 +27,11 @@ def main_phyphox():
         max_time = float(df["Time (s)"].max())
 
         col_A, col_B = st.columns(2)
-        bloq1, bloq2 = st.columns(2)
+        
         
         with col_A:
+
+            bloq1, bloq2 = st.columns(2)
 
             with bloq1:
                 show_x = st.checkbox("Acc Eje X", value=True)
