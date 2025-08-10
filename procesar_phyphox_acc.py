@@ -7,7 +7,20 @@ def main_phyphox():
     st.markdown("---")
     st.subheader("Procesando Datos del acelerómetro del celular con Phyphox")
 
-    uploaded_file = st.file_uploader("Sube un archivo CSV", type=["csv"])
+    col_upload1, col_upload2 = st.columns([60, 40])
+
+    with col_upload1:
+        uploaded_file = st.file_uploader("📂 Sube un archivo CSV", type=["csv"])
+    
+    with col_upload2:
+        st.markdown("O puedes probar con un archivo de ejemplo:")
+        example_file = "ejemplo_data_acc_phyphox.csv"
+        if os.path.exists(example_file):
+            if st.button("Usar datos de ejemplo"):
+                uploaded_file = example_file
+        else:
+            st.error("No se encontró el archivo de ejemplo en la carpeta.")
+
 
     if uploaded_file is not None:
         # Leer CSV
