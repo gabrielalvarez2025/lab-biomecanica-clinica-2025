@@ -26,9 +26,23 @@ def main_phyphox():
         min_time = float(0)
         max_time = float(df["Time (s)"].max())
 
+        # Calcular mean acc de cada eje
+        mean_x = df["Acceleration x (m/s^2)"].mean()
+        mean_y = df["Acceleration y (m/s^2)"].mean()
+        mean_z = df["Acceleration z (m/s^2)"].mean()
+
+        acc_g = 9.8  # m/s2
+        
+        if 9.5 < mean_x < 10.5:
+            df["Acceleration x (m/s^2)"] = df["Acceleration x (m/s^2)"] - acc_g
+        elif 9.5 < mean_y < 10.5:
+            df["Acceleration y (m/s^2)"] = df["Acceleration y (m/s^2)"] - acc_g
+        elif 9.5 < mean_z < 10.5:
+            df["Acceleration z (m/s^2)"] = df["Acceleration z (m/s^2)"] - acc_g
+
         st.markdown("### Graficando tus datos:")
         
-        col_A, esp_C, col_B = st.columns([50, 10, 40])
+        col_A, esp_AB, col_B = st.columns([50, 10, 40])
         
         
         with col_A:
