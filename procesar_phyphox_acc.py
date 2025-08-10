@@ -27,9 +27,9 @@ def main_phyphox():
         max_time = float(df["Time (s)"].max())
 
         # Calcular mean acc de cada eje
-        base_x = df["Acceleration x (m/s^2)"].abs().min()
-        base_y = df["Acceleration y (m/s^2)"].abs().min()
-        base_z = df["Acceleration z (m/s^2)"].abs().min()
+        base_x = min(abs(df["Acceleration x (m/s^2)"]))
+        base_y = min(abs(df["Acceleration y (m/s^2)"]))
+        base_z = min(abs(df["Acceleration z (m/s^2)"]))
 
         st.markdown("mostrando base")
         st.markdown(f"base x: {base_x}")
