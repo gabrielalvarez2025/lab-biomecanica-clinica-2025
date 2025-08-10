@@ -46,33 +46,25 @@ def main_phyphox():
         
         col_A, col_B = st.columns(2)
         
-        
         with col_A:
 
             st.markdown("###### Selecciona los datos que quieres graficar:")
             
-            col_check1, col_check2 = st.columns([30, 65])
+            col_mostrar_ejes1, col_mostrar_ejes2 = st.columns([30, 65])
 
-            with col_check1:
+            with col_mostrar_ejes1:
                 show_x = st.checkbox("Acc Eje X", value=True)
                 show_y = st.checkbox("Acc Eje Y", value=True)
                 show_z = st.checkbox("Acc Eje Z", value=True)
-            with col_check2:
+            
+            with col_mostrar_ejes2:
                 show_abs = st.checkbox("Acc absoluta (X + Y + Z)", value=False)
                 
-            #with col_check3:
-                
-        
-            
-
-            
-        
         with col_B:
 
             st.markdown("###### ¿Quieres quitar la acc de gravedad?")
             restar_g = st.checkbox(f"Restar g = 9,8 m/s² de la acc vertical (eje {eje_vertical})", value=True)
 
-            #st.markdown(" ")
             st.markdown("###### ¿Quieres aplicar un filtro a la señal?")
             filtrar_check = st.checkbox(f"Filtrar", value=True)
             
@@ -84,7 +76,7 @@ def main_phyphox():
 
         st.markdown("###### Puedes ajustar la ventana de tiempo que te interesa mirar:")
 
-        esp_tizq, col_tiempo1, esp_tmed, col_tiempo2, esp_tder = st.columns([10, 30, 60, 30, 15])
+        _, col_tiempo1, _, col_tiempo2, _ = st.columns([10, 30, 60, 30, 15])
 
         with col_tiempo1:
             start_time = st.number_input("**Desde** (seg):", min_value=min_time, max_value=max_time, value=min_time, step=0.1)
