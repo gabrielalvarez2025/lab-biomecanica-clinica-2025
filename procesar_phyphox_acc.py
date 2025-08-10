@@ -44,7 +44,10 @@ def main_phyphox():
             with col_check3:
                 show_z = st.checkbox("Acc Eje Z", value=True)
         
-            show_abs = st.checkbox("Acc absoluta (X + Y + Z)", value=False)    
+            show_abs = st.checkbox("Acc absoluta (X + Y + Z)", value=False)
+
+            st.markdown("###### ¿Quieres quitar la aceleración de gravedad (g)?")
+            show_abs = st.checkbox("Quitar g", value=False)    
         
         with col_B:
 
