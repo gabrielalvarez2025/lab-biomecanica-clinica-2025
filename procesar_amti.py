@@ -18,7 +18,7 @@ def main_forceplate():
         df = df.drop(0)
 
         # Redefinir col Frame real
-        df["Frame_n"] = (df["Frame"] - 1) * 10 + df["Sub Frame"]
+        df["Frame_n"] = (df["Frame"] - 1) * 10 + df["Sub Frame"] + 1
         df = df.drop(columns=["Frame", "Sub Frame"])
         df = df.rename(columns={"Frame_n": "Frame"})
 
