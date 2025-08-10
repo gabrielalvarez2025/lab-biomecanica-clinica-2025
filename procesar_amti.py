@@ -44,7 +44,7 @@ def main_forceplate():
 
             Si te das cuenta, tus datos tienen el número de Frame (cuadro o muestra), pero no tienes datos de tiempo.
             
-            La primera tarea que te daré para que empieces a limpiar tus datos, es agregar una columna de tiempo. ¿Cómo hacemos eso?
+            La primera tarea que te daré para que empieces a limpiar tus datos, es agregar una columna de tiempo. Pero... ¿cómo hacemos eso?
             """
         )
         
