@@ -32,7 +32,7 @@ def main_forceplate():
 
         st.markdown("### Selecciona las señales a graficar:")
 
-        col_select_1, col_select_2, col_select_3, col_select_4 = st.columns(4)
+        col_select_1, col_select_2, col_select_3 = st.columns(3)
 
         with col_select_1:
             st.markdown("##### Graficar fuerzas:")
