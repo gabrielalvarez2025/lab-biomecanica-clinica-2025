@@ -125,7 +125,7 @@ def main_phyphox():
                     f"max:",
                     value=float(df_filtered[col].max()),
                     step=0.5,
-                    key=f"ymax_{col}"
+                    key=f"ymax_{col}", icon="arrow_upward"
                 )
                 st.markdown(" ")
                 st.markdown(" ")
