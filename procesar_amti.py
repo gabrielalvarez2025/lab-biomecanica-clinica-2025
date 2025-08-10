@@ -32,7 +32,7 @@ def main_forceplate():
             """
             La plataforma de fuerza que está en el laboratorio toma datos de tres tipos:
             
-            - Fuerzas (newtons) aplicadas sobre lap plataforma en cada eje (anteroposterior, mediolateral y vertical)
+            - Fuerza de reacción del suelo en cada eje (anteroposterior, mediolateral y vertical)
             
             - Torques generados en el contacto con el suelo, ej. durante giros
             
