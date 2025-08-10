@@ -44,7 +44,7 @@ def main_phyphox():
             with col_check3:
                 show_z = st.checkbox("Acc Eje Z", value=True)
         
-                show_abs = st.checkbox("Acc absoluto", value=True)    
+            show_abs = st.checkbox("Acc absoluta", value=True)    
         
         with col_B:
 
