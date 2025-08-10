@@ -79,6 +79,8 @@ def main_phyphox():
         st.markdown(" ")
         st.markdown(" ")
 
+        esp_tizq, col_t_start, esp_tmed, col_t_end, esp_tder = st.columns([5, 10, 70, 10, 5])
+
         st.markdown("###### Puedes ajustar la ventana de tiempo que te interesa mirar:")
             
         #st.markdown("Mostrar tiempo:")
