@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def main_phyphox():
-    
     st.markdown("---")
     st.subheader("Procesando Datos del acelerómetro del celular con Phyphox")
 
@@ -36,31 +35,73 @@ def main_phyphox():
         # Filtrar datos
         df_filtered = df[(df["Time (s)"] >= start_time) & (df["Time (s)"] <= end_time)]
 
-        # Configuración de Seaborn
+        # Checkboxes
+        st.markdown("### Selección de datos a graficar:")
+        col_cb1, col_cb2, col_cb3, col_cb4 = st.columns(4)
+        with col_cb1:
+            show_x = st.checkbox("Acc X (verde)", value=True)
+        with col_cb2:
+            show_y = st.checkbox("Acc Y (azul)")
+        with col_cb3:
+            show_z = st.checkbox("Acc Z (amarillo)")
+        with col_cb4:
+            show_abs = st.checkbox("Absolute (blanco)")
+
+        # Configuración de estilo
         sns.set_theme(style="whitegrid", palette="pastel")
 
-        # Función para graficar cada eje
-        def plot_acc(axis_label, color=None):
-            fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
+        selected_axes = []
+        if show_x:
+            selected_axes.append(("Acceleration x (m/s^2)", "green", "Acc X"))
+        if show_y:
+            selected_axes.append(("Acceleration y (m/s^2)", "blue", "Acc Y"))
+        if show_z:
+            selected_axes.append(("Acceleration z (m/s^2)", "gold", "Acc Z"))
+        if show_abs and "Absolute acceleration (m/s^2)" in df_filtered.columns:
+            selected_axes.append(("Absolute acceleration (m/s^2)", "white", "Abs"))
+
+        if not selected_axes:
+            st.warning("Selecciona al menos una opción para graficar.")
+            return
+
+        # Si hay más de uno, los graficamos juntos en un solo plot
+        if len(selected_axes) > 1:
+            fig, ax = plt.subplots(figsize=(10, 6), facecolor="none")
             ax.set_facecolor("none")
-            
-            # Estilo de texto blanco
             ax.tick_params(colors="white")
             ax.xaxis.label.set_color("white")
             ax.yaxis.label.set_color("white")
             ax.title.set_color("white")
 
-            sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[axis_label], ax=ax, color=color)
-            
-            ax.set_title(f"{axis_label} en el Tiempo", fontsize=14)
+            for col, color, label in selected_axes:
+                sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[col], ax=ax, color=color, label=label)
+
+            ax.set_title("Aceleraciones en el Tiempo", fontsize=16)
+            ax.set_xlabel("Tiempo (s)")
+            ax.set_ylabel("Aceleración (m/s²)")
+
+            legend = ax.legend()
+            legend.get_frame().set_facecolor("none")
+            legend.get_frame().set_edgecolor("white")
+            for text in legend.get_texts():
+                text.set_color("white")
+
+            st.pyplot(fig, transparent=True)
+
+        # Si solo hay uno, plot individual
+        else:
+            col, color, label = selected_axes[0]
+            fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
+            ax.set_facecolor("none")
+            ax.tick_params(colors="white")
+            ax.xaxis.label.set_color("white")
+            ax.yaxis.label.set_color("white")
+            ax.title.set_color("white")
+
+            sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[col], ax=ax, color=color)
+
+            ax.set_title(f"{label} en el Tiempo", fontsize=14)
             ax.set_xlabel("Tiempo (s)")
             ax.set_ylabel("Aceleración (m/s²)")
 
             st.pyplot(fig, transparent=True)
-
-        # Graficar cada componente
-        plot_acc("Acceleration x (m/s^2)")
-        plot_acc("Acceleration y (m/s^2)")
-        plot_acc("Acceleration z (m/s^2)")
-
-        st.markdown("hola")
