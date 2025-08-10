@@ -33,6 +33,11 @@ def main_forceplate():
         st.write("Vista previa de los datos:")
         st.dataframe(df, hide_index=True)
 
+        st.markdown("---")
+        st.markdown("### Calcular columna Tiempo")
+
+        st.markdown("La plataforma samplea a una frecuencia de 1000 Frames por cada segundo (Fs = 1000 fps)")
+
         # Rango para Frame
         min_frame = int(df["Frame"].min())
         max_frame = int(df["Frame"].max())
