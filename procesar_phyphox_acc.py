@@ -41,6 +41,7 @@ def main_phyphox():
         }
         eje_vertical = min(avg_abs, key=lambda eje: abs(avg_abs[eje] - acc_g))
 
+        st.markdown("---")
         st.markdown("### Graficando tus datos:")
         
         col_A, col_B = st.columns(2)
