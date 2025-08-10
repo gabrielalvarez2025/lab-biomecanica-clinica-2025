@@ -30,8 +30,6 @@ def main_forceplate():
         min_frame = int(df["Frame"].min())
         max_frame = int(df["Frame"].max())
 
-        
-
         st.markdown("#### Ajusta ventana de frames para graficar:")
 
         start_frame = st.number_input("Desde Frame:", min_value=min_frame, max_value=max_frame, value=min_frame, step=1)
