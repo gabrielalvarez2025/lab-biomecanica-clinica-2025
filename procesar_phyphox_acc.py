@@ -26,7 +26,9 @@ def main_phyphox():
         min_time = float(0)
         max_time = float(df["Time (s)"].max())
 
-        col_A, col_B = st.columns(2)
+        st.markdown("### Selección de datos a graficar:")
+        
+        col_A, col_B = st.columns([80, 20])
         
         
         with col_A:
@@ -51,7 +53,7 @@ def main_phyphox():
         # Filtrar datos
         df_filtered = df[(df["Time (s)"] >= start_time) & (df["Time (s)"] <= end_time)]
 
-        st.markdown("### Selección de datos a graficar:")
+        
 
         # Configuración de estilo
         sns.set_theme(style="whitegrid", palette="pastel")
