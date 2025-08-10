@@ -34,6 +34,7 @@ def main_phyphox():
         with col_A:
 
             st.markdown("Selecciona los ejes que quieres observar:")
+            st.markdown("hola")
             
             bloq1, bloq2 = st.columns(2)
 
