@@ -28,10 +28,11 @@ def main_forceplate():
         df = df[cols]
 
 
-        st.markdown("La plataforma de fuerza que está en el laboratorio toma datos de tres tipos:" \
-        "- Fuerzas (newtons) aplicadas sobre lap plataforma en cada eje (anteroposterior, mediolateral y vertical)" \
-        "- Torques generados en el contacto con el suelo, ej. durante giros" \
-        "- Posición del centro de presión, en cada eje (anteroposterior y mediolateral)")
+        st.markdown("""La plataforma de fuerza que está en el laboratorio toma datos de tres tipos:
+                    - Fuerzas (newtons) aplicadas sobre lap plataforma en cada eje (anteroposterior, mediolateral y vertical)
+                    - Torques generados en el contacto con el suelo, ej. durante giros
+                    - Posición del centro de presión, en cada eje (anteroposterior y mediolateral)
+                    """)
         
         st.write("Vista previa de los datos:")
         st.dataframe(df, hide_index=True)
