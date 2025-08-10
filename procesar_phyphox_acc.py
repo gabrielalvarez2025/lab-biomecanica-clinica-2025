@@ -62,7 +62,7 @@ def main_phyphox():
 
             st.markdown(" ")
             st.markdown("###### ¿Quieres quitar la aceleración de gravedad?")
-            restar_g = st.checkbox(f"Restar g = {acc_g} m/s² de la acc vertical", value=False)
+            restar_g = st.checkbox("Restar g = 9,8 m/s² de la acc vertical", value=False)
             st.success(f"Eje vertical detectado: **Eje {eje_vertical}**")    
         
         with col_B:
