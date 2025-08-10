@@ -49,7 +49,9 @@ def main_phyphox():
             end_time = st.number_input("Mostrar tiempo **hasta** el segundo:", min_value=min_time, max_value=max_time, value=max_time, step=0.1)
 
 
-
+        st.markdown(" ")
+        st.markdown(" ")
+        
         # Filtrar datos
         df_filtered = df[(df["Time (s)"] >= start_time) & (df["Time (s)"] <= end_time)]
 
