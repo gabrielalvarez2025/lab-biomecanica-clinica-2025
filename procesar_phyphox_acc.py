@@ -9,9 +9,6 @@ def main_phyphox():
     st.subheader("Procesando Datos del acelerómetro del celular con Phyphox")
 
     uploaded_file = st.file_uploader("📂 Sube un archivo CSV", type=["csv"])
-    
-    
-
 
     if uploaded_file is not None:
         # Leer CSV
@@ -118,6 +115,21 @@ def main_phyphox():
 
         # Dibujar cada gráfico por separado
         for col, color, label in selected_axes:
+            
+            st.markdown(f"### Ajuste de eje Y para {label}")
+            y_min = st.number_input(
+                f"Mínimo eje Y ({label})",
+                value=float(df_filtered[col].min()),
+                step=0.5,
+                key=f"ymin_{col}"
+            )
+            y_max = st.number_input(
+                f"Máximo eje Y ({label})",
+                value=float(df_filtered[col].max()),
+                step=0.5,
+                key=f"ymax_{col}"
+            )
+            
             fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
             ax.set_facecolor("none")
 
@@ -129,6 +141,9 @@ def main_phyphox():
 
             # Graficar
             sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[col], ax=ax, color=color)
+
+            # Ajustar escala Y según los inputs del usuario
+            ax.set_ylim(y_min, y_max)
 
             # Títulos
             ax.set_title(f"{label} en el Tiempo", fontsize=14)
