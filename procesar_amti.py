@@ -47,7 +47,8 @@ def main_forceplate():
         st.dataframe(df, hide_index=True)
 
         st.markdown("---")
-        st.markdown("### Calcular columna Tiempo")
+        st.markdown("### Comencemos a jugar con los datos")
+        
 
         st.markdown(
             """
@@ -60,6 +61,8 @@ def main_forceplate():
             La primera tarea que te daré para que empieces a limpiar tus datos, es agregar una columna de tiempo. Pero... ¿cómo hacemos eso?
             """
         )
+
+        st.markdown("### Calcular columna Tiempo")
 
         st.markdown("##### Los datos de tiempo se extraen a partir de la frecuencia de sampleo")
         
