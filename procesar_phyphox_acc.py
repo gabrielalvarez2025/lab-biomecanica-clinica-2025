@@ -87,43 +87,28 @@ def main_phyphox():
         # Filtrar datos
         df_filtered = df[(df["Time (s)"] >= start_time) & (df["Time (s)"] <= end_time)]
 
-        
+        # --- Detección automática del eje vertical ---
+        avg_abs = {
+            "X": df_filtered["Acceleration x (m/s^2)"].abs().mean(),
+            "Y": df_filtered["Acceleration y (m/s^2)"].abs().mean(),
+            "Z": df_filtered["Acceleration z (m/s^2)"].abs().mean()
+        }
+        eje_vertical = min(avg_abs, key=lambda eje: abs(avg_abs[eje] - 9.8))
 
-        # Configuración de estilo
-        sns.set_theme(style="whitegrid", palette="pastel")
+        st.markdown("### Detección automática del eje vertical")
+        st.write(f"Promedio absoluto Acc X: {avg_abs['X']:.3f} m/s²")
+        st.write(f"Promedio absoluto Acc Y: {avg_abs['Y']:.3f} m/s²")
+        st.write(f"Promedio absoluto Acc Z: {avg_abs['Z']:.3f} m/s²")
+        st.success(f"Eje vertical detectado: **Eje {eje_vertical}**")
 
-        # Lista de ejes a mostrar
-        selected_axes = []
-        if show_x:
-            selected_axes.append(("Acceleration x (m/s^2)", "#7EB87E", f"Acc X"))
-        if show_y:
-            selected_axes.append(("Acceleration y (m/s^2)", "#6EBDE2", f"Acc Y"))
-        if show_z:
-            selected_axes.append(("Acceleration z (m/s^2)",  "#B3B87E", f"Acc Z"))
-        if show_abs and "Absolute acceleration (m/s^2)" in df_filtered.columns:
-            selected_axes.append(("Absolute acceleration (m/s^2)", "white", "Aceleración absoluta"))
-
-        if not selected_axes:
-            st.warning("Selecciona al menos una opción para graficar.")
-            return
-
-        # Dibujar cada gráfico por separado
-        for col, color, label in selected_axes:
-            fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
-            ax.set_facecolor("none")
-
-            # Cambiar colores del texto
-            ax.tick_params(colors="white")
-            ax.xaxis.label.set_color("white")
-            ax.yaxis.label.set_color("white")
-            ax.title.set_color("white")
-
-            # Graficar
-            sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[col], ax=ax, color=color)
-
-            # Títulos
-            ax.set_title(f"{label} en el Tiempo", fontsize=14)
-            ax.set_xlabel("Tiempo (s)")
-            ax.set_ylabel("Aceleración (m/s²)")
-
-            st.pyplot(fig, transparent=True)
+        # Restar gravedad si está activado
+        if restar_g:
+            col_map = {
+                "X": "Acceleration x (m/s^2)",
+                "Y": "Acceleration y (m/s^2)",
+                "Z": "Acceleration z (m/s^2)"
+            }
+            vertical_col = col_map[eje_vertical]
+            df_filtered[vertical_col] = df_filtered[vertical_col] - (
+                9.8 if df_filtered[vertical_col].mean() > 0 else -9.8
+            )
