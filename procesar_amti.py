@@ -100,12 +100,14 @@ def main_forceplate():
         min_frame = float(df["Tiempo"].min())
         max_frame = float(df["Tiempo"].max())
 
-        st.markdown("#### Ajusta ventana de frames para graficar:")
+        #st.markdown("#### Ajusta ventana de frames para graficar:")
 
-        start_time = st.number_input("Desde seg:", min_value=min_frame, max_value=max_frame, value=min_frame, step=1.0)
-        end_time = st.number_input("Hasta seg:", min_value=min_frame, max_value=max_frame, value=max_frame, step=1.0)
+        #start_time = st.number_input("Desde seg:", min_value=min_frame, max_value=max_frame, value=min_frame, step=1.0)
+        #end_time = st.number_input("Hasta seg:", min_value=min_frame, max_value=max_frame, value=max_frame, step=1.0)
 
-        df_filtered = df[(df["Tiempo"] >= start_time) & (df["Tiempo"] <= end_time)]
+        #df_filtered = df[(df["Tiempo"] >= start_time) & (df["Tiempo"] <= end_time)]
+
+        df_filtered = df
 
         st.markdown("### Selecciona las señales a graficar:")
 
