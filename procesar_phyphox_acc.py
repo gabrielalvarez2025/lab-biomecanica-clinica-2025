@@ -48,7 +48,7 @@ def main_phyphox():
 
             st.markdown(" ")
             st.markdown("###### ¿Quieres quitar la aceleración de gravedad?")
-            show_abs = st.checkbox("Quitar g", value=False)    
+            show_abs = st.checkbox("Quitar g de la acc vertical", value=False)    
         
         with col_B:
 
