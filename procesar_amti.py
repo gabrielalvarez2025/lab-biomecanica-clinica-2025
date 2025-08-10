@@ -12,7 +12,7 @@ def main_forceplate():
     if uploaded_file is not None:
         # Intentamos leer el CSV, omitiendo las dos primeras filas de metadata
         df = pd.read_csv(uploaded_file, skiprows=3)
-        df = df[:,:11]
+        df = df[:,0:11]
         df.columns = df.columns.str.strip()  # limpiar nombres
 
         
