@@ -64,7 +64,7 @@ def main_forceplate():
         cols = ["Tiempo"] + [col for col in cols if col != "Tiempo"]
         df = df[cols]
 
-        st.write("Vista previa de los datos:")
+        st.write("Veamos cómo se ve tu tabla con tiempo:")
         st.dataframe(df, hide_index=True)
 
         
