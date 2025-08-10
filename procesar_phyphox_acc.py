@@ -26,16 +26,25 @@ def main_phyphox():
         min_time = float(0)
         max_time = float(df["Time (s)"].max())
 
-        bloq1, bloq2, bloq3, bloq4 = st.columns([20, 30, 30, 20])
-        with bloq1:
-            show_x = st.checkbox("Acc Eje X", value=True)
-            show_y = st.checkbox("Acc Eje Y", value=True)
-        with bloq2:
-            show_z = st.checkbox("Acc Eje Z", value=True)
-            show_abs = st.checkbox("Acc absoluto", value=True)
-        with bloq4:
+        col_A, col_B = st.columns(2)
+        bloq1, bloq2 = st.columns(2)
+        
+        with col_A:
+
+            with bloq1:
+                show_x = st.checkbox("Acc Eje X", value=True)
+                show_y = st.checkbox("Acc Eje Y", value=True)
+            
+            with bloq2:
+                show_z = st.checkbox("Acc Eje Z", value=True)
+                show_abs = st.checkbox("Acc absoluto", value=True)    
+        
+        with col_B:
+            
             start_time = st.number_input("Mostrar tiempo **desde** el segundo:", min_value=min_time, max_value=max_time, value=min_time, step=0.1)
             end_time = st.number_input("Mostrar tiempo **hasta** el segundo:", min_value=min_time, max_value=max_time, value=max_time, step=0.1)
+
+
 
         # Filtrar datos
         df_filtered = df[(df["Time (s)"] >= start_time) & (df["Time (s)"] <= end_time)]
