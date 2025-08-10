@@ -51,7 +51,7 @@ def main_phyphox():
 
             st.markdown("###### Selecciona los datos que quieres graficar:")
             
-            col_check1, col_check2 = st.columns([25, 75])
+            col_check1, col_check2 = st.columns([35, 65])
 
             with col_check1:
                 show_x = st.checkbox("Acc Eje X", value=True)
