@@ -11,6 +11,8 @@ def main_forceplate():
 
     if uploaded_file is not None:
         
+        st.success("¡Excelente! Subiste exitosamenteun archivo CSV con los datos tomados de la plataforma :)")
+        
         # Intentamos leer el CSV, omitiendo las dos primeras filas de metadata
         df = pd.read_csv(uploaded_file, skiprows=3)
         df = df.iloc[:, 0:10] # solo datos plataforma, no EMG
