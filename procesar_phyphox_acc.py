@@ -62,3 +62,5 @@ def main_phyphox():
         plot_acc("Acceleration x (m/s^2)")
         plot_acc("Acceleration y (m/s^2)")
         plot_acc("Acceleration z (m/s^2)")
+
+        st.markdown("hola")
