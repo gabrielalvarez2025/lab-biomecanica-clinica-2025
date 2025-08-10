@@ -38,6 +38,9 @@ def main_forceplate():
 
         st.markdown("La plataforma samplea a una frecuencia de 1000 Frames por cada segundo (Fs = 1000 fps)")
 
+
+        st.markdown("---")
+
         # Rango para Frame
         min_frame = int(df["Frame"].min())
         max_frame = int(df["Frame"].max())
