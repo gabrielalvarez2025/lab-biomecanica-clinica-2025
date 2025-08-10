@@ -65,7 +65,7 @@ def main_forceplate():
         df = df[cols]
 
         st.write("Veamos cómo se ve tu tabla con tiempo:")
-        st.write(" ↓  ↓  ↓  ↓")
+        st.write(" 👇")
         st.dataframe(df, hide_index=True)
 
         
