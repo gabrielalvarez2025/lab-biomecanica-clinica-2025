@@ -73,23 +73,23 @@ def main_phyphox():
                 st.warning("Selecciona al menos una opción para graficar.")
                 return
 
-        # Dibujar cada gráfico por separado
-        for col, color, label in selected_axes:
-            fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
-            ax.set_facecolor("none")
+            # Dibujar cada gráfico por separado
+            for col, color, label in selected_axes:
+                fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
+                ax.set_facecolor("none")
 
-            # Cambiar colores del texto
-            ax.tick_params(colors="white")
-            ax.xaxis.label.set_color("white")
-            ax.yaxis.label.set_color("white")
-            ax.title.set_color("white")
+                # Cambiar colores del texto
+                ax.tick_params(colors="white")
+                ax.xaxis.label.set_color("white")
+                ax.yaxis.label.set_color("white")
+                ax.title.set_color("white")
 
-            # Graficar
-            sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[col], ax=ax, color=color)
+                # Graficar
+                sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[col], ax=ax, color=color)
 
-            # Títulos
-            ax.set_title(f"{label} en el Tiempo", fontsize=14)
-            ax.set_xlabel("Tiempo (s)")
-            ax.set_ylabel("Aceleración (m/s²)")
+                # Títulos
+                ax.set_title(f"{label} en el Tiempo", fontsize=14)
+                ax.set_xlabel("Tiempo (s)")
+                ax.set_ylabel("Aceleración (m/s²)")
 
-            st.pyplot(fig, transparent=True)
+                st.pyplot(fig, transparent=True)
