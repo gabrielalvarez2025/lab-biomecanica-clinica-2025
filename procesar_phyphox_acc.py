@@ -33,9 +33,7 @@ def main_phyphox():
         
         with col_A:
 
-            st.markdown(
-                "Selecciona los ejes que quieres mostrar:"
-            )
+            st.markdown("Selecciona los ejes que quieres observar:")
             
             bloq1, bloq2 = st.columns(2)
 
@@ -48,6 +46,8 @@ def main_phyphox():
                 show_abs = st.checkbox("Acc absoluto", value=True)    
         
         with col_B:
+
+            st.markdown("Puedes ajustar la ventana de tiempo que te interesa mirar:")
             
             start_time = st.number_input("Mostrar tiempo **desde** el segundo:", min_value=min_time, max_value=max_time, value=min_time, step=0.1)
             end_time = st.number_input("Mostrar tiempo **hasta** el segundo:", min_value=min_time, max_value=max_time, value=max_time, step=0.1)
