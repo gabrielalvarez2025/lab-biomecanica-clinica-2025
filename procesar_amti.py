@@ -47,8 +47,10 @@ def main_forceplate():
             La primera tarea que te daré para que empieces a limpiar tus datos, es agregar una columna de tiempo. Pero... ¿cómo hacemos eso?
             """
         )
+
+        st.markdown("##### Los datos de tiempo se extraen a partir de la frecuencia de sampleo")
         
-        st.markdown("La plataforma samplea a una frecuencia de 1000 Frames por cada segundo (Fs = 1000 fps)")
+        st.info("La plataforma samplea a una frecuencia de 1000 Frames por cada segundo (Fs = 1000 fps)")
 
         
 
