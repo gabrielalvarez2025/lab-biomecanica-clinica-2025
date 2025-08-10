@@ -39,11 +39,11 @@ def main_forceplate():
             """
             La plataforma de fuerza que está en el laboratorio captura tres tipos de dato:
             
-            - Fuerza de reacción del suelo en cada eje (anteroposterior, mediolateral y vertical)
+            - **Fuerza de reacción del suelo** en cada eje (anteroposterior, mediolateral y vertical)
             
-            - Torques generados en el contacto con el suelo, en cada eje (por ejemplo, durante giros).
+            - **Torques** generados en el contacto con el suelo, en cada eje (por ejemplo, durante giros).
             
-            - Posición del centro de presión, en cada eje (anteroposterior y mediolateral).
+            - **Posición del centro de presión**, en cada eje (anteroposterior y mediolateral).
 
 
             """
