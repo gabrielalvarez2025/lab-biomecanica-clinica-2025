@@ -89,9 +89,9 @@ def main_forceplate():
 
         with col_select_1:
             st.markdown("###### Fuerzas:")
-            show_Fx = st.checkbox("Fx (N)", True)
-            show_Fy = st.checkbox("Fy (N)", True)
-            show_Fz = st.checkbox("Fz (N)", True)
+            show_Fx = st.checkbox("Fx (N)", False)
+            show_Fy = st.checkbox("Fy (N)", False)
+            show_Fz = st.checkbox("Fz (N)", False)
         
         with col_select_2:
             st.markdown("###### Torques:")
@@ -101,18 +101,20 @@ def main_forceplate():
         
         with col_select_3:
             st.markdown("###### Posición del COP:")
-            show_Cx = st.checkbox("Cx (mm)", False)
-            show_Cy = st.checkbox("Cy (mm)", False)
+            show_Cx = st.checkbox("Cx (mm)", True)
+            show_Cy = st.checkbox("Cy (mm)", True)
             #show_Cz = st.checkbox("Cz (mm)", False)
 
         # Lista de señales a graficar
         signals = []
+        
         if show_Fx:
             signals.append(("Fx", "tab:blue"))
         if show_Fy:
             signals.append(("Fy", "tab:orange"))
         if show_Fz:
             signals.append(("Fz", "tab:green"))
+        
         if show_Mx:
             signals.append(("Mx", "tab:red"))
         if show_My:
