@@ -55,6 +55,12 @@ def main_forceplate():
 
                 Esto quiere decir que, en cada segundo, alcaza a capturar 1000 Frames con datos.
                 """)
+        
+
+        df["Time (s)"] = (df["Frame"] - 1) / 1000
+
+        st.write("Vista previa de los datos:")
+        st.dataframe(df, hide_index=True)
 
         
 
