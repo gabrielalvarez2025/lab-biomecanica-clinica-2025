@@ -30,7 +30,7 @@ def main_forceplate():
         min_frame = int(df["Frame"].min())
         max_frame = int(df["Frame"].max())
 
-        st.info(f"La frecuencia de sampleo fue de: {freq_sampleo}")
+        
 
         st.markdown("#### Ajusta ventana de frames para graficar:")
 
