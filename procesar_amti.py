@@ -147,6 +147,12 @@ def main_forceplate():
             signals.append(("My", "tab:purple"))
         if show_Mz:
             signals.append(("Mz", "tab:brown"))
+        
+        if show_Cx:
+            signals.append(("Cx", "tab:red"))
+        if show_Cy:
+            signals.append(("Cy", "tab:purple"))
+        
 
         if not signals:
             st.warning("Selecciona al menos una señal para graficar.")
