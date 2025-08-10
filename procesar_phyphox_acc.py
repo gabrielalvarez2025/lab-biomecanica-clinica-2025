@@ -86,11 +86,11 @@ def main_phyphox():
         # Lista de ejes a mostrar
         selected_axes = []
         if show_x:
-            selected_axes.append(("Acceleration x (m/s^2)", "#7EB87E", f"Acc X (mean = {mean_x})"))
+            selected_axes.append(("Acceleration x (m/s^2)", "#7EB87E", f"Acc X (mean = {round(mean_x, 2)})"))
         if show_y:
-            selected_axes.append(("Acceleration y (m/s^2)", "#6EBDE2", f"Acc Y (mean = {mean_y})"))
+            selected_axes.append(("Acceleration y (m/s^2)", "#6EBDE2", f"Acc Y (mean = {round(mean_y, 2)})"))
         if show_z:
-            selected_axes.append(("Acceleration z (m/s^2)",  "#B3B87E", f"Acc Z (mean = {mean_z})"))
+            selected_axes.append(("Acceleration z (m/s^2)",  "#B3B87E", f"Acc Z (mean = {round(mean_z, 2)})"))
         if show_abs and "Absolute acceleration (m/s^2)" in df_filtered.columns:
             selected_axes.append(("Absolute acceleration (m/s^2)", "white", "Aceleración absoluta"))
 
