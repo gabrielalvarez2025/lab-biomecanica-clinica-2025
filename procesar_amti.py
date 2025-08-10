@@ -34,9 +34,9 @@ def main_forceplate():
             
             - Fuerza de reacción del suelo en cada eje (anteroposterior, mediolateral y vertical)
             
-            - Torques generados en el contacto con el suelo, ej. durante giros
+            - Torques generados en el contacto con el suelo, en cada eje (por ejemplo, durante giros).
             
-            - Posición del centro de presión, en cada eje (anteroposterior y mediolateral)
+            - Posición del centro de presión, en cada eje (anteroposterior y mediolateral).
             """
         )
         
