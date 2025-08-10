@@ -319,7 +319,7 @@ def main_bioinstrumentacion():
     # Tarjeta 2
     parrafo_interactivo2 = "Procesar datos de acelerometría tomados con el celular usando Phyphox"
     botones_tarjeta(nombre_estado="mostrar_torques",
-                    texto_boton="Procesamiento con PhyPhox",
+                    texto_boton="Procesamiento de datos de acelerómetro con PhyPhox",
                     texto_parrafo=parrafo_interactivo2,
                     color_boton= "#368581",
                     color_parrafo= "#89BBB8"
