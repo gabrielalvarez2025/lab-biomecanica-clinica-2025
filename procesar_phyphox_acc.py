@@ -127,7 +127,7 @@ def main_phyphox():
                     step=0.5,
                     key=f"ymax_{col}"
                 )
-                st.markdown("max ↑")
+                st.markdown("max ↑", 20)
                 st.markdown(" ")
                 st.markdown(" ")
                 st.markdown(" ")
