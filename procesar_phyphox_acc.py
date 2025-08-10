@@ -31,9 +31,9 @@ def main_phyphox():
         base_y = df["Acceleration y (m/s^2)"].abs().min()
         base_z = df["Acceleration z (m/s^2)"].abs().min()
 
-        st.markdown(f"{base_x = :}")
-        st.markdown(f"{base_y = :}")
-        st.markdown(f"{base_z = :}")
+        st.markdown(f"base x: {base_x}")
+        st.markdown(f"base y: {base_y}")
+        st.markdown(f"base z: {base_z}")
 
         acc_g = 9.8  # m/s2
         
