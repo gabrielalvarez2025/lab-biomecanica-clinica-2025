@@ -116,38 +116,44 @@ def main_phyphox():
         # Dibujar cada gráfico por separado
         for col, color, label in selected_axes:
             
-            st.markdown(f"### Ajuste de eje Y para {label}")
-            y_min = st.number_input(
-                f"Mínimo eje Y ({label})",
-                value=float(df_filtered[col].min()),
-                step=0.5,
-                key=f"ymin_{col}"
-            )
-            y_max = st.number_input(
-                f"Máximo eje Y ({label})",
-                value=float(df_filtered[col].max()),
-                step=0.5,
-                key=f"ymax_{col}"
-            )
+            col_plot1, col_plot2 = st.columns([60, 40])
+
+            with col_plot2:
+
+                st.markdown(f"### Ajuste de eje Y para {label}")
+                y_min = st.number_input(
+                    f"Mínimo eje Y ({label})",
+                    value=float(df_filtered[col].min()),
+                    step=0.5,
+                    key=f"ymin_{col}"
+                )
+                y_max = st.number_input(
+                    f"Máximo eje Y ({label})",
+                    value=float(df_filtered[col].max()),
+                    step=0.5,
+                    key=f"ymax_{col}"
+                )
             
-            fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
-            ax.set_facecolor("none")
+            with col_plot1:
+            
+                fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
+                ax.set_facecolor("none")
 
-            # Cambiar colores del texto
-            ax.tick_params(colors="white")
-            ax.xaxis.label.set_color("white")
-            ax.yaxis.label.set_color("white")
-            ax.title.set_color("white")
+                # Cambiar colores del texto
+                ax.tick_params(colors="white")
+                ax.xaxis.label.set_color("white")
+                ax.yaxis.label.set_color("white")
+                ax.title.set_color("white")
 
-            # Graficar
-            sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[col], ax=ax, color=color)
+                # Graficar
+                sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[col], ax=ax, color=color)
 
-            # Ajustar escala Y según los inputs del usuario
-            ax.set_ylim(y_min, y_max)
+                # Ajustar escala Y según los inputs del usuario
+                ax.set_ylim(y_min, y_max)
 
-            # Títulos
-            ax.set_title(f"{label} en el Tiempo", fontsize=14)
-            ax.set_xlabel("Tiempo (s)")
-            ax.set_ylabel("Aceleración (m/s²)")
+                # Títulos
+                ax.set_title(f"{label} en el Tiempo", fontsize=14)
+                ax.set_xlabel("Tiempo (s)")
+                ax.set_ylabel("Aceleración (m/s²)")
 
-            st.pyplot(fig, transparent=True)
+                st.pyplot(fig, transparent=True)
