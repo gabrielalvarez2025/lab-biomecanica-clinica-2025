@@ -33,7 +33,7 @@ def main_phyphox():
             show_z = st.checkbox("Acc Z (amarillo)", value=True)
             show_abs = st.checkbox("Absolute (blanco)", value=True)
         with col2:
-            start_time = st.number_input("Mostrar **desde** el segundo:", min_value=min_time, max_value=max_time, value=min_time, step=0.1)
+            start_time = st.number_input("Mostrar <u>**desde**</u> el segundo:", min_value=min_time, max_value=max_time, value=min_time, step=0.1)
             end_time = st.number_input("Tiempo final (s)", min_value=min_time, max_value=max_time, value=max_time, step=0.1)
 
         # Filtrar datos
