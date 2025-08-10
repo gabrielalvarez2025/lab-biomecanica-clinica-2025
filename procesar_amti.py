@@ -80,6 +80,27 @@ def main_forceplate():
 
         sns.set_theme(style="whitegrid")
 
+        if show_Cx and show_Cy:
+            st.markdown("### Estatocinesiograma (Trayectoria COP en el plano XY)")
+
+            fig, ax = plt.subplots(figsize=(6, 6), facecolor="none")
+            ax.set_facecolor("none")
+
+            ax.tick_params(colors="black")
+            ax.xaxis.label.set_color("black")
+            ax.yaxis.label.set_color("black")
+            ax.title.set_color("black")
+
+            ax.plot(df_filtered["Cx"], df_filtered["Cy"], color="tab:red", marker=".", linestyle="-")
+            ax.set_xlabel("Cx (mm)")
+            ax.set_ylabel("Cy (mm)")
+            ax.set_title("Estatocinesiograma")
+
+            # Ajuste de aspecto para que X e Y tengan misma escala
+            ax.set_aspect('equal', adjustable='datalim')
+
+            st.pyplot(fig, transparent=True)
+        
         for sig, color in signals:
             st.markdown(f"### Ajusta eje Y para {sig}")
             y_min = st.number_input(f"Mínimo eje Y ({sig})", value=float(df_filtered[sig].min()), key=f"ymin_{sig}")
@@ -101,3 +122,6 @@ def main_forceplate():
             ax.set_ylabel(sig)
 
             st.pyplot(fig, transparent=True)
+        
+        # Graficar Estatocinesiograma (trayectoria COP)
+
