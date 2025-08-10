@@ -12,8 +12,8 @@ def main_forceplate():
     if uploaded_file is not None:
         
         # Obtener freq de sampleo de celda row=2°, col=1°
-        #fs_row = pd.read_csv(uploaded_file, skiprows=1, nrows=1, header=None)
-        #freq_sampleo = fs_row.iloc[0, 0]  # Extraemos el valor fs
+        df1 = pd.read_csv(uploaded_file)
+        freq_sampleo = df1.iloc[1, 0]  # Extraemos el valor fs
         
         # Intentamos leer el CSV, omitiendo las dos primeras filas de metadata
         df = pd.read_csv(uploaded_file, skiprows=3)
