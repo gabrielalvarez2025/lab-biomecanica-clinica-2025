@@ -21,7 +21,7 @@ def main_phyphox():
         else:
             st.error("No se encontró el archivo de ejemplo en la carpeta.")
     
-    st.markdown("hola")
+    
 
 
     if uploaded_file is not None:
