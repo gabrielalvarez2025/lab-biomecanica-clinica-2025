@@ -290,11 +290,14 @@ def main_bioinstrumentacion():
     # Inicio de elementos interactivos
 
     # Inicialización segura SOLO una vez (para botones que usan session_state)
-    if "mostrar_torques" not in st.session_state:
-        st.session_state["mostrar_torques"] = False
-    
     if "mostrar_sumatoria" not in st.session_state:
         st.session_state["mostrar_sumatoria"] = False
+
+    if "mostrar_torques" not in st.session_state:
+        st.session_state["mostrar_torques"] = False
+
+    if "mostrar_sumatoria" not in st.session_state:
+        st.session_state["mostrar_amti"] = False
     
 
     # colores lindos:
