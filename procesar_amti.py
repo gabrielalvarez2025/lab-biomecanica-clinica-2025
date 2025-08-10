@@ -41,6 +41,7 @@ def main_forceplate():
 
             """
         )
+        st.markdown(" ")
         
         st.write("Veamos cómo se ven los datos:")
         st.dataframe(df, hide_index=True)
