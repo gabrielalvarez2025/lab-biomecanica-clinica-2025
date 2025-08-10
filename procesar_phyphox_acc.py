@@ -68,7 +68,7 @@ def main_phyphox():
             st.markdown("###### ¿Quieres quitar la acc de gravedad?")
             restar_g = st.checkbox(f"Restar g = 9,8 m/s² de la acc vertical (eje {eje_vertical})", value=True)
 
-            st.markdown(" ")
+            #st.markdown(" ")
             st.markdown("###### ¿Quieres aplicar un filtro a la señal?")
             filtrar_check = st.checkbox(f"Filtrar", value=True)
             
