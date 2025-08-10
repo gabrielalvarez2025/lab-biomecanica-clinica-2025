@@ -31,23 +31,22 @@ def main_forceplate():
 
         st.markdown("### Selecciona las señales a graficar:")
 
-        # Checkboxes para fuerzas
-        col_f1, col_f2, col_f3 = st.columns(3)
-        with col_f1:
-            show_Fx = st.checkbox("Fx (N)", True)
-        with col_f2:
-            show_Fy = st.checkbox("Fy (N)", True)
-        with col_f3:
-            show_Fz = st.checkbox("Fz (N)", True)
+        col_select_1, col_select_2, col_select_3, col_select_4 = st.columns(4)
 
-        # Checkboxes para momentos
-        col_m1, col_m2, col_m3 = st.columns(3)
-        with col_m1:
-            show_Mx = st.checkbox("Mx (mm.N)", False)
-        with col_m2:
-            show_My = st.checkbox("My (mm.N)", False)
-        with col_m3:
-            show_Mz = st.checkbox("Mz (mm.N)", False)
+        with col_select_1:
+            show_Fx = st.checkbox("Fx (N)", True)
+            show_Fy = st.checkbox("Fy (N)", True)
+            show_Fz = st.checkbox("Fz (N)", True)
+        
+        with col_select_2:
+            show_Mx = st.checkbox("Mx (N mm)", False)
+            show_My = st.checkbox("My (N mm)", False)
+            show_Mz = st.checkbox("Mz (N mm)", False)
+        
+        with col_select_3:
+            show_Cx = st.checkbox("Cx (mm)", False)
+            show_Cy = st.checkbox("Cy (mm)", False)
+            show_Cz = st.checkbox("Cz (mm)", False)
 
         # Lista de señales a graficar
         signals = []
