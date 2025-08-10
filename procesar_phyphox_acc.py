@@ -27,9 +27,9 @@ def main_phyphox():
         max_time = float(df["Time (s)"].max())
 
         # Calcular mean acc de cada eje
-        base_x = min(abs(df["Acceleration x (m/s^2)"]))
-        base_y = min(abs(df["Acceleration y (m/s^2)"]))
-        base_z = min(abs(df["Acceleration z (m/s^2)"]))
+        base_x = df["Acceleration x (m/s^2)"].abs().min()
+        base_y = df["Acceleration y (m/s^2)"].abs().min()
+        base_z = df["Acceleration z (m/s^2)"].abs().min()
 
         st.markdown("mostrando base")
         st.markdown(f"base x: {base_x}")
@@ -38,12 +38,16 @@ def main_phyphox():
 
         acc_g = 9.8  # m/s2
         
-        if 9.5 < base_x < 10.5:
-            df["Acceleration x (m/s^2)"] = df["Acceleration x (m/s^2)"] - acc_g
-        elif 9.5 < base_y < 10.5:
-            df["Acceleration y (m/s^2)"] = df["Acceleration y (m/s^2)"] - acc_g
-        elif 9.5 < base_z < 10.5:
-            df["Acceleration z (m/s^2)"] = df["Acceleration z (m/s^2)"] - acc_g
+        #if 9.5 < base_x < 10.5:
+        #    df["Acceleration x (m/s^2)"] = df["Acceleration x (m/s^2)"] - acc_g
+        #elif 9.5 < base_y < 10.5:
+        #    df["Acceleration y (m/s^2)"] = df["Acceleration y (m/s^2)"] - acc_g
+        #elif 9.5 < base_z < 10.5:
+        #    df["Acceleration z (m/s^2)"] = df["Acceleration z (m/s^2)"] - acc_g
+
+        df["Acceleration x (m/s^2)"] = df["Acceleration x (m/s^2)"].abs()
+        df["Acceleration y (m/s^2)"] = df["Acceleration y (m/s^2)"].abs()
+        df["Acceleration z (m/s^2)"] = df["Acceleration z (m/s^2)"].abs()
 
         st.markdown("### Graficando tus datos:")
         
