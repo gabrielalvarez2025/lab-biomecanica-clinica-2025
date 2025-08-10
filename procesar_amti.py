@@ -11,11 +11,13 @@ def main_forceplate():
 
     if uploaded_file is not None:
         # Intentamos leer el CSV, omitiendo las dos primeras filas de metadata
-        df = pd.read_csv(uploaded_file, skiprows=2)
+        df = pd.read_csv(uploaded_file, skiprows=3)
         df.columns = df.columns.str.strip()  # limpiar nombres
 
+        
+        
         st.write("Vista previa de los datos:")
-        st.dataframe(df.head(), hide_index=True)
+        st.dataframe(df, hide_index=True)
 
         # Rango para Frame
         min_frame = int(df["Frame"].min())
