@@ -46,12 +46,11 @@ def main_phyphox():
         # Checkboxes
         with col_cb1:
             show_x = st.checkbox("Acc X (verde)", value=True)
-        with col_cb2:
             show_y = st.checkbox("Acc Y (azul)", value=True)
-        with col_cb3:
             show_z = st.checkbox("Acc Z (amarillo)", value=True)
-        with col_cb4:
+        with col_cb2:
             show_abs = st.checkbox("Absolute (blanco)", value=True)
+       
 
         # Configuración de estilo
         sns.set_theme(style="whitegrid", palette="pastel")
