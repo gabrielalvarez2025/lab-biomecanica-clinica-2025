@@ -40,9 +40,10 @@ def main_phyphox():
             with bloq1:
                 show_x = st.checkbox("Acc Eje X", value=True)
                 show_y = st.checkbox("Acc Eje Y", value=True)
+                show_z = st.checkbox("Acc Eje Z", value=True)
             
             with bloq2:
-                show_z = st.checkbox("Acc Eje Z", value=True)
+                
                 show_abs = st.checkbox("Acc absoluto", value=True)    
         
         with col_B:
