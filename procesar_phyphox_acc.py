@@ -26,7 +26,7 @@ def main_phyphox():
         min_time = float(0)
         max_time = float(df["Time (s)"].max())
 
-        st.markdown("### Selección de datos a graficar:")
+        st.markdown("### Graficando tus datos:")
         
         col_A, col_B = st.columns(2)
         
