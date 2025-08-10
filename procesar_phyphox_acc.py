@@ -15,6 +15,7 @@ def main_phyphox():
     
     with col_upload2:
         st.markdown(" ")
+        st.markdown(" ")
         example_file = "ejemplo_data_acc_phyphox.csv"
         if os.path.exists(example_file):
             if st.button("Probar con datos de ejemplo"):
