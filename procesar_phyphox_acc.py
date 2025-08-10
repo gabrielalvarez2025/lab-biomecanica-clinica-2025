@@ -67,7 +67,7 @@ def main_phyphox():
 
             st.markdown(" ")
             st.markdown("###### ¿Quieres aplicar un filtro a la señal?")
-            restar_g = st.checkbox(f"Restar g = 9,8 m/s² de la acc vertical (eje {eje_vertical})", value=True)
+            filtrar_check = st.checkbox(f"Filtrar", value=True)
         
         with col_B:
 
