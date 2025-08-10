@@ -1,3 +1,8 @@
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 def main_forceplate():
     st.markdown("---")
     st.subheader("Procesando Datos de Plataforma de Fuerzas AMTI")
