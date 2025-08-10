@@ -38,9 +38,9 @@ def main_phyphox():
         st.markdown("### Selección de datos a graficar:")
 
         # cols
-        col_plots1, col_plots2 = st.columns(2)
+        
         col_cb1, col_cb2, col_cb3, col_cb4 = st.columns(4)
-
+        col_plots1, col_plots2 = st.columns(2)
         
         
         # Checkboxes
