@@ -10,6 +10,11 @@ def main_forceplate():
     uploaded_file = st.file_uploader("📂 Sube un archivo CSV con datos de plataforma AMTI", type=["csv"])
 
     if uploaded_file is not None:
+        
+        # Obtener freq de sampleo de celda row=2°, col=1°
+        fs_row = pd.read_csv(uploaded_file, skiprows=1, nrows=1, header=None)
+        freq_sampleo = fs_row.iloc[0, 0]  # Extraemos el valor fs
+        
         # Intentamos leer el CSV, omitiendo las dos primeras filas de metadata
         df = pd.read_csv(uploaded_file, skiprows=3)
         df = df.iloc[:, 0:11] # solo datos plataforma, no EMG
@@ -25,9 +30,14 @@ def main_forceplate():
         min_frame = int(df["Frame"].min())
         max_frame = int(df["Frame"].max())
 
-        st.markdown("### Ajusta ventana de frames para graficar:")
-        start_frame = st.number_input("Desde Frame:", min_value=min_frame, max_value=max_frame, value=min_frame, step=1)
-        end_frame = st.number_input("Hasta Frame:", min_value=min_frame, max_value=max_frame, value=max_frame, step=1)
+        st.markdown("#### Ajusta ventana de frames para graficar:")
+
+        col_frame1, col_frame2 = st.columns(2)
+
+        with col_frame1:
+            start_frame = st.number_input("Desde Frame:", min_value=min_frame, max_value=max_frame, value=min_frame, step=1)
+        with col_frame2:
+            end_frame = st.number_input("Hasta Frame:", min_value=min_frame, max_value=max_frame, value=max_frame, step=1)
 
         df_filtered = df[(df["Frame"] >= start_frame) & (df["Frame"] <= end_frame)]
 
