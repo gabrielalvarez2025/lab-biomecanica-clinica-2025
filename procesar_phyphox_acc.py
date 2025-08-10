@@ -138,7 +138,7 @@ def main_phyphox():
                 st.markdown(" ")
                 st.markdown(" ")
                 st.markdown(" ")
-                
+                st.markdown(" ")
                 y_min = st.number_input(
                     f"min ↓",
                     value=float(df_filtered[col].min()),
