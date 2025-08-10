@@ -17,6 +17,12 @@ def main_forceplate():
         df.columns = df.columns.str.strip()  # limpiar nombres
         df = df.drop(0)
 
+        # Redefinir col Frame real
+        df["Frame_n"] = (df["Frame"] - 1) * 10 + df["Sub Frame"]
+        df = df.drop(columns=["Frame", "Sub Frame"])
+        df = df.rename(columns={"Frame_n": "Frame"})
+
+
         
         
         st.write("Vista previa de los datos:")
