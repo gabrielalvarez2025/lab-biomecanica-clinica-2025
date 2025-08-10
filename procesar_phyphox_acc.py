@@ -33,6 +33,10 @@ def main_phyphox():
         
         with col_A:
 
+            st.markdown(
+                "Selecciona los ejes que quieres mostrar:"
+            )
+            
             bloq1, bloq2 = st.columns(2)
 
             with bloq1:
