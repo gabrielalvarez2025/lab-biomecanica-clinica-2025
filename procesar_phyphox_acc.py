@@ -8,7 +8,7 @@ def main_phyphox():
     st.markdown("---")
     st.subheader("Procesando Datos del acelerómetro del celular con Phyphox")
 
-    col_upload1, col_upload2 = st.columns([90, 10])
+    col_upload1, col_upload2 = st.columns([80, 20])
 
     with col_upload1:
         uploaded_file = st.file_uploader("📂 Sube un archivo CSV", type=["csv"])
