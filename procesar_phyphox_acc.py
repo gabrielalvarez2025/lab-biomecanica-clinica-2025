@@ -33,7 +33,7 @@ def main_phyphox():
         
         with col_A:
 
-            st.markdown("##### Selecciona los ejes que quieres observar:")
+            st.markdown("##### Selecciona los datos que quieres graficar:")
             
             col_check1, col_check2, col_check3 = st.columns(3)
 
