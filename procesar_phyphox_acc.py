@@ -78,7 +78,7 @@ def main_phyphox():
         if show_z:
             selected_axes.append(("Acceleration z (m/s^2)",  "#B3B87E", "Acc Z"))
         if show_abs and "Absolute acceleration (m/s^2)" in df_filtered.columns:
-            selected_axes.append(("Absolute acceleration (m/s^2)", "white", "Abs"))
+            selected_axes.append(("Absolute acceleration (m/s^2)", "white", "Aceleración absoluta"))
 
         if not selected_axes:
             st.warning("Selecciona al menos una opción para graficar.")
