@@ -50,7 +50,11 @@ def main_forceplate():
 
         st.markdown("##### Los datos de tiempo se extraen a partir de la frecuencia de sampleo")
         
-        st.info("La plataforma samplea a una frecuencia de 1000 Frames por cada segundo (Fs = 1000 fps)")
+        st.info("""
+                Nuestra plataforma samplea a una frecuencia de 1000 Frames por cada segundo (Fs = 1000 fps).
+
+                Esto quiere decir que, en cada segundo, alcaza a capturar 1000 Frames con datos.
+                """)
 
         
 
