@@ -330,7 +330,7 @@ def main_bioinstrumentacion():
     botones_tarjeta(nombre_estado="mostrar_amti",
                     texto_boton="Procesamiento de datos plataforma",
                     texto_parrafo=parrafo_interactivo3,
-                    color_boton= "#368581",
+                    color_boton= "#B9DACC",
                     color_parrafo= "#89BBB8"
                     )
     
