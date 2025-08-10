@@ -55,12 +55,15 @@ def main_phyphox():
 
             with col_check1:
                 show_x = st.checkbox("Acc Eje X", value=True)
-            with col_check2:
                 show_y = st.checkbox("Acc Eje Y", value=True)
-            with col_check3:
                 show_z = st.checkbox("Acc Eje Z", value=True)
+            with col_check2:
+                show_abs = st.checkbox("Acc absoluta (X + Y + Z)", value=False)
+                
+            #with col_check3:
+                
         
-            show_abs = st.checkbox("Acc absoluta (X + Y + Z)", value=False)
+            
 
             
         
