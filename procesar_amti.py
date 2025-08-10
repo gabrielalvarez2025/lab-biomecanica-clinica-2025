@@ -36,7 +36,21 @@ def main_forceplate():
         st.markdown("---")
         st.markdown("### Calcular columna Tiempo")
 
+        st.markdown(
+            """
+            ¡Bien! Ahora tienes acceso a tus datos de la plataforma. Ahora podemos empezar a juagr con los datos.
+
+            Analizar datos es un proceso desafiante por muchas razones. Una de las mayores dificultades es que los instrumentos generalmente te entregan los datos en formatos difíciles de comprender, lo que dificulta extraer información a partir de ellos.
+
+            Si te das cuenta, tus datos tienen el número de Frame (cuadro o muestra), pero no tienes datos de tiempo.
+            
+            La primera tarea que te daré para que empieces a limpiar tus datos, es agregar una columna de tiempo. ¿Cómo hacemos eso?
+            """
+        )
+        
         st.markdown("La plataforma samplea a una frecuencia de 1000 Frames por cada segundo (Fs = 1000 fps)")
+
+        
 
 
         st.markdown("---")
