@@ -121,13 +121,15 @@ def main_phyphox():
             with col_plot2:
 
                 #st.markdown(f"### Ajuste de eje Y para {label}")
-                st.markdown(f"Ajusta el eje Y:")
                 y_max = st.number_input(
                     f"max:",
                     value=float(df_filtered[col].max()),
                     step=0.5,
                     key=f"ymax_{col}"
                 )
+                st.markdown(" ")
+                st.markdown(" ")
+                st.markdown(" ")
                 y_min = st.number_input(
                     f"min:",
                     value=float(df_filtered[col].min()),
