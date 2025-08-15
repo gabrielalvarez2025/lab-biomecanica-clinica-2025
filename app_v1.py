@@ -85,7 +85,7 @@ elif pagina == pag_balance:
     mostrar(main_balance, False)
 
 elif pagina == pag_marcha:
-    mostrar(main_marcha, False)
+    mostrar(main_marcha, True)
 
 elif pagina == pag_instrucciones_opencap:
     mostrar(main_instrucciones_opencap, True)
