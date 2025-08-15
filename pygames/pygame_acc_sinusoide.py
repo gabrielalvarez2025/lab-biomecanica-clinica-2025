@@ -4,7 +4,7 @@ import math
 import requests
 
 # Configuración Phyphox
-PP_ADDRESS = "http://192.168.1.119:8080"
+PP_ADDRESS = "http://10.196.196.85:8080/" # "http://192.168.1.119:8080"
 CHANNELS = ["accX", "accY", "accZ"]
 
 def obtener_valores():
