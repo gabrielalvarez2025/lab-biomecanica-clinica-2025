@@ -1,8 +1,8 @@
 import streamlit as st
 import numpy as np
-import librosa
-import librosa.display
 import matplotlib.pyplot as plt
+from pydub import AudioSegment
+
 
 def main_control_motor():
     
@@ -22,16 +22,26 @@ def main_control_motor():
     uploaded_file = st.file_uploader("📂 Sube un archivo MP3", type=["mp3"])
 
     if uploaded_file is not None:
-        # Cargar el audio con librosa
-        y, sr = librosa.load(uploaded_file, sr=None)  # sr=None = conserva la frecuencia original
+        # Cargar el audio
+        audio = AudioSegment.from_file(uploaded_file, format="mp3")
+        
+        # Convertir a muestras numpy
+        samples = np.array(audio.get_array_of_samples())
+        
+        # Si es estéreo, tomar solo un canal
+        if audio.channels == 2:
+            samples = samples[::2]
+        
+        # Crear eje de tiempo
+        time = np.linspace(0, len(samples) / audio.frame_rate, num=len(samples))
 
-        # Mostrar reproductor en Streamlit
+        # Reproductor en Streamlit
         st.audio(uploaded_file, format="audio/mp3")
 
-        # Graficar la onda
+        # Graficar
         fig, ax = plt.subplots(figsize=(10, 4))
-        librosa.display.waveshow(y, sr=sr, ax=ax, color="purple")
-        ax.set_title("Forma de onda del audio")
+        ax.plot(time, samples, color="purple")
         ax.set_xlabel("Tiempo (s)")
         ax.set_ylabel("Amplitud")
+        ax.set_title("Forma de onda del audio")
         st.pyplot(fig)
