@@ -8,3 +8,4 @@ requests
 scikit-learn
 pygame
 pygbag
+pydub
