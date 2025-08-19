@@ -28,7 +28,7 @@ def main_control_motor():
     })
 
     # Subir archivo WAV (más seguro que MP3 en tu entorno)
-    uploaded_file = st.file_uploader("📂 Sube un archivo WAV", type=["wav"])
+    uploaded_file = st.file_uploader("📂 Sube un archivo WAV", type=["mp3"])
 
     if uploaded_file is not None:
         # Leer archivo wav
