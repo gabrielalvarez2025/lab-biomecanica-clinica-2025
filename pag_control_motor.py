@@ -2,7 +2,11 @@ import streamlit as st
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from scipy.io import wavfile
+from pydub import AudioSegment
+from pydub.utils import which
+
+# Forzar uso de ffmpeg
+AudioSegment.converter = which("ffmpeg")
 
 def main_control_motor():
     st.header("Unidad 3: Teorías del control motor")
@@ -27,25 +31,23 @@ def main_control_motor():
         "text.color": "white",
     })
 
-    # Subir archivo WAV (más seguro que MP3 en tu entorno)
-    uploaded_file = st.file_uploader("📂 Sube un archivo mp3", type=["mp3"])
+    uploaded_file = st.file_uploader("📂 Sube un archivo MP3", type=["mp3"])
 
     if uploaded_file is not None:
-        # Leer archivo wav
-        samplerate, samples = wavfile.read(uploaded_file)
+        # Cargar MP3 con pydub
+        audio = AudioSegment.from_file(uploaded_file, format="mp3")
+        
+        samples = np.array(audio.get_array_of_samples())
+        if audio.channels == 2:
+            samples = samples[::2]  # usar un canal si es estéreo
+        
+        time = np.linspace(0, len(samples) / audio.frame_rate, num=len(samples))
 
-        # Si es estéreo, tomar solo un canal
-        if samples.ndim > 1:
-            samples = samples[:, 0]
+        # Reproductor
+        st.audio(uploaded_file, format="audio/mp3")
 
-        # Crear eje de tiempo
-        time = np.linspace(0, len(samples) / samplerate, num=len(samples))
-
-        # Reproductor en Streamlit
-        st.audio(uploaded_file, format="audio/wav")
-
-        # Graficar
-        fig, ax = plt.subplots(figsize=(12, 1.5))  # más bajo
+        # Gráfico bajo y ancho
+        fig, ax = plt.subplots(figsize=(12, 1.5))
         sns.lineplot(x=time, y=samples, ax=ax, color="cyan", linewidth=1)
 
         ax.set_xlabel("Tiempo (s)")

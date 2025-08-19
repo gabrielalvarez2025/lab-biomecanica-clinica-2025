@@ -9,3 +9,5 @@ scikit-learn
 pygame
 pygbag
 librosa
+pydub
+ffmpeg-python
