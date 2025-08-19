@@ -8,5 +8,4 @@ requests
 scikit-learn
 pygame
 pygbag
-pydub
-pyaudioop
+librosa
