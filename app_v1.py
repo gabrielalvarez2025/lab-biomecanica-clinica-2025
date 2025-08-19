@@ -79,10 +79,10 @@ elif pagina == pag_bioinstrumentacion:
     mostrar(main_bioinstrumentacion, True)
 
 elif pagina == pag_control_motor:
-    mostrar(main_control_motor, False)
+    mostrar(main_control_motor, True)
 
 elif pagina == pag_balance:
-    mostrar(main_balance, False)
+    mostrar(main_balance, True)
 
 elif pagina == pag_marcha:
     mostrar(main_marcha, True)
