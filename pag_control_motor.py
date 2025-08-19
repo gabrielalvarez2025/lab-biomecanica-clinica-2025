@@ -19,7 +19,8 @@ def main_control_motor():
     st.markdown("---")
 
     # Configuración de estilo Seaborn
-    sns.set_style("dark")
+    
+    
     plt.rcParams.update({
         "axes.facecolor": "none",   # Fondo transparente
         "figure.facecolor": "none", # Fondo transparente
