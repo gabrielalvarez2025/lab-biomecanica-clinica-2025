@@ -19,16 +19,16 @@ def main_control_motor():
     st.markdown("---")
 
     # Configuración de estilo Seaborn
-sns.set_style("dark")
-plt.rcParams.update({
-    "axes.facecolor": "none",   # Fondo transparente
-    "figure.facecolor": "none", # Fondo transparente
-    "axes.edgecolor": "white",
-    "axes.labelcolor": "white",
-    "xtick.color": "white",
-    "ytick.color": "white",
-    "text.color": "white",
-})
+    sns.set_style("dark")
+    plt.rcParams.update({
+        "axes.facecolor": "none",   # Fondo transparente
+        "figure.facecolor": "none", # Fondo transparente
+        "axes.edgecolor": "white",
+        "axes.labelcolor": "white",
+        "xtick.color": "white",
+        "ytick.color": "white",
+        "text.color": "white",
+    })
 
     # Subir archivo MP3
     uploaded_file = st.file_uploader("📂 Sube un archivo MP3", type=["mp3"])
