@@ -9,3 +9,4 @@ scikit-learn
 pygame
 pygbag
 pydub
+pyaudioop
