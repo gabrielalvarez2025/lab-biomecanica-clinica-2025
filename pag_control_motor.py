@@ -1,12 +1,10 @@
 import streamlit as st
 import numpy as np
+import seaborn as sns
 import matplotlib.pyplot as plt
-from pydub import AudioSegment
-
+from scipy.io import wavfile
 
 def main_control_motor():
-    
-    
     st.header("Unidad 3: Teorías del control motor")
 
     st.markdown(
@@ -15,15 +13,13 @@ def main_control_motor():
         "- Teoría de modelos internos")
     
     st.title("Visualización de onda de audio")
-
     st.markdown("---")
 
-    # Configuración de estilo Seaborn
-    
-    
+    # Estilo seaborn con fondo transparente y letras blancas
+    sns.set_style("dark")
     plt.rcParams.update({
-        "axes.facecolor": "none",   # Fondo transparente
-        "figure.facecolor": "none", # Fondo transparente
+        "axes.facecolor": "none",
+        "figure.facecolor": "none",
         "axes.edgecolor": "white",
         "axes.labelcolor": "white",
         "xtick.color": "white",
@@ -31,28 +27,25 @@ def main_control_motor():
         "text.color": "white",
     })
 
-    # Subir archivo MP3
-    uploaded_file = st.file_uploader("📂 Sube un archivo MP3", type=["mp3"])
+    # Subir archivo WAV (más seguro que MP3 en tu entorno)
+    uploaded_file = st.file_uploader("📂 Sube un archivo WAV", type=["wav"])
 
     if uploaded_file is not None:
-        # Cargar el audio
-        audio = AudioSegment.from_file(uploaded_file, format="mp3")
-        
-        # Convertir a muestras numpy
-        samples = np.array(audio.get_array_of_samples())
-        
+        # Leer archivo wav
+        samplerate, samples = wavfile.read(uploaded_file)
+
         # Si es estéreo, tomar solo un canal
-        if audio.channels == 2:
-            samples = samples[::2]
-        
+        if samples.ndim > 1:
+            samples = samples[:, 0]
+
         # Crear eje de tiempo
-        time = np.linspace(0, len(samples) / audio.frame_rate, num=len(samples))
+        time = np.linspace(0, len(samples) / samplerate, num=len(samples))
 
         # Reproductor en Streamlit
-        st.audio(uploaded_file, format="audio/mp3")
+        st.audio(uploaded_file, format="audio/wav")
 
-        # Graficar con seaborn (más bajo)
-        fig, ax = plt.subplots(figsize=(12, 1.8))  # 👈 bajo y alargado
+        # Graficar
+        fig, ax = plt.subplots(figsize=(12, 1.5))  # más bajo
         sns.lineplot(x=time, y=samples, ax=ax, color="cyan", linewidth=1)
 
         ax.set_xlabel("Tiempo (s)")
