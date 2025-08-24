@@ -11,3 +11,4 @@ pygbag
 librosa
 pydub
 ffmpeg-python
+plotly
