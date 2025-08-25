@@ -139,6 +139,15 @@ def main_balance():
 
     
 
+    st.markdown(f"""
+    <div style="text-align:center; font-size:30px; line-height:1.5;">
+    {c_formula}<sup>2</sup> =
+    <span style="color:{color_lado_a};">a</span><sup>2</sup> +
+    <span style="color:{color_lado_b};">b</span><sup>2</sup> -
+    2<span style="color:{color_lado_a};">a</span><span style="color:{color_lado_b};">b</span> · cos(<span style="color:{color_angulo_gamma};">γ</span>)
+    </div>
+    """, unsafe_allow_html=True)
+    
     # Fórmula del coseno con dato oculto
     c_formula = symbol_incognita if oculto=='c' else 'c'
     a_formula = symbol_incognita if oculto=='a' else 'a'
