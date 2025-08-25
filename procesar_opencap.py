@@ -28,7 +28,7 @@ def main_opencap():
         data_buffer = io.StringIO(data_str)
 
         # Leer el CSV con tabulaciones
-        df = pd.read_csv(data_buffer, delimiter="\t")
+        df = pd.read_csv(data_buffer, delimiter=" ")
 
         # Renombrar columna "time"
         if "time" in df.columns:
