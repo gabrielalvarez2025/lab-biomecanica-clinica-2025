@@ -34,7 +34,21 @@ def main_opencap():
 
         # Mostrar preview
         st.markdown("### Vista previa del DataFrame")
-        st.dataframe(df.head(), hide_index=True)
+        st.dataframe(df, hide_index=True)
+
+        # --- Botón para descargar DataFrame como Excel ---
+        st.markdown("---")
+        st.markdown("### Descargar datos procesados")
+        towrite = io.BytesIO()
+        df.to_excel(towrite, index=False, engine='openpyxl')
+        towrite.seek(0)
+
+        st.download_button(
+            label="📥 Descargar Excel",
+            data=towrite,
+            file_name="datos_opencap.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
 
         # Selección de columnas para graficar
         st.markdown("### Selección de columnas para graficar")
@@ -64,16 +78,4 @@ def main_opencap():
 
             st.plotly_chart(fig, use_container_width=True)
 
-        # --- Botón para descargar DataFrame como Excel ---
-        st.markdown("---")
-        st.markdown("### Descargar datos procesados")
-        towrite = io.BytesIO()
-        df.to_excel(towrite, index=False, engine='openpyxl')
-        towrite.seek(0)
-
-        st.download_button(
-            label="📥 Descargar Excel",
-            data=towrite,
-            file_name="datos_opencap.xlsx",
-            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        )
+        
