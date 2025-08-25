@@ -121,7 +121,15 @@ def main_balance():
     with col2:
         st.plotly_chart(fig, use_container_width=False)
 
-    st.latex(r"c^2 = a^2 + b^2 - 2ab \cdot \cos(\gamma)")
+    st.markdown(r"""
+    <span style="font-size:28px;">
+    c<sup>2</sup> = 
+    <span style="color:red;">a</span><sup>2</sup> + 
+    <span style="color:blue;">b</span><sup>2</sup> - 
+    2<span style="color:green;">a</span><span style="color:blue;">b</span> · cos(<span style="color:purple;">γ</span>)
+    </span>
+    """, unsafe_allow_html=True)
+
 
 
 
