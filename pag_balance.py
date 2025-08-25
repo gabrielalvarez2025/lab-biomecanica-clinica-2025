@@ -93,9 +93,9 @@ def main_balance():
     gamma = np.degrees(np.arccos((a**2 + b**2 - c**2) / (2*a*b)))
 
     # --- Mostrar datos ---
-    st.subheader("## Datos del triángulo:")
+    st.markdown("## Datos del triángulo:")
 
-    st.markdown("hola")
+    
     
     col1, col2 = st.columns(2)
 
