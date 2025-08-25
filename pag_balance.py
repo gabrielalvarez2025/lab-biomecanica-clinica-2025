@@ -67,7 +67,7 @@ def main_balance():
         mode="text",
         text=["c", "a", "b"],
         textposition="middle center",
-        textfont=dict(size=15),  # tamaño de fuente y color pastel
+        textfont=dict(size=20),  # tamaño de fuente y color pastel
         showlegend=False
     ))
 
