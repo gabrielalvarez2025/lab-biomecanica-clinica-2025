@@ -1,15 +1,14 @@
 import streamlit as st
 import numpy as np
-import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+
 
 def main_balance():
-
     st.set_page_config(layout="wide")
     st.title("🔺 Simulador interactivo: Teorema del Coseno")
-    st.markdown("hola")
 
-    # Creamos columnas: col1 para sliders, col2 para gráfico
-    col1, col2 = st.columns([1, 2])  # col2 más ancha que col1
+    # Crear columnas: col1 sliders, col2 gráfico
+    col1, col2 = st.columns([1, 2])
 
     with col1:
         st.subheader("Ajusta los lados del triángulo")
@@ -35,6 +34,7 @@ def main_balance():
 
     with col2:
         st.subheader("Triángulo")
+
         if a + b > c and a + c > b and b + c > a:
             # Coordenadas triángulo
             A = np.array([0, 0])
@@ -43,21 +43,27 @@ def main_balance():
             y = np.sqrt(max(a**2 - x**2, 0))
             C = np.array([x, y])
 
-            # Contenedor fijo
-            with st.container():
-                fig, ax = plt.subplots(figsize=(5,5))
-                ax.plot([A[0], B[0]], [A[1], B[1]], "b-", lw=2, label="c")
-                ax.plot([B[0], C[0]], [B[1], C[1]], "g-", lw=2, label="a")
-                ax.plot([C[0], A[0]], [C[1], A[1]], "r-", lw=2, label="b")
+            # Crear gráfico Plotly
+            fig = go.Figure()
 
-                ax.plot(*A, "ko")
-                ax.text(A[0], A[1]-0.2, "A")
-                ax.plot(*B, "ko")
-                ax.text(B[0], B[1]-0.2, "B")
-                ax.plot(*C, "ko")
-                ax.text(C[0], C[1]+0.2, "C")
+            # Líneas del triángulo
+            fig.add_trace(go.Scatter(
+                x=[A[0], B[0], C[0], A[0]],
+                y=[A[1], B[1], C[1], A[1]],
+                mode='lines+markers+text',
+                text=["A", "B", "C", ""],
+                textposition="top right",
+                line=dict(color="blue", width=3),
+                marker=dict(size=8, color='black')
+            ))
 
-                ax.set_aspect("equal")
-                ax.axis("off")
-                ax.legend()
-                st.pyplot(fig, use_container_width=False)  # no autoajustar al contenedor
+            # Mantener misma escala
+            max_coord = max(a, b, c) * 1.2
+            fig.update_layout(
+                width=500, height=500,
+                xaxis=dict(range=[-1, max_coord], zeroline=False, showgrid=False, visible=False),
+                yaxis=dict(range=[-1, max_coord], scaleanchor="x", zeroline=False, showgrid=False, visible=False),
+                showlegend=False
+            )
+
+            st.plotly_chart(fig, use_container_width=False)
