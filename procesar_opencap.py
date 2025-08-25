@@ -13,24 +13,24 @@ def main_opencap():
     if uploaded_file is not None:
         st.success("¡Archivo cargado exitosamente! 🚀")
 
-        # Decodificar archivo y separarlo en líneas
+        # Leer todo el archivo como texto
         file_content = uploaded_file.getvalue().decode("utf-8").splitlines()
 
         # Buscar la línea "endheader"
         header_lines = 0
         for i, line in enumerate(file_content):
             if "endheader" in line:
-                header_lines = i + 1
+                header_lines = i + 1   # saltar también la línea endheader
                 break
 
-        # Crear un buffer desde la parte de datos
+        # Nos quedamos solo con los datos (sin encabezado)
         data_str = "\n".join(file_content[header_lines:])
         data_buffer = io.StringIO(data_str)
 
-        # Leer el CSV con tabulaciones
-        df = pd.read_csv(data_buffer, delimiter=" ")
+        # Leer CSV separado por espacios
+        df = pd.read_csv(data_buffer, delimiter=r"\s+", engine="python")
 
-        # Renombrar columna "time"
+        # Renombrar columna "time" si existe
         if "time" in df.columns:
             df = df.rename(columns={"time": "Tiempo (s)"})
 
