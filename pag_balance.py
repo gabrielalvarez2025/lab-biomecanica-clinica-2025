@@ -61,11 +61,16 @@ def main_balance():
     pos_bc = desplazar(B, C, offset)  # lado a = BC
     pos_ac = desplazar(A, C, offset)  # lado b = AC
 
+    # Etiquetas de lados con valores numéricos
     fig.add_trace(go.Scatter(
         x=[pos_ab[0], pos_bc[0], pos_ac[0]],
         y=[pos_ab[1], pos_bc[1], pos_ac[1]],
         mode="text",
-        text=["c", "a", "b"],
+        text=[
+            f"c = {mostrar_valor('c', c)}",
+            f"a = {mostrar_valor('a', a)}",
+            f"b = {mostrar_valor('b', b)}"
+        ],
         textposition="middle center",
         showlegend=False
     ))
