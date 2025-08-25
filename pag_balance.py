@@ -2,6 +2,21 @@ import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
 
+def calcular_ortocentro(A, B, C):
+    import sympy as sp
+    A, B, C = sp.Point(A), sp.Point(B), sp.Point(C)
+
+    # Altura desde A → perpendicular a BC
+    BC = sp.Line(B, C)
+    altura_A = sp.Line(A, A + BC.direction.perpendicular_unit_vector())
+
+    # Altura desde B → perpendicular a AC
+    AC = sp.Line(A, C)
+    altura_B = sp.Line(B, B + AC.direction.perpendicular_unit_vector())
+
+    H = altura_A.intersection(altura_B)[0]
+    return float(H.x), float(H.y)
+
 def main_balance():
     st.set_page_config(layout="centered", initial_sidebar_state="expanded")
     st.title("🔺 Simulador interactivo: Teorema del Coseno")
@@ -21,14 +36,22 @@ def main_balance():
     with col2:
         st.subheader("Triángulo")
 
-        with st.container():  # evita que el contenedor cambie de tamaño
+        with st.container():
             if a + b > c and a + c > b and b + c > a:
-                # Construcción del triángulo
+                # Construcción del triángulo (A en (0,0), B en (c,0))
                 A = np.array([0, 0])
                 B = np.array([c, 0])
                 x = (a**2 - b**2 + c**2) / (2*c)
                 y = np.sqrt(max(a**2 - x**2, 0))
                 C = np.array([x, y])
+
+                # Ortocentro
+                Hx, Hy = calcular_ortocentro(A, B, C)
+
+                # Distancias máximas desde ortocentro a vértices
+                dx = max(abs(Hx - A[0]), abs(Hx - B[0]), abs(Hx - C[0]))
+                dy = max(abs(Hy - A[1]), abs(Hy - B[1]), abs(Hy - C[1]))
+                rango = max(dx, dy) * 1.2  # margen extra
 
                 # Gráfico
                 fig = go.Figure()
@@ -42,16 +65,25 @@ def main_balance():
                     marker=dict(size=15, color='green')
                 ))
 
-                # Margen fijo (500x500 px siempre igual)
-                max_coord = max(a, b, c) * 1.2
+                # Ortocentro
+                fig.add_trace(go.Scatter(
+                    x=[Hx], y=[Hy],
+                    mode="markers+text",
+                    text=["H"],
+                    textposition="bottom center",
+                    marker=dict(size=12, color="red", symbol="x"),
+                    name="Ortocentro"
+                ))
+
+                # Mantener ortocentro en el centro
                 fig.update_layout(
                     width=500,
                     height=500,
                     autosize=False,
-                    xaxis=dict(range=[-1, max_coord],
+                    xaxis=dict(range=[Hx - rango, Hx + rango],
+                               scaleanchor="y", zeroline=False, showgrid=False, visible=False),
+                    yaxis=dict(range=[Hy - rango, Hy + rango],
                                zeroline=False, showgrid=False, visible=False),
-                    yaxis=dict(range=[-1, max_coord],
-                               scaleanchor="x", zeroline=False, showgrid=False, visible=False),
                     showlegend=False,
                     margin=dict(l=20, r=20, t=20, b=20)
                 )
@@ -100,4 +132,3 @@ def main_balance():
                     st.success(f"✅ Correcto! El valor es aproximadamente {correcto:.2f}")
                 else:
                     st.error(f"❌ Incorrecto. El valor correcto es {correcto:.2f}")
-
