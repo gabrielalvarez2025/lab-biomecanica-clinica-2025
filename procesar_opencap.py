@@ -18,14 +18,14 @@ def main_opencap():
         header_lines = 0
         for i, line in enumerate(file_content):
             if "endheader" in line:
-                header_lines = i + 1   # cortamos incluyendo esa línea
+                header_lines = i + 1
                 break
 
-        # Nos quedamos solo con los datos (desde después de endheader)
+        # Cortar todo hasta después de endheader
         data_str = "\n".join(file_content[header_lines:])
         data_buffer = io.StringIO(data_str)
 
-        # Leer el txt como dataframe con separador de espacios múltiples
+        # Leer el txt como dataframe con separador de espacios
         df = pd.read_csv(data_buffer, delimiter=r"\s+", engine="python")
 
         # Renombrar columna de tiempo si existe
@@ -34,7 +34,7 @@ def main_opencap():
 
         # Mostrar preview
         st.markdown("### Vista previa del DataFrame")
-        st.dataframe(df, hide_index=True)
+        st.dataframe(df.head(), hide_index=True)
 
         # Selección de columnas para graficar
         st.markdown("### Selección de columnas para graficar")
@@ -49,7 +49,7 @@ def main_opencap():
             fig = go.Figure()
             for col in y_cols:
                 fig.add_trace(go.Scatter(
-                    x=df[df.columns[0]],  # primera columna como X
+                    x=df[df.columns[0]],
                     y=df[col],
                     mode='lines',
                     name=col
@@ -63,3 +63,17 @@ def main_opencap():
             )
 
             st.plotly_chart(fig, use_container_width=True)
+
+        # --- Botón para descargar DataFrame como Excel ---
+        st.markdown("---")
+        st.markdown("### Descargar datos procesados")
+        towrite = io.BytesIO()
+        df.to_excel(towrite, index=False, engine='openpyxl')
+        towrite.seek(0)
+
+        st.download_button(
+            label="📥 Descargar Excel",
+            data=towrite,
+            file_name="datos_opencap.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
