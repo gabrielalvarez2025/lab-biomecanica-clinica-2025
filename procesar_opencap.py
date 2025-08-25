@@ -45,6 +45,7 @@ def main_opencap():
         )
 
         if y_cols:
+            fig = px.line(df, x=df.columns[0], y=col, title=f"{col} vs {df.columns[0]}")
             for col in y_cols:
-                fig = px.line(df, x=df.columns[0], y=col, title=f"{col} vs {df.columns[0]}")
+                
                 st.plotly_chart(fig, use_container_width=True)
