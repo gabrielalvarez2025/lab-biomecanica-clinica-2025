@@ -4,6 +4,7 @@ import plotly.graph_objects as go
 
 
 def main_balance():
+    
     # Configuración fija de la página
     st.set_page_config(
         layout="wide",          # mantener layout ancho
