@@ -93,16 +93,23 @@ def main_balance():
     gamma = np.degrees(np.arccos((a**2 + b**2 - c**2) / (2*a*b)))
 
     # --- Mostrar datos ---
-    st.subheader("📊 Datos del triángulo")
-    st.markdown(f"""
-    - **Lados**  
-        • AB = {c:.2f}  
-        • BC = {a:.2f}  
-        • AC = {b:.2f}  
+    st.subheader("## Datos del triángulo:")
+    
+    col1, col2 = st.columns(2)
 
-    - **Ángulos**  
-        • α (en A) = {alpha:.2f}°  
-        • β (en B) = {beta:.2f}°  
-        • γ (en C) = {gamma:.2f}°  
-    """)
+    with col1:
+        st.markdown(f"""
+        - **Lados**  
+            • AB = {c:.2f}  
+            • BC = {a:.2f}  
+            • AC = {b:.2f}  
+        """)
+    
+    with col2:
+        st.markdown(f"""
+        - **Ángulos**  
+            • α (en A) = {alpha:.2f}°  
+            • β (en B) = {beta:.2f}°  
+            • γ (en C) = {gamma:.2f}°  
+        """)
 
