@@ -11,6 +11,10 @@ def main_balance():
 
     with col1:
         st.markdown("##### Ajusta los lados del triángulo")
+
+        st.markdown(" ")
+        st.markdown(" ")
+
         a = st.slider("Lado A", 1.0, 10.0, 5.0)
         b = st.slider("Lado B", 1.0, 10.0, 5.0)
         c = st.slider("Lado C", 1.0, 10.0, 5.0)
