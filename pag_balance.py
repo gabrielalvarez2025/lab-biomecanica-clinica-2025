@@ -14,9 +14,9 @@ def main_balance():
         st.markdown(" ")
         st.markdown(" ")
 
-        a = st.slider("Lado A", 1.0, 10.0, 5.0)
-        b = st.slider("Lado B", 1.0, 10.0, 5.0)
-        c = st.slider("Lado C", 1.0, 10.0, 5.0)
+        a = st.slider("Lado a (opuesto a A)", 1.0, 10.0, 5.0)
+        b = st.slider("Lado b (opuesto a B)", 1.0, 10.0, 5.0)
+        c = st.slider("Lado c (opuesto a C)", 1.0, 10.0, 5.0)
 
     # --- Columna 2: gráfico ---
     with col2:
@@ -29,6 +29,7 @@ def main_balance():
             C = np.array([x, y])
 
             fig = go.Figure()
+
             # Lados
             fig.add_trace(go.Scatter(
                 x=[A[0], B[0], C[0], A[0]],
@@ -48,28 +49,23 @@ def main_balance():
                 showlegend=False
             ))
 
-            # Etiquetas de lados en puntos medios
-            offset = 0.3  # separación hacia afuera
-            # Puntos medios
-            mid_ab = (A + B) / 2
-            mid_bc = (B + C) / 2
-            mid_ca = (C + A) / 2
-
-            # Normalizaciones para "sacar" la etiqueta hacia afuera
+            # Función para desplazar etiquetas de lados hacia afuera
             def desplazar(p1, p2, d):
                 v = np.array([p2[1] - p1[1], -(p2[0] - p1[0])])  # vector perpendicular
                 v = v / np.linalg.norm(v) if np.linalg.norm(v) > 0 else v
                 return (p1 + p2) / 2 + d * v
 
-            pos_a = desplazar(B, C, offset)  # lado a
-            pos_b = desplazar(A, C, offset)  # lado b
-            pos_c = desplazar(A, B, offset)  # lado c
+            offset = 0.3
+            pos_ab = desplazar(A, B, offset)  # Lado AB
+            pos_bc = desplazar(B, C, offset)  # Lado BC
+            pos_ac = desplazar(A, C, offset)  # Lado AC
 
+            # Etiquetas de lados
             fig.add_trace(go.Scatter(
-                x=[pos_a[0], pos_b[0], pos_c[0]],
-                y=[pos_a[1], pos_b[1], pos_c[1]],
+                x=[pos_ab[0], pos_bc[0], pos_ac[0]],
+                y=[pos_ab[1], pos_bc[1], pos_ac[1]],
                 mode="text",
-                text=["A", "B", "C"],
+                text=["AB", "BC", "AC"],
                 textposition="middle center",
                 showlegend=False
             ))
@@ -89,12 +85,12 @@ def main_balance():
     # Verificar desigualdad triangular
     if a + b > c and a + c > b and b + c > a:
         alpha = np.degrees(np.arccos((b**2 + c**2 - a**2) / (2*b*c)))
-        beta  = np.degrees(np.arccos((a**2 - b**2 + c**2) / (2*a*c)))
+        beta  = np.degrees(np.arccos((a**2 + c**2 - b**2) / (2*a*c)))
         gamma = np.degrees(np.arccos((a**2 + b**2 - c**2) / (2*a*b)))
 
         st.markdown(f"""
         📐 Ángulos calculados (solo para verificación):
-        - α (opuesto a A): **{alpha:.2f}°**
-        - β (opuesto a B): **{beta:.2f}°**
-        - γ (opuesto a C): **{gamma:.2f}°**
+        - α (ángulo en A): **{alpha:.2f}°**
+        - β (ángulo en B): **{beta:.2f}°**
+        - γ (ángulo en C): **{gamma:.2f}°**
         """)
