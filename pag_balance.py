@@ -19,6 +19,7 @@ def mostrar_valor(dato, valor):
     return "¿ ?" if dato == oculto else f"{valor:.2f}"
 
 def main_balance():
+    
     st.set_page_config(layout="centered", initial_sidebar_state="expanded")
     st.title("🔺 Simulador interactivo: Teorema del Coseno")
 
@@ -34,6 +35,16 @@ def main_balance():
         st.session_state.oculto = random.choice(["a","b","c","α","β","γ"])
 
     a, b, c = st.session_state.lados  # lados: a=BC, b=AC, c=AB
+
+    # colores datos
+    color_lado_a = "#FFB3BA"
+    color_lado_b = "#BAE1FF"
+    color_lado_c = "#BAFFC9"
+    color_angulo_alfa = "#D62D9D"
+    color_angulo_beta = "#8DA0C9"
+    color_angulo_gamma = "#5EC073"
+
+    color=[]
 
     # --- Construcción del triángulo ---
     A = np.array([0, 0])
@@ -68,7 +79,7 @@ def main_balance():
         mode="text",
         text=[f"a", f"b", f"c"],
         textposition="middle center",
-        textfont=dict(size=20, color=["#FFB3BA", "#BAE1FF", "#BAFFC9"]),
+        textfont=dict(size=20, color=[color_lado_a, color_lado_b, color_lado_c]),
         showlegend=False
     ))
     # Layout fijo
@@ -109,11 +120,11 @@ def main_balance():
         ))
 
     
-    agregar_arco(fig, A, 0, alpha, color="#FFB3BA") # angulo alpha
-    agregar_arco(fig, B, 180-beta, 180, color="#BAE1FF") # angulo beta
+    agregar_arco(fig, A, 0, alpha, color=color_angulo_alfa) # angulo alpha
+    agregar_arco(fig, B, 180-beta, 180, color=color_angulo_beta) # angulo beta
     
     ang_ini_C = np.degrees(np.arctan2(B[1] - C[1], B[0] - C[0])) # calcular ángulo de referencia para gamma
-    agregar_arco(fig, C, ang_ini_C, ang_ini_C-gamma, color="#BAFFC9") # angulo gamma
+    agregar_arco(fig, C, ang_ini_C, ang_ini_C-gamma, color=color_angulo_gamma) # angulo gamma
 
     # Columnas para mostrar gráfico y datos
     col1, col2 = st.columns(2)
@@ -135,13 +146,13 @@ def main_balance():
     with col2:
         st.plotly_chart(fig, use_container_width=False)
 
-    # Fórmula del coseno centrada con colores pasteles
-    st.markdown(r"""
+    # Supongamos que quieres mostrar los valores de a, b, c y gamma
+    st.markdown(f"""
     <div style="text-align:center; font-size:30px; line-height:1.5;">
-    c<sup>2</sup> = 
-    <span style="color:#FFB3BA;">a</span><sup>2</sup> + 
-    <span style="color:#BAE1FF;">b</span><sup>2</sup> - 
-    2<span style="color:#FFDFBA;">a</span><span style="color:#BAE1FF;">b</span> · cos(<span style="color:#BAFFC9;">γ</span>)
+    c<sup>2</sup> =
+    <span style="color:#FFB3BA;">{a:.2f}</span><sup>2</sup> + 
+    <span style="color:#BAE1FF;">{b:.2f}</span><sup>2</sup> - 
+    2<span style="color:#FFDFBA;">{a:.2f}</span><span style="color:#BAE1FF;">{b:.2f}</span> · cos(<span style="color:#BAFFC9;">{gamma:.2f}°</span>)
     </div>
     """, unsafe_allow_html=True)
 
