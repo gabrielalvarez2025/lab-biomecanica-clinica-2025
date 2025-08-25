@@ -12,3 +12,4 @@ librosa
 pydub
 ffmpeg-python
 plotly
+streamlit_drawable_canvas
