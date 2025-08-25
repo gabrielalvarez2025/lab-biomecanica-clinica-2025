@@ -63,23 +63,23 @@ def main_balance():
         st.subheader("Prueba tus conocimientos")
         dato_faltante = st.selectbox(
             "¿Qué dato quieres calcular?",
-            ["α", "β", "γ", "a", "b", "c"]
+            ["Ángulo α", "Ángulo β", "Ángulo γ", "Lado A", "Lado B", "Lado C"]
         )
         respuesta = st.number_input("Ingresa tu respuesta", min_value=0.0, step=0.01)
 
         if st.button("Verificar"):
             correcto = None
-            if dato_faltante == "α":
+            if dato_faltante == "Ángulo α":
                 correcto = alpha
-            elif dato_faltante == "β":
+            elif dato_faltante == "Ángulo β":
                 correcto = beta
-            elif dato_faltante == "γ":
+            elif dato_faltante == "Ángulo γ":
                 correcto = gamma
-            elif dato_faltante == "a":
+            elif dato_faltante == "Lado a":
                 correcto = a
-            elif dato_faltante == "b":
+            elif dato_faltante == "Lado b":
                 correcto = b
-            elif dato_faltante == "c":
+            elif dato_faltante == "Lado c":
                 correcto = c
 
             if abs(respuesta - correcto) < 0.5:  # tolerancia de 0.5
@@ -88,4 +88,4 @@ def main_balance():
                 st.error(f"❌ Incorrecto. El valor correcto es {correcto:.2f}")
 
     else:
-        st.error("❌ Los lados no cumplen la desigualdad triangular.")
+        st.error("❌ No es posible dibujar un triángulo con esta combinación de lados. Los lados no cumplen la desigualdad triangular.")
