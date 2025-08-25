@@ -56,21 +56,26 @@ def main_balance():
         v = v / np.linalg.norm(v) if np.linalg.norm(v) > 0 else v
         return (p1 + p2)/2 + d*v
 
-    offset = 0.5
-    pos_ab = desplazar(A, B, offset)  # lado c = AB
-    pos_bc = desplazar(B, C, offset)  # lado a = BC
-    pos_ac = desplazar(A, C, offset)  # lado b = AC
+    offset = 0.5  # distancia desde el lado
+
+    # Lado a = BC → siempre desplazado a la derecha
+    pos_a = ((B[0]+C[0])/2 + offset, (B[1]+C[1])/2)
+
+    # Lado b = AC → siempre desplazado a la izquierda
+    pos_b = ((A[0]+C[0])/2 - offset, (A[1]+C[1])/2)
+
+    # Lado c = AB → siempre desplazado hacia abajo
+    pos_c = ((A[0]+B[0])/2, (A[1]+B[1])/2 - offset)
 
     fig.add_trace(go.Scatter(
-        x=[pos_ab[0], pos_bc[0], pos_ac[0]],
-        y=[pos_ab[1], pos_bc[1], pos_ac[1]],
+        x=[pos_a[0], pos_b[0], pos_c[0]],
+        y=[pos_a[1], pos_b[1], pos_c[1]],
         mode="text",
-        text=["c", "a", "b"],
+        text=[f"a = {a:.2f}", f"b = {b:.2f}", f"c = {c:.2f}"],
         textposition="middle center",
-        textfont=dict(size=20),  # tamaño de fuente y color pastel
+        textfont=dict(size=20, color=["#FFB3BA", "#BAE1FF", "#BAFFC9"]),
         showlegend=False
     ))
-
     # Layout fijo
     max_coord = max(a, b, c) * 1.2
     fig.update_layout(
