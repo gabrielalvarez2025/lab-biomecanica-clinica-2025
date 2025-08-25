@@ -11,9 +11,9 @@ def main_balance():
 
     with col1:
         st.subheader("Ajusta los lados del triángulo")
-        a = st.slider("Lado a", 1.0, 10.0, 5.0)
-        b = st.slider("Lado b", 1.0, 10.0, 5.0)
-        c = st.slider("Lado c", 1.0, 10.0, 5.0)
+        a = st.slider("Lado A", 1.0, 10.0, 5.0)
+        b = st.slider("Lado B", 1.0, 10.0, 5.0)
+        c = st.slider("Lado C", 1.0, 10.0, 5.0)
 
         
 
@@ -55,9 +55,9 @@ def main_balance():
 
         st.markdown(f"""
         📐 Ángulos calculados (solo para verificación):
-        - α (opuesto a a): **{alpha:.2f}°**
-        - β (opuesto a b): **{beta:.2f}°**
-        - γ (opuesto a c): **{gamma:.2f}°**
+        - α (opuesto a A): **{alpha:.2f}°**
+        - β (opuesto a B): **{beta:.2f}°**
+        - γ (opuesto a C): **{gamma:.2f}°**
         """)
 
         st.subheader("Prueba tus conocimientos")
