@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import io
 
 def main_opencap():
     st.markdown("---")
@@ -12,21 +13,22 @@ def main_opencap():
     if uploaded_file is not None:
         st.success("¡Archivo cargado exitosamente! 🚀")
 
-        # Buscar la línea "endheader" para saltar el encabezado
+        # Decodificar archivo y separarlo en líneas
+        file_content = uploaded_file.getvalue().decode("utf-8").splitlines()
+
+        # Buscar la línea "endheader"
         header_lines = 0
-        for i, line in enumerate(uploaded_file.getvalue().decode("utf-8").splitlines()):
+        for i, line in enumerate(file_content):
             if "endheader" in line:
                 header_lines = i + 1
                 break
 
-        # Regresamos el puntero del archivo
-        uploaded_file.seek(0)
+        # Crear un buffer desde la parte de datos
+        data_str = "\n".join(file_content[header_lines:])
+        data_buffer = io.StringIO(data_str)
 
-        # Leer el CSV, ignorando encabezado
-        df = pd.read_csv(uploaded_file, 
-                         delimiter=" ", 
-                         skiprows=header_lines, 
-                         engine="python")
+        # Leer el CSV con tabulaciones
+        df = pd.read_csv(data_buffer, delimiter="\t")
 
         # Renombrar columna "time"
         if "time" in df.columns:
