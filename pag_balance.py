@@ -75,6 +75,9 @@ def main_balance():
         showlegend=False
     ))
 
+    
+    col1, col2 = st.columns(2)
+    
     # Layout fijo
     max_coord = max(a, b, c) * 1.2
     fig.update_layout(
@@ -85,7 +88,8 @@ def main_balance():
         showlegend=False
     )
 
-    st.plotly_chart(fig, use_container_width=False)
+    with col2:
+        st.plotly_chart(fig, use_container_width=False)
 
     # --- Cálculo de ángulos ---
     alpha = np.degrees(np.arccos((b**2 + c**2 - a**2) / (2*b*c)))
@@ -97,8 +101,6 @@ def main_balance():
 
     
     
-    col1, col2 = st.columns(2)
-
     with col1:
         st.markdown(f"""
         - **Lados**  
@@ -106,8 +108,8 @@ def main_balance():
             • BC = {a:.2f}  
             • AC = {b:.2f}  
         """)
-    
-    with col2:
+        
+
         st.markdown(f"""
         - **Ángulos**  
             • α (en A) = {alpha:.2f}°  
