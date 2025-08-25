@@ -2,14 +2,14 @@ import streamlit as st
 import numpy as np
 from math import acos, degrees
 from streamlit_drawable_canvas import st_canvas
+import matplotlib.pyplot as plt
 
 def main_balance():
 
-    
     st.set_page_config(layout="wide")
     st.title("Simulación rodilla: Fémur y Tibia")
 
-    # Parámetros iniciales
+    # Parámetros iniciales (usar ints normales, no np.array en el canvas)
     cadera = np.array([200, 100])   # fija
     rodilla = np.array([200, 250])  # arrastrable
     tobillo = np.array([200, 400])  # fijo (solo para demo)
@@ -29,8 +29,12 @@ def main_balance():
         initial_drawing={
             "version": "4.4.0",
             "objects": [
-                {"type": "circle", "left": rodilla[0], "top": rodilla[1], "radius": 8,
-                "fill": "red", "stroke": "black"},
+                {"type": "circle",
+                 "left": int(rodilla[0]),  # convertir a int nativo
+                 "top": int(rodilla[1]),   # convertir a int nativo
+                 "radius": 8,
+                 "fill": "red",
+                 "stroke": "black"},
             ],
         },
         key="canvas",
@@ -48,8 +52,8 @@ def main_balance():
         objetos = canvas_result.json_data["objects"]
         if objetos:
             # obtener nueva posición de la rodilla
-            rodilla_x = objetos[0]["left"]
-            rodilla_y = objetos[0]["top"]
+            rodilla_x = float(objetos[0]["left"])   # asegurar float nativo
+            rodilla_y = float(objetos[0]["top"])
             rodilla = np.array([rodilla_x, rodilla_y])
 
             # calcular ángulo
@@ -58,7 +62,6 @@ def main_balance():
             st.write(f"📐 Ángulo de la rodilla: **{angulo:.2f}°**")
 
             # mostramos dibujo de segmentos
-            import matplotlib.pyplot as plt
             fig, ax = plt.subplots()
             ax.plot([cadera[0], rodilla[0]], [cadera[1], rodilla[1]], "b-o", label="Fémur")
             ax.plot([rodilla[0], tobillo[0]], [rodilla[1], tobillo[1]], "g-o", label="Tibia")
@@ -68,6 +71,3 @@ def main_balance():
             ax.invert_yaxis()  # para que coincida con coordenadas canvas
             ax.legend()
             st.pyplot(fig)
-    
-
-    
