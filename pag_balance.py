@@ -4,10 +4,10 @@ import plotly.graph_objects as go
 
 
 def main_balance():
-    
+
     # Configuración fija de la página
     st.set_page_config(
-        layout="wide",          # mantener layout ancho
+        layout="centered",          # mantener layout ancho
         initial_sidebar_state="expanded"
     )
 
