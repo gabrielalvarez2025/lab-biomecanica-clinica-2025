@@ -119,3 +119,6 @@ def main_balance():
             • γ (en C) = {gamma:.2f}°  
         """)
 
+
+    st.markdown("---")
+
