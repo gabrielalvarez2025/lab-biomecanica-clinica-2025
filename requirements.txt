@@ -14,3 +14,7 @@ ffmpeg-python
 plotly
 streamlit-drawable-canvas
 math
+streamlit
+streamlit-drawable-canvas
+numpy
+matplotlib
