@@ -28,7 +28,32 @@ def main_balance():
             - γ (opuesto a c): **{gamma:.2f}°**
             """)
 
-            
+            st.subheader("Prueba tus conocimientos")
+            dato_faltante = st.selectbox(
+                "¿Qué dato quieres calcular?",
+                ["α", "β", "γ", "a", "b", "c"]
+            )
+            respuesta = st.number_input("Ingresa tu respuesta", min_value=0.0, step=0.01)
+
+            if st.button("Verificar"):
+                correcto = None
+                if dato_faltante == "α":
+                    correcto = alpha
+                elif dato_faltante == "β":
+                    correcto = beta
+                elif dato_faltante == "γ":
+                    correcto = gamma
+                elif dato_faltante == "a":
+                    correcto = a
+                elif dato_faltante == "b":
+                    correcto = b
+                elif dato_faltante == "c":
+                    correcto = c
+
+                if abs(respuesta - correcto) < 0.5:  # tolerancia de 0.5
+                    st.success(f"✅ Correcto! El valor es aproximadamente {correcto:.2f}")
+                else:
+                    st.error(f"❌ Incorrecto. El valor correcto es {correcto:.2f}")
 
         else:
             st.error("❌ Los lados no cumplen la desigualdad triangular.")
@@ -62,31 +87,3 @@ def main_balance():
                 showlegend=False
             )
             st.plotly_chart(fig, use_container_width=False)
-    
-    st.subheader("Prueba tus conocimientos")
-    
-    dato_faltante = st.selectbox(
-        "¿Qué dato quieres calcular?",
-        ["α", "β", "γ", "a", "b", "c"]
-    )
-    respuesta = st.number_input("Ingresa tu respuesta", min_value=0.0, step=0.01)
-
-    if st.button("Verificar"):
-        correcto = None
-        if dato_faltante == "α":
-            correcto = alpha
-        elif dato_faltante == "β":
-            correcto = beta
-        elif dato_faltante == "γ":
-            correcto = gamma
-        elif dato_faltante == "a":
-            correcto = a
-        elif dato_faltante == "b":
-            correcto = b
-        elif dato_faltante == "c":
-            correcto = c
-
-        if abs(respuesta - correcto) < 0.5:  # tolerancia de 0.5
-            st.success(f"✅ Correcto! El valor es aproximadamente {correcto:.2f}")
-        else:
-            st.error(f"❌ Incorrecto. El valor correcto es {correcto:.2f}")
