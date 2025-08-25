@@ -35,7 +35,7 @@ def main_balance():
                 text=["A","B","C",""],
                 textposition="top right",
                 line=dict(color="white", width=3),
-                marker=dict(size=8, color='green')
+                marker=dict(size=20, color='green')
             ))
             max_coord = max(a,b,c)*1.2
             fig.update_layout(
