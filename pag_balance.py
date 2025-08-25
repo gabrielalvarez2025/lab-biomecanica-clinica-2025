@@ -150,9 +150,9 @@ def main_balance():
     st.markdown(f"""
     <div style="text-align:center; font-size:30px; line-height:1.5;">
     c<sup>2</sup> =
-    <span style="color:#FFB3BA;">{a:.2f}</span><sup>2</sup> + 
-    <span style="color:#BAE1FF;">{b:.2f}</span><sup>2</sup> - 
-    2<span style="color:#FFDFBA;">{a:.2f}</span><span style="color:#BAE1FF;">{b:.2f}</span> · cos(<span style="color:#BAFFC9;">{gamma:.2f}°</span>)
+    <span style="color:{color_lado_a};">a</span><sup>2</sup> + 
+    <span style="color:{color_lado_b};">b</span><sup>2</sup> - 
+    2<span style="color:{color_lado_c};">a</span><span style="color:#BAE1FF;">{b:.2f}</span> · cos(<span style="color:#BAFFC9;">{gamma:.2f}°</span>)
     </div>
     """, unsafe_allow_html=True)
 
