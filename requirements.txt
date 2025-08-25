@@ -13,3 +13,4 @@ pydub
 ffmpeg-python
 plotly
 streamlit-drawable-canvas
+openpyxl
