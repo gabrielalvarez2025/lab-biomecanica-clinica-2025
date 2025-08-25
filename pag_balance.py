@@ -34,30 +34,30 @@ def main_balance():
             st.error("❌ Los lados no cumplen la desigualdad triangular.")
 
     with col2:
-    st.subheader("Triángulo")
-    if a + b > c and a + c > b and b + c > a:
-        # Coordenadas triángulo
-        A = np.array([0, 0])
-        B = np.array([c, 0])
-        x = (a**2 - b**2 + c**2) / (2*c)
-        y = np.sqrt(max(a**2 - x**2, 0))
-        C = np.array([x, y])
+        st.subheader("Triángulo")
+        if a + b > c and a + c > b and b + c > a:
+            # Coordenadas triángulo
+            A = np.array([0, 0])
+            B = np.array([c, 0])
+            x = (a**2 - b**2 + c**2) / (2*c)
+            y = np.sqrt(max(a**2 - x**2, 0))
+            C = np.array([x, y])
 
-        # Contenedor fijo
-        with st.container():
-            fig, ax = plt.subplots(figsize=(5,5))
-            ax.plot([A[0], B[0]], [A[1], B[1]], "b-", lw=2, label="c")
-            ax.plot([B[0], C[0]], [B[1], C[1]], "g-", lw=2, label="a")
-            ax.plot([C[0], A[0]], [C[1], A[1]], "r-", lw=2, label="b")
+            # Contenedor fijo
+            with st.container():
+                fig, ax = plt.subplots(figsize=(5,5))
+                ax.plot([A[0], B[0]], [A[1], B[1]], "b-", lw=2, label="c")
+                ax.plot([B[0], C[0]], [B[1], C[1]], "g-", lw=2, label="a")
+                ax.plot([C[0], A[0]], [C[1], A[1]], "r-", lw=2, label="b")
 
-            ax.plot(*A, "ko")
-            ax.text(A[0], A[1]-0.2, "A")
-            ax.plot(*B, "ko")
-            ax.text(B[0], B[1]-0.2, "B")
-            ax.plot(*C, "ko")
-            ax.text(C[0], C[1]+0.2, "C")
+                ax.plot(*A, "ko")
+                ax.text(A[0], A[1]-0.2, "A")
+                ax.plot(*B, "ko")
+                ax.text(B[0], B[1]-0.2, "B")
+                ax.plot(*C, "ko")
+                ax.text(C[0], C[1]+0.2, "C")
 
-            ax.set_aspect("equal")
-            ax.axis("off")
-            ax.legend()
-            st.pyplot(fig, use_container_width=False)  # no autoajustar al contenedor
+                ax.set_aspect("equal")
+                ax.axis("off")
+                ax.legend()
+                st.pyplot(fig, use_container_width=False)  # no autoajustar al contenedor
