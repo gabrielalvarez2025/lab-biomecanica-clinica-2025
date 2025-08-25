@@ -87,7 +87,7 @@ def main_balance():
     gamma = np.degrees(np.arccos((a**2 + b**2 - c**2)/(2*a*b)))
 
 
-    def agregar_arco(fig, centro, angulo_inicio, angulo_fin, radio=0.5, color="#FFB3BA"):
+    def agregar_arco(fig, centro, angulo_inicio, angulo_fin, radio=0.8, color="#FFB3BA"):
         """
         Dibuja un arco (sector) en Plotly
         centro: [x, y]
@@ -108,13 +108,10 @@ def main_balance():
             showlegend=False
         ))
 
-    # Vértice A
+    
     agregar_arco(fig, A, 0, alpha, color="#FFB3BA")
-    # Vértice B
     agregar_arco(fig, B, 180-beta, 180, color="#BAE1FF")
-    # Vértice C
-    # calcular ángulo de referencia para C
-    ang_ini_C = np.degrees(np.arctan2(C[1]-B[1], C[0]-B[0]))
+    ang_ini_C = np.degrees(np.arctan2(C[1]-B[1], C[0]-B[0])) # calcular ángulo de referencia para C
     agregar_arco(fig, C, ang_ini_C, ang_ini_C+gamma, color="#BAFFC9")
 
     # Columnas para mostrar gráfico y datos
