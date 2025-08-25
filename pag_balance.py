@@ -14,9 +14,9 @@ def main_balance():
         st.markdown(" ")
         st.markdown(" ")
 
-        a = st.slider("Lado a", 1.0, 10.0, 5.0)
-        b = st.slider("Lado b", 1.0, 10.0, 5.0)
-        c = st.slider("Lado c", 1.0, 10.0, 5.0)
+        a = st.slider("Lado A", 1.0, 10.0, 5.0)
+        b = st.slider("Lado B", 1.0, 10.0, 5.0)
+        c = st.slider("Lado C", 1.0, 10.0, 5.0)
 
     # --- Columna 2: gráfico ---
     with col2:
@@ -69,7 +69,7 @@ def main_balance():
                 x=[pos_a[0], pos_b[0], pos_c[0]],
                 y=[pos_a[1], pos_b[1], pos_c[1]],
                 mode="text",
-                text=["a", "b", "c"],
+                text=["A", "B", "C"],
                 textposition="middle center",
                 showlegend=False
             ))
