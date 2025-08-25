@@ -152,7 +152,7 @@ def main_balance():
     c<sup>2</sup> =
     <span style="color:{color_lado_a};">a</span><sup>2</sup> + 
     <span style="color:{color_lado_b};">b</span><sup>2</sup> - 
-    2<span style="color:{color_lado_c};">a</span><span style="color:#BAE1FF;">{b:.2f}</span> · cos(<span style="color:#BAFFC9;">{gamma:.2f}°</span>)
+    2<span style="color:{color_lado_c};">a</span><span style="color:#BAE1FF;">b</span> · cos(<span style="color:#BAFFC9;">{gamma:.2f}°</span>)
     </div>
     """, unsafe_allow_html=True)
 
