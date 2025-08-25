@@ -24,7 +24,7 @@ def main_opencap():
 
         # Leer el CSV, ignorando encabezado
         df = pd.read_csv(uploaded_file, 
-                         delimiter=r"\s+", 
+                         delimiter=" ", 
                          skiprows=header_lines, 
                          engine="python")
 
