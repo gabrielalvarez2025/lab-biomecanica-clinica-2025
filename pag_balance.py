@@ -11,6 +11,7 @@ def generar_triangulo():
         c = random.uniform(2, 10)  # AB
         if a + b > c and a + c > b and b + c > a:
             return a, b, c
+        
 
 def mostrar_valor(dato, valor):
     """Muestra '¿ ?' si el dato es el oculto, sino el valor con 2 decimales"""
@@ -84,6 +85,37 @@ def main_balance():
     alpha = np.degrees(np.arccos((b**2 + c**2 - a**2)/(2*b*c)))
     beta  = np.degrees(np.arccos((a**2 + c**2 - b**2)/(2*a*c)))
     gamma = np.degrees(np.arccos((a**2 + b**2 - c**2)/(2*a*b)))
+
+
+    def agregar_arco(fig, centro, angulo_inicio, angulo_fin, radio=0.5, color="#FFB3BA"):
+        """
+        Dibuja un arco (sector) en Plotly
+        centro: [x, y]
+        angulo_inicio, angulo_fin: en grados
+        radio: tamaño del arco
+        color: color pastel
+        """
+        theta = np.linspace(np.radians(angulo_inicio), np.radians(angulo_fin), 30)
+        x = centro[0] + radio * np.cos(theta)
+        y = centro[1] + radio * np.sin(theta)
+        # cerrar el arco hacia el centro
+        x = np.append(x, centro[0])
+        y = np.append(y, centro[1])
+        fig.add_trace(go.Scatter(
+            x=x, y=y, fill="toself",
+            mode="lines", line_color=color,
+            fillcolor=color, opacity=0.5,
+            showlegend=False
+        ))
+
+    # Vértice A
+    agregar_arco(fig, A, 0, alpha, color="#FFB3BA")
+    # Vértice B
+    agregar_arco(fig, B, 180-beta, 180, color="#BAE1FF")
+    # Vértice C
+    # calcular ángulo de referencia para C
+    ang_ini_C = np.degrees(np.arctan2(C[1]-B[1], C[0]-B[0]))
+    agregar_arco(fig, C, ang_ini_C, ang_ini_C+gamma, color="#BAFFC9")
 
     # Columnas para mostrar gráfico y datos
     col1, col2 = st.columns(2)
