@@ -116,7 +116,7 @@ def main_balance():
     col1, col2 = st.columns(2)
     oculto = st.session_state.oculto
 
-    symbol_incognita = "___"
+    symbol_incognita = " X "
 
     with col1:
         st.markdown(f"## Desafío:")
