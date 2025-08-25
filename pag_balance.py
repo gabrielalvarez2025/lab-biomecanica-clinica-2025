@@ -10,7 +10,7 @@ def main_balance():
     col1, col2 = st.columns([1, 2])
 
     with col1:
-        st.subheader("Ajusta los lados del triángulo")
+        st.markdown("##### Ajusta los lados del triángulo")
         a = st.slider("Lado A", 1.0, 10.0, 5.0)
         b = st.slider("Lado B", 1.0, 10.0, 5.0)
         c = st.slider("Lado C", 1.0, 10.0, 5.0)
@@ -19,7 +19,7 @@ def main_balance():
 
     # --- Columna 2: gráfico ---
     with col2:
-        st.subheader("Triángulo")
+        
         if a + b > c and a + c > b and b + c > a:
             A = np.array([0,0])
             B = np.array([c,0])
