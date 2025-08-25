@@ -119,7 +119,7 @@ def main_balance():
     symbol_incognita = "⯐"
 
     with col1:
-        st.markdown(f"##Desafío:")
+        st.markdown(f"## Desafío:")
         st.markdown(f"Trata de calcular el dato **{oculto}** sabiendo que:")
 
         # Lados
