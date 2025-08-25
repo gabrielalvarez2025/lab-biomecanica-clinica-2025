@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
+from procesar_opencap import main_opencap
+
 
 def main_instrucciones_opencap():
     st.header("Instrucciones para el uso de OpenCap")
@@ -188,6 +190,13 @@ def main_instrucciones_opencap():
 
         """
     )
+
+
+    st.markdown("---")
+
+    st.header("Convertir archivo OpenCap a Excel")
+
+    main_opencap()
         
 
 

@@ -7,6 +7,7 @@ import streamlit.components.v1 as components
 
 from procesar_phyphox_acc import main_phyphox
 from procesar_amti import main_forceplate
+from procesar_opencap import main_opencap
 
 
 def play_emg_sumatoria():
@@ -333,6 +334,8 @@ def main_bioinstrumentacion():
                     color_boton= "#368581",
                     color_parrafo= "#89BBB8"
                     )
+    
+    
     
     
 
