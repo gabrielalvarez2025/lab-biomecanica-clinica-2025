@@ -17,6 +17,14 @@ def mostrar_valor(dato, valor):
     oculto = st.session_state.get("oculto", None)
     return "¿ ?" if dato == oculto else f"{valor:.2f}"
 
+def desplazar(p1, p2, d):
+    # Calcula un vector perpendicular al lado p1-p2
+    v = np.array([p2[1] - p1[1], -(p2[0] - p1[0])])
+    # Normaliza el vector
+    v = v / np.linalg.norm(v) if np.linalg.norm(v) > 0 else v
+    # Devuelve el punto medio desplazado hacia afuera
+    return (p1 + p2) / 2 + d * v
+
 def main_balance():
     st.set_page_config(layout="centered", initial_sidebar_state="expanded")
     st.title("🔺 Simulador interactivo: Teorema del Coseno")
