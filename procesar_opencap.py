@@ -34,7 +34,7 @@ def main_opencap():
 
         # Mostrar preview
         st.markdown("### Vista previa del DataFrame")
-        st.dataframe(df.head(), hide_index=True)
+        st.dataframe(df, hide_index=True)
 
         # Selección de columnas para graficar
         st.markdown("### Selección de columnas para graficar")
