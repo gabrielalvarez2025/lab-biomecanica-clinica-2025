@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import io
+import plotly.express as px
 
 def main_opencap():
     st.subheader("📊 Procesar archivo OpenCap (.txt)")
@@ -35,6 +36,15 @@ def main_opencap():
         st.markdown("### Vista previa del DataFrame")
         st.dataframe(df.head(), hide_index=True)
 
-        # Mostrar lista de columnas
-        st.markdown("### Columnas detectadas:")
-        st.write(df.columns.tolist())
+        # Selección de columnas para graficar
+        st.markdown("### Selección de columnas para graficar")
+        y_cols = st.multiselect(
+            "Selecciona una o varias columnas (eje Y):",
+            options=df.columns[1:],  # excluye la primera (tiempo)
+            default=[]
+        )
+
+        if y_cols:
+            for col in y_cols:
+                fig = px.line(df, x=df.columns[0], y=col, title=f"{col} vs {df.columns[0]}")
+                st.plotly_chart(fig, use_container_width=True)
