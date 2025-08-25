@@ -1,73 +1,64 @@
 import streamlit as st
 import numpy as np
-from math import acos, degrees
-from streamlit_drawable_canvas import st_canvas
 import matplotlib.pyplot as plt
 
 def main_balance():
 
     st.set_page_config(layout="wide")
-    st.title("Simulación rodilla: Fémur y Tibia")
+    st.title("Simulador interactivo: Teorema del Coseno")
 
-    # Parámetros iniciales (usar ints normales, no np.array en el canvas)
-    cadera = np.array([200, 100])   # fija
-    rodilla = np.array([200, 250])  # arrastrable
-    tobillo = np.array([200, 400])  # fijo (solo para demo)
+    st.markdown("""
+    El **Teorema del Coseno** dice que en un triángulo con lados `a`, `b`, `c` y ángulo opuesto a `c` (γ):
 
-    # --- Dibujo con Canvas ---
-    st.subheader("Mueve la rodilla (punto rojo) con el mouse")
+    \[
+    c^2 = a^2 + b^2 - 2ab \cdot \cos(\gamma)
+    \]
+    """)
 
-    canvas_result = st_canvas(
-        fill_color="rgba(255, 0, 0, 0.3)",  # color del punto
-        stroke_width=3,
-        stroke_color="red",
-        background_color="white",
-        update_streamlit=True,
-        height=500,
-        width=500,
-        drawing_mode="transform",   # permite mover shapes
-        initial_drawing={
-            "version": "4.4.0",
-            "objects": [
-                {"type": "circle",
-                 "left": int(rodilla[0]),  # convertir a int nativo
-                 "top": int(rodilla[1]),   # convertir a int nativo
-                 "radius": 8,
-                 "fill": "red",
-                 "stroke": "black"},
-            ],
-        },
-        key="canvas",
-    )
+    # Sliders para los lados
+    a = st.slider("Lado a", 1.0, 10.0, 5.0)
+    b = st.slider("Lado b", 1.0, 10.0, 5.0)
+    c = st.slider("Lado c", 1.0, 10.0, 5.0)
 
-    # --- Cálculo del ángulo ---
-    def calcular_angulo(cadera, rodilla, tobillo):
-        v1 = cadera - rodilla
-        v2 = tobillo - rodilla
-        cos_theta = np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
-        angulo = degrees(acos(np.clip(cos_theta, -1.0, 1.0)))
-        return angulo
+    # Verificar desigualdad triangular
+    if a + b > c and a + c > b and b + c > a:
+        # Calcular ángulos con teorema del coseno
+        alpha = np.degrees(np.arccos((b**2 + c**2 - a**2) / (2*b*c)))
+        beta  = np.degrees(np.arccos((a**2 + c**2 - b**2) / (2*a*c)))
+        gamma = np.degrees(np.arccos((a**2 + b**2 - c**2) / (2*a*b)))
 
-    if canvas_result.json_data is not None:
-        objetos = canvas_result.json_data["objects"]
-        if objetos:
-            # obtener nueva posición de la rodilla
-            rodilla_x = float(objetos[0]["left"])   # asegurar float nativo
-            rodilla_y = float(objetos[0]["top"])
-            rodilla = np.array([rodilla_x, rodilla_y])
+        st.markdown(f"""
+        📐 Ángulos calculados:
+        - α (opuesto a a): **{alpha:.2f}°**
+        - β (opuesto a b): **{beta:.2f}°**
+        - γ (opuesto a c): **{gamma:.2f}°**
+        """)
 
-            # calcular ángulo
-            angulo = calcular_angulo(cadera, rodilla, tobillo)
+        # Dibujar triángulo
+        # Colocamos el triángulo en coordenadas 2D
+        A = np.array([0, 0])
+        B = np.array([c, 0])  # lado c en la base
+        # Usar ley de cosenos para encontrar coordenada de C
+        x = (a**2 - b**2 + c**2) / (2*c)
+        y = np.sqrt(max(a**2 - x**2, 0))
+        C = np.array([x, y])
 
-            st.write(f"📐 Ángulo de la rodilla: **{angulo:.2f}°**")
+        fig, ax = plt.subplots()
+        ax.plot([A[0], B[0]], [A[1], B[1]], "b-", lw=2, label="c")
+        ax.plot([B[0], C[0]], [B[1], C[1]], "g-", lw=2, label="a")
+        ax.plot([C[0], A[0]], [C[1], A[1]], "r-", lw=2, label="b")
 
-            # mostramos dibujo de segmentos
-            fig, ax = plt.subplots()
-            ax.plot([cadera[0], rodilla[0]], [cadera[1], rodilla[1]], "b-o", label="Fémur")
-            ax.plot([rodilla[0], tobillo[0]], [rodilla[1], tobillo[1]], "g-o", label="Tibia")
-            ax.plot(cadera[0], cadera[1], "ko", markersize=10, label="Cadera fija")
-            ax.set_xlim(100, 300)
-            ax.set_ylim(50, 450)
-            ax.invert_yaxis()  # para que coincida con coordenadas canvas
-            ax.legend()
-            st.pyplot(fig)
+        # Puntos
+        ax.plot(*A, "ko")
+        ax.text(A[0], A[1]-0.2, "A")
+        ax.plot(*B, "ko")
+        ax.text(B[0], B[1]-0.2, "B")
+        ax.plot(*C, "ko")
+        ax.text(C[0], C[1]+0.2, "C")
+
+        ax.set_aspect("equal")
+        ax.legend()
+        st.pyplot(fig)
+
+    else:
+        st.error("❌ Los lados no cumplen la desigualdad triangular. No existe un triángulo con esas medidas.")
