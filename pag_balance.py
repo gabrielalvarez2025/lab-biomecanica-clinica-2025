@@ -14,9 +14,9 @@ def main_balance():
         st.markdown(" ")
         st.markdown(" ")
 
-        a = st.slider("Lado a (opuesto a A)", 1.0, 10.0, 5.0)
-        b = st.slider("Lado b (opuesto a B)", 1.0, 10.0, 5.0)
-        c = st.slider("Lado c (opuesto a C)", 1.0, 10.0, 5.0)
+        a = st.slider("Lado BC (opuesto a A)", 1.0, 10.0, 5.0)
+        b = st.slider("Lado AC (opuesto a B)", 1.0, 10.0, 5.0)
+        c = st.slider("Lado AB (opuesto a C)", 1.0, 10.0, 5.0)
 
     # --- Columna 2: gráfico ---
     with col2:
