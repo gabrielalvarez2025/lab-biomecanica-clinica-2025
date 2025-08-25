@@ -6,7 +6,7 @@ def main_balance():
 
     st.set_page_config(layout="wide")
     st.title("🔺 Simulador interactivo: Teorema del Coseno")
-    st.markdown("hola")
+    
 
     # Creamos columnas: col1 para sliders, col2 para gráfico
     col1, col2 = st.columns([1, 2])  # col2 más ancha que col1
