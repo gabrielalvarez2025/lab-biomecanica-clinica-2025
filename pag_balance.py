@@ -34,8 +34,8 @@ def main_balance():
                 mode='lines+markers+text',
                 text=["A","B","C",""],
                 textposition="top right",
-                line=dict(color="blue", width=3),
-                marker=dict(size=8, color='black')
+                line=dict(color="white", width=3),
+                marker=dict(size=8, color='red')
             ))
             max_coord = max(a,b,c)*1.2
             fig.update_layout(
