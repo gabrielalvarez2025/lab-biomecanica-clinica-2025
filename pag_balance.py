@@ -56,7 +56,7 @@ def main_balance():
         v = v / np.linalg.norm(v) if np.linalg.norm(v) > 0 else v
         return (p1 + p2)/2 + d*v
 
-    offset = 0.3
+    offset = 0.8
     pos_ab = desplazar(A, B, offset)  # lado c = AB
     pos_bc = desplazar(B, C, offset)  # lado a = BC
     pos_ac = desplazar(A, C, offset)  # lado b = AC
