@@ -4,7 +4,6 @@ import plotly.graph_objects as go
 import random
 
 def generar_triangulo():
-    """Genera lados válidos de un triángulo usando desigualdad triangular"""
     while True:
         a = random.uniform(2, 10)  # BC
         b = random.uniform(2, 10)  # AC
@@ -14,28 +13,33 @@ def generar_triangulo():
 
 def main_balance():
     st.set_page_config(layout="centered", initial_sidebar_state="expanded")
-    st.title("🔺 Simulador interactivo: Teorema del Coseno")
+    st.title("🔺 Actividad: Descubre el dato faltante usando el Teorema del Coseno")
 
-    # Estado de los lados
+    # Generar triángulo aleatorio
     if "lados" not in st.session_state:
         st.session_state.lados = generar_triangulo()
+        # Elegir aleatoriamente un dato oculto
+        st.session_state.oculto = random.choice(["a","b","c","α","β","γ"])
 
-    # Botón para generar nuevos lados
     if st.button("🎲 Generar triángulo aleatorio"):
         st.session_state.lados = generar_triangulo()
+        st.session_state.oculto = random.choice(["a","b","c","α","β","γ"])
 
-    a, b, c = st.session_state.lados  # lados: a=BC, b=AC, c=AB
+    a, b, c = st.session_state.lados
+
+    # --- Ángulos ---
+    alpha = np.degrees(np.arccos((b**2 + c**2 - a**2) / (2*b*c)))
+    beta  = np.degrees(np.arccos((a**2 + c**2 - b**2) / (2*a*c)))
+    gamma = np.degrees(np.arccos((a**2 + b**2 - c**2) / (2*a*b)))
 
     # --- Construcción del triángulo ---
-    A = np.array([0, 0])
-    B = np.array([c, 0])
-    x = (a**2 - b**2 + c**2) / (2*c)
-    y = np.sqrt(max(a**2 - x**2, 0))
-    C = np.array([x, y])
+    A = np.array([0,0])
+    B = np.array([c,0])
+    x = (a**2 - b**2 + c**2)/(2*c)
+    y = np.sqrt(max(a**2 - x**2,0))
+    C = np.array([x,y])
 
     fig = go.Figure()
-
-    # Lados
     fig.add_trace(go.Scatter(
         x=[A[0], B[0], C[0], A[0]],
         y=[A[1], B[1], C[1], A[1]],
@@ -44,64 +48,57 @@ def main_balance():
         marker=dict(size=12, color='green')
     ))
 
-    # Función para desplazar etiquetas de lados hacia afuera
-    def desplazar(p1, p2, d):
-        v = np.array([p2[1] - p1[1], -(p2[0] - p1[0])])  # vector perpendicular
-        v = v / np.linalg.norm(v) if np.linalg.norm(v) > 0 else v
-        return (p1 + p2) / 2 + d * v
+    def desplazar(p1,p2,d):
+        v = np.array([p2[1]-p1[1], -(p2[0]-p1[0])])
+        v = v/np.linalg.norm(v) if np.linalg.norm(v)>0 else v
+        return (p1+p2)/2 + d*v
 
-    offset = 0.3
-    pos_ab = desplazar(A, B, offset)  # lado c = AB
-    pos_bc = desplazar(B, C, offset)  # lado a = BC
-    pos_ac = desplazar(A, C, offset)  # lado b = AC
+    offset=0.3
+    pos_ab = desplazar(A,B,offset)
+    pos_bc = desplazar(B,C,offset)
+    pos_ac = desplazar(A,C,offset)
 
-    # Etiquetas de lados
     fig.add_trace(go.Scatter(
         x=[pos_ab[0], pos_bc[0], pos_ac[0]],
         y=[pos_ab[1], pos_bc[1], pos_ac[1]],
         mode="text",
-        text=["c", "a", "b"],  # nomenclatura correcta
+        text=["c","a","b"],
         textposition="middle center",
         showlegend=False
     ))
 
-    # Layout fijo
-    max_coord = max(a, b, c) * 1.2
+    max_coord = max(a,b,c)*1.2
     fig.update_layout(
         width=500,
         height=500,
-        xaxis=dict(range=[-1, max_coord], zeroline=False, showgrid=False, visible=False),
-        yaxis=dict(range=[0, max_coord], scaleanchor="x", zeroline=False, showgrid=False, visible=False),
+        xaxis=dict(range=[-1,max_coord], visible=False),
+        yaxis=dict(range=[-1,max_coord], scaleanchor="x", visible=False),
         showlegend=False
     )
 
-    # --- Cálculo de ángulos ---
-    alpha = np.degrees(np.arccos((b**2 + c**2 - a**2) / (2*b*c)))
-    beta  = np.degrees(np.arccos((a**2 + c**2 - b**2) / (2*a*c)))
-    gamma = np.degrees(np.arccos((a**2 + b**2 - c**2) / (2*a*b)))
-
-    # Columnas para gráfico y datos
-    col1, col2 = st.columns(2)
-
+    col1,col2 = st.columns(2)
     with col1:
-        st.markdown("## Datos del triángulo:")
+        st.markdown("## Datos del triángulo (un dato oculto)")
+        def mostrar_valor(dato, valor):
+            return "¿ ?" if dato==st.session_state.oculto else f"{valor:.2f}"
+
         st.markdown(f"""
         - **Lados**  
-            • a = {a:.2f}  
-            • b = {b:.2f}  
-            • c = {c:.2f}  
+            • a = {mostrar_valor('a',a)}  
+            • b = {mostrar_valor('b',b)}  
+            • c = {mostrar_valor('c',c)}  
         """)
         st.markdown(f"""
         - **Ángulos**  
-            • α (en A) = {alpha:.2f}°  
-            • β (en B) = {beta:.2f}°  
-            • γ (en C) = {gamma:.2f}°  
+            • α = {mostrar_valor('α',alpha)}°  
+            • β = {mostrar_valor('β',beta)}°  
+            • γ = {mostrar_valor('γ',gamma)}°  
         """)
 
     with col2:
         st.plotly_chart(fig, use_container_width=False)
 
-    # Fórmula del coseno centrada con colores pasteles
+    # Fórmula centrada
     st.markdown(r"""
     <div style="text-align:center; font-size:30px; line-height:1.5;">
     c<sup>2</sup> = 
