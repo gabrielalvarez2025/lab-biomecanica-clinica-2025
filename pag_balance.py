@@ -17,7 +17,6 @@ def mostrar_valor(dato, valor):
     oculto = st.session_state.get("oculto", None)
     return "¿ ?" if dato == oculto else f"{valor:.2f}"
 
-
 def main_balance():
     st.set_page_config(layout="centered", initial_sidebar_state="expanded")
     st.title("🔺 Simulador interactivo: Teorema del Coseno")
@@ -57,23 +56,17 @@ def main_balance():
         v = v / np.linalg.norm(v) if np.linalg.norm(v) > 0 else v
         return (p1 + p2)/2 + d*v
 
-    offset = 1
+    offset = 0.3
     pos_ab = desplazar(A, B, offset)  # lado c = AB
     pos_bc = desplazar(B, C, offset)  # lado a = BC
     pos_ac = desplazar(A, C, offset)  # lado b = AC
 
-    # Etiquetas de lados con valores numéricos, desplazadas hacia afuera
     fig.add_trace(go.Scatter(
         x=[pos_ab[0], pos_bc[0], pos_ac[0]],
         y=[pos_ab[1], pos_bc[1], pos_ac[1]],
         mode="text",
-        text=[
-            f"c = {mostrar_valor('c', c)}",
-            f"a = {mostrar_valor('a', a)}",
-            f"b = {mostrar_valor('b', b)}"
-        ],
+        text=["c", "a", "b"],
         textposition="middle center",
-        textfont=dict(size=20, color="lightblue"),  # tamaño de fuente y color pastel
         showlegend=False
     ))
 
