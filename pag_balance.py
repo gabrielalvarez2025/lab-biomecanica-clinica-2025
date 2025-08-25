@@ -104,7 +104,7 @@ def main_balance():
         fig.add_trace(go.Scatter(
             x=x, y=y, fill="toself",
             mode="lines", line_color=color,
-            fillcolor=color, opacity=0.5,
+            fillcolor=color, opacity=0.8,
             showlegend=False
         ))
 
