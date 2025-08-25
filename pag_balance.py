@@ -40,7 +40,7 @@ def main_balance():
             max_coord = max(a,b,c)*1.2
             fig.update_layout(
                 width=500,
-                height=500,
+                height=250,
                 xaxis=dict(range=[-1, max_coord], zeroline=False, showgrid=False, visible=False),
                 yaxis=dict(range=[-1, max_coord], scaleanchor="x", zeroline=False, showgrid=False, visible=False),
                 showlegend=False
