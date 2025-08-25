@@ -71,7 +71,7 @@ def main_balance():
         x=[pos_a[0], pos_b[0], pos_c[0]],
         y=[pos_a[1], pos_b[1], pos_c[1]],
         mode="text",
-        text=[f"a = {a:.2f}", f"b = {b:.2f}", f"c = {c:.2f}"],
+        text=[f"a", f"b", f"c"],
         textposition="middle center",
         textfont=dict(size=20, color=["#FFB3BA", "#BAE1FF", "#BAFFC9"]),
         showlegend=False
