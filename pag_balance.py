@@ -116,6 +116,8 @@ def main_balance():
     col1, col2 = st.columns(2)
     oculto = st.session_state.oculto
 
+    symbol_incognita = "❑"
+
     with col1:
         st.markdown(f"## 📝 Desafío:")
         st.markdown(f"Trata de calcular el dato **{oculto}** sabiendo que:")
@@ -135,7 +137,7 @@ def main_balance():
     with col2:
         st.plotly_chart(fig, use_container_width=False)
 
-    symbol_incognita = "❑"
+    
 
     # Fórmula del coseno con dato oculto
     c_formula = symbol_incognita if oculto=='c' else 'c'
