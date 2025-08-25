@@ -61,8 +61,8 @@ def main_balance():
                 mode='lines+markers+text',
                 text=["A", "B", "C", ""],
                 textposition="top right",
-                line=dict(color="blue", width=3),
-                marker=dict(size=8, color='black')
+                line=dict(color="white", width=3),
+                marker=dict(size=8, color='green')
             ))
 
             # Mantener la misma escala y tamaño fijo
