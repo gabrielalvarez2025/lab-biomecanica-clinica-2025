@@ -11,7 +11,6 @@ def generar_triangulo():
         c = random.uniform(2, 10)  # AB
         if a + b > c and a + c > b and b + c > a:
             return a, b, c
-        
 
 def mostrar_valor(dato, valor):
     """Muestra '¿ ?' si el dato es el oculto, sino el valor con 2 decimales"""
@@ -19,7 +18,6 @@ def mostrar_valor(dato, valor):
     return "¿ ?" if dato == oculto else f"{valor:.2f}"
 
 def main_balance():
-    
     st.set_page_config(layout="centered", initial_sidebar_state="expanded")
     st.title("🔺 Simulador interactivo: Teorema del Coseno")
 
@@ -44,8 +42,6 @@ def main_balance():
     color_angulo_beta = "#8DA0C9"
     color_angulo_gamma = "#5EC073"
 
-    color=[]
-
     # --- Construcción del triángulo ---
     A = np.array([0, 0])
     B = np.array([c, 0])
@@ -68,10 +64,10 @@ def main_balance():
         v = v / np.linalg.norm(v) if np.linalg.norm(v) > 0 else v
         return (p1 + p2)/2 + d*v
 
-    offset = 0.6  # distancia desde el lado
-    pos_a = ((B[0]+C[0])/2 + offset, (B[1]+C[1])/2) # Lado a = BC → siempre desplazado a la derecha
-    pos_b = ((A[0]+C[0])/2 - offset, (A[1]+C[1])/2) # Lado b = AC → siempre desplazado a la izquierda
-    pos_c = ((A[0]+B[0])/2, (A[1]+B[1])/2 - offset) # Lado c = AB → siempre desplazado hacia abajo
+    offset = 0.6
+    pos_a = ((B[0]+C[0])/2 + offset, (B[1]+C[1])/2) # lado a a la derecha
+    pos_b = ((A[0]+C[0])/2 - offset, (A[1]+C[1])/2) # lado b a la izquierda
+    pos_c = ((A[0]+B[0])/2, (A[1]+B[1])/2 - offset) # lado c hacia abajo
 
     fig.add_trace(go.Scatter(
         x=[pos_a[0], pos_b[0], pos_c[0]],
@@ -82,7 +78,7 @@ def main_balance():
         textfont=dict(size=20, color=[color_lado_a, color_lado_b, color_lado_c]),
         showlegend=False
     ))
-    # Layout fijo
+
     max_coord = max(a, b, c) * 1.2
     fig.update_layout(
         width=500,
@@ -93,66 +89,64 @@ def main_balance():
     )
 
     # --- Cálculo de ángulos ---
-    beta = np.degrees(np.arccos((b**2 + c**2 - a**2)/(2*b*c))) # 
-    alpha  = np.degrees(np.arccos((a**2 + c**2 - b**2)/(2*a*c)))
+    beta = np.degrees(np.arccos((b**2 + c**2 - a**2)/(2*b*c)))
+    alpha = np.degrees(np.arccos((a**2 + c**2 - b**2)/(2*a*c)))
     gamma = np.degrees(np.arccos((a**2 + b**2 - c**2)/(2*a*b)))
 
-
-    def agregar_arco(fig, centro, angulo_inicio, angulo_fin, radio=1, color="#FFB3BA"):
-        """
-        Dibuja un arco (sector) en Plotly
-        centro: [x, y]
-        angulo_inicio, angulo_fin: en grados
-        radio: tamaño del arco
-        color: color pastel
-        """
-        theta = np.linspace(np.radians(angulo_inicio), np.radians(angulo_fin), 30)
+    # Función para dibujar arcos
+    def agregar_arco(fig, centro, ang_ini, ang_fin, radio=1, color="#FFB3BA"):
+        theta = np.linspace(np.radians(ang_ini), np.radians(ang_fin), 30)
         x = centro[0] + radio * np.cos(theta)
         y = centro[1] + radio * np.sin(theta)
-        # cerrar el arco hacia el centro
         x = np.append(x, centro[0])
         y = np.append(y, centro[1])
         fig.add_trace(go.Scatter(
             x=x, y=y, fill="toself",
             mode="lines", line_color=color,
-            fillcolor=color, opacity=0.8,
+            fillcolor=color, opacity=0.5,
             showlegend=False
         ))
 
-    
-    agregar_arco(fig, A, 0, alpha, color=color_angulo_alfa) # angulo alpha
-    agregar_arco(fig, B, 180-beta, 180, color=color_angulo_beta) # angulo beta
-    
-    ang_ini_C = np.degrees(np.arctan2(B[1] - C[1], B[0] - C[0])) # calcular ángulo de referencia para gamma
-    agregar_arco(fig, C, ang_ini_C, ang_ini_C-gamma, color=color_angulo_gamma) # angulo gamma
+    agregar_arco(fig, A, 0, alpha, color=color_angulo_alfa)
+    agregar_arco(fig, B, 180-beta, 180, color=color_angulo_beta)
+    ang_ini_C = np.degrees(np.arctan2(B[1]-C[1], B[0]-C[0]))
+    agregar_arco(fig, C, ang_ini_C, ang_ini_C-gamma, color=color_angulo_gamma)
 
-    # Columnas para mostrar gráfico y datos
+    # --- Mostrar datos y desafío ---
     col1, col2 = st.columns(2)
+    oculto = st.session_state.oculto
+
     with col1:
-        st.markdown("## Datos del triángulo:")
-        st.markdown(f"""
-        - **Lados**  
-            • a = {mostrar_valor('a',a)}  
-            • b = {mostrar_valor('b',b)}  
-            • c = {mostrar_valor('c',c)}  
-        """)
-        st.markdown(f"""
-        - **Ángulos**  
-            • α (en A) = {mostrar_valor('α',alpha)}°  
-            • β (en B) = {mostrar_valor('β',beta)}°  
-            • γ (en C) = {mostrar_valor('γ',gamma)}°  
-        """)
+        st.markdown(f"## 📝 Desafío:")
+        st.markdown(f"Trata de calcular el dato **{oculto}** sabiendo que:")
+
+        # Lados
+        st.markdown("### Lados")
+        st.markdown(f"• a = {'¿ ?' if oculto=='a' else f'{a:.2f}'}")
+        st.markdown(f"• b = {'¿ ?' if oculto=='b' else f'{b:.2f}'}")
+        st.markdown(f"• c = {'¿ ?' if oculto=='c' else f'{c:.2f}'}")
+
+        # Ángulos
+        st.markdown("### Ángulos")
+        st.markdown(f"• α (en A) = {'¿ ?' if oculto=='α' else f'{alpha:.2f}°'}")
+        st.markdown(f"• β (en B) = {'¿ ?' if oculto=='β' else f'{beta:.2f}°'}")
+        st.markdown(f"• γ (en C) = {'¿ ?' if oculto=='γ' else f'{gamma:.2f}°'}")
 
     with col2:
         st.plotly_chart(fig, use_container_width=False)
 
-    # Supongamos que quieres mostrar los valores de a, b, c y gamma
+    # Fórmula del coseno con dato oculto
+    c_formula = '¿ ?' if oculto=='c' else 'c'
+    a_formula = '¿ ?' if oculto=='a' else 'a'
+    b_formula = '¿ ?' if oculto=='b' else 'b'
+    gamma_formula = '¿ ?' if oculto=='γ' else 'γ'
+
     st.markdown(f"""
     <div style="text-align:center; font-size:30px; line-height:1.5;">
-    c<sup>2</sup> =
-    <span style="color:{color_lado_a};">a</span><sup>2</sup> + 
-    <span style="color:{color_lado_b};">b</span><sup>2</sup> - 
-    2<span style="color:{color_lado_c};">a</span><span style="color:#BAE1FF;">b</span> · cos(<span style="color:{color_angulo_gamma};">γ°</span>)
+    {c_formula}<sup>2</sup> =
+    <span style="color:{color_lado_a};">{a_formula}</span><sup>2</sup> +
+    <span style="color:{color_lado_b};">{b_formula}</span><sup>2</sup> -
+    2<span style="color:{color_lado_a};">{a_formula}</span><span style="color:{color_lado_b};">{b_formula}</span> · cos(<span style="color:{color_angulo_gamma};">{gamma_formula}</span>)
     </div>
     """, unsafe_allow_html=True)
 
