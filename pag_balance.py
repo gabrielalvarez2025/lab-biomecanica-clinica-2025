@@ -4,6 +4,7 @@ import plotly.graph_objects as go
 import random
 
 def generar_triangulo():
+    """Genera lados válidos de un triángulo usando desigualdad triangular"""
     while True:
         a = random.uniform(2, 10)  # BC
         b = random.uniform(2, 10)  # AC
@@ -11,33 +12,34 @@ def generar_triangulo():
         if a + b > c and a + c > b and b + c > a:
             return a, b, c
 
+def mostrar_valor(dato, valor):
+    """Muestra '¿ ?' si el dato es el oculto, sino el valor con 2 decimales"""
+    oculto = st.session_state.get("oculto", None)
+    return "¿ ?" if dato == oculto else f"{valor:.2f}"
+
 def main_balance():
     st.set_page_config(layout="centered", initial_sidebar_state="expanded")
-    st.title("🔺 Actividad: Descubre el dato faltante usando el Teorema del Coseno")
+    st.title("🔺 Simulador interactivo: Teorema del Coseno")
 
-    # Generar triángulo aleatorio
+    # Inicializar estado
     if "lados" not in st.session_state:
         st.session_state.lados = generar_triangulo()
-        # Elegir aleatoriamente un dato oculto
+    if "oculto" not in st.session_state:
         st.session_state.oculto = random.choice(["a","b","c","α","β","γ"])
 
+    # Botón para generar nuevo triángulo
     if st.button("🎲 Generar triángulo aleatorio"):
         st.session_state.lados = generar_triangulo()
         st.session_state.oculto = random.choice(["a","b","c","α","β","γ"])
 
-    a, b, c = st.session_state.lados
-
-    # --- Ángulos ---
-    alpha = np.degrees(np.arccos((b**2 + c**2 - a**2) / (2*b*c)))
-    beta  = np.degrees(np.arccos((a**2 + c**2 - b**2) / (2*a*c)))
-    gamma = np.degrees(np.arccos((a**2 + b**2 - c**2) / (2*a*b)))
+    a, b, c = st.session_state.lados  # lados: a=BC, b=AC, c=AB
 
     # --- Construcción del triángulo ---
-    A = np.array([0,0])
-    B = np.array([c,0])
-    x = (a**2 - b**2 + c**2)/(2*c)
-    y = np.sqrt(max(a**2 - x**2,0))
-    C = np.array([x,y])
+    A = np.array([0, 0])
+    B = np.array([c, 0])
+    x = (a**2 - b**2 + c**2) / (2*c)
+    y = np.sqrt(max(a**2 - x**2, 0))
+    C = np.array([x, y])
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(
@@ -48,40 +50,45 @@ def main_balance():
         marker=dict(size=12, color='green')
     ))
 
-    def desplazar(p1,p2,d):
+    # Función para desplazar etiquetas de lados hacia afuera
+    def desplazar(p1, p2, d):
         v = np.array([p2[1]-p1[1], -(p2[0]-p1[0])])
-        v = v/np.linalg.norm(v) if np.linalg.norm(v)>0 else v
-        return (p1+p2)/2 + d*v
+        v = v / np.linalg.norm(v) if np.linalg.norm(v) > 0 else v
+        return (p1 + p2)/2 + d*v
 
-    offset=0.3
-    pos_ab = desplazar(A,B,offset)
-    pos_bc = desplazar(B,C,offset)
-    pos_ac = desplazar(A,C,offset)
+    offset = 0.3
+    pos_ab = desplazar(A, B, offset)  # lado c = AB
+    pos_bc = desplazar(B, C, offset)  # lado a = BC
+    pos_ac = desplazar(A, C, offset)  # lado b = AC
 
     fig.add_trace(go.Scatter(
         x=[pos_ab[0], pos_bc[0], pos_ac[0]],
         y=[pos_ab[1], pos_bc[1], pos_ac[1]],
         mode="text",
-        text=["c","a","b"],
+        text=["c", "a", "b"],
         textposition="middle center",
         showlegend=False
     ))
 
-    max_coord = max(a,b,c)*1.2
+    # Layout fijo
+    max_coord = max(a, b, c) * 1.2
     fig.update_layout(
         width=500,
         height=500,
-        xaxis=dict(range=[-1,max_coord], visible=False),
-        yaxis=dict(range=[-1,max_coord], scaleanchor="x", visible=False),
+        xaxis=dict(range=[-1, max_coord], zeroline=False, showgrid=False, visible=False),
+        yaxis=dict(range=[-1, max_coord], scaleanchor="x", zeroline=False, showgrid=False, visible=False),
         showlegend=False
     )
 
-    col1,col2 = st.columns(2)
-    with col1:
-        st.markdown("## Datos del triángulo (un dato oculto)")
-        def mostrar_valor(dato, valor):
-            return "¿ ?" if dato==st.session_state.oculto else f"{valor:.2f}"
+    # --- Cálculo de ángulos ---
+    alpha = np.degrees(np.arccos((b**2 + c**2 - a**2)/(2*b*c)))
+    beta  = np.degrees(np.arccos((a**2 + c**2 - b**2)/(2*a*c)))
+    gamma = np.degrees(np.arccos((a**2 + b**2 - c**2)/(2*a*b)))
 
+    # Columnas para mostrar gráfico y datos
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("## Datos del triángulo:")
         st.markdown(f"""
         - **Lados**  
             • a = {mostrar_valor('a',a)}  
@@ -90,15 +97,15 @@ def main_balance():
         """)
         st.markdown(f"""
         - **Ángulos**  
-            • α = {mostrar_valor('α',alpha)}°  
-            • β = {mostrar_valor('β',beta)}°  
-            • γ = {mostrar_valor('γ',gamma)}°  
+            • α (en A) = {mostrar_valor('α',alpha)}°  
+            • β (en B) = {mostrar_valor('β',beta)}°  
+            • γ (en C) = {mostrar_valor('γ',gamma)}°  
         """)
 
     with col2:
         st.plotly_chart(fig, use_container_width=False)
 
-    # Fórmula centrada
+    # Fórmula del coseno centrada con colores pasteles
     st.markdown(r"""
     <div style="text-align:center; font-size:30px; line-height:1.5;">
     c<sup>2</sup> = 
