@@ -57,15 +57,9 @@ def main_balance():
         return (p1 + p2)/2 + d*v
 
     offset = 0.5  # distancia desde el lado
-
-    # Lado a = BC → siempre desplazado a la derecha
-    pos_a = ((B[0]+C[0])/2 + offset, (B[1]+C[1])/2)
-
-    # Lado b = AC → siempre desplazado a la izquierda
-    pos_b = ((A[0]+C[0])/2 - offset, (A[1]+C[1])/2)
-
-    # Lado c = AB → siempre desplazado hacia abajo
-    pos_c = ((A[0]+B[0])/2, (A[1]+B[1])/2 - offset)
+    pos_a = ((B[0]+C[0])/2 + offset, (B[1]+C[1])/2) # Lado a = BC → siempre desplazado a la derecha
+    pos_b = ((A[0]+C[0])/2 - offset, (A[1]+C[1])/2) # Lado b = AC → siempre desplazado a la izquierda
+    pos_c = ((A[0]+B[0])/2, (A[1]+B[1])/2 - offset) # Lado c = AB → siempre desplazado hacia abajo
 
     fig.add_trace(go.Scatter(
         x=[pos_a[0], pos_b[0], pos_c[0]],
