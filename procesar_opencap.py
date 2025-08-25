@@ -7,6 +7,12 @@ import os
 def main_opencap():
     st.subheader("📊 Procesar archivo OpenCap (.mot)")
 
+    st.markdown("""
+    1. Busca la carpeta **📂 Kinematics**.
+    2. Sube el archivo **.mot** correspondiente al Trial que te interesa convertir/visualizar/analizar.
+                
+    """)
+    
     uploaded_file = st.file_uploader("📂 Sube un archivo .mot exportado de OpenCap", type=["mot"])
 
     if uploaded_file is not None:
@@ -32,13 +38,9 @@ def main_opencap():
         # Leer el contenido como dataframe separado por espacios
         df = pd.read_csv(data_buffer, delimiter=r"\s+", engine="python")
 
-        # Renombrar columna de tiempo si existe
-        if "time" in df.columns:
-            df = df.rename(columns={"time": "Tiempo (s)"})
-
         # Mostrar preview
         st.markdown("### Vista previa del DataFrame")
-        st.dataframe(df.head(), hide_index=True)
+        st.dataframe(df, hide_index=True)
 
         # --- Botón para descargar DataFrame como Excel ---
         st.markdown("---")
