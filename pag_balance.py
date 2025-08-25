@@ -147,6 +147,7 @@ def main_balance():
     <span style="color:{color_lado_b};">b</span><sup>2</sup> -
     2<span style="color:{color_lado_a};">a</span><span style="color:{color_lado_b};">b</span> · cos(<span style="color:{color_angulo_gamma};">γ</span>)
     </div>
+    
     """, unsafe_allow_html=True)
     
     # Fórmula del coseno con dato oculto
