@@ -3,7 +3,7 @@ import numpy as np
 import plotly.graph_objects as go
 
 def main_balance():
-    st.set_page_config(layout="wide", initial_sidebar_state="expanded")
+    st.set_page_config(layout="centered", initial_sidebar_state="expanded")
     st.title("🔺 Simulador interactivo: Teorema del Coseno")
 
     # Columnas
