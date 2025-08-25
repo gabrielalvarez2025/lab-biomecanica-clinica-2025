@@ -87,7 +87,7 @@ def main_balance():
     gamma = np.degrees(np.arccos((a**2 + b**2 - c**2)/(2*a*b)))
 
 
-    def agregar_arco(fig, centro, angulo_inicio, angulo_fin, radio=0.8, color="#FFB3BA"):
+    def agregar_arco(fig, centro, angulo_inicio, angulo_fin, radio=1, color="#FFB3BA"):
         """
         Dibuja un arco (sector) en Plotly
         centro: [x, y]
