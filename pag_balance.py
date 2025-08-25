@@ -88,8 +88,7 @@ def main_balance():
         showlegend=False
     )
 
-    with col2:
-        st.plotly_chart(fig, use_container_width=False)
+    
 
     # --- Cálculo de ángulos ---
     alpha = np.degrees(np.arccos((b**2 + c**2 - a**2) / (2*b*c)))
@@ -118,6 +117,9 @@ def main_balance():
             • β (en B) = {beta:.2f}°  
             • γ (en C) = {gamma:.2f}°  
         """)
+
+    with col2:
+        st.plotly_chart(fig, use_container_width=False)
 
 
     st.markdown("---")
