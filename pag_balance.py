@@ -71,7 +71,7 @@ def main_balance():
         width=500,
         height=500,
         xaxis=dict(range=[-1, max_coord], zeroline=False, showgrid=False, visible=False),
-        yaxis=dict(range=[-1, max_coord], scaleanchor="x", zeroline=False, showgrid=False, visible=False),
+        yaxis=dict(range=[0, max_coord], scaleanchor="x", zeroline=False, showgrid=False, visible=False),
         showlegend=False
     )
 
