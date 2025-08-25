@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import io
-import plotly.express as px
+import plotly.graph_objects as go
 
 def main_opencap():
     st.subheader("📊 Procesar archivo OpenCap (.txt)")
@@ -45,7 +45,21 @@ def main_opencap():
         )
 
         if y_cols:
-            fig = px.line(df, x=df.columns[0], y=col, title=f"{col} vs {df.columns[0]}")
+            # Crear figura con todas las columnas seleccionadas
+            fig = go.Figure()
             for col in y_cols:
-                
-                st.plotly_chart(fig, use_container_width=True)
+                fig.add_trace(go.Scatter(
+                    x=df[df.columns[0]],  # primera columna como X
+                    y=df[col],
+                    mode='lines',
+                    name=col
+                ))
+
+            fig.update_layout(
+                title="Curvas seleccionadas",
+                xaxis_title=df.columns[0],
+                yaxis_title="Valor",
+                template="plotly_white"
+            )
+
+            st.plotly_chart(fig, use_container_width=True)
