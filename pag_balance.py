@@ -44,16 +44,6 @@ def main_balance():
         marker=dict(size=12, color='green')
     ))
 
-    # Etiquetas de vértices
-    fig.add_trace(go.Scatter(
-        x=[A[0], B[0], C[0]],
-        y=[A[1], B[1], C[1]],
-        mode="text",
-        text=["A", "B", "C"],
-        textposition="top right",
-        showlegend=False
-    ))
-
     # Función para desplazar etiquetas de lados hacia afuera
     def desplazar(p1, p2, d):
         v = np.array([p2[1] - p1[1], -(p2[0] - p1[0])])  # vector perpendicular
@@ -61,23 +51,20 @@ def main_balance():
         return (p1 + p2) / 2 + d * v
 
     offset = 0.3
-    pos_ab = desplazar(A, B, offset)  # Lado AB
-    pos_bc = desplazar(B, C, offset)  # Lado BC
-    pos_ac = desplazar(A, C, offset)  # Lado AC
+    pos_ab = desplazar(A, B, offset)  # lado c = AB
+    pos_bc = desplazar(B, C, offset)  # lado a = BC
+    pos_ac = desplazar(A, C, offset)  # lado b = AC
 
     # Etiquetas de lados
     fig.add_trace(go.Scatter(
         x=[pos_ab[0], pos_bc[0], pos_ac[0]],
         y=[pos_ab[1], pos_bc[1], pos_ac[1]],
         mode="text",
-        text=["AB", "BC", "AC"],
+        text=["c", "a", "b"],  # nomenclatura correcta
         textposition="middle center",
         showlegend=False
     ))
 
-    
-    col1, col2 = st.columns(2)
-    
     # Layout fijo
     max_coord = max(a, b, c) * 1.2
     fig.update_layout(
@@ -88,29 +75,22 @@ def main_balance():
         showlegend=False
     )
 
-    
-
     # --- Cálculo de ángulos ---
     alpha = np.degrees(np.arccos((b**2 + c**2 - a**2) / (2*b*c)))
     beta  = np.degrees(np.arccos((a**2 + c**2 - b**2) / (2*a*c)))
     gamma = np.degrees(np.arccos((a**2 + b**2 - c**2) / (2*a*b)))
 
-    
+    # Columnas para gráfico y datos
+    col1, col2 = st.columns(2)
 
-    
-    
     with col1:
-
-        # --- Mostrar datos ---
         st.markdown("## Datos del triángulo:")
         st.markdown(f"""
         - **Lados**  
-            • AB = {c:.2f}  
-            • BC = {a:.2f}  
-            • AC = {b:.2f}  
+            • a = BC = {a:.2f}  
+            • b = AC = {b:.2f}  
+            • c = AB = {c:.2f}  
         """)
-        
-
         st.markdown(f"""
         - **Ángulos**  
             • α (en A) = {alpha:.2f}°  
@@ -121,6 +101,7 @@ def main_balance():
     with col2:
         st.plotly_chart(fig, use_container_width=False)
 
+    # Fórmula del coseno centrada con colores pasteles
     st.markdown(r"""
     <div style="text-align:center; font-size:30px; line-height:1.5;">
     c<sup>2</sup> = 
@@ -130,9 +111,4 @@ def main_balance():
     </div>
     """, unsafe_allow_html=True)
 
-
-
-
-
     st.markdown("---")
-
