@@ -87,9 +87,9 @@ def main_balance():
         st.markdown("## Datos del triángulo:")
         st.markdown(f"""
         - **Lados**  
-            • a = BC = {a:.2f}  
-            • b = AC = {b:.2f}  
-            • c = AB = {c:.2f}  
+            • a = {a:.2f}  
+            • b = {b:.2f}  
+            • c = {c:.2f}  
         """)
         st.markdown(f"""
         - **Ángulos**  
