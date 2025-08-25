@@ -122,13 +122,14 @@ def main_balance():
         st.plotly_chart(fig, use_container_width=False)
 
     st.markdown(r"""
-    <span style="font-size:28px;">
+    <div style="text-align:center; font-size:30px; line-height:1.5;">
     c<sup>2</sup> = 
-    <span style="color:red;">a</span><sup>2</sup> + 
-    <span style="color:blue;">b</span><sup>2</sup> - 
-    2<span style="color:green;">a</span><span style="color:blue;">b</span> · cos(<span style="color:purple;">γ</span>)
-    </span>
+    <span style="color:#FFB3BA;">a</span><sup>2</sup> + 
+    <span style="color:#BAE1FF;">b</span><sup>2</sup> - 
+    2<span style="color:#FFDFBA;">a</span><span style="color:#BAE1FF;">b</span> · cos(<span style="color:#BAFFC9;">γ</span>)
+    </div>
     """, unsafe_allow_html=True)
+
 
 
 
