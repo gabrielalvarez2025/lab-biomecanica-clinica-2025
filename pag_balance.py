@@ -94,6 +94,8 @@ def main_balance():
 
     # --- Mostrar datos ---
     st.subheader("## Datos del triángulo:")
+
+    st.markdown("hola")
     
     col1, col2 = st.columns(2)
 
