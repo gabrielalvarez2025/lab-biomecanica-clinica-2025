@@ -3,19 +3,78 @@ import numpy as np
 import plotly.graph_objects as go
 
 def calcular_ortocentro(A, B, C):
-    import sympy as sp
-    A, B, C = sp.Point(A), sp.Point(B), sp.Point(C)
+    """
+    Calcula el ortocentro de un triángulo con vértices A, B, C
+    usando intersección de alturas (puro numpy).
+    """
+    x1, y1 = A
+    x2, y2 = B
+    x3, y3 = C
 
-    # Altura desde A → perpendicular a BC
-    BC = sp.Line(B, C)
-    altura_A = sp.Line(A, A + BC.direction.perpendicular_unit_vector())
+    # Pendientes de los lados
+    mAB = (y2 - y1) / (x2 - x1) if x2 != x1 else None
+    mBC = (y3 - y2) / (x3 - x2) if x3 != x2 else None
+    mCA = (y1 - y3) / (x1 - x3) if x1 != x3 else None
 
-    # Altura desde B → perpendicular a AC
-    AC = sp.Line(A, C)
-    altura_B = sp.Line(B, B + AC.direction.perpendicular_unit_vector())
+    # Altura desde A (perpendicular a BC)
+    if mBC is None:  # BC vertical → altura horizontal
+        xh1 = x1
+        yh1 = y2
+    elif mBC == 0:   # BC horizontal → altura vertical
+        xh1 = x1
+        yh1 = y1
+    else:
+        m_alturaA = -1 / mBC
+        # y - y1 = m*(x - x1)
+        # Recta altura_A: pasa por A con pendiente m_alturaA
+        # La segunda la hallamos luego
 
-    H = altura_A.intersection(altura_B)[0]
-    return float(H.x), float(H.y)
+    # Altura desde B (perpendicular a AC)
+    if mCA is None:  # AC vertical → altura horizontal
+        xh2 = x2
+        yh2 = y1
+    elif mCA == 0:   # AC horizontal → altura vertical
+        xh2 = x2
+        yh2 = y2
+    else:
+        m_alturaB = -1 / mCA
+
+    # Resolver intersección de dos rectas (altura_A y altura_B)
+    if (mBC not in [None, 0]) and (mCA not in [None, 0]):
+        # Ecuación altura A: y = m_alturaA*(x - x1) + y1
+        # Ecuación altura B: y = m_alturaB*(x - x2) + y2
+        A1 = m_alturaA
+        B1 = -1
+        C1 = y1 - m_alturaA * x1
+
+        A2 = m_alturaB
+        B2 = -1
+        C2 = y2 - m_alturaB * x2
+
+        det = A1 * B2 - A2 * B1
+        if det == 0:  # Colineal o degenerado
+            return (np.nan, np.nan)
+        Hx = (B1 * C2 - B2 * C1) / det
+        Hy = (C1 * A2 - C2 * A1) / det
+    else:
+        # Casos degenerados (rectas verticales/horizontales)
+        if mBC is None:   # altura desde A es vertical
+            Hx = x1
+            Hy = m_alturaB * (x1 - x2) + y2
+        elif mBC == 0:    # altura desde A es horizontal
+            Hy = y1
+            Hx = (Hy - y2) / m_alturaB + x2
+        elif mCA is None: # altura desde B es vertical
+            Hx = x2
+            Hy = m_alturaA * (x2 - x1) + y1
+        elif mCA == 0:    # altura desde B es horizontal
+            Hy = y2
+            Hx = (Hy - y1) / m_alturaA + x1
+        else:
+            Hx, Hy = np.nan, np.nan
+
+    return float(Hx), float(Hy)
+
 
 def main_balance():
     st.set_page_config(layout="centered", initial_sidebar_state="expanded")
@@ -38,20 +97,20 @@ def main_balance():
 
         with st.container():
             if a + b > c and a + c > b and b + c > a:
-                # Construcción del triángulo (A en (0,0), B en (c,0))
+                # Construcción del triángulo
                 A = np.array([0, 0])
                 B = np.array([c, 0])
                 x = (a**2 - b**2 + c**2) / (2*c)
                 y = np.sqrt(max(a**2 - x**2, 0))
                 C = np.array([x, y])
 
-                # Ortocentro
+                # Ortocentro con numpy
                 Hx, Hy = calcular_ortocentro(A, B, C)
 
                 # Distancias máximas desde ortocentro a vértices
                 dx = max(abs(Hx - A[0]), abs(Hx - B[0]), abs(Hx - C[0]))
                 dy = max(abs(Hy - A[1]), abs(Hy - B[1]), abs(Hy - C[1]))
-                rango = max(dx, dy) * 1.2  # margen extra
+                rango = max(dx, dy) * 1.2
 
                 # Gráfico
                 fig = go.Figure()
@@ -75,7 +134,7 @@ def main_balance():
                     name="Ortocentro"
                 ))
 
-                # Mantener ortocentro en el centro
+                # Centrar ortocentro
                 fig.update_layout(
                     width=500,
                     height=500,
@@ -91,44 +150,3 @@ def main_balance():
                 st.plotly_chart(fig, use_container_width=False)
             else:
                 st.error("❌ Los lados no cumplen la desigualdad triangular.")
-
-    # --- Parte de los cálculos ---
-    if a + b > c and a + c > b and b + c > a:
-        alpha = np.degrees(np.arccos((b**2 + c**2 - a**2) / (2*b*c)))
-        beta  = np.degrees(np.arccos((a**2 + c**2 - b**2) / (2*a*c)))
-        gamma = np.degrees(np.arccos((a**2 + b**2 - c**2) / (2*a*b)))
-
-        st.markdown(f"""
-        📐 Ángulos calculados (verificación):
-        - α (opuesto a A): **{alpha:.2f}°**
-        - β (opuesto a B): **{beta:.2f}°**
-        - γ (opuesto a C): **{gamma:.2f}°**
-        """)
-
-        st.subheader("Prueba tus conocimientos")
-        dato_faltante = st.selectbox(
-            "¿Qué dato quieres calcular?",
-            ["Ángulo α", "Ángulo β", "Ángulo γ", "Lado A", "Lado B", "Lado C"]
-        )
-        respuesta = st.number_input("Ingresa tu respuesta", min_value=0.0, step=0.01)
-
-        if st.button("Verificar"):
-            correcto = None
-            if dato_faltante == "Ángulo α":
-                correcto = alpha
-            elif dato_faltante == "Ángulo β":
-                correcto = beta
-            elif dato_faltante == "Ángulo γ":
-                correcto = gamma
-            elif dato_faltante == "Lado A":
-                correcto = a
-            elif dato_faltante == "Lado B":
-                correcto = b
-            elif dato_faltante == "Lado C":
-                correcto = c
-
-            if correcto is not None:
-                if abs(respuesta - correcto) < 0.5:  # tolerancia
-                    st.success(f"✅ Correcto! El valor es aproximadamente {correcto:.2f}")
-                else:
-                    st.error(f"❌ Incorrecto. El valor correcto es {correcto:.2f}")
