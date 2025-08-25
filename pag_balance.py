@@ -82,8 +82,8 @@ def main_balance():
     )
 
     # --- Cálculo de ángulos ---
-    alpha = np.degrees(np.arccos((b**2 + c**2 - a**2)/(2*b*c)))
-    beta  = np.degrees(np.arccos((a**2 + c**2 - b**2)/(2*a*c)))
+    beta = np.degrees(np.arccos((b**2 + c**2 - a**2)/(2*b*c))) # 
+    alpha  = np.degrees(np.arccos((a**2 + c**2 - b**2)/(2*a*c)))
     gamma = np.degrees(np.arccos((a**2 + b**2 - c**2)/(2*a*b)))
 
 
@@ -109,10 +109,10 @@ def main_balance():
         ))
 
     
-    agregar_arco(fig, A, 0, alpha, color="#FFB3BA")
-    agregar_arco(fig, B, 180-beta, 180, color="#BAE1FF")
-    ang_ini_C = np.degrees(np.arctan2(C[1]-B[1], C[0]-B[0])) # calcular ángulo de referencia para C
-    agregar_arco(fig, C, ang_ini_C, ang_ini_C+gamma, color="#BAFFC9")
+    agregar_arco(fig, A, 0, alpha, color="#FFB3BA") # angulo alpha
+    agregar_arco(fig, B, 180-beta, 180, color="#BAE1FF") # angulo beta
+    ang_ini_C = np.degrees(np.arctan2(C[1]-B[1], C[0]-B[0])) # calcular ángulo de referencia para gamma
+    agregar_arco(fig, C, ang_ini_C, ang_ini_C+gamma, color="#BAFFC9") # angulo gamma
 
     # Columnas para mostrar gráfico y datos
     col1, col2 = st.columns(2)
