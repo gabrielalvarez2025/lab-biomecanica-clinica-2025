@@ -113,7 +113,7 @@ def main_balance():
     agregar_arco(fig, B, 180-beta, 180, color="#BAE1FF") # angulo beta
     
     ang_ini_C = np.degrees(np.arctan2(B[1] - C[1], B[0] - C[0])) # calcular ángulo de referencia para gamma
-    agregar_arco(fig, C, ang_ini_C-180, ang_ini_C+gamma+180, color="#BAFFC9") # angulo gamma
+    agregar_arco(fig, C, ang_ini_C-270, ang_ini_C+gamma-270, color="#BAFFC9") # angulo gamma
 
     # Columnas para mostrar gráfico y datos
     col1, col2 = st.columns(2)
