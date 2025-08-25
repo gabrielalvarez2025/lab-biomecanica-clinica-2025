@@ -56,7 +56,7 @@ def main_balance():
         v = v / np.linalg.norm(v) if np.linalg.norm(v) > 0 else v
         return (p1 + p2)/2 + d*v
 
-    offset = 0.5  # distancia desde el lado
+    offset = 0.8  # distancia desde el lado
     pos_a = ((B[0]+C[0])/2 + offset, (B[1]+C[1])/2) # Lado a = BC → siempre desplazado a la derecha
     pos_b = ((A[0]+C[0])/2 - offset, (A[1]+C[1])/2) # Lado b = AC → siempre desplazado a la izquierda
     pos_c = ((A[0]+B[0])/2, (A[1]+B[1])/2 - offset) # Lado c = AB → siempre desplazado hacia abajo
