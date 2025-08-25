@@ -19,7 +19,7 @@ def mostrar_valor(dato, valor):
 
 def main_balance():
     st.set_page_config(layout="centered", initial_sidebar_state="expanded")
-    st.title("🔺 Simulador interactivo: Teorema del Coseno")
+    st.title("Simulador interactivo: Teorema del Coseno")
 
     # Inicializar estado
     if "lados" not in st.session_state:
