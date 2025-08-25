@@ -122,24 +122,26 @@ def main_balance():
 
         # Lados
         st.markdown("### Lados")
-        st.markdown(f"• a = {'¿ ?' if oculto=='a' else f'{a:.2f}'}")
-        st.markdown(f"• b = {'¿ ?' if oculto=='b' else f'{b:.2f}'}")
-        st.markdown(f"• c = {'¿ ?' if oculto=='c' else f'{c:.2f}'}")
+        st.markdown(f"• a = {symbol_incognita if oculto=='a' else f'{a:.2f}'}")
+        st.markdown(f"• b = {symbol_incognita if oculto=='b' else f'{b:.2f}'}")
+        st.markdown(f"• c = {symbol_incognita if oculto=='c' else f'{c:.2f}'}")
 
         # Ángulos
         st.markdown("### Ángulos")
-        st.markdown(f"• α (en A) = {'¿ ?' if oculto=='α' else f'{alpha:.2f}°'}")
-        st.markdown(f"• β (en B) = {'¿ ?' if oculto=='β' else f'{beta:.2f}°'}")
-        st.markdown(f"• γ (en C) = {'¿ ?' if oculto=='γ' else f'{gamma:.2f}°'}")
+        st.markdown(f"• α (en A) = {symbol_incognita if oculto=='α' else f'{alpha:.2f}°'}")
+        st.markdown(f"• β (en B) = {symbol_incognita if oculto=='β' else f'{beta:.2f}°'}")
+        st.markdown(f"• γ (en C) = {symbol_incognita if oculto=='γ' else f'{gamma:.2f}°'}")
 
     with col2:
         st.plotly_chart(fig, use_container_width=False)
 
+    symbol_incognita = "❑"
+
     # Fórmula del coseno con dato oculto
-    c_formula = '¿ ?' if oculto=='c' else 'c'
-    a_formula = '¿ ?' if oculto=='a' else 'a'
-    b_formula = '¿ ?' if oculto=='b' else 'b'
-    gamma_formula = '¿ ?' if oculto=='γ' else 'γ'
+    c_formula = symbol_incognita if oculto=='c' else 'c'
+    a_formula = symbol_incognita if oculto=='a' else 'a'
+    b_formula = symbol_incognita if oculto=='b' else 'b'
+    gamma_formula = symbol_incognita if oculto=='γ' else 'γ'
 
     st.markdown(f"""
     <div style="text-align:center; font-size:30px; line-height:1.5;">
