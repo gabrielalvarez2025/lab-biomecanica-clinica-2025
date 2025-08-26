@@ -17,6 +17,9 @@ def main_opencap():
 
     if uploaded_file is not None:
         
+        # Guardar el nombre base del archivo (sin extensión) para Excel
+        base_filename = os.path.splitext(uploaded_file.name)[0]
+        
         col1, col2 = st.columns(2)
 
         with col1:
@@ -24,8 +27,6 @@ def main_opencap():
         
         with col2:
             # --- Botón para descargar DataFrame como Excel ---
-            st.markdown("---")
-            st.markdown("### Descargar datos procesados")
             towrite = io.BytesIO()
             df.to_excel(towrite, index=False, engine='openpyxl')
             towrite.seek(0)
@@ -38,8 +39,7 @@ def main_opencap():
             )
 
 
-        # Guardar el nombre base del archivo (sin extensión) para Excel
-        base_filename = os.path.splitext(uploaded_file.name)[0]
+        
 
         # Leer todo el archivo como texto
         file_content = uploaded_file.getvalue().decode("utf-8").splitlines()
