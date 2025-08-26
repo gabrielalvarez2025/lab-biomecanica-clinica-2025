@@ -94,31 +94,35 @@ def main_opencap():
         # Selección de columnas para graficar ángulo-ángulo
         st.markdown("### Gráfico Ángulo-Ángulo")
 
-        col_x = st.selectbox(
-            "Selecciona la columna para el eje X:",
-            options=df.columns[1:],  # excluye la primera (tiempo)
-            index=0
-        )
+        col_angle_1, col_angle_2 = st.columns(2)
 
-        col_y = st.selectbox(
-            "Selecciona la columna para el eje Y:",
-            options=df.columns[1:],
-            index=1 if len(df.columns) > 2 else 0
-        )
+        with col_angle_1:
+            eje_x = st.selectbox(
+                "Selecciona la columna para el eje X:",
+                options=df.columns[1:],  # excluye la primera (tiempo)
+                index=0
+            )
 
-        if col_x and col_y:
+        with col_angle_2:
+            eje_y = st.selectbox(
+                "Selecciona la columna para el eje Y:",
+                options=df.columns[1:],
+                index=1 if len(df.columns) > 2 else 0
+            )
+
+        if eje_x and eje_y:
             fig = go.Figure()
             fig.add_trace(go.Scatter(
-                x=df[col_x],
-                y=df[col_y],
+                x=df[eje_x],
+                y=df[eje_y],
                 mode='lines',
-                name=f"{col_y} vs {col_x}"
+                name=f"{eje_y} vs {eje_x}"
             ))
 
             fig.update_layout(
-                title=f"Gráfico Ángulo–Ángulo ({col_y} vs {col_x})",
-                xaxis_title=col_x,
-                yaxis_title=col_y,
+                title=f"Gráfico Ángulo–Ángulo ({eje_y} vs {eje_x})",
+                xaxis_title=eje_x,
+                yaxis_title=eje_y,
                 template="plotly_white",
                 yaxis=dict(scaleanchor="x", scaleratio=1)  # 🔹 Mantener proporciones cuadradas
             )
