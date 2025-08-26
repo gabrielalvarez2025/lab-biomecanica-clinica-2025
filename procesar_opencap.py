@@ -95,7 +95,7 @@ def main_opencap():
                 fig.update_layout(
                     title="Curvas seleccionadas",
                     xaxis_title=df.columns[0],
-                    yaxis_title="Valor",
+                    yaxis_title="Ángulo (°)",
                     template="plotly_white"
                 )
 
