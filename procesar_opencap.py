@@ -62,7 +62,7 @@ def main_opencap():
         st.dataframe(df, hide_index=True)
 
         
-        col_plot1, col_plot2 = st.columns([3, 1]))
+        col_plot1, col_plot2 = st.columns([3, 1])
 
         with col_plot1:
         
