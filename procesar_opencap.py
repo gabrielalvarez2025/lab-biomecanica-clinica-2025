@@ -86,7 +86,7 @@ def main_opencap():
             if uploaded_video is not None:
                 col_plot1, col_plot2 = st.columns([1, 3])
             else:
-                col_plot1, col_plot2 = st.columns([0, 1])
+                col_plot1, col_plot2 = st.columns([0.01, 100])
 
             with col_plot1:
                 st.markdown(" ")
