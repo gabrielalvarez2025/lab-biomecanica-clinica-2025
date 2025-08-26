@@ -115,7 +115,7 @@ def main_opencap():
             fig.add_trace(go.Scatter(
                 x=df[eje_x],
                 y=df[eje_y],
-                mode='lines',
+                mode='lines',   
                 name=f"{eje_y} vs {eje_x}"
             ))
 

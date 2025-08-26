@@ -64,7 +64,12 @@ pagina = st.sidebar.radio("Selecciona una sección:", [
 
 st.sidebar.markdown("---")  # línea horizontal para separar
 
+# Leer parámetros de la URL
+query_params = st.query_params
+pagina_url = query_params.get("page", None)
 
+if pagina_url == "opencap":
+    pagina = pag_instrucciones_opencap
 
 
 
