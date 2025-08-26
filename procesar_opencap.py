@@ -16,7 +16,27 @@ def main_opencap():
     uploaded_file = st.file_uploader("📂 Sube un archivo .mot exportado de OpenCap", type=["mot"])
 
     if uploaded_file is not None:
-        st.success(f"✅ Archivo '{uploaded_file.name}' cargado")
+        
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.success(f"✅ Archivo '{uploaded_file.name}' cargado")
+        
+        with col2:
+            # --- Botón para descargar DataFrame como Excel ---
+            st.markdown("---")
+            st.markdown("### Descargar datos procesados")
+            towrite = io.BytesIO()
+            df.to_excel(towrite, index=False, engine='openpyxl')
+            towrite.seek(0)
+
+            st.download_button(
+                label="📥 Descargar Excel",
+                data=towrite,
+                file_name=f"{base_filename}.xlsx",  # mismo nombre del archivo original
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
+
 
         # Guardar el nombre base del archivo (sin extensión) para Excel
         base_filename = os.path.splitext(uploaded_file.name)[0]
@@ -42,20 +62,7 @@ def main_opencap():
         st.markdown("### Vista previa del DataFrame")
         st.dataframe(df, hide_index=True)
 
-        # --- Botón para descargar DataFrame como Excel ---
-        st.markdown("---")
-        st.markdown("### Descargar datos procesados")
-        towrite = io.BytesIO()
-        df.to_excel(towrite, index=False, engine='openpyxl')
-        towrite.seek(0)
-
-        st.download_button(
-            label="📥 Descargar Excel",
-            data=towrite,
-            file_name=f"{base_filename}.xlsx",  # mismo nombre del archivo original
-            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        )
-
+        
         # Selección de columnas para graficar
         st.markdown("### Selección de columnas para graficar")
         y_cols = st.multiselect(
