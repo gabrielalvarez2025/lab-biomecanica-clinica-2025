@@ -79,11 +79,13 @@ def main_opencap():
             placeholder="Elige una articulación..."
         )
         
-        col_plot1, col_plot2 = st.columns([1, 3])
+        
 
-        with col_plot2:
+        if y_cols:
 
-            if y_cols:
+            col_plot1, col_plot2 = st.columns([1, 3])
+
+            with col_plot2:
                 # Crear figura con todas las columnas seleccionadas
                 fig = go.Figure()
                 for col in y_cols:
@@ -101,7 +103,7 @@ def main_opencap():
                     template="plotly_white"
                 )
 
-                st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, use_container_width=True)
         
 
         with col_plot1:
