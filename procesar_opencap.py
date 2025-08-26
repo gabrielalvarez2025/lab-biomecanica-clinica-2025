@@ -113,7 +113,14 @@ def main_opencap():
                     title="Curvas seleccionadas",
                     xaxis_title="Tiempo (s)",
                     yaxis_title="Ángulo (°)",
-                    template="plotly_white"
+                    template="plotly_white",
+                    legend=dict(
+                        x=0.01,   # posición horizontal (0 = izq, 1 = der)
+                        y=0.99,   # posición vertical (0 = abajo, 1 = arriba)
+                        bgcolor="rgba(255,255,255,0.7)",  # fondo semi-transparente
+                        bordercolor="black",
+                        borderwidth=1
+                    )
                 )
 
                 st.plotly_chart(fig, use_container_width=True)
