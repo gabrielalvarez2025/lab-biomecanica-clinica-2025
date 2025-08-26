@@ -101,7 +101,7 @@ def main_opencap():
                 "Selecciona la columna para el eje X:",
                 options=df.columns[1:],  # excluye la primera (tiempo)
                 placeholder=None,
-                index=0
+                #index=0
             )
 
         with col_angle_2:
