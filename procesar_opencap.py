@@ -20,6 +20,23 @@ def main_opencap():
         # Guardar el nombre base del archivo (sin extensión) para Excel
         base_filename = os.path.splitext(uploaded_file.name)[0]
         
+        # Leer todo el archivo como texto
+        file_content = uploaded_file.getvalue().decode("utf-8").splitlines()
+
+        # Buscar la línea con "endheader"
+        header_lines = 0
+        for i, line in enumerate(file_content):
+            if "endheader" in line:
+                header_lines = i + 1
+                break
+
+        # Cortar todo hasta después de endheader
+        data_str = "\n".join(file_content[header_lines:])
+        data_buffer = io.StringIO(data_str)
+
+        # Leer el contenido como dataframe separado por espacios
+        df = pd.read_csv(data_buffer, delimiter=r"\s+", engine="python")
+
         col1, col2 = st.columns(2)
 
         with col1:
@@ -37,26 +54,6 @@ def main_opencap():
                 file_name=f"{base_filename}.xlsx",  # mismo nombre del archivo original
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             )
-
-
-        
-
-        # Leer todo el archivo como texto
-        file_content = uploaded_file.getvalue().decode("utf-8").splitlines()
-
-        # Buscar la línea con "endheader"
-        header_lines = 0
-        for i, line in enumerate(file_content):
-            if "endheader" in line:
-                header_lines = i + 1
-                break
-
-        # Cortar todo hasta después de endheader
-        data_str = "\n".join(file_content[header_lines:])
-        data_buffer = io.StringIO(data_str)
-
-        # Leer el contenido como dataframe separado por espacios
-        df = pd.read_csv(data_buffer, delimiter=r"\s+", engine="python")
 
         # Mostrar preview
         st.markdown("### Vista previa del DataFrame")
