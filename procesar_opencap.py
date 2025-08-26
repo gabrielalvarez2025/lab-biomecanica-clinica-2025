@@ -87,3 +87,39 @@ def main_opencap():
             )
 
             st.plotly_chart(fig, use_container_width=True)
+        
+
+        ####
+
+        # Selección de columnas para graficar ángulo-ángulo
+        st.markdown("### Gráfico Ángulo-Ángulo")
+
+        col_x = st.selectbox(
+            "Selecciona la columna para el eje X:",
+            options=df.columns[1:],  # excluye la primera (tiempo)
+            index=0
+        )
+
+        col_y = st.selectbox(
+            "Selecciona la columna para el eje Y:",
+            options=df.columns[1:],
+            index=1 if len(df.columns) > 2 else 0
+        )
+
+        if col_x and col_y:
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(
+                x=df[col_x],
+                y=df[col_y],
+                mode='lines',
+                name=f"{col_y} vs {col_x}"
+            ))
+
+            fig.update_layout(
+                title=f"Gráfico Ángulo–Ángulo ({col_y} vs {col_x})",
+                xaxis_title=col_x,
+                yaxis_title=col_y,
+                template="plotly_white"
+            )
+
+            st.plotly_chart(fig, use_container_width=True)
