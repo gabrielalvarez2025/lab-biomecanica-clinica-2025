@@ -70,16 +70,18 @@ def main_opencap():
         
         col_plot1, col_plot2 = st.columns([3, 1])
 
+        # Selección de columnas para graficar
+        st.markdown("### Gráfico Ángulo vs Tiempo")
+        y_cols = st.multiselect(
+            "Selecciona una o varias columnas (eje Y):",
+            options=df.columns[1:],  # excluye la primera (tiempo)
+            default=[],
+            placeholder="Elige una articulación..."
+        )
+        
         with col_plot1:
         
-            # Selección de columnas para graficar
-            st.markdown("### Gráfico Ángulo vs Tiempo")
-            y_cols = st.multiselect(
-                "Selecciona una o varias columnas (eje Y):",
-                options=df.columns[1:],  # excluye la primera (tiempo)
-                default=[],
-                placeholder="Elige una articulación..."
-            )
+            
 
             if y_cols:
                 # Crear figura con todas las columnas seleccionadas
