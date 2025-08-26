@@ -106,6 +106,9 @@ def main_opencap():
             st.markdown(" ")
             st.markdown(" ")
             st.markdown(" ")
+            st.markdown(" ")
+            st.markdown(" ")
+            st.markdown(" ")
             if uploaded_video is not None:
                 #st.success(f"✅ Video '{uploaded_video.name}' cargado")
                 st.video(uploaded_video)
