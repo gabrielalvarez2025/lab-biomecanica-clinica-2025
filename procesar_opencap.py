@@ -15,7 +15,13 @@ def main_opencap():
                 
     """)
     
-    uploaded_file = st.file_uploader("📂 Sube un archivo .mot exportado de OpenCap", type=["mot"])
+    col_init1, col_init2 = st.columns(2)
+
+    with col_init1:
+        uploaded_file = st.file_uploader("📂 Sube un archivo .mot exportado de OpenCap", type=["mot"])
+    with col_init2:
+        # --- Nueva sección: subir video ---
+        uploaded_video = st.file_uploader("📂 Sube un archivo de video", type=["mp4", "mov", "avi", "mkv"])
 
     if uploaded_file is not None:
         
@@ -97,11 +103,7 @@ def main_opencap():
         
 
         with col_plot2:
-            # --- Nueva sección: subir video ---
-            st.markdown("---")
-            st.subheader("🎥 Subir y visualizar video del ensayo")
-            uploaded_video = st.file_uploader("📂 Sube un archivo de video", type=["mp4", "mov", "avi", "mkv"])
-
+            st.markdown(" ")
             if uploaded_video is not None:
                 st.success(f"✅ Video '{uploaded_video.name}' cargado")
                 st.video(uploaded_video)
