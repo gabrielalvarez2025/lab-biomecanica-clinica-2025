@@ -21,7 +21,7 @@ def main_opencap():
         uploaded_file = st.file_uploader("📂 Sube un archivo .mot exportado de OpenCap", type=["mot"])
     with col_init2:
         # --- Nueva sección: subir video ---
-        uploaded_video = st.file_uploader("📹 Si lo deseas, puedes incluir un *video* del gesto (Opcional)", type=["mp4", "mov", "avi", "mkv"])
+        uploaded_video = st.file_uploader("📹 Si deseas, puedes incluir un *video* del gesto (Opcional)", type=["mp4", "mov", "avi", "mkv"])
 
     if uploaded_file is not None:
         
