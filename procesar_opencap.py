@@ -85,6 +85,17 @@ def main_opencap():
 
             col_plot1, col_plot2 = st.columns([1, 3])
 
+            with col_plot1:
+                st.markdown(" ")
+                st.markdown(" ")
+                st.markdown(" ")
+                st.markdown(" ")
+                st.markdown(" ")
+                st.markdown(" ")
+                if uploaded_video is not None:
+                    #st.success(f"✅ Video '{uploaded_video.name}' cargado")
+                    st.video(uploaded_video)
+            
             with col_plot2:
                 # Crear figura con todas las columnas seleccionadas
                 fig = go.Figure()
@@ -106,16 +117,7 @@ def main_opencap():
             st.plotly_chart(fig, use_container_width=True)
         
 
-        with col_plot1:
-            st.markdown(" ")
-            st.markdown(" ")
-            st.markdown(" ")
-            st.markdown(" ")
-            st.markdown(" ")
-            st.markdown(" ")
-            if uploaded_video is not None:
-                #st.success(f"✅ Video '{uploaded_video.name}' cargado")
-                st.video(uploaded_video)
+        
 
         
         ####
