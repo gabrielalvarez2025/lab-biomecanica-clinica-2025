@@ -86,7 +86,7 @@ def main_opencap():
             if uploaded_video is not None:
                 col_plot1, col_plot2 = st.columns([1, 3])
             else:
-                col_plot2 = st.columns(1)
+                col_plot2, = st.columns(1)   # 👈 importante: la coma para desempaquetar
 
             if uploaded_video is not None:
                 with col_plot1:
@@ -96,9 +96,7 @@ def main_opencap():
                     st.markdown(" ")
                     st.markdown(" ")
                     st.markdown(" ")
-                    if uploaded_video is not None:
-                        #st.success(f"✅ Video '{uploaded_video.name}' cargado")
-                        st.video(uploaded_video)
+                    st.video(uploaded_video)
             
             with col_plot2:
                 # Crear figura con todas las columnas seleccionadas
@@ -119,7 +117,6 @@ def main_opencap():
                 )
 
                 st.plotly_chart(fig, use_container_width=True)
-        
 
         
 
