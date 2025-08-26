@@ -65,7 +65,8 @@ def main_opencap():
         y_cols = st.multiselect(
             "Selecciona una o varias columnas (eje Y):",
             options=df.columns[1:],  # excluye la primera (tiempo)
-            default=[]
+            default=[],
+            placeholder="Elige una articulación..."
         )
 
         if y_cols:
