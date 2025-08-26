@@ -117,7 +117,7 @@ def main_opencap():
                     legend=dict(
                         x=0.01,   # posición horizontal (0 = izq, 1 = der)
                         y=0.99,   # posición vertical (0 = abajo, 1 = arriba)
-                        bgcolor="rgba(255,255,255,0.7)",  # fondo semi-transparente
+                        bgcolor="rgba(255,255,255,0.2)",  # fondo semi-transparente
                         bordercolor="black",
                         borderwidth=1
                     )
