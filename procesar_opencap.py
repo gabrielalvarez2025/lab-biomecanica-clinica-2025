@@ -115,7 +115,7 @@ def main_opencap():
                     yaxis_title="Ángulo (°)",
                     template="plotly_white",
                     legend=dict(
-                        x=0.99,   # posición horizontal (0 = izq, 1 = der)
+                        x=0.79,   # posición horizontal (0 = izq, 1 = der)
                         y=0.99,   # posición vertical (0 = abajo, 1 = arriba)
                         bgcolor="rgba(255,255,255,0.2)",  # fondo semi-transparente
                         bordercolor="black",
