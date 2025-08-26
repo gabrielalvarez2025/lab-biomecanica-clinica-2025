@@ -105,7 +105,7 @@ def main_opencap():
         with col_plot2:
             st.markdown(" ")
             if uploaded_video is not None:
-                st.success(f"✅ Video '{uploaded_video.name}' cargado")
+                #st.success(f"✅ Video '{uploaded_video.name}' cargado")
                 st.video(uploaded_video)
 
         
