@@ -134,3 +134,12 @@ def main_opencap():
             )
 
             st.plotly_chart(fig, use_container_width=True)
+    
+    # --- Nueva sección: subir video ---
+        st.markdown("---")
+        st.subheader("🎥 Subir y visualizar video del ensayo")
+        uploaded_video = st.file_uploader("📂 Sube un archivo de video", type=["mp4", "mov", "avi", "mkv"])
+
+        if uploaded_video is not None:
+            st.success(f"✅ Video '{uploaded_video.name}' cargado")
+            st.video(uploaded_video)
