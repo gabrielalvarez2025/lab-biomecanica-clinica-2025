@@ -61,7 +61,7 @@ def main_opencap():
 
         
         # Selección de columnas para graficar
-        st.markdown("### Selección de columnas para graficar")
+        st.markdown("### Gráfico Ángulo vs Tiempo")
         y_cols = st.multiselect(
             "Selecciona una o varias columnas (eje Y):",
             options=df.columns[1:],  # excluye la primera (tiempo)
@@ -101,7 +101,7 @@ def main_opencap():
             eje_x = st.selectbox(
                 "Selecciona la columna para el eje X:",
                 options=df.columns[1:],  # excluye la primera (tiempo)
-                placeholder="Elige una articulación para el Eje X",
+                placeholder="Selecciona una articulación para el Eje X...",
                 index=None
             )
 
@@ -110,7 +110,7 @@ def main_opencap():
                 "Selecciona la columna para el eje Y:",
                 options=df.columns[1:],
                 index=None,
-                placeholder="Elige una articulación para el Eje Y"
+                placeholder="Selecciona una articulación para el Eje Y..."
             )
 
         if eje_x and eje_y:
