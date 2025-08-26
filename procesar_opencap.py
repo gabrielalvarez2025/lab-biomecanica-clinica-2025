@@ -100,7 +100,7 @@ def main_opencap():
             eje_x = st.selectbox(
                 "Selecciona la columna para el eje X:",
                 options=df.columns[1:],  # excluye la primera (tiempo)
-                placeholder=None
+                placeholder=None,
                 index=0
             )
 
