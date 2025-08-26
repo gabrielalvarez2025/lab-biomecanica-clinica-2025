@@ -108,7 +108,8 @@ def main_opencap():
             eje_y = st.selectbox(
                 "Selecciona la columna para el eje Y:",
                 options=df.columns[1:],
-                index=1 if len(df.columns) > 2 else 0
+                index=None,
+                placeholder=None
             )
 
         if eje_x and eje_y:
