@@ -75,22 +75,22 @@ if pagina_url == "opencap":
 
 # Mostrar contenido según la selección
 if pagina == pag_bienvenida:
-    mostrar(main_bienvenida, True)
+    mostrar(main_bienvenida, 0)
 
 elif pagina == pag_introduccion:
-    mostrar(main_introduccion, True)
+    mostrar(main_introduccion, 0)
 
 elif pagina == pag_bioinstrumentacion:
-    mostrar(main_bioinstrumentacion, True)
+    mostrar(main_bioinstrumentacion, 0)
 
 elif pagina == pag_control_motor:
-    mostrar(main_control_motor, True)
+    mostrar(main_control_motor, 0)
 
 elif pagina == pag_balance:
-    mostrar(main_balance, True)
+    mostrar(main_balance, 0)
 
 elif pagina == pag_marcha:
-    mostrar(main_marcha, True)
+    mostrar(main_marcha, 0)
 
 elif pagina == pag_instrucciones_opencap:
     mostrar(main_instrucciones_opencap, True)
