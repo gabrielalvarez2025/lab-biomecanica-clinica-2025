@@ -116,7 +116,7 @@ def main_opencap():
                     template="plotly_white",
                     legend=dict(
                         x=0.79,   # posición horizontal (0 = izq, 1 = der)
-                        y=1.2,   # posición vertical (0 = abajo, 1 = arriba)
+                        y=1.3,   # posición vertical (0 = abajo, 1 = arriba)
                         bgcolor="rgba(255,255,255,0.2)",  # fondo semi-transparente
                         bordercolor="black",
                         borderwidth=1
