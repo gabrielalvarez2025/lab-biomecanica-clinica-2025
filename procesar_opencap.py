@@ -62,36 +62,51 @@ def main_opencap():
         st.dataframe(df, hide_index=True)
 
         
-        # Selección de columnas para graficar
-        st.markdown("### Gráfico Ángulo vs Tiempo")
-        y_cols = st.multiselect(
-            "Selecciona una o varias columnas (eje Y):",
-            options=df.columns[1:],  # excluye la primera (tiempo)
-            default=[],
-            placeholder="Elige una articulación..."
-        )
+        col_plot1, col_plot2 = st.columns([3, 1]))
 
-        if y_cols:
-            # Crear figura con todas las columnas seleccionadas
-            fig = go.Figure()
-            for col in y_cols:
-                fig.add_trace(go.Scatter(
-                    x=df[df.columns[0]],
-                    y=df[col],
-                    mode='lines',
-                    name=col
-                ))
-
-            fig.update_layout(
-                title="Curvas seleccionadas",
-                xaxis_title=df.columns[0],
-                yaxis_title="Valor",
-                template="plotly_white"
+        with col_plot1:
+        
+            # Selección de columnas para graficar
+            st.markdown("### Gráfico Ángulo vs Tiempo")
+            y_cols = st.multiselect(
+                "Selecciona una o varias columnas (eje Y):",
+                options=df.columns[1:],  # excluye la primera (tiempo)
+                default=[],
+                placeholder="Elige una articulación..."
             )
 
-            st.plotly_chart(fig, use_container_width=True)
+            if y_cols:
+                # Crear figura con todas las columnas seleccionadas
+                fig = go.Figure()
+                for col in y_cols:
+                    fig.add_trace(go.Scatter(
+                        x=df[df.columns[0]],
+                        y=df[col],
+                        mode='lines',
+                        name=col
+                    ))
+
+                fig.update_layout(
+                    title="Curvas seleccionadas",
+                    xaxis_title=df.columns[0],
+                    yaxis_title="Valor",
+                    template="plotly_white"
+                )
+
+                st.plotly_chart(fig, use_container_width=True)
         
 
+        with col_plot2:
+            # --- Nueva sección: subir video ---
+            st.markdown("---")
+            st.subheader("🎥 Subir y visualizar video del ensayo")
+            uploaded_video = st.file_uploader("📂 Sube un archivo de video", type=["mp4", "mov", "avi", "mkv"])
+
+            if uploaded_video is not None:
+                st.success(f"✅ Video '{uploaded_video.name}' cargado")
+                st.video(uploaded_video)
+
+        
         ####
 
         # Selección de columnas para graficar ángulo-ángulo
@@ -135,11 +150,4 @@ def main_opencap():
 
             st.plotly_chart(fig, use_container_width=True)
     
-    # --- Nueva sección: subir video ---
-        st.markdown("---")
-        st.subheader("🎥 Subir y visualizar video del ensayo")
-        uploaded_video = st.file_uploader("📂 Sube un archivo de video", type=["mp4", "mov", "avi", "mkv"])
-
-        if uploaded_video is not None:
-            st.success(f"✅ Video '{uploaded_video.name}' cargado")
-            st.video(uploaded_video)
+    
