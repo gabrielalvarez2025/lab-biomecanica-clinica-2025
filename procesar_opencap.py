@@ -119,7 +119,8 @@ def main_opencap():
                 title=f"Gráfico Ángulo–Ángulo ({col_y} vs {col_x})",
                 xaxis_title=col_x,
                 yaxis_title=col_y,
-                template="plotly_white"
+                template="plotly_white",
+                yaxis=dict(scaleanchor="x", scaleratio=1)  # 🔹 Mantener proporciones cuadradas
             )
 
             st.plotly_chart(fig, use_container_width=True)
