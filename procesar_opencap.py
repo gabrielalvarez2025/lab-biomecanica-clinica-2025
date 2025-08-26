@@ -68,7 +68,7 @@ def main_opencap():
         st.dataframe(df, hide_index=True)
 
         
-        col_plot1, col_plot2 = st.columns([1, 3])
+        
 
         # Selección de columnas para graficar
         st.markdown("### Gráfico Ángulo vs Tiempo")
@@ -79,6 +79,8 @@ def main_opencap():
             placeholder="Elige una articulación..."
         )
         
+        col_plot1, col_plot2 = st.columns([1, 3])
+
         with col_plot2:
 
             if y_cols:
