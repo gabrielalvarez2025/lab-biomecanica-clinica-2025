@@ -79,9 +79,7 @@ def main_opencap():
             placeholder="Elige una articulación..."
         )
         
-        with col_plot1:
-        
-            
+        with col_plot2:
 
             if y_cols:
                 # Crear figura con todas las columnas seleccionadas
@@ -104,7 +102,7 @@ def main_opencap():
                 st.plotly_chart(fig, use_container_width=True)
         
 
-        with col_plot2:
+        with col_plot1:
             st.markdown(" ")
             if uploaded_video is not None:
                 #st.success(f"✅ Video '{uploaded_video.name}' cargado")
