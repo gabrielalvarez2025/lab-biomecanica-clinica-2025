@@ -47,11 +47,13 @@ def main_opencap():
 
         col1, col2 = st.columns(2)
 
-        with col1:
-            st.success(f"✅ Archivo '{uploaded_file.name}' cargado")
+        if uploaded_file not None:
+            with col1:
+                st.success(f"✅ Archivo '{uploaded_file.name}' cargado")
         
-        with col2:
-            st.success(f"✅ Video '{uploaded_video.name}' cargado")
+        if uploaded_video not None:
+            with col2:
+                st.success(f"✅ Video '{uploaded_video.name}' cargado")
             
         
         esp_boton_1, col_boton, esp_boton_2 = st.columns(3)
