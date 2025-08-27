@@ -36,10 +36,11 @@ def main_opencap():
 
             with col_trial_1:
                 st.markdown("### Elige un Trial:")
-
-            with col_trial_2:
                 # Selección de trial
                 selected_trial = st.selectbox("Selecciona el trial:", trials)
+
+            with col_trial_2:
+                
                 # --- Mostrar nombre de trial ---
                 st.success(f"✅ Trial seleccionado: {selected_trial}")
 
