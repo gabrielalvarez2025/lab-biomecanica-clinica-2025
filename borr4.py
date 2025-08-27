@@ -53,6 +53,7 @@ def main_opencap():
                     if "endheader" in line:
                         header_lines = i + 1
                         break
+                
                 data_str = "\n".join(file_content[header_lines:])
                 data_buffer = io.StringIO(data_str)
 
@@ -62,16 +63,19 @@ def main_opencap():
                 st.success(f"✅ Trial seleccionado: {selected_trial}")
 
                 # --- Descargar Excel ---
-                towrite = io.BytesIO()
-                df.to_excel(towrite, index=False, engine="openpyxl")
-                towrite.seek(0)
-                st.download_button(
-                    label="📥 Descargar Excel",
-                    data=towrite,
-                    file_name=f"{selected_trial}.xlsx",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                    use_container_width=True
-                )
+                esp_boton_1, col_boton, esp_boton_2 = st.columns(3)
+                with col_boton:
+                    towrite = io.BytesIO()
+                    df.to_excel(towrite, index=False, engine="openpyxl")
+                    towrite.seek(0)
+                    
+                    st.download_button(
+                        label="📥 Descargar Excel",
+                        data=towrite,
+                        file_name=f"{selected_trial}.xlsx",
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        use_container_width=True
+                    )
 
                 # --- Mostrar DataFrame ---
                 st.markdown("### Vista previa del DataFrame")
@@ -84,9 +88,11 @@ def main_opencap():
                     with z.open(video_path) as vfile:
                         video_bytes = vfile.read()
                     uploaded_video = io.BytesIO(video_bytes)
-                    st.video(uploaded_video, loop=True, muted=True)
+                    #st.video(uploaded_video, loop=True, muted=True)
 
                 # --- Graficar ---
+
+                # Selección de columnas para graficar en el tiempo
                 st.markdown("### Gráfico Ángulo vs Tiempo")
                 y_cols = st.multiselect(
                     "Selecciona una o varias columnas (eje Y):",
@@ -96,26 +102,106 @@ def main_opencap():
                 )
 
                 if y_cols:
-                    fig = go.Figure()
-                    for col in y_cols:
+
+                    if uploaded_video is not None:
+                        col_plot1, col_plot2 = st.columns([1, 3])
+                    else:
+                        col_plot2, = st.columns(1)   # 👈 importante: la coma para desempaquetar
+
+                    
+                    if uploaded_video is not None:
+                        with col_plot1:
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.video(uploaded_video, loop=True, muted=True)
+
+                    
+                    with col_plot2:
+                        # Crear figura con todas las columnas seleccionadas
+                        fig = go.Figure()
+                        for col in y_cols:
+                            fig.add_trace(go.Scatter(
+                                x=df[df.columns[0]],
+                                y=df[col],
+                                mode="lines",
+                                name=col
+                            ))
+
+                        fig.update_layout(
+                            title="Movimiento angular en el tiempo",
+                            xaxis_title="Tiempo (s)",
+                            yaxis_title="Ángulo (°)",
+                            template="plotly_white",
+                            legend=dict(
+                                x=0.79, # posición horizontal (0 = izq, 1 = der)
+                                y=1.3, # posición vertical (0 = abajo, 1 = arriba)
+                                bgcolor="rgba(255,255,255,0.2)", # fondo semi-transparente
+                                bordercolor="black",
+                                borderwidth=1
+                            )
+                        )
+                        st.plotly_chart(fig, use_container_width=True)
+                
+                # Selección de columnas para graficar ángulo-ángulo
+                st.markdown("---")
+                st.markdown("### Gráfico Ángulo-Ángulo")
+
+                col_angle_1, col_angle_2 = st.columns(2)
+
+                with col_angle_1:
+                    eje_x = st.selectbox(
+                        "Selecciona la columna para el eje X:",
+                        options=df.columns[1:],  # excluye la primera (tiempo)
+                        placeholder="Selecciona una articulación para el Eje X...",
+                        index=None
+                    )
+
+                with col_angle_2:
+                    eje_y = st.selectbox(
+                        "Selecciona la columna para el eje Y:",
+                        options=df.columns[1:],
+                        index=None,
+                        placeholder="Selecciona una articulación para el Eje Y..."
+                    )
+
+                
+                if eje_x and eje_y:
+
+                    if uploaded_video is not None:
+                        col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
+                    else:
+                        col_plot_ang_2, = st.columns(1)   # 👈 importante: la coma para desempaquetar
+
+                    if uploaded_video is not None:
+                        with col_plot_ang_1:
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.video(uploaded_video, loop=True, muted=True)
+
+                    with col_plot_ang_2:
+                    
+                        fig = go.Figure()
                         fig.add_trace(go.Scatter(
-                            x=df[df.columns[0]],
-                            y=df[col],
-                            mode="lines",
-                            name=col
+                            x=df[eje_x],
+                            y=df[eje_y],
+                            mode='lines',   
+                            name=f"{eje_y} vs {eje_x}"
                         ))
 
-                    fig.update_layout(
-                        title="Movimiento angular en el tiempo",
-                        xaxis_title="Tiempo (s)",
-                        yaxis_title="Ángulo (°)",
-                        template="plotly_white",
-                        legend=dict(
-                            x=0.79,
-                            y=1.3,
-                            bgcolor="rgba(255,255,255,0.2)",
-                            bordercolor="black",
-                            borderwidth=1
+                        fig.update_layout(
+                            title=f"Gráfico Ángulo–Ángulo   ({eje_y}   vs   {eje_x})",
+                            xaxis_title=eje_x,
+                            yaxis_title=eje_y,
+                            template="plotly_white",
+                            yaxis=dict(scaleanchor="x", scaleratio=1)  # 🔹 Mantener proporciones cuadradas
                         )
-                    )
-                    st.plotly_chart(fig, use_container_width=True)
+
+                        st.plotly_chart(fig, use_container_width=True)
