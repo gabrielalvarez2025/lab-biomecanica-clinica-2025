@@ -132,7 +132,7 @@ def main_opencap():
                 if y_cols:
 
                     if uploaded_video is not None:
-                        col_plot1, col_plot2 = st.columns([1, 3])
+                        col_plot1, col_plot2 = st.columns([20, 80])
                     else:
                         col_plot2, = st.columns(1)   # 👈 importante: la coma para desempaquetar
 
@@ -150,8 +150,7 @@ def main_opencap():
                             selected_cam = st.segmented_control(
                                 "Selecciona cámara:",
                                 cams_disponibles,
-                                default=cams_disponibles[0],
-                                width=1
+                                default=cams_disponibles[0]
                             )
                             # Recargar video según la cámara elegida
                             selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
