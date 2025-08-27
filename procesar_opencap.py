@@ -47,11 +47,11 @@ def main_opencap():
 
         col1, col2 = st.columns(2)
 
-        if uploaded_file not None:
+        if uploaded_file is not None:
             with col1:
                 st.success(f"✅ Archivo '{uploaded_file.name}' cargado")
         
-        if uploaded_video not None:
+        if uploaded_video is not None:
             with col2:
                 st.success(f"✅ Video '{uploaded_video.name}' cargado")
             
