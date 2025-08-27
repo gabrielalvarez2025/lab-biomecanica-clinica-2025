@@ -148,7 +148,7 @@ def main_opencap():
                     )
 
                 # --- Mostrar DataFrame ---
-                st.markdown("### Vista previa del DataFrame")
+                st.markdown("### Vista previa de los datos")
                 st.dataframe(df, hide_index=True)
 
                 
