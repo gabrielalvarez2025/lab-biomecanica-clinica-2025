@@ -23,7 +23,7 @@ def main_opencap():
         st.markdown("""
         1. Busca la carpeta:  
             **📂 Videos > 📂 Cam > 📂 InputMedia**.
-        2. Elige el archivo de video del Trial (.mp3 o .mov) de la cámara que prefieras.
+        2. Elige el archivo de video del Trial **(.mp3 o .mov)** de la cámara que prefieras.
                     
         """)
     
