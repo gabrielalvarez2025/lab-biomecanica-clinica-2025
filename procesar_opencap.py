@@ -71,7 +71,7 @@ def main_opencap():
                     if 'cam_key' not in st.session_state:
                         st.session_state.cam_key = list(cam_map.keys())[0]
 
-                    st.markdown('<span style="color: rgba(0,0,0,0.8)">Elige una cámara:</span>', unsafe_allow_html=True)
+                    st.markdown('<span style="color: rgba(255,255,255,0.8)">Elige una cámara:</span>', unsafe_allow_html=True)
 
                     cam_selected = st.segmented_control(
                         None,
