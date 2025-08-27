@@ -7,7 +7,9 @@ import zipfile
 
 
 def main_opencap():
-    st.subheader("📦 Procesar carpeta completa de OpenCap (ZIP)")
+    
+    
+    st.markdown("---")
 
     
 
