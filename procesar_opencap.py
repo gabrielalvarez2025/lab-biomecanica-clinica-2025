@@ -227,7 +227,7 @@ def main_opencap():
                     col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
                     
                     with col_plot_ang_1:
-                        video_lateral()
+                        uploaded_video = video_lateral(z, video_paths, cam_map)
 
                     with col_plot_ang_2:
                     
