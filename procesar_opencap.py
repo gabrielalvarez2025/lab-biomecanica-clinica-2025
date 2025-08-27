@@ -96,17 +96,16 @@ def main_opencap():
 
 
                 def render_video(z, video_paths, cam_map, label="label", suffix=""):
-                    
-
                     # Crear un nombre seguro para el label
                     safe_label = re.sub(r'\W+', '_', label.lower())
                     
-                    # Key base para la selección de cámara
-                    cam_key_name = f"cam_key_{safe_label}_{suffix}"
-
+                    # Key único para la selección de cámara
+                    cam_key_name = f"cam_select_{safe_label}_{suffix}"
+                    
                     if cam_key_name not in st.session_state:
                         st.session_state[cam_key_name] = list(cam_map.keys())[0]
 
+                    # Selector de cámara
                     cam_selected = st.segmented_control(
                         "Elige una cámara:",
                         list(cam_map.keys()),
@@ -115,8 +114,7 @@ def main_opencap():
                         width="stretch"
                     )
 
-                    # Actualizar sesión
-                    #st.session_state[cam_key_name] = cam_selected
+                    # Obtener nombre de la cámara seleccionada
                     selected_cam = cam_map[cam_selected]
 
                     # Filtrar video según cámara
@@ -128,11 +126,11 @@ def main_opencap():
                         uploaded_video = io.BytesIO(video_bytes)
                         uploaded_video.name = f"{safe_label}_{suffix}_{cam_selected}.mp4"
 
-                        # Crear key único para el video combinando label+sufijo+cámara
+                        # Key único para el video combinando label + sufijo + cámara
                         video_key = f"video_{safe_label}_{suffix}_{cam_selected}"
 
-                        # Renderizar video
-                        st.video(uploaded_video, loop=True, muted=True, autoplay=True, width="stretch")
+                        # Renderizar video con key único
+                        st.video(uploaded_video, loop=True, muted=True, autoplay=True, width="stretch", key=video_key)
 
                     return uploaded_video
 
@@ -206,7 +204,7 @@ def main_opencap():
                     with col_plot1:
                         st.markdown(" ")
                         
-                        uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo", suffix="1")
+                        uploaded_video_tiempo = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo", suffix="tiempo")
 
 
                     
@@ -264,7 +262,9 @@ def main_opencap():
                     col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
 
                     with col_plot_ang_1:
-                        uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo", suffix="2")
+                        uploaded_video_ang = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo", suffix="angulo")
+
+
 
                     with col_plot_ang_2:
                     
