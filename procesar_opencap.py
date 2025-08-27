@@ -66,14 +66,13 @@ def main_opencap():
 
 
                 def render_video(z, video_paths, cam_map, label="Selecciona la cámara:"):
-                    # --- Determinar cámara seleccionada por default ---
                     key_name = f"cam_key_{label}"  # clave única para Streamlit
                     if key_name not in st.session_state:
                         st.session_state[key_name] = list(cam_map.keys())[0]
 
                     selected_cam = cam_map[st.session_state[key_name]]
 
-                    # --- Cargar el video correspondiente ---
+                    # Cargar video
                     selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
                     uploaded_video = None
                     if selected_video_paths:
@@ -81,21 +80,18 @@ def main_opencap():
                             video_bytes = vfile.read()
                         uploaded_video = io.BytesIO(video_bytes)
 
-                    # --- Mostrar video primero ---
+                    # Mostrar video primero
                     if uploaded_video is not None:
                         st.video(uploaded_video, loop=True, muted=True)
 
-                    # --- Mostrar control debajo del video ---
-                    cam_selected = st.segmented_control(
+                    # Renderizar control debajo del video
+                    st.segmented_control(
                         label,
                         list(cam_map.keys()),
                         default=st.session_state[key_name],
                         key=key_name,
                         width="stretch"
                     )
-
-                    # Actualizar sesión
-                    st.session_state[key_name] = cam_selected
 
                     return uploaded_video
 
