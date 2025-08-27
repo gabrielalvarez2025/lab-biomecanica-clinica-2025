@@ -158,7 +158,7 @@ def main_opencap():
                             )
                             # Recargar video según la cámara elegida
                             # 🔹 Mapear al nombre completo
-                            selected_cam = cam_map[selected_cam_short]
+                            selected_cam = cam_map[selected_cam]
 
                             # Recargar video según la cámara elegida
                             selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
