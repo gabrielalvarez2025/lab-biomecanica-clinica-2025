@@ -54,7 +54,7 @@ def main_opencap():
             st.success(f"✅ Video '{uploaded_video.name}' cargado")
             
         
-        esp_boton_1, col_boton, esp_boton_2 = st.columns([4, 1, 4])
+        esp_boton_1, col_boton, esp_boton_2 = st.columns(3)
 
         with col_boton:
             # --- Botón para descargar DataFrame como Excel ---
