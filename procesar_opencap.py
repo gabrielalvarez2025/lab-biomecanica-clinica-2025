@@ -222,21 +222,10 @@ def main_opencap():
                 
                 if eje_x and eje_y:
 
-                    if uploaded_video is not None:
-                        col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
-                    else:
-                        col_plot_ang_2, = st.columns(1)   # 👈 importante: la coma para desempaquetar
-
-                    if uploaded_video is not None:
-                        with col_plot_ang_1:
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            # flechas cambiar Cam0 - Cam1 - Cam2
-                            st.video(uploaded_video, loop=True, muted=True)
+                    col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
+                    
+                    with col_plot_ang_1:
+                        video_lateral()
 
                     with col_plot_ang_2:
                     
