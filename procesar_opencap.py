@@ -40,16 +40,30 @@ def main_opencap():
                 mot_path = [f for f in mot_files if os.path.basename(f).startswith(selected_trial)][0]
                 
                 
-                # --- Buscar todas las cámaras disponibles para este trial ---
-                cam_paths = [f for f in file_list if "Videos/" in f and f.endswith((".mp4", ".mov")) 
-                            and os.path.basename(f).startswith(selected_trial)]
-                # Obtener lista única de cámaras (Cam0, Cam1, ...)
-                cams_disponibles = sorted(list({f.split("/")[1] for f in cam_paths}))  # toma 'Cam0', 'Cam1', etc.
-                # --- Selectbox para elegir la cámara ---
-                selected_cam = st.selectbox("Selecciona la cámara del video:", cams_disponibles)
+                # --- Buscar TODAS las rutas de video del trial seleccionado ---
+                video_paths = [
+                    f for f in file_list
+                    if "/Videos/" in f and f.endswith((".mp4", ".mov"))
+                    and os.path.basename(f).startswith(selected_trial)  # p.ej. trial.mp4
+                ]
 
-                # --- Filtrar el video correspondiente a la cámara seleccionada ---
-                video_candidates = [f for f in cam_paths if selected_cam in f]
+                def get_cam_name(p: str):
+                    """Devuelve 'Cam0', 'Cam1', ... a partir de una ruta dentro del ZIP."""
+                    parts = p.split("/")  # en ZIP siempre '/'
+                    try:
+                        idx = parts.index("Videos")
+                        return parts[idx + 1] if idx + 1 < len(parts) else None
+                    except ValueError:
+                        return None
+
+                # Lista única de cámaras disponibles
+                cams_disponibles = sorted({get_cam_name(p) for p in video_paths if get_cam_name(p)})
+
+                # Selectbox para elegir cámara (si hay)
+                selected_cam = st.selectbox(
+                    "Selecciona la cámara del video:",
+                    cams_disponibles
+                ) if cams_disponibles else None
 
 
 
@@ -94,15 +108,16 @@ def main_opencap():
                 st.markdown("### Vista previa del DataFrame")
                 st.dataframe(df, hide_index=True)
 
-                # --- Mostrar video (si existe) ---
+                # Cargar el video correspondiente a la cámara seleccionada
                 uploaded_video = None
-                if video_candidates:
-                    video_path = video_candidates[0]
-                    with z.open(video_path) as vfile:
-                        video_bytes = vfile.read()
-                    uploaded_video = io.BytesIO(video_bytes)
-                    #st.video(uploaded_video, loop=True, muted=True)
-
+                if selected_cam:
+                    selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
+                    if selected_video_paths:
+                        with z.open(selected_video_paths[0]) as vfile:
+                            video_bytes = vfile.read()
+                        uploaded_video = io.BytesIO(video_bytes)
+                else:
+                    st.info("No se encontraron videos para este trial.")
                 # --- Graficar ---
 
                 # Selección de columnas para graficar en el tiempo
