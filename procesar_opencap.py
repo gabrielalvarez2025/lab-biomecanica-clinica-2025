@@ -152,16 +152,11 @@ def main_opencap():
 
                 if y_cols:
 
-                    if uploaded_video is not None:
-                        col_plot1, col_plot2 = st.columns([1, 3])
-                    else:
-                        col_plot2, = st.columns(1)   # 👈 importante: la coma para desempaquetar
-
+                    col_plot1, col_plot2 = st.columns([1, 3])
                     
-                    if uploaded_video is not None:
-                        with col_plot1:
-                            
-                            uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo")
+                    with col_plot1:
+                        
+                        uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo")
 
 
                     
