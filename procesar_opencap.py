@@ -65,26 +65,35 @@ def main_opencap():
                 
 
 
-                if 'cam_key' not in st.session_state:
-                    st.session_state.cam_key = list(cam_map.keys())[0]  # valor inicial
+                def render_video(z, video_paths, cam_map, label="Selecciona la cámara:"):
+                    # Renderiza un segmented control que actualiza st.session_state
+                    key_name = f"cam_key_{label}"  # clave única para Streamlit
+                    if 'cam_key' not in st.session_state:
+                        st.session_state.cam_key = list(cam_map.keys())[0]
 
-                # Renderizar el control una sola vez
-                st.session_state.cam_key = st.segmented_control(
-                    "Selecciona la cámara:",
-                    list(cam_map.keys()),
-                    default=st.session_state.cam_key,
-                    width="stretch"
-                )
+                    cam_selected = st.segmented_control(
+                        label,
+                        list(cam_map.keys()),
+                        default=st.session_state.cam_key,
+                        key=key_name,
+                        width="stretch"
+                    )
+                    
+                    # Actualizar el session_state
+                    st.session_state.cam_key = cam_selected
+                    selected_cam = cam_map[st.session_state.cam_key]
 
-                # Mapear a nombre completo
-                selected_cam = cam_map[st.session_state.cam_key]
-
-                # Buscar el video correspondiente
-                selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
-                if selected_video_paths:
-                    with z.open(selected_video_paths[0]) as vfile:
-                        video_bytes = vfile.read()
-                    uploaded_video = io.BytesIO(video_bytes)
+                    # Cargar el video correspondiente
+                    selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
+                    uploaded_video = None
+                    if selected_video_paths:
+                        with z.open(selected_video_paths[0]) as vfile:
+                            video_bytes = vfile.read()
+                        uploaded_video = io.BytesIO(video_bytes)
+                    
+                    st.video(uploaded_video, loop=True, muted=True)
+                    
+                    return uploaded_video
 
 
 
@@ -165,7 +174,8 @@ def main_opencap():
                             
                             
                             
-                            st.video(uploaded_video, loop=True, muted=True)
+                            uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo")
+
 
                     
                     with col_plot2:
