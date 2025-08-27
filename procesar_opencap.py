@@ -24,7 +24,7 @@ def main_opencap():
         """)
     with col_zip_2:
         st.markdown(" ")
-        st.markdown(" ")
+        
         uploaded_zip = st.file_uploader("📂 Sube el archivo ZIP de OpenCap", type=["zip"])
 
     if uploaded_zip is not None:
