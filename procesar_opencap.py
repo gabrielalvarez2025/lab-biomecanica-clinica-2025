@@ -147,10 +147,10 @@ def main_opencap():
                             st.markdown(" ")
                             
                             # --- mover selectbox acá ---
-                            selected_cam = st.selectbox(
-                                "Selecciona la cámara:",
+                            selected_cam = st.segmented_control(
+                                "Selecciona cámara:",
                                 cams_disponibles,
-                                index=cams_disponibles.index(selected_cam) if selected_cam in cams_disponibles else 0
+                                default=cams_disponibles[0]
                             )
                             # Recargar video según la cámara elegida
                             selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
