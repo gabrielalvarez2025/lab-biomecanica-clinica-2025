@@ -40,6 +40,8 @@ def main_opencap():
             with col_trial_2:
                 # Selección de trial
                 selected_trial = st.selectbox("Selecciona el trial:", trials)
+                # --- Mostrar nombre de trial ---
+                st.success(f"✅ Trial seleccionado: {selected_trial}")
 
             if selected_trial:
                 # Obtener paths dentro del ZIP
@@ -124,8 +126,7 @@ def main_opencap():
 
                 df = pd.read_csv(data_buffer, delimiter=r"\s+", engine="python")
 
-                # --- Mostrar nombre de trial ---
-                st.success(f"✅ Trial seleccionado: {selected_trial}")
+                
 
                 # --- Descargar Excel ---
                 esp_boton_1, col_boton, esp_boton_2 = st.columns(3)
