@@ -112,7 +112,7 @@ def main_opencap():
                     )
 
                     # Actualizar session_state
-                    st.session_state[key_name] = cam_selected
+                    #st.session_state[key_name] = cam_selected
                     selected_cam = cam_map[st.session_state[key_name]]
 
                     # Cargar video desde ZIP
