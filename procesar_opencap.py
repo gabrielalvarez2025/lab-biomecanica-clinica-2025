@@ -10,8 +10,7 @@ def main_opencap():
     st.subheader("📊 Procesar archivo OpenCap (.mot)")
 
     st.markdown("""
-        1. Busca la carpeta:  
-            **📂 OpenSimData > 📂 Kinematics**.
+        1. Busca la carpeta: **📂 OpenSimData > 📂 Kinematics**.
         2. Sube el archivo **📄 .mot** correspondiente al Trial que te interesa convertir/visualizar/analizar.
                     
         """)
