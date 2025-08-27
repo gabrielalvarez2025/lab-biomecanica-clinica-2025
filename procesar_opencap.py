@@ -60,7 +60,7 @@ def main_opencap():
                 cams_disponibles = sorted({get_cam_name(p) for p in video_paths if get_cam_name(p)})
                 
                 # Crear un mapeo: ultimo caracter → nombre completo
-                cam_map = {int(cam[-1])+1: cam for cam in cams_disponibles}
+                cam_map = {cam[-1]: cam for cam in cams_disponibles}
 
                 # Selectbox para elegir cámara (si hay)
                 selected_cam = st.selectbox(
