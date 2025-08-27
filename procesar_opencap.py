@@ -62,7 +62,8 @@ def main_opencap():
                 # Crear un mapeo: ultimo caracter → nombre completo
                 cam_map = {cam[-1]: cam for cam in cams_disponibles}
 
-                
+                # Selectbox para elegir cámara (si hay)
+                selected_cam = cam_map[0]
 
 
 
