@@ -130,7 +130,7 @@ def main_opencap():
                         video_key = f"video_{safe_label}_{suffix}_{cam_selected}"
 
                         # Renderizar video con key único
-                        st.video(uploaded_video, loop=True, muted=True, autoplay=True, width="stretch", key=video_key)
+                        st.video(uploaded_video, loop=True, muted=True, autoplay=True, width="stretch")
 
                     return uploaded_video
 
