@@ -93,10 +93,13 @@ def main_opencap():
                 
 
 
-                def render_video(z, video_paths, cam_map, label="label"):
+                def render_video(z, video_paths, cam_map, label="label", suffix=""):
                     # Renderiza un segmented control que actualiza st.session_state
-                    key_name = f"cam_key_{label}"  # clave única para Streamlit
-                    if 'cam_key' not in st.session_state:
+                    # Crear key seguro eliminando caracteres raros
+                    safe_label = re.sub(r'\W+', '_', label.lower())
+                    key_name = f"cam_key_{safe_label}_{suffix}"
+
+                    if 'cam_key_{label}' not in st.session_state:
                         st.session_state.cam_key = list(cam_map.keys())[0]
 
                     
@@ -195,7 +198,7 @@ def main_opencap():
                     with col_plot1:
                         st.markdown(" ")
                         
-                        uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo")
+                        uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo", suffix="1")
 
 
                     
@@ -253,7 +256,7 @@ def main_opencap():
                     col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
 
                     with col_plot_ang_1:
-                        uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo–Ángulo")
+                        uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo", suffix="2")
 
                     with col_plot_ang_2:
                     
