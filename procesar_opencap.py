@@ -157,13 +157,19 @@ def main_opencap():
                 st.markdown("---")
 
                 # Selección de columnas para graficar en el tiempo
-                st.markdown("### Gráfico Ángulo vs Tiempo")
-                y_cols = st.multiselect(
-                    "Selecciona una o varias columnas (eje Y):",
-                    options=df.columns[1:],
-                    default=[],
-                    placeholder="Elige una articulación..."
-                )
+
+                col_plot_time_1, col_plot_time_2 = st.columns(2)
+
+                with col_plot_time_1:
+                    st.markdown("### Gráfico Ángulo vs Tiempo")
+                
+                with col_plot_time_2:
+                    y_cols = st.multiselect(
+                        "Selecciona una o varias columnas (eje Y):",
+                        options=df.columns[1:],
+                        default=[],
+                        placeholder="Elige una articulación..."
+                    )
 
                 if y_cols:
 
