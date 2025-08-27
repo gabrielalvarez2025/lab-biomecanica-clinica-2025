@@ -51,6 +51,12 @@ def main_opencap():
             st.success(f"✅ Archivo '{uploaded_file.name}' cargado")
         
         with col2:
+            st.success(f"✅ Video '{uploaded_video.name}' cargado")
+            
+        
+        esp_boton_1, col_boton, esp_boton_2 = st.columns([4, 1, 4])
+
+        with col_boton:
             # --- Botón para descargar DataFrame como Excel ---
             towrite = io.BytesIO()
             df.to_excel(towrite, index=False, engine='openpyxl')
