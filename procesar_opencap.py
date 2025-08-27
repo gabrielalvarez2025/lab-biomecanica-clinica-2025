@@ -15,19 +15,6 @@ def main_opencap():
                     
         """)
 
-    col_instr_1, col_instr_2 = st.columns(2)
-
-    with col_instr_1:
-        st.markdown(" ")
-    
-    with col_instr_2:
-        st.markdown("""
-        1. Busca la carpeta:  
-            **📂 Videos > 📂 Cam > 📂 InputMedia**.
-        2. Elige el archivo de video del Trial **(.mp3 o .mov)** de la cámara que prefieras.
-                    
-        """)
-    
     col_init1, col_init2 = st.columns(2)
 
     with col_init1:
