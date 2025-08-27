@@ -9,15 +9,17 @@ import zipfile
 def main_opencap():
     st.subheader("📊 Procesar archivo OpenCap (.mot)")
 
-    col_instr_1, col_instr_2 = st.columns(2)
-
-    with col_instr_1:
-        st.markdown("""
+    st.markdown("""
         1. Busca la carpeta:  
             **📂 OpenSimData > 📂 Kinematics**.
         2. Sube el archivo **📄 .mot** correspondiente al Trial que te interesa convertir/visualizar/analizar.
                     
         """)
+
+    col_instr_1, col_instr_2 = st.columns(2)
+
+    with col_instr_1:
+        #
     
     with col_instr_2:
         st.markdown("""
