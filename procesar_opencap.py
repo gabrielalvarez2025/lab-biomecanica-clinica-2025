@@ -111,8 +111,7 @@ def main_opencap():
                         width="stretch"
                     )
 
-                    # Actualizar session_state
-                    #st.session_state[key_name] = cam_selected
+                    # Selección de cámara
                     selected_cam = cam_map[st.session_state[key_name]]
 
                     # Cargar video desde ZIP
@@ -123,8 +122,12 @@ def main_opencap():
                             video_bytes = vfile.read()
                         uploaded_video = io.BytesIO(video_bytes)
 
-                    # 👇 le damos un key único a cada video
-                    st.video(uploaded_video, loop=True, muted=True, autoplay=True, key=f"video_{safe_label}_{suffix}")
+                        # 👇 importante: darle un nombre único al objeto
+                        uploaded_video.name = f"{safe_label}_{suffix}.mp4"
+
+                    # Mostrar video (sin key → ya no lanza error)
+                    if uploaded_video is not None:
+                        st.video(uploaded_video, loop=True, muted=True, autoplay=True, width="stretch")
 
                     return uploaded_video
 
