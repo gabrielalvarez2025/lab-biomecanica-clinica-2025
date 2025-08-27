@@ -4,8 +4,6 @@ import io
 import plotly.graph_objects as go
 import os
 import zipfile
-import re
-
 
 
 def main_opencap():
@@ -95,42 +93,36 @@ def main_opencap():
                 
 
 
-                def render_video(z, video_paths, cam_map, label="label", suffix=""):
-                    # Crear un nombre seguro para el label
-                    safe_label = re.sub(r'\W+', '_', label.lower())
-                    
-                    # Key único para la selección de cámara
-                    cam_key_name = f"cam_select_{safe_label}_{suffix}"
-                    
-                    if cam_key_name not in st.session_state:
-                        st.session_state[cam_key_name] = list(cam_map.keys())[0]
+                def render_video(z, video_paths, cam_map, label="label"):
+                    # Renderiza un segmented control que actualiza st.session_state
+                    key_name = f"cam_key_{label}"  # clave única para Streamlit
+                    if 'cam_key' not in st.session_state:
+                        st.session_state.cam_key = list(cam_map.keys())[0]
 
-                    # Selector de cámara
+                    
+
                     cam_selected = st.segmented_control(
                         "Elige una cámara:",
                         list(cam_map.keys()),
-                        default=st.session_state[cam_key_name],
-                        key=cam_key_name,
+                        default=st.session_state.cam_key,
+                        key=key_name,
                         width="stretch"
                     )
+                    
+                    # Actualizar el session_state
+                    st.session_state.cam_key = cam_selected
+                    selected_cam = cam_map[st.session_state.cam_key]
 
-                    # Obtener nombre de la cámara seleccionada
-                    selected_cam = cam_map[cam_selected]
-
-                    # Filtrar video según cámara
+                    # Cargar el video correspondiente
                     selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
                     uploaded_video = None
                     if selected_video_paths:
                         with z.open(selected_video_paths[0]) as vfile:
                             video_bytes = vfile.read()
                         uploaded_video = io.BytesIO(video_bytes)
-                        uploaded_video.name = f"video_{safe_label}_{suffix}.mp4"
-
-                        # Key único para el video combinando label + sufijo + cámara
-                        video_key = f"video_{safe_label}_{suffix}_{cam_selected}"
-
-                        st.video(uploaded_video, loop=True, muted=True, autoplay=True, format="video/mp4")
-
+                    
+                    st.video(uploaded_video, loop=True, muted=True, autoplay=True)
+                    
                     return uploaded_video
 
 
@@ -203,7 +195,7 @@ def main_opencap():
                     with col_plot1:
                         st.markdown(" ")
                         
-                        uploaded_video_tiempo = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo", suffix="tiempo")
+                        uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo")
 
 
                     
@@ -261,9 +253,7 @@ def main_opencap():
                     col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
 
                     with col_plot_ang_1:
-                        uploaded_video_ang = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo", suffix="angulo")
-
-
+                        uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo–Ángulo")
 
                     with col_plot_ang_2:
                     
