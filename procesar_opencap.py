@@ -72,7 +72,7 @@ def main_opencap():
                         st.session_state.cam_key = list(cam_map.keys())[0]
 
                     cam_selected = st.segmented_control(
-                        label,
+                        "Elige una cámara:",
                         list(cam_map.keys()),
                         default=st.session_state.cam_key,
                         key=key_name,
@@ -155,7 +155,6 @@ def main_opencap():
                     col_plot1, col_plot2 = st.columns([1, 3])
                     
                     with col_plot1:
-                        
                         uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo")
 
 
