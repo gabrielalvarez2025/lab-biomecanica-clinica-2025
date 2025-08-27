@@ -152,23 +152,42 @@ def main_opencap():
                 placeholder="Selecciona una articulación para el Eje Y..."
             )
 
+        
         if eje_x and eje_y:
-            fig = go.Figure()
-            fig.add_trace(go.Scatter(
-                x=df[eje_x],
-                y=df[eje_y],
-                mode='lines',   
-                name=f"{eje_y} vs {eje_x}"
-            ))
 
-            fig.update_layout(
-                title=f"Gráfico Ángulo–Ángulo ({eje_y} vs {eje_x})",
-                xaxis_title=eje_x,
-                yaxis_title=eje_y,
-                template="plotly_white",
-                yaxis=dict(scaleanchor="x", scaleratio=1)  # 🔹 Mantener proporciones cuadradas
-            )
+            if uploaded_video is not None:
+                col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
+            else:
+                col_plot_ang_2, = st.columns(1)   # 👈 importante: la coma para desempaquetar
 
-            st.plotly_chart(fig, use_container_width=True)
+            if uploaded_video is not None:
+                with col_plot_ang_1:
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.video(uploaded_video)
+
+            with col_plot_ang_2:
+            
+                fig = go.Figure()
+                fig.add_trace(go.Scatter(
+                    x=df[eje_x],
+                    y=df[eje_y],
+                    mode='lines',   
+                    name=f"{eje_y} vs {eje_x}"
+                ))
+
+                fig.update_layout(
+                    title=f"Gráfico Ángulo–Ángulo ({eje_y} vs {eje_x})",
+                    xaxis_title=eje_x,
+                    yaxis_title=eje_y,
+                    template="plotly_white",
+                    yaxis=dict(scaleanchor="x", scaleratio=1)  # 🔹 Mantener proporciones cuadradas
+                )
+
+                st.plotly_chart(fig, use_container_width=True)
     
     
