@@ -19,7 +19,7 @@ def main_opencap():
     col_instr_1, col_instr_2 = st.columns(2)
 
     with col_instr_1:
-        #
+        st.markdown(" ")
     
     with col_instr_2:
         st.markdown("""
