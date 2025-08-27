@@ -15,7 +15,12 @@ def main_opencap():
     3. Se usará automáticamente el archivo **.mot** correspondiente al trial.  
     """)
 
-    uploaded_zip = st.file_uploader("📂 Sube el archivo ZIP de OpenCap", type=["zip"])
+    col_zip_1, col_zip_2 = st.columns(2)
+
+    with col_zip_1:
+        st.markdown("### Sube una carpeta ZIP:")
+    with col_zip_2:
+        uploaded_zip = st.file_uploader("📂 Sube el archivo ZIP de OpenCap", type=["zip"])
 
     if uploaded_zip is not None:
         # Extraer lista de archivos dentro del ZIP
@@ -32,6 +37,10 @@ def main_opencap():
             # Lista de trials (sin ruta, solo nombre)
             trials = [os.path.splitext(os.path.basename(f))[0] for f in mot_files]
 
+            
+            
+            # --- Seleccionar Trial --- #
+            
             st.markdown("---")
             
             col_trial_1, col_trial_2 = st.columns(2)
