@@ -132,33 +132,6 @@ def main_opencap():
                     placeholder="Elige una articulación..."
                 )
 
-                def video_lateral(z, video_paths, cam_map):
-                    st.markdown(" ")
-
-                    # Segment control con claves simples
-                    selected_key = st.segmented_control(
-                        "Selecciona la cámara:",
-                        list(cam_map.keys()),
-                        default=list(cam_map.keys())[0],
-                        width="stretch"
-                    )
-
-                    # Mapear a nombre completo
-                    selected_cam = cam_map[selected_key]
-
-                    # Buscar el video correspondiente
-                    selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
-
-                    if selected_video_paths:
-                        with z.open(selected_video_paths[0]) as vfile:
-                            video_bytes = vfile.read()
-                        uploaded_video = io.BytesIO(video_bytes)
-
-                        st.video(uploaded_video, loop=True, muted=True)
-                        return uploaded_video
-
-                    return None
-
                 if y_cols:
 
                     if uploaded_video is not None:
@@ -169,8 +142,30 @@ def main_opencap():
                     
                     if uploaded_video is not None:
                         with col_plot1:
-                            uploaded_video = video_lateral(z, video_paths, cam_map)
                             
+                            st.markdown(" ")
+                            
+                            # --- mover selectbox acá ---
+                            selected_cam = st.segmented_control(
+                                "Selecciona la cámara:",
+                                list(cam_map.keys()),
+                                default=list(cam_map.keys())[0],
+                                width="stretch"
+                            )
+                            # Recargar video según la cámara elegida
+                            # 🔹 Mapear al nombre completo
+                            selected_cam = cam_map[selected_cam]
+
+                            # Recargar video según la cámara elegida
+                            selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
+                            
+                            if selected_video_paths:
+                                with z.open(selected_video_paths[0]) as vfile:
+                                    video_bytes = vfile.read()
+                                uploaded_video = io.BytesIO(video_bytes)
+
+
+                            st.video(uploaded_video, loop=True, muted=True)
 
                     
                     with col_plot2:
@@ -224,10 +219,21 @@ def main_opencap():
                 
                 if eje_x and eje_y:
 
-                    col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
-                    
-                    with col_plot_ang_1:
-                        uploaded_video = video_lateral(z, video_paths, cam_map)
+                    if uploaded_video is not None:
+                        col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
+                    else:
+                        col_plot_ang_2, = st.columns(1)   # 👈 importante: la coma para desempaquetar
+
+                    if uploaded_video is not None:
+                        with col_plot_ang_1:
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            st.markdown(" ")
+                            # flechas cambiar Cam0 - Cam1 - Cam2
+                            st.video(uploaded_video, loop=True, muted=True)
 
                     with col_plot_ang_2:
                     
