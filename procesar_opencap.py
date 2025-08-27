@@ -145,6 +145,21 @@ def main_opencap():
                             st.markdown(" ")
                             st.markdown(" ")
                             st.markdown(" ")
+                            
+                            # --- mover selectbox acá ---
+                            selected_cam = st.selectbox(
+                                "Selecciona la cámara:",
+                                cams_disponibles,
+                                index=cams_disponibles.index(selected_cam) if selected_cam in cams_disponibles else 0
+                            )
+                            # Recargar video según la cámara elegida
+                            selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
+                            if selected_video_paths:
+                                with z.open(selected_video_paths[0]) as vfile:
+                                    video_bytes = vfile.read()
+                                uploaded_video = io.BytesIO(video_bytes)
+
+
                             st.video(uploaded_video, loop=True, muted=True)
 
                     
