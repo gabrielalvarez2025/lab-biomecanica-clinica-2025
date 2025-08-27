@@ -32,15 +32,16 @@ def main_opencap():
             # Lista de trials (sin ruta, solo nombre)
             trials = [os.path.splitext(os.path.basename(f))[0] for f in mot_files]
 
+            st.markdown("---")
+            
             col_trial_1, col_trial_2 = st.columns(2)
 
             with col_trial_1:
                 st.markdown("### Elige un Trial:")
-                # Selección de trial
-                selected_trial = st.selectbox("Selecciona el trial:", trials)
 
             with col_trial_2:
-                
+                # Selección de trial
+                selected_trial = st.selectbox("Selecciona el trial:", trials)
                 # --- Mostrar nombre de trial ---
                 st.success(f"✅ Trial seleccionado: {selected_trial}")
 
