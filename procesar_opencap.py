@@ -174,7 +174,11 @@ def main_opencap():
                             ))
 
                         fig.update_layout(
-                            title="Movimiento angular en el tiempo",
+                            title=dict(
+                                text="Movimiento angular en el tiempo",
+                                x=0.5,         # centra horizontalmente
+                                xanchor='center'  # ancla el título en el centro
+                            ),
                             xaxis_title="Tiempo (s)",
                             yaxis_title="Ángulo (°)",
                             template="plotly_white",
