@@ -96,38 +96,36 @@ def main_opencap():
 
 
                 def render_video(z, video_paths, cam_map, label="label", suffix=""):
-                    # Renderiza un segmented control que actualiza st.session_state
                     # Crear key seguro eliminando caracteres raros
                     safe_label = re.sub(r'\W+', '_', label.lower())
                     key_name = f"cam_key_{safe_label}_{suffix}"
 
-                    if 'cam_key_{label}' not in st.session_state:
-                        st.session_state.cam_key = list(cam_map.keys())[0]
-
-                    
+                    if key_name not in st.session_state:
+                        st.session_state[key_name] = list(cam_map.keys())[0]
 
                     cam_selected = st.segmented_control(
                         "Elige una cámara:",
                         list(cam_map.keys()),
-                        default=st.session_state.cam_key,
+                        default=st.session_state[key_name],
                         key=key_name,
                         width="stretch"
                     )
-                    
-                    # Actualizar el session_state
-                    st.session_state.cam_key = cam_selected
-                    selected_cam = cam_map[st.session_state.cam_key]
 
-                    # Cargar el video correspondiente
+                    # Actualizar session_state
+                    st.session_state[key_name] = cam_selected
+                    selected_cam = cam_map[st.session_state[key_name]]
+
+                    # Cargar video desde ZIP
                     selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
                     uploaded_video = None
                     if selected_video_paths:
                         with z.open(selected_video_paths[0]) as vfile:
                             video_bytes = vfile.read()
                         uploaded_video = io.BytesIO(video_bytes)
-                    
-                    st.video(uploaded_video, loop=True, muted=True, autoplay=True)
-                    
+
+                    # 👇 le damos un key único a cada video
+                    st.video(uploaded_video, loop=True, muted=True, autoplay=True, key=f"video_{safe_label}_{suffix}")
+
                     return uploaded_video
 
 
