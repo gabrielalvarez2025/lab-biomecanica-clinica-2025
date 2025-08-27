@@ -184,6 +184,7 @@ def main_opencap():
                             st.markdown(" ")
                             st.markdown(" ")
                             st.markdown(" ")
+                            # flechas cambiar Cam0 - Cam1 - Cam2
                             st.video(uploaded_video, loop=True, muted=True)
 
                     with col_plot_ang_2:
