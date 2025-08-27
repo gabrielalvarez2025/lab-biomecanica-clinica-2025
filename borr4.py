@@ -40,7 +40,7 @@ def main_opencap():
                 mot_path = [f for f in mot_files if os.path.basename(f).startswith(selected_trial)][0]
                 video_candidates = [
                     f for f in file_list 
-                    if f"Videos/Cam0" in f and f.endswith((".mp4", ".mov")) and os.path.basename(f).startswith(selected_trial)
+                    if f"Videos/Cam*" in f and f.endswith((".mp4", ".mov")) and os.path.basename(f).startswith(selected_trial)
                 ]
 
                 # --- Leer .mot ---
