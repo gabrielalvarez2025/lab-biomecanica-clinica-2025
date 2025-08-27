@@ -63,7 +63,7 @@ def main_opencap():
                 cam_map = {cam[-1]: cam for cam in cams_disponibles}
 
                 # Selectbox para elegir cámara (si hay)
-                selected_cam = cam_map[0]
+                selected_cam = list(cam_map.keys())[0]
 
 
 
