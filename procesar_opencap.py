@@ -7,115 +7,201 @@ import zipfile
 
 
 def main_opencap():
-    st.subheader("📦 Procesar carpeta completa de OpenCap (ZIP)")
+    st.subheader("Procesar archivo OpenCap (.mot)")
 
     st.markdown("""
-    1. Sube el **.zip** exportado de OpenCap (toda la carpeta comprimida).  
-    2. Selecciona el **trial** que quieres analizar.  
-    3. Se usará automáticamente el archivo `.mot` y el video de **Cam0** correspondientes.  
-    """)
+        1. Busca la carpeta: **📂 OpenSimData > 📂 Kinematics**.
+        2. Sube el archivo **📄 .mot** correspondiente al Trial que te interesa convertir/visualizar/analizar.
+                    
+        """)
 
-    uploaded_zip = st.file_uploader("📂 Sube el archivo ZIP de OpenCap", type=["zip"])
+    col_init1, col_init2 = st.columns(2)
 
-    if uploaded_zip is not None:
-        # Extraer lista de archivos dentro del ZIP
-        with zipfile.ZipFile(uploaded_zip, "r") as z:
-            file_list = z.namelist()
+    with col_init1:
+        uploaded_file = st.file_uploader("📂 Sube un archivo .mot exportado de OpenCap", type=["mot"])
+    with col_init2:
+        # --- Nueva sección: subir video ---
+        uploaded_video = st.file_uploader("📹 Si deseas, puedes incluir un *video* del gesto (Opcional)", type=["mp4", "mov", "avi", "mkv"])
 
-            # Buscar los .mot dentro de OpenSimData/Kinematics/
-            mot_files = [f for f in file_list if "OpenSimData/Kinematics/" in f and f.endswith(".mot")]
+    col1, col2 = st.columns(2)
 
-            if not mot_files:
-                st.error("⚠️ No se encontraron archivos .mot en la carpeta ZIP")
-                return
+    if uploaded_file is not None:
+            with col1:
+                st.success(f"✅ Archivo '{uploaded_file.name}' cargado")
+        
+    if uploaded_video is not None:
+        with col2:
+            st.success(f"✅ Video '{uploaded_video.name}' cargado")
+    
+    
+    if uploaded_file is not None:
+        
+        # Guardar el nombre base del archivo (sin extensión) para Excel
+        base_filename = os.path.splitext(uploaded_file.name)[0]
+        
+        # Leer todo el archivo como texto
+        file_content = uploaded_file.getvalue().decode("utf-8").splitlines()
 
-            # Lista de trials (sin ruta, solo nombre)
-            trials = [os.path.splitext(os.path.basename(f))[0] for f in mot_files]
+        # Buscar la línea con "endheader"
+        header_lines = 0
+        for i, line in enumerate(file_content):
+            if "endheader" in line:
+                header_lines = i + 1
+                break
 
-            # Selección de trial
-            selected_trial = st.selectbox("Selecciona el trial:", trials)
+        # Cortar todo hasta después de endheader
+        data_str = "\n".join(file_content[header_lines:])
+        data_buffer = io.StringIO(data_str)
 
-            if selected_trial:
-                # Obtener paths dentro del ZIP
-                mot_path = [f for f in mot_files if os.path.basename(f).startswith(selected_trial)][0]
-                video_candidates = [
-                    f for f in file_list 
-                    if f"Videos/Cam0" in f and f.endswith((".mp4", ".mov")) and os.path.basename(f).startswith(selected_trial)
-                ]
+        # Leer el contenido como dataframe separado por espacios
+        df = pd.read_csv(data_buffer, delimiter=r"\s+", engine="python")
 
-                # --- Leer .mot ---
-                with z.open(mot_path) as mot_file:
-                    file_content = mot_file.read().decode("utf-8").splitlines()
+        
 
-                # Cortar hasta endheader
-                header_lines = 0
-                for i, line in enumerate(file_content):
-                    if "endheader" in line:
-                        header_lines = i + 1
-                        break
-                data_str = "\n".join(file_content[header_lines:])
-                data_buffer = io.StringIO(data_str)
+        
+            
+        
+        esp_boton_1, col_boton, esp_boton_2 = st.columns(3)
 
-                df = pd.read_csv(data_buffer, delimiter=r"\s+", engine="python")
+        with col_boton:
+            # --- Botón para descargar DataFrame como Excel ---
+            towrite = io.BytesIO()
+            df.to_excel(towrite, index=False, engine='openpyxl')
+            towrite.seek(0)
 
-                # --- Mostrar nombre de trial ---
-                st.success(f"✅ Trial seleccionado: {selected_trial}")
+            st.download_button(
+                label="📥 Descargar Excel",
+                data=towrite,
+                file_name=f"{base_filename}.xlsx",  # mismo nombre del archivo original
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                use_container_width=True
+            )
 
-                # --- Descargar Excel ---
-                towrite = io.BytesIO()
-                df.to_excel(towrite, index=False, engine="openpyxl")
-                towrite.seek(0)
-                st.download_button(
-                    label="📥 Descargar Excel",
-                    data=towrite,
-                    file_name=f"{selected_trial}.xlsx",
-                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                    use_container_width=True
+        # Mostrar preview
+        st.markdown("### Vista previa del DataFrame")
+        st.dataframe(df, hide_index=True)
+
+        
+        
+
+        # Selección de columnas para graficar
+        st.markdown("### Gráfico Ángulo vs Tiempo")
+        y_cols = st.multiselect(
+            "Selecciona una o varias columnas (eje Y):",
+            options=df.columns[1:],  # excluye la primera (tiempo)
+            default=[],
+            placeholder="Elige una articulación..."
+        )
+        
+        
+
+        if y_cols:
+
+            if uploaded_video is not None:
+                col_plot1, col_plot2 = st.columns([1, 3])
+            else:
+                col_plot2, = st.columns(1)   # 👈 importante: la coma para desempaquetar
+
+            if uploaded_video is not None:
+                with col_plot1:
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.video(uploaded_video, loop=True, muted=True)
+            
+            with col_plot2:
+                # Crear figura con todas las columnas seleccionadas
+                fig = go.Figure()
+                for col in y_cols:
+                    fig.add_trace(go.Scatter(
+                        x=df[df.columns[0]],
+                        y=df[col],
+                        mode='lines',
+                        name=col
+                    ))
+
+                fig.update_layout(
+                    title="Movimiento angular en el tiempo",
+                    xaxis_title="Tiempo (s)",
+                    yaxis_title="Ángulo (°)",
+                    template="plotly_white",
+                    legend=dict(
+                        x=0.79,   # posición horizontal (0 = izq, 1 = der)
+                        y=1.3,   # posición vertical (0 = abajo, 1 = arriba)
+                        bgcolor="rgba(255,255,255,0.2)",  # fondo semi-transparente
+                        bordercolor="black",
+                        borderwidth=1
+                    )
                 )
 
-                # --- Mostrar DataFrame ---
-                st.markdown("### Vista previa del DataFrame")
-                st.dataframe(df, hide_index=True)
+                st.plotly_chart(fig, use_container_width=True)
 
-                # --- Mostrar video (si existe) ---
-                uploaded_video = None
-                if video_candidates:
-                    video_path = video_candidates[0]
-                    with z.open(video_path) as vfile:
-                        video_bytes = vfile.read()
-                    uploaded_video = io.BytesIO(video_bytes)
+        
+
+        
+        ####
+
+        # Selección de columnas para graficar ángulo-ángulo
+        st.markdown("---")
+        st.markdown("### Gráfico Ángulo-Ángulo")
+
+        col_angle_1, col_angle_2 = st.columns(2)
+
+        with col_angle_1:
+            eje_x = st.selectbox(
+                "Selecciona la columna para el eje X:",
+                options=df.columns[1:],  # excluye la primera (tiempo)
+                placeholder="Selecciona una articulación para el Eje X...",
+                index=None
+            )
+
+        with col_angle_2:
+            eje_y = st.selectbox(
+                "Selecciona la columna para el eje Y:",
+                options=df.columns[1:],
+                index=None,
+                placeholder="Selecciona una articulación para el Eje Y..."
+            )
+
+        
+        if eje_x and eje_y:
+
+            if uploaded_video is not None:
+                col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
+            else:
+                col_plot_ang_2, = st.columns(1)   # 👈 importante: la coma para desempaquetar
+
+            if uploaded_video is not None:
+                with col_plot_ang_1:
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.markdown(" ")
+                    st.markdown(" ")
                     st.video(uploaded_video, loop=True, muted=True)
 
-                # --- Graficar ---
-                st.markdown("### Gráfico Ángulo vs Tiempo")
-                y_cols = st.multiselect(
-                    "Selecciona una o varias columnas (eje Y):",
-                    options=df.columns[1:],
-                    default=[],
-                    placeholder="Elige una articulación..."
+            with col_plot_ang_2:
+            
+                fig = go.Figure()
+                fig.add_trace(go.Scatter(
+                    x=df[eje_x],
+                    y=df[eje_y],
+                    mode='lines',   
+                    name=f"{eje_y} vs {eje_x}"
+                ))
+
+                fig.update_layout(
+                    title=f"Gráfico Ángulo–Ángulo   ({eje_y}   vs   {eje_x})",
+                    xaxis_title=eje_x,
+                    yaxis_title=eje_y,
+                    template="plotly_white",
+                    yaxis=dict(scaleanchor="x", scaleratio=1)  # 🔹 Mantener proporciones cuadradas
                 )
 
-                if y_cols:
-                    fig = go.Figure()
-                    for col in y_cols:
-                        fig.add_trace(go.Scatter(
-                            x=df[df.columns[0]],
-                            y=df[col],
-                            mode="lines",
-                            name=col
-                        ))
-
-                    fig.update_layout(
-                        title="Movimiento angular en el tiempo",
-                        xaxis_title="Tiempo (s)",
-                        yaxis_title="Ángulo (°)",
-                        template="plotly_white",
-                        legend=dict(
-                            x=0.79,
-                            y=1.3,
-                            bgcolor="rgba(255,255,255,0.2)",
-                            bordercolor="black",
-                            borderwidth=1
-                        )
-                    )
-                    st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, use_container_width=True)
+    
+    
