@@ -88,7 +88,7 @@ def main_opencap():
                     
 
                     cam_selected = st.segmented_control(
-                        "Elige una cámara:",
+                        label,
                         list(cam_map.keys()),
                         default=st.session_state.cam_key,
                         key=key_name,
