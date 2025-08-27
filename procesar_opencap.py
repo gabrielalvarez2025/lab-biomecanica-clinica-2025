@@ -116,7 +116,7 @@ def main_opencap():
                     )
 
                     # Actualizar sesión
-                    st.session_state[cam_key_name] = cam_selected
+                    #st.session_state[cam_key_name] = cam_selected
                     selected_cam = cam_map[cam_selected]
 
                     # Filtrar video según cámara
