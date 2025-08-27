@@ -132,30 +132,32 @@ def main_opencap():
                     placeholder="Elige una articulación..."
                 )
 
-                def video_lateral():
+                def video_lateral(z, video_paths, cam_map):
                     st.markdown(" ")
-                    
-                    # --- mover selectbox acá ---
-                    selected_cam = st.segmented_control(
+
+                    # Segment control con claves simples
+                    selected_key = st.segmented_control(
                         "Selecciona la cámara:",
                         list(cam_map.keys()),
                         default=list(cam_map.keys())[0],
                         width="stretch"
                     )
-                    # Recargar video según la cámara elegida
-                    # 🔹 Mapear al nombre completo
-                    selected_cam = cam_map[selected_cam]
 
-                    # Recargar video según la cámara elegida
+                    # Mapear a nombre completo
+                    selected_cam = cam_map[selected_key]
+
+                    # Buscar el video correspondiente
                     selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
-                    
+
                     if selected_video_paths:
                         with z.open(selected_video_paths[0]) as vfile:
                             video_bytes = vfile.read()
                         uploaded_video = io.BytesIO(video_bytes)
 
+                        st.video(uploaded_video, loop=True, muted=True)
+                        return uploaded_video
 
-                    st.video(uploaded_video, loop=True, muted=True)
+                    return None
 
                 if y_cols:
 
@@ -167,7 +169,7 @@ def main_opencap():
                     
                     if uploaded_video is not None:
                         with col_plot1:
-                            video_lateral()
+                            uploaded_video = video_lateral(z, video_paths, cam_map)
                             
 
                     
