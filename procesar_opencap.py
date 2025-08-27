@@ -66,7 +66,8 @@ def main_opencap():
                 label="📥 Descargar Excel",
                 data=towrite,
                 file_name=f"{base_filename}.xlsx",  # mismo nombre del archivo original
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                use_container_width=True
             )
 
         # Mostrar preview
