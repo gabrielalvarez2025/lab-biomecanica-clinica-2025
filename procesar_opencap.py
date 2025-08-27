@@ -12,7 +12,7 @@ def main_opencap():
     st.markdown("""
     1. Sube el **.zip** exportado de OpenCap (toda la carpeta comprimida).  
     2. Selecciona el **trial** que quieres analizar.  
-    3. Se usará automáticamente el archivo `.mot` y el video de **Cam0** correspondientes.  
+    3. Se usará automáticamente el archivo **.mot** correspondiente al trial.  
     """)
 
     uploaded_zip = st.file_uploader("📂 Sube el archivo ZIP de OpenCap", type=["zip"])
