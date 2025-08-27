@@ -143,11 +143,6 @@ def main_opencap():
                     if uploaded_video is not None:
                         with col_plot1:
                             st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
                             
                             # --- mover selectbox acá ---
                             selected_cam = st.segmented_control(
