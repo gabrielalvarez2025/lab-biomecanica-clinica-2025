@@ -60,7 +60,7 @@ def main_opencap():
                 ]
 
                 # Antes de llamar a render_video
-                uploaded_video = None
+                
                 
                 def get_cam_name(p: str):
                     """Devuelve 'Cam0', 'Cam1', ... a partir de una ruta dentro del ZIP."""
