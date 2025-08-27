@@ -96,37 +96,42 @@ def main_opencap():
 
 
                 def render_video(z, video_paths, cam_map, label="label", suffix=""):
-                    # Crear key seguro eliminando caracteres raros
-                    safe_label = re.sub(r'\W+', '_', label.lower())
-                    key_name = f"cam_key_{safe_label}_{suffix}"
+                    
 
-                    if key_name not in st.session_state:
-                        st.session_state[key_name] = list(cam_map.keys())[0]
+                    # Crear un nombre seguro para el label
+                    safe_label = re.sub(r'\W+', '_', label.lower())
+                    
+                    # Key base para la selección de cámara
+                    cam_key_name = f"cam_key_{safe_label}_{suffix}"
+
+                    if cam_key_name not in st.session_state:
+                        st.session_state[cam_key_name] = list(cam_map.keys())[0]
 
                     cam_selected = st.segmented_control(
                         "Elige una cámara:",
                         list(cam_map.keys()),
-                        default=st.session_state[key_name],
-                        key=key_name,
+                        default=st.session_state[cam_key_name],
+                        key=cam_key_name,
                         width="stretch"
                     )
 
-                    # Selección de cámara
-                    selected_cam = cam_map[st.session_state[key_name]]
+                    # Actualizar sesión
+                    st.session_state[cam_key_name] = cam_selected
+                    selected_cam = cam_map[cam_selected]
 
-                    # Cargar video desde ZIP
+                    # Filtrar video según cámara
                     selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
                     uploaded_video = None
                     if selected_video_paths:
                         with z.open(selected_video_paths[0]) as vfile:
                             video_bytes = vfile.read()
                         uploaded_video = io.BytesIO(video_bytes)
+                        uploaded_video.name = f"{safe_label}_{suffix}_{cam_selected}.mp4"
 
-                        # 👇 importante: darle un nombre único al objeto
-                        uploaded_video.name = f"{safe_label}_{suffix}.mp4"
+                        # Crear key único para el video combinando label+sufijo+cámara
+                        video_key = f"video_{safe_label}_{suffix}_{cam_selected}"
 
-                    # Mostrar video (sin key → ya no lanza error)
-                    if uploaded_video is not None:
+                        # Renderizar video
                         st.video(uploaded_video, loop=True, muted=True, autoplay=True, width="stretch")
 
                     return uploaded_video
