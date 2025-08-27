@@ -150,7 +150,8 @@ def main_opencap():
                             selected_cam = st.segmented_control(
                                 "Selecciona cámara:",
                                 cams_disponibles,
-                                default=cams_disponibles[0]
+                                default=cams_disponibles[0],
+                                width=1
                             )
                             # Recargar video según la cámara elegida
                             selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
