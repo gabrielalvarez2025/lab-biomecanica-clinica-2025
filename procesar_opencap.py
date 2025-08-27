@@ -59,6 +59,9 @@ def main_opencap():
                     and os.path.basename(f).startswith(selected_trial)  # p.ej. trial.mp4
                 ]
 
+                # Antes de llamar a render_video
+                uploaded_video = None
+                
                 def get_cam_name(p: str):
                     """Devuelve 'Cam0', 'Cam1', ... a partir de una ruta dentro del ZIP."""
                     parts = p.split("/")  # en ZIP siempre '/'
