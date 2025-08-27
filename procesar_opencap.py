@@ -110,7 +110,7 @@ def main_opencap():
                     ))
 
                 fig.update_layout(
-                    title="Curvas seleccionadas",
+                    title="Movimiento angular en el tiempo",
                     xaxis_title="Tiempo (s)",
                     yaxis_title="Ángulo (°)",
                     template="plotly_white",
