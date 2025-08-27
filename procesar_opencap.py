@@ -124,13 +124,12 @@ def main_opencap():
                         with z.open(selected_video_paths[0]) as vfile:
                             video_bytes = vfile.read()
                         uploaded_video = io.BytesIO(video_bytes)
-                        uploaded_video.name = f"{safe_label}_{suffix}_{cam_selected}.mp4"
+                        uploaded_video.name = f"video_{safe_label}_{suffix}.mp4"
 
                         # Key único para el video combinando label + sufijo + cámara
                         video_key = f"video_{safe_label}_{suffix}_{cam_selected}"
 
-                        # Renderizar video con key único
-                        st.video(uploaded_video, loop=True, muted=True, autoplay=True, width="stretch")
+                    st.video(uploaded_video, loop=True, muted=True, autoplay=True, format="video/mp4")
 
                     return uploaded_video
 
