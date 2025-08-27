@@ -59,7 +59,6 @@ def main_opencap():
                     and os.path.basename(f).startswith(selected_trial)  # p.ej. trial.mp4
                 ]
 
-                # Antes de llamar a render_video
                 
                 
                 def get_cam_name(p: str):
@@ -81,15 +80,12 @@ def main_opencap():
 
 
                 def render_video(z, video_paths, cam_map, label="label"):
+                    # Renderiza un segmented control que actualiza st.session_state
                     key_name = f"cam_key_{label}"  # clave única para Streamlit
-                    
-                    # Siempre asumimos que hay video, default = cámara 1
                     if 'cam_key' not in st.session_state:
-                        st.session_state.cam_key = 1  # cámara 1 por defecto
-
-                    # Si la cámara 1 no existe, usamos la primera disponible
-                    if st.session_state.cam_key not in cam_map:
                         st.session_state.cam_key = list(cam_map.keys())[0]
+
+                    
 
                     cam_selected = st.segmented_control(
                         "Elige una cámara:",
@@ -99,11 +95,11 @@ def main_opencap():
                         width="stretch"
                     )
                     
-                    # Actualizar session_state
+                    # Actualizar el session_state
                     st.session_state.cam_key = cam_selected
                     selected_cam = cam_map[st.session_state.cam_key]
 
-                    # Cargar el video
+                    # Cargar el video correspondiente
                     selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
                     uploaded_video = None
                     if selected_video_paths:
@@ -240,14 +236,10 @@ def main_opencap():
                 
                 if eje_x and eje_y:
 
-                    if uploaded_video is not None:
-                        col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
-                    else:
-                        col_plot_ang_2, = st.columns(1)   # 👈 importante: la coma para desempaquetar
+                    col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
 
-                    if uploaded_video is not None:
-                        with col_plot_ang_1:
-                            uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo–Ángulo")
+                    with col_plot_ang_1:
+                        uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo–Ángulo")
 
                     with col_plot_ang_2:
                     
