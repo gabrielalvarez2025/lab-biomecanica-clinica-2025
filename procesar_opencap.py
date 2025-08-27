@@ -110,7 +110,7 @@ def main_opencap():
                     st.markdown(" ")
                     st.markdown(" ")
                     st.markdown(" ")
-                    st.video(uploaded_video)
+                    st.video(uploaded_video, loop=True, muted=True)
             
             with col_plot2:
                 # Crear figura con todas las columnas seleccionadas
@@ -182,7 +182,7 @@ def main_opencap():
                     st.markdown(" ")
                     st.markdown(" ")
                     st.markdown(" ")
-                    st.video(uploaded_video)
+                    st.video(uploaded_video, loop=True, muted=True)
 
             with col_plot_ang_2:
             
