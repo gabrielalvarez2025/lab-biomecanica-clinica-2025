@@ -195,7 +195,7 @@ def main_opencap():
                 ))
 
                 fig.update_layout(
-                    title=f"Gráfico Ángulo–Ángulo\n({eje_y} vs {eje_x})",
+                    title=f"Gráfico Ángulo–Ángulo\nj({eje_y} vs {eje_x})",
                     xaxis_title=eje_x,
                     yaxis_title=eje_y,
                     template="plotly_white",
