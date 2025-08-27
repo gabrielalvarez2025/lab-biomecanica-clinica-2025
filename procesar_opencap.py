@@ -170,7 +170,7 @@ def main_opencap():
         if eje_x and eje_y:
 
             if uploaded_video is not None:
-                col_plot_ang_1, col_plot_ang_2 = st.columns([2, 3])
+                col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
             else:
                 col_plot_ang_2, = st.columns(1)   # 👈 importante: la coma para desempaquetar
 
