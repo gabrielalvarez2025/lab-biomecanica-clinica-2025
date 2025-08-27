@@ -154,7 +154,7 @@ def main_opencap():
                 
                 # --- Graficar ---
 
-                st.markdown("hola")
+                st.markdown("---")
 
                 # Selección de columnas para graficar en el tiempo
                 st.markdown("### Gráfico Ángulo vs Tiempo")
