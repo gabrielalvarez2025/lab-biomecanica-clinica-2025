@@ -23,6 +23,17 @@ def main_opencap():
         # --- Nueva sección: subir video ---
         uploaded_video = st.file_uploader("📹 Si deseas, puedes incluir un *video* del gesto (Opcional)", type=["mp4", "mov", "avi", "mkv"])
 
+    col1, col2 = st.columns(2)
+
+    if uploaded_file is not None:
+            with col1:
+                st.success(f"✅ Archivo '{uploaded_file.name}' cargado")
+        
+    if uploaded_video is not None:
+        with col2:
+            st.success(f"✅ Video '{uploaded_video.name}' cargado")
+    
+    
     if uploaded_file is not None:
         
         # Guardar el nombre base del archivo (sin extensión) para Excel
@@ -45,15 +56,9 @@ def main_opencap():
         # Leer el contenido como dataframe separado por espacios
         df = pd.read_csv(data_buffer, delimiter=r"\s+", engine="python")
 
-        col1, col2 = st.columns(2)
-
-        if uploaded_file is not None:
-            with col1:
-                st.success(f"✅ Archivo '{uploaded_file.name}' cargado")
         
-        if uploaded_video is not None:
-            with col2:
-                st.success(f"✅ Video '{uploaded_video.name}' cargado")
+
+        
             
         
         esp_boton_1, col_boton, esp_boton_2 = st.columns(3)
