@@ -71,7 +71,7 @@ def main_opencap():
                     if 'cam_key' not in st.session_state:
                         st.session_state.cam_key = list(cam_map.keys())[0]
 
-                    
+                    st.markdown(" ")
 
                     cam_selected = st.segmented_control(
                         None,
