@@ -124,7 +124,7 @@ def main_opencap():
                         uploaded_video = io.BytesIO(video_bytes)
 
                     # 👇 le damos un key único a cada video
-                    st.video(uploaded_video, loop=True, muted=True, autoplay=True)
+                    st.video(uploaded_video, loop=True, muted=True, autoplay=True, key=f"video_{safe_label}_{suffix}")
 
                     return uploaded_video
 
