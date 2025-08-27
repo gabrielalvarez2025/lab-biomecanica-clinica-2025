@@ -163,13 +163,7 @@ def main_opencap():
                             
                             st.markdown(" ")
                             
-                            # --- selectbox cam ---
-                            selected_cam = st.segmented_control(
-                                "Selecciona la cámara:",
-                                list(cam_map.keys()),
-                                default=list(cam_map.keys())[0],
-                                width="stretch"
-                            )
+                            
                             
                             st.video(uploaded_video, loop=True, muted=True)
 
