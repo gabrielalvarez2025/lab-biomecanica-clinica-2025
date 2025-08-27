@@ -81,12 +81,15 @@ def main_opencap():
 
 
                 def render_video(z, video_paths, cam_map, label="label"):
-                    # Renderiza un segmented control que actualiza st.session_state
                     key_name = f"cam_key_{label}"  # clave única para Streamlit
-                    if 'cam_key' not in st.session_state:
-                        st.session_state.cam_key = list(cam_map.keys())[0]
-
                     
+                    # Siempre asumimos que hay video, default = cámara 1
+                    if 'cam_key' not in st.session_state:
+                        st.session_state.cam_key = 1  # cámara 1 por defecto
+
+                    # Si la cámara 1 no existe, usamos la primera disponible
+                    if st.session_state.cam_key not in cam_map:
+                        st.session_state.cam_key = list(cam_map.keys())[0]
 
                     cam_selected = st.segmented_control(
                         "Elige una cámara:",
@@ -96,11 +99,11 @@ def main_opencap():
                         width="stretch"
                     )
                     
-                    # Actualizar el session_state
+                    # Actualizar session_state
                     st.session_state.cam_key = cam_selected
                     selected_cam = cam_map[st.session_state.cam_key]
 
-                    # Cargar el video correspondiente
+                    # Cargar el video
                     selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
                     uploaded_video = None
                     if selected_video_paths:
