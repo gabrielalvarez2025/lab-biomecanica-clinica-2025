@@ -129,7 +129,7 @@ def main_opencap():
                         # Key único para el video combinando label + sufijo + cámara
                         video_key = f"video_{safe_label}_{suffix}_{cam_selected}"
 
-                    st.video(uploaded_video, loop=True, muted=True, autoplay=True, format="video/mp4")
+                        st.video(uploaded_video, loop=True, muted=True, autoplay=True, format="video/mp4")
 
                     return uploaded_video
 
