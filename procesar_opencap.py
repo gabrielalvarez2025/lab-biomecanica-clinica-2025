@@ -155,6 +155,10 @@ def main_opencap():
                     col_plot1, col_plot2 = st.columns([1, 3])
                     
                     with col_plot1:
+                        st.markdown(" ")
+                        st.markdown(" ")
+                        st.markdown(" ")
+                        st.markdown(" ")
                         uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo")
 
 
