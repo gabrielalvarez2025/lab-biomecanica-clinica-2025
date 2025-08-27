@@ -58,6 +58,9 @@ def main_opencap():
 
                 # Lista única de cámaras disponibles
                 cams_disponibles = sorted({get_cam_name(p) for p in video_paths if get_cam_name(p)})
+                
+                # Crear un mapeo: ultimo caracter → nombre completo
+                cam_map = {int(cam[-1])+1: cam for cam in cams_disponibles}
 
                 # Selectbox para elegir cámara (si hay)
                 selected_cam = st.selectbox(
@@ -132,7 +135,7 @@ def main_opencap():
                 if y_cols:
 
                     if uploaded_video is not None:
-                        col_plot1, col_plot2 = st.columns([20, 80])
+                        col_plot1, col_plot2 = st.columns([1, 3])
                     else:
                         col_plot2, = st.columns(1)   # 👈 importante: la coma para desempaquetar
 
@@ -149,8 +152,8 @@ def main_opencap():
                             # --- mover selectbox acá ---
                             selected_cam = st.segmented_control(
                                 "Selecciona cámara:",
-                                cams_disponibles,
-                                default=cams_disponibles[0]
+                                list(cam_map.keys()),
+                                default=list(cam_map.keys())[0]
                             )
                             # Recargar video según la cámara elegida
                             selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
