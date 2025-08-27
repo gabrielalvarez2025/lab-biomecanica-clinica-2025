@@ -38,11 +38,24 @@ def main_opencap():
             if selected_trial:
                 # Obtener paths dentro del ZIP
                 mot_path = [f for f in mot_files if os.path.basename(f).startswith(selected_trial)][0]
-                video_candidates = [
-                    f for f in file_list 
-                    if f"Videos/Cam1" in f and f.endswith((".mp4", ".mov")) and os.path.basename(f).startswith(selected_trial)
-                ]
+                
+                
+                # --- Buscar todas las cámaras disponibles para este trial ---
+                cam_paths = [f for f in file_list if "Videos/" in f and f.endswith((".mp4", ".mov")) 
+                            and os.path.basename(f).startswith(selected_trial)]
+                # Obtener lista única de cámaras (Cam0, Cam1, ...)
+                cams_disponibles = sorted(list({f.split("/")[1] for f in cam_paths}))  # toma 'Cam0', 'Cam1', etc.
+                # --- Selectbox para elegir la cámara ---
+                selected_cam = st.selectbox("Selecciona la cámara del video:", cams_disponibles)
 
+                # --- Filtrar el video correspondiente a la cámara seleccionada ---
+                video_candidates = [f for f in cam_paths if selected_cam in f]
+
+
+
+
+
+                
                 # --- Leer .mot ---
                 with z.open(mot_path) as mot_file:
                     file_content = mot_file.read().decode("utf-8").splitlines()
