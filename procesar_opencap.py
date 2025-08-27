@@ -9,16 +9,17 @@ import zipfile
 def main_opencap():
     st.subheader("📦 Procesar carpeta completa de OpenCap (ZIP)")
 
-    st.markdown("""
-    1. Sube el **.zip** exportado de OpenCap (toda la carpeta comprimida).  
-    2. Selecciona el **trial** que quieres analizar.  
-    3. Se usará automáticamente el archivo **.mot** correspondiente al trial.  
-    """)
+    
 
     col_zip_1, col_zip_2 = st.columns(2)
 
     with col_zip_1:
         st.markdown("### Sube una carpeta ZIP:")
+        st.markdown("""
+        1. Sube el **.zip** exportado de OpenCap (toda la carpeta comprimida).  
+        2. Selecciona el **trial** que quieres analizar.  
+        3. Se usará automáticamente el archivo **.mot** correspondiente al trial.  
+        """)
     with col_zip_2:
         uploaded_zip = st.file_uploader("📂 Sube el archivo ZIP de OpenCap", type=["zip"])
 
