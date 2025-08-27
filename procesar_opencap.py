@@ -18,7 +18,7 @@ def main_opencap():
     with col_zip_1:
         st.markdown("### Sube una carpeta ZIP:")
         st.markdown("""
-        1. Sube el **.zip** exportado de OpenCap (toda la carpeta comprimida).  
+        1. Sube el **.zip** exportado de OpenCap.  
         2. Selecciona el **trial** que quieres analizar.  
         3. Se usará automáticamente el archivo **.mot** correspondiente al trial.  
         """)
