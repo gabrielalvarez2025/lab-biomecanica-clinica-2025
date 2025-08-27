@@ -157,7 +157,12 @@ def main_opencap():
                                 width="stretch"
                             )
                             # Recargar video según la cámara elegida
+                            # 🔹 Mapear al nombre completo
+                            selected_cam = cam_map[selected_cam_short]
+
+                            # Recargar video según la cámara elegida
                             selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
+                            
                             if selected_video_paths:
                                 with z.open(selected_video_paths[0]) as vfile:
                                     video_bytes = vfile.read()
