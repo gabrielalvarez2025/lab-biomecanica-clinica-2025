@@ -170,10 +170,6 @@ def main_opencap():
                     if uploaded_video is not None:
                         with col_plot1:
                             
-                            st.markdown(" ")
-                            
-                            
-                            
                             uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo")
 
 
@@ -236,14 +232,7 @@ def main_opencap():
 
                     if uploaded_video is not None:
                         with col_plot_ang_1:
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            # flechas cambiar Cam0 - Cam1 - Cam2
-                            st.video(uploaded_video, loop=True, muted=True)
+                            uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo–Ángulo")
 
                     with col_plot_ang_2:
                     
