@@ -32,8 +32,14 @@ def main_opencap():
             # Lista de trials (sin ruta, solo nombre)
             trials = [os.path.splitext(os.path.basename(f))[0] for f in mot_files]
 
-            # Selección de trial
-            selected_trial = st.selectbox("Selecciona el trial:", trials)
+            col_trial_1, col_trial_2 = st.columns(2)
+
+            with col_trial_1:
+                st.markdown("### Elige un Trial:")
+
+            with col_trial_2:
+                # Selección de trial
+                selected_trial = st.selectbox("Selecciona el trial:", trials)
 
             if selected_trial:
                 # Obtener paths dentro del ZIP
