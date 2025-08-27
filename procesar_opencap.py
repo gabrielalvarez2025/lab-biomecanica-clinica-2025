@@ -44,6 +44,8 @@ def main_opencap():
                 selected_trial = st.selectbox("Selecciona el trial:", trials)
                 # --- Mostrar nombre de trial ---
                 st.success(f"✅ Trial seleccionado: {selected_trial}")
+            
+            st.markdown("---")
 
             if selected_trial:
                 # Obtener paths dentro del ZIP
