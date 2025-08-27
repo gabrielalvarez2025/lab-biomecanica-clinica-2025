@@ -138,16 +138,7 @@ def main_opencap():
                 st.markdown("### Vista previa del DataFrame")
                 st.dataframe(df, hide_index=True)
 
-                # Cargar el video correspondiente a la cámara seleccionada
-                uploaded_video = None
-                if selected_cam:
-                    selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
-                    if selected_video_paths:
-                        with z.open(selected_video_paths[0]) as vfile:
-                            video_bytes = vfile.read()
-                        uploaded_video = io.BytesIO(video_bytes)
-                else:
-                    st.info("No se encontraron videos para este trial.")
+                
                 # --- Graficar ---
 
                 # Selección de columnas para graficar en el tiempo
