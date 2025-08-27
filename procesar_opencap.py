@@ -107,7 +107,7 @@ def main_opencap():
                             video_bytes = vfile.read()
                         uploaded_video = io.BytesIO(video_bytes)
                     
-                    st.video(uploaded_video, loop=True, muted=True)
+                    st.video(uploaded_video, loop=True, muted=True, autoplay=True)
                     
                     return uploaded_video
 
