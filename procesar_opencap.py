@@ -229,14 +229,7 @@ def main_opencap():
 
                     if uploaded_video is not None:
                         with col_plot_ang_1:
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            st.markdown(" ")
-                            # flechas cambiar Cam0 - Cam1 - Cam2
-                            st.video(uploaded_video, loop=True, muted=True)
+                            video_lateral()
 
                     with col_plot_ang_2:
                     
