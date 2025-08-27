@@ -86,7 +86,7 @@ def main_opencap():
 
                     # Renderizar control debajo del video
                     st.segmented_control(
-                        label,
+                        None,
                         list(cam_map.keys()),
                         default=st.session_state[key_name],
                         key=key_name,
