@@ -84,13 +84,13 @@ elif pagina == pag_bioinstrumentacion:
     mostrar(main_bioinstrumentacion, 1)
 
 elif pagina == pag_control_motor:
-    mostrar(main_control_motor, 0)
+    mostrar(main_control_motor, 1)
 
 elif pagina == pag_balance:
-    mostrar(main_balance, 0)
+    mostrar(main_balance, 1)
 
 elif pagina == pag_marcha:
-    mostrar(main_marcha, 0)
+    mostrar(main_marcha, 1)
 
 elif pagina == pag_instrucciones_opencap:
     mostrar(main_instrucciones_opencap, True)
