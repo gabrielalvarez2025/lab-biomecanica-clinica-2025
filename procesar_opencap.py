@@ -158,7 +158,7 @@ def main_opencap():
                         st.markdown(" ")
                         st.markdown(" ")
                         st.markdown(" ")
-                        st.markdown(" ")
+                        
                         uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo")
 
 
