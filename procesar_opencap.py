@@ -7,7 +7,7 @@ import zipfile
 
 
 def main_opencap():
-    st.subheader("📊 Procesar archivo OpenCap (.mot)")
+    st.subheader("Procesar archivo OpenCap (.mot)")
 
     st.markdown("""
         1. Busca la carpeta: **📂 OpenSimData > 📂 Kinematics**.
