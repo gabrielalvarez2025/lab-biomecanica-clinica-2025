@@ -66,33 +66,37 @@ def main_opencap():
 
 
                 def render_video(z, video_paths, cam_map, label="Selecciona la cámara:"):
-                    # Renderiza un segmented control que actualiza st.session_state
+                    # --- Determinar cámara seleccionada por default ---
                     key_name = f"cam_key_{label}"  # clave única para Streamlit
-                    if 'cam_key' not in st.session_state:
-                        st.session_state.cam_key = list(cam_map.keys())[0]
+                    if key_name not in st.session_state:
+                        st.session_state[key_name] = list(cam_map.keys())[0]
 
-                    cam_selected = st.segmented_control(
-                        "Elige una cámara:",
-                        list(cam_map.keys()),
-                        default=st.session_state.cam_key,
-                        key=key_name,
-                        width="stretch"
-                    )
-                    
-                    # Actualizar el session_state
-                    st.session_state.cam_key = cam_selected
-                    selected_cam = cam_map[st.session_state.cam_key]
+                    selected_cam = cam_map[st.session_state[key_name]]
 
-                    # Cargar el video correspondiente
+                    # --- Cargar el video correspondiente ---
                     selected_video_paths = [p for p in video_paths if get_cam_name(p) == selected_cam]
                     uploaded_video = None
                     if selected_video_paths:
                         with z.open(selected_video_paths[0]) as vfile:
                             video_bytes = vfile.read()
                         uploaded_video = io.BytesIO(video_bytes)
-                    
-                    st.video(uploaded_video, loop=True, muted=True)
-                    
+
+                    # --- Mostrar video primero ---
+                    if uploaded_video is not None:
+                        st.video(uploaded_video, loop=True, muted=True)
+
+                    # --- Mostrar control debajo del video ---
+                    cam_selected = st.segmented_control(
+                        label,
+                        list(cam_map.keys()),
+                        default=st.session_state[key_name],
+                        key=key_name,
+                        width="stretch"
+                    )
+
+                    # Actualizar sesión
+                    st.session_state[key_name] = cam_selected
+
                     return uploaded_video
 
 
