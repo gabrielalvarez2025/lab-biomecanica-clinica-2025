@@ -4,16 +4,16 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-from procesar_opencap import main_opencap
+from procesar_opencap import main_opencap as procesar_opencap
 
-
-def main_instrucciones_opencap():
+def instrucciones_opencap():
+    
     st.header("Instrucciones para el uso de OpenCap")
 
     st.markdown(
         """
-       En esta sección encontrarás las instrucciones para el uso de OpenCap, una herramienta de análisis del movimiento humano.
-       OpenCap es una plataforma que permite capturar datos cinemáticos a partir de videofotogrametría sin necesidad de marcadores.
+    En esta sección encontrarás las instrucciones para el uso de OpenCap, una herramienta de análisis del movimiento humano.
+    OpenCap es una plataforma que permite capturar datos cinemáticos a partir de videofotogrametría sin necesidad de marcadores.
         """
     )
 
@@ -161,7 +161,7 @@ def main_instrucciones_opencap():
             Coloca tus cámaras (iPhones, iPads, etc) alrededor del área de grabación. Usaremos la cámara trasera de tus dispositivos.
             
             **Todas la cámaras deben:**
-             
+            
             - Estar fijas, estáticas, idealmente en trípodes.
 
             - Orientarse para grabación vertical.
@@ -186,7 +186,7 @@ def main_instrucciones_opencap():
     st.markdown(
         """
         
-       
+    
 
         """
     )
@@ -196,9 +196,22 @@ def main_instrucciones_opencap():
 
     st.header("Convertir archivo OpenCap a Excel")
 
-    main_opencap()
-        
 
+def main_instrucciones_opencap():
+    
+    st.header("Aplicando videofotogrametría con OpenCap")
+
+    col_instrucciones, col_convertir = st.columns(2)
+
+    with col_instrucciones:
+        if st.button("Instrucciones para usar OpenCap"):
+            instrucciones_opencap()
+    
+    with col_convertir:
+        if st.button("Tabajemos con datos tomados con OpenCap"):
+            procesar_opencap()
+    
+    st.markdown("---")
 
     
     
