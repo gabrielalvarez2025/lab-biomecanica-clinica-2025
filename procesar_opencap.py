@@ -252,10 +252,13 @@ def main_opencap():
                 
                 if eje_x and eje_y:
 
-                    col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
+                    if video_paths:
+                        col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
 
-                    with col_plot_ang_1:
-                        uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo–Ángulo")
+                        with col_plot_ang_1:
+                            uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo–Ángulo")
+                    else:
+                        col_plot_ang_2, = st.columns(1)
 
                     with col_plot_ang_2:
                     
