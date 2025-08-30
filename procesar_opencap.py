@@ -8,10 +8,6 @@ import zipfile
 
 def main_opencap():
     
-    
-    st.markdown("---")
-
-    
     col_zip_1, col_zip_2 = st.columns(2)
 
     with col_zip_1:
