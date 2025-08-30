@@ -176,7 +176,7 @@ def main_opencap():
                 with col_text_tabla_1:
 
                     st.markdown("""
-                        Esto quiere decir que caturaste datos de imagen (videos) mediante una cámara y que utilizaste esos videos para calcular métricas cinemáticas.
+                        Esto quiere decir que capturaste datos de imagen (videos) mediante una cámara y que utilizaste esos videos para calcular métricas cinemáticas.
                         
                         En una VFG clásica, utilizarías herramientas digitales para tomar estas medidas a mano a partir de tu imagen: medir ángulos, distancias, calcular tiempos, estimar velocidades, etc.
                                 """)
