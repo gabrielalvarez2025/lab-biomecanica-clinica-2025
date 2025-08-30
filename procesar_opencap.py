@@ -191,21 +191,15 @@ def main_opencap():
 
                 if y_cols:
 
-                    if uploaded_video is not None:
+                    if video_paths is not []:
                         col_plot1, col_plot2 = st.columns([1, 3])
 
                         with col_plot1:
                             st.markdown(" ")
                             uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo")
 
-
                     else:
                         col_plot2, = st.columns(2)
-                    
-                    
-                    
-
-
                     
                     with col_plot2:
                         # Crear figura con todas las columnas seleccionadas
