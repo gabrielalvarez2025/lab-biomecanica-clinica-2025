@@ -199,7 +199,7 @@ def main_opencap():
                             uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo")
 
                     else:
-                        col_plot2, = st.columns(2)
+                        col_plot2, = st.columns(1)
                     
                     with col_plot2:
                         # Crear figura con todas las columnas seleccionadas
