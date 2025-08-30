@@ -173,8 +173,6 @@ def main_opencap():
                 with col_text_tabla_1:
 
                     st.markdown("""
-                        Esta es la tabla de datos capturados a través de OpenCap. 
-                                
                         La grabación que realizaste con OpenCap es un tipo de **videofotogramtería**. 
                                 
                         Esto quiere decir que caturaste datos de imagen (videos) mediante una cámara y que utilizaste esos videos para calcular métricas cinemáticas.
