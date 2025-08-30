@@ -189,7 +189,7 @@ def main_opencap():
                     towrite.seek(0)
                     
                     st.download_button(
-                        label="📥 Descargar Excel",
+                        label="📥 Descargar como Excel",
                         data=towrite,
                         file_name=f"{selected_trial}.xlsx",
                         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
