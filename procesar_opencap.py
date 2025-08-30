@@ -183,7 +183,7 @@ def main_opencap():
                 
                 with col_text_tabla_2:
                     st.markdown("""
-                        Uno de los beneficios de OpenCap es que automatiza el calculo de estas métricas a partir de los videos; ya no debes calcular estas medidas cinemáticas por tu cuenta, de forma manual, sino que el sistema te entrega directamente estas métricas ya calculadas.
+                        Uno de los beneficios de OpenCap es que automatiza el calculo de estas métricas a partir de los videos; ya no debes calcularlas de forma manual, sino que el sistema te entrega directamente estas métricas ya calculadas.
                                 
                         Específicamente, OpenCap calcula datos de ángulos articulares en el tiempo.
                                 """)
