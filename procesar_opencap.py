@@ -59,7 +59,7 @@ def main_opencap():
                 if selected_trial:
                     # --- Mostrar nombre de trial ---
                     st.success(f"✅ Trial seleccionado: **{selected_trial}**")
-                    st.markdown("<b>Puedes cambiarlo cuando desees.</b>")
+                    st.markdown("Puedes cambiarlo cuando desees.")
             
             st.markdown("---")
 
