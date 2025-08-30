@@ -167,6 +167,16 @@ def main_opencap():
 
                 # --- Mostrar DataFrame ---
                 st.markdown("### Vista previa de los datos")
+                st.markdown("""
+                    Esta es la tabla de datos capturados a través de OpenCap. La grabación que realizaste con OpenCap es un tipo de videofotogramtería. 
+                    Esto quiere decir que caturaste datos de imagen (videos) mediante una cámara y que utilizaste esos videos para calcular métricas cinemáticas.
+                    En una videofotogrametría clásica, utilizarías herramientas digitales para tomar estas medidas a mano: medir ángulos en tu imagen, medir distancias, calcular tiempos, estimar velocidades, etc.
+                    Uno de los beneficios de OpenCap es que automatiza el calculo de estas métricas a partir de los videos; ya no debes calcular estas medidas cinemáticas por tu cuenta, de forma manual, sino que el sistema te entrega directamente estas métricas ya calculadas.
+                            
+                    Específicamente, OpenCap calcula datos de ángulos articulares en el tiempo.
+                            
+                    A continuación, podrás ver los datos de ángulo articular (en grados) que OpenCap calculó para varias articulaciones. La primera columna muestra el instante de tiempo (en segundos) en que se obtuvo ese ángulo articular.
+                            """)
                 st.dataframe(df, hide_index=True)
 
                 
