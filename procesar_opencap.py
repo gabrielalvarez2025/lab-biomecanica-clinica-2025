@@ -191,7 +191,7 @@ def main_opencap():
 
                 if y_cols:
 
-                    if video_paths is not []:
+                    if video_paths is not None or []:
                         col_plot1, col_plot2 = st.columns([1, 3])
 
                         with col_plot1:
