@@ -289,6 +289,7 @@ def main_opencap():
                 # Comparando gráficos entre trials
                 st.markdown("---")
                 st.markdown("### Comparemos varios trials")
+                st.markdown(f"Ahora que revisaste cómo se comportan los datos de las articulaciones durante el trial que seleccionaste ({selected_trial}), puedes usar el selector de abajo para seleccionar múltiples trials y comparar cómo se comporta cada articulación entre diferentes trials.")
 
                 col_select_trial_1, col_select_trial_2 = st.columns(2)
 
