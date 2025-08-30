@@ -185,7 +185,7 @@ def main_opencap():
                     st.markdown("""
                         Uno de los beneficios de OpenCap es que automatiza el calculo de estas métricas a partir de los videos; ya no debes calcularlas de forma manual, sino que el sistema te las entrega directamente ya calculadas.
                                 
-                        Específicamente, OpenCap calcula datos de ángulos articulares en el tiempo.
+                        OpenCap calcula específicamente datos de **ángulos articulares** en el tiempo.
                                 """)
                     
                 st.markdown("A continuación, podrás ver los datos de ángulo articular (en grados) que OpenCap calculó para varias articulaciones. La primera columna muestra el instante de tiempo (en segundos) en que se obtuvo ese ángulo articular.")
