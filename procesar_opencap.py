@@ -177,6 +177,7 @@ def main_opencap():
 
                     st.markdown("""
                         Esto quiere decir que caturaste datos de imagen (videos) mediante una cámara y que utilizaste esos videos para calcular métricas cinemáticas.
+                        
                         En una videofotogrametría clásica, utilizarías herramientas digitales para tomar estas medidas a mano: medir ángulos en tu imagen, medir distancias, calcular tiempos, estimar velocidades, etc.
                                 """)
                 
