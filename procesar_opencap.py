@@ -167,14 +167,15 @@ def main_opencap():
 
                 # --- Mostrar DataFrame ---
                 st.markdown("### Vista previa de los datos")
+
+                st.markdown("La grabación que realizaste con OpenCap es un tipo de **videofotogramtería**. ")
+                
                 
                 col_text_tabla_1, col_text_tabla_2 = st.columns(2)
 
                 with col_text_tabla_1:
 
                     st.markdown("""
-                        La grabación que realizaste con OpenCap es un tipo de **videofotogramtería**. 
-                                
                         Esto quiere decir que caturaste datos de imagen (videos) mediante una cámara y que utilizaste esos videos para calcular métricas cinemáticas.
                         En una videofotogrametría clásica, utilizarías herramientas digitales para tomar estas medidas a mano: medir ángulos en tu imagen, medir distancias, calcular tiempos, estimar velocidades, etc.
                                 """)
