@@ -279,3 +279,71 @@ def main_opencap():
                         )
 
                         st.plotly_chart(fig, use_container_width=True)
+                
+                
+                # Comparando gráficos entre trials
+                st.markdown("---")
+                st.markdown("### Comparemos varios trials")
+
+                col_select_trial_1, col_select_trial_2 = st.columns(2)
+
+                with col_select_trial_1:
+                    selected_trials = st.multiselect(
+                        "Selecciona uno o varios trials para comparar:",
+                        options=trials,
+                        default=[selected_trial]  # por defecto el trial actual
+                    )
+
+                with col_select_trial_2:
+                    selected_joint = st.selectbox(
+                        "Selecciona una articulación (columna):",
+                        options=df.columns[1:],  # todas menos "time"
+                        index=None,
+                        placeholder="Elige una articulación..."
+                    )
+
+                if selected_trials and selected_joint:
+                    fig_compare = go.Figure()
+
+                    for trial in selected_trials:
+                        # Buscar .mot del trial
+                        mot_path_trial = [f for f in mot_files if os.path.basename(f).startswith(trial)][0]
+
+                        with z.open(mot_path_trial) as mot_file_trial:
+                            file_content_trial = mot_file_trial.read().decode("utf-8").splitlines()
+
+                        # Cortar header
+                        header_lines_trial = 0
+                        for i, line in enumerate(file_content_trial):
+                            if "endheader" in line:
+                                header_lines_trial = i + 1
+                                break
+
+                        data_str_trial = "\n".join(file_content_trial[header_lines_trial:])
+                        data_buffer_trial = io.StringIO(data_str_trial)
+
+                        df_trial = pd.read_csv(data_buffer_trial, delimiter=r"\s+", engine="python")
+
+                        # Agregar curva al gráfico
+                        fig_compare.add_trace(go.Scatter(
+                            x=df_trial[df_trial.columns[0]],  # tiempo
+                            y=df_trial[selected_joint],
+                            mode="lines",
+                            name=trial
+                        ))
+
+                    fig_compare.update_layout(
+                        title=f"Comparación de {selected_joint} entre Trials",
+                        xaxis_title="Tiempo (s)",
+                        yaxis_title="Ángulo (°)",
+                        template="plotly_white",
+                        legend=dict(
+                            x=0.8,
+                            y=1.1,
+                            bgcolor="rgba(255,255,255,0.3)",
+                            bordercolor="black",
+                            borderwidth=1
+                        )
+                    )
+
+                    st.plotly_chart(fig_compare, use_container_width=True)
