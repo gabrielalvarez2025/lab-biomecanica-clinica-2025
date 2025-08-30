@@ -285,7 +285,7 @@ def main_opencap():
                         col_plot_ang_1, col_plot_ang_2 = st.columns([1, 3])
 
                         with col_plot_ang_1:
-                            uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo–Ángulo")
+                            uploaded_video_2 = render_video(z, video_paths, cam_map, label="Ángulo–Ángulo")
                     else:
                         col_plot_ang_2, = st.columns(1)
 
