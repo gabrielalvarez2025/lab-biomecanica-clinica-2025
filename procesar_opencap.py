@@ -149,21 +149,7 @@ def main_opencap():
 
                 
 
-                # --- Descargar Excel ---
-                esp_boton_1, col_boton, esp_boton_2 = st.columns(3)
                 
-                with col_boton:
-                    towrite = io.BytesIO()
-                    df.to_excel(towrite, index=False, engine="openpyxl")
-                    towrite.seek(0)
-                    
-                    st.download_button(
-                        label="📥 Descargar Excel",
-                        data=towrite,
-                        file_name=f"{selected_trial}.xlsx",
-                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                        use_container_width=True
-                    )
 
                 # --- Mostrar DataFrame ---
                 st.markdown("### Vista previa de los datos")
@@ -193,6 +179,22 @@ def main_opencap():
 
 
                 st.dataframe(df, hide_index=True)
+
+                # --- Descargar Excel ---
+                esp_boton_1, col_boton, esp_boton_2 = st.columns(3)
+                
+                with col_boton:
+                    towrite = io.BytesIO()
+                    df.to_excel(towrite, index=False, engine="openpyxl")
+                    towrite.seek(0)
+                    
+                    st.download_button(
+                        label="📥 Descargar Excel",
+                        data=towrite,
+                        file_name=f"{selected_trial}.xlsx",
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        use_container_width=True
+                    )
 
                 
                 # --- Graficar ---
