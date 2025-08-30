@@ -196,8 +196,7 @@ def main_opencap():
 
                         with col_plot1:
                             st.markdown(" ")
-                            
-                            uploaded_video = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo")
+                            uploaded_video_1 = render_video(z, video_paths, cam_map, label="Ángulo vs Tiempo")
 
 
                     else:
