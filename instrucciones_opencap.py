@@ -192,10 +192,8 @@ def instrucciones_opencap():
     )
 
 
-    
 
-
-def main_instrucciones_opencap():
+def main_opencap():
     
     st.header("Aplicando videofotogrametría con OpenCap")
     st.markdown("---")
@@ -215,10 +213,12 @@ def main_instrucciones_opencap():
     
     st.markdown("---")
 
-    if show_instrucciones:
-        instrucciones_opencap()
-    if show_convertir:
-        procesar_opencap()
+    # 🔹 Persistencia de pantalla
+    if "pantalla" in st.session_state:
+        if st.session_state["pantalla"] == "instrucciones":
+            instrucciones_opencap()
+        elif st.session_state["pantalla"] == "procesar":
+            procesar_opencap()
 
     
     
