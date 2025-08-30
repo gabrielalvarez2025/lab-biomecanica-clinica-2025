@@ -258,7 +258,7 @@ def main_opencap():
                 
                 # Selección de columnas para graficar ángulo-ángulo
                 st.markdown("---")
-                st.markdown("### Gráfico Ángulo-Ángulo")
+                st.markdown("### Gráfico Ángulo-Ángulo (ciclograma)")
 
                 col_angle_1, col_angle_2 = st.columns(2)
 
