@@ -218,7 +218,7 @@ def main_opencap():
                             ))
 
                         fig.update_layout(
-                            title="Movimiento angular en el tiempo",
+                            title=f"Movimiento angular en el tiempo para {selected_trial}",
                             xaxis_title="Tiempo (s)",
                             yaxis_title="Ángulo (°)",
                             template="plotly_white",
