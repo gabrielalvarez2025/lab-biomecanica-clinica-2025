@@ -32,8 +32,13 @@ def main_opencap():
         with zipfile.ZipFile(uploaded_zip, "r") as z:
             file_list = z.namelist()
 
-            # Buscar los .mot dentro de OpenSimData/Kinematics/
-            mot_files = [f for f in file_list if "OpenSimData/Kinematics/" in f and f.endswith(".mot")]
+            # Buscar los .mot dentro de OpenSimData/Kinematics/ (excepto artefactos de re-comprimir en Mac, que comienzan con "._")
+            mot_files = [
+                f for f in file_list
+                if "OpenSimData/Kinematics/" in f
+                and f.endswith(".mot")
+                and not os.path.basename(f).startswith("._")  # ❌ ignorar artefactos
+            ]
 
             if not mot_files:
                 st.error("⚠️ No se encontraron archivos .mot en la carpeta ZIP")
