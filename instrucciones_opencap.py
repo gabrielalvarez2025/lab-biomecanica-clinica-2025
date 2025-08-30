@@ -192,9 +192,7 @@ def instrucciones_opencap():
     )
 
 
-    st.markdown("---")
-
-    st.header("Convertir archivo OpenCap a Excel")
+    
 
 
 def main_instrucciones_opencap():
