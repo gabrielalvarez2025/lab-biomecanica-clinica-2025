@@ -198,17 +198,25 @@ def main_opencap():
     st.header("Aplicando videofotogrametría con OpenCap")
     st.markdown("---")
 
-    
+    # inicializar estado si no existe
+    if "pantalla" not in st.session_state:
+        st.session_state["pantalla"] = None    
 
     col_instrucciones, col_convertir = st.columns(2)
 
     with col_instrucciones:
         if st.button("Instrucciones para usar OpenCap"):
-            st.session_state["pantalla"] = "instrucciones"
+            if st.session_state["pantalla"] == "instrucciones":
+                st.session_state["pantalla"] = None   # 🔹 toggle off
+            else:
+                st.session_state["pantalla"] = "instrucciones"
     
     with col_convertir:
-        if st.button("Tabajemos con datos tomados con OpenCap"):
-            st.session_state["pantalla"] = "procesar"
+        if st.button("Trabajemos con datos tomados con OpenCap"):
+            if st.session_state["pantalla"] == "procesar":
+                st.session_state["pantalla"] = None   # 🔹 toggle off
+            else:
+                st.session_state["pantalla"] = "procesar"
     
     st.markdown("---")
 
