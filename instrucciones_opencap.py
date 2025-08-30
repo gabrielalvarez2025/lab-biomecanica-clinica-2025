@@ -200,20 +200,27 @@ def instrucciones_opencap():
 def main_instrucciones_opencap():
     
     st.header("Aplicando videofotogrametría con OpenCap")
-
     st.markdown("---")
+
+    show_instrucciones = False
+    show_convertir = False
 
     col_instrucciones, col_convertir = st.columns(2)
 
     with col_instrucciones:
         if st.button("Instrucciones para usar OpenCap"):
-            instrucciones_opencap()
+            show_instrucciones = True
     
     with col_convertir:
         if st.button("Tabajemos con datos tomados con OpenCap"):
-            procesar_opencap()
+            show_convertir = True
     
     st.markdown("---")
+
+    if show_instrucciones:
+        instrucciones_opencap()
+    if show_convertir:
+        procesar_opencap()
 
     
     
