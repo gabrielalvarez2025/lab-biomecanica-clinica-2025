@@ -58,7 +58,7 @@ def main_opencap():
                 selected_trial = st.selectbox("Selecciona el trial:", trials, index=None, placeholder=None)
                 if selected_trial:
                     # --- Mostrar nombre de trial ---
-                    st.success(f"✅ Trial seleccionado: {selected_trial}")
+                    st.success(f"✅ Trial seleccionado: **{selected_trial}**")
             
             st.markdown("---")
 
