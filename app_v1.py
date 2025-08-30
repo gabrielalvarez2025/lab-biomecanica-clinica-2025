@@ -9,7 +9,7 @@ from pag_bioinstrumentacion import main_bioinstrumentacion
 from pag_control_motor import main_control_motor
 from pag_balance import main_balance
 from pag_marcha import main_marcha
-from instrucciones_opencap import main_instrucciones_opencap
+from pag_opencap import main_opencap
 
 
 def mostrar(func, mostrar: bool = True):
@@ -41,7 +41,7 @@ pag_balance             = "Sistema sensoriomotor y balance"
 pag_marcha              = "Análisis de marcha"
 
 # Paginas adicionales
-pag_instrucciones_opencap = "Instrucciones OpenCap"
+pag_opencap = "Aplicando VFG: OpenCap"
 
 
 
@@ -59,7 +59,7 @@ pagina = st.sidebar.radio("Selecciona una sección:", [
     pag_control_motor,
     pag_balance,
     pag_marcha,
-    pag_instrucciones_opencap
+    pag_opencap
 ])
 
 st.sidebar.markdown("---")  # línea horizontal para separar
@@ -69,7 +69,7 @@ query_params = st.query_params
 pagina_url = query_params.get("page", None)
 
 if pagina_url == "opencap":
-    pagina = pag_instrucciones_opencap
+    pagina = pag_opencap
 
 
 
@@ -92,5 +92,5 @@ elif pagina == pag_balance:
 elif pagina == pag_marcha:
     mostrar(main_marcha, 1)
 
-elif pagina == pag_instrucciones_opencap:
-    mostrar(main_instrucciones_opencap, True)
+elif pagina == pag_opencap:
+    mostrar(main_opencap, True)
