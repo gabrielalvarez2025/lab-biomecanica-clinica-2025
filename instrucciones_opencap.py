@@ -201,6 +201,8 @@ def main_instrucciones_opencap():
     
     st.header("Aplicando videofotogrametría con OpenCap")
 
+    st.markdown("---")
+
     col_instrucciones, col_convertir = st.columns(2)
 
     with col_instrucciones:
