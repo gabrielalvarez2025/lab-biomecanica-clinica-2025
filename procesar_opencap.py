@@ -301,7 +301,7 @@ def main_opencap():
 
                 with col_select_trial_2:
                     selected_joint = st.selectbox(
-                        "Selecciona una articulación (columna):",
+                        "Selecciona una articulación:",
                         options=df.columns[1:],  # todas menos "time"
                         index=None,
                         placeholder="Elige una articulación..."
