@@ -50,6 +50,8 @@ def main_delsys():
                 new_cols.append(f"{col_clean} m{counts[col_clean]}")
         df.columns = new_cols
 
+        df = df.iloc[1:, :]
+
         st.markdown("### Vista previa de tus datos:")
         st.dataframe(df, hide_index=True)
 
