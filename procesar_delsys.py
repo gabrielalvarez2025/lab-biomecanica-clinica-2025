@@ -53,7 +53,7 @@ def main_delsys():
         
 
         st.markdown("### Vista previa de tus datos:")
-        st.dataframe(df, hide_index=True)
+        #st.dataframe(df, hide_index=True)
 
         
         # --- Separar gran dataframe df en df pequeños por variable ---
@@ -67,7 +67,9 @@ def main_delsys():
             df_var = df.iloc[:, i:i+2]  # Tomar 2 columnas a la vez
             dfs_pequeños.append(df_var)
 
-        st.dataframe(dfs_pequeños[0], hide_index=True)  # Mostrar el primer DataFrame pequeño como ejemplo
+        #st.dataframe(dfs_pequeños[0], hide_index=True)  # Mostrar el primer DataFrame pequeño como ejemplo
+
+        #for 
 
         # Separar grupos de señales
         imu_cols = [c for c in df.columns if "ACC" in c or "GYRO" in c]
