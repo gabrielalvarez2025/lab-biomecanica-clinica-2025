@@ -12,39 +12,43 @@ def main_delsys():
     if uploaded_file is not None:
         st.success("¡Archivo CSV de Delsys cargado exitosamente! ✅")
 
-        header_row = pd.read_csv(uploaded_file, skiprows=5, nrows=1, header=None, engine="python", delimiter=";")
-        #freq_row = pd.read_csv(uploaded_file, skiprows=6, nrows=1, header=None, engine="python")
-
+        header_row = pd.read_csv(
+            uploaded_file,
+            skiprows=5,
+            nrows=1,
+            header=None,
+            engine="python",
+            delimiter=";"
+        )
         st.dataframe(header_row, hide_index=True)
 
-        
-
-        # Resetear el puntero del archivo antes de leer los datos
+        # Resetear el puntero del archivo
         uploaded_file.seek(0)
-        
-        # Leer datos omitiendo las primeras filas de metadatos
-        df = pd.read_csv(uploaded_file, skiprows=7, header=None, engine="python", delimiter=";")
-        
-        # Eliminar las últimas 18 columnas
-        df = df.iloc[:, :-22]
-        
-        n_cols = df.shape[1]
 
-        def make_unique(columns):
-            counts = {}
-            new_cols = []
-            for col in columns:
-                col_clean = col.strip()
-                if col_clean not in counts:
-                    counts[col_clean] = 1
-                    new_cols.append(col_clean)
-                else:
-                    counts[col_clean] += 1
-                    new_cols.append(f"{col_clean} m{counts[col_clean]}")
-            return new_cols
-        
-        # Asignar headers únicos
-        df.columns = make_unique(header_row.iloc[0, :df.shape[1]])
+        # Leer datos omitiendo las primeras filas de metadatos
+        df = pd.read_csv(
+            uploaded_file,
+            skiprows=7,
+            header=None,
+            engine="python",
+            delimiter=";"
+        )
+
+        # Eliminar las últimas 22 columnas
+        df = df.iloc[:, :-22]
+
+        # Asignar headers, permitiendo duplicados con sufijos m1, m2...
+        counts = {}
+        new_cols = []
+        for col in header_row.iloc[0, :df.shape[1]]:
+            col_clean = col.strip()
+            if col_clean not in counts:
+                counts[col_clean] = 1
+                new_cols.append(col_clean)
+            else:
+                counts[col_clean] += 1
+                new_cols.append(f"{col_clean} m{counts[col_clean]}")
+        df.columns = new_cols
 
         st.markdown("### Vista previa de tus datos:")
         st.dataframe(df, hide_index=True)
