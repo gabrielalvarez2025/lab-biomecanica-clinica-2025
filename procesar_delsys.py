@@ -10,28 +10,36 @@ def main_delsys():
     if uploaded_file is not None:
         st.success("¡Archivo CSV de Delsys cargado exitosamente! ✅")
 
-        # ---- Leer headers (fila 6) y frecuencias (fila 7) ----
-        header_row = 5   # Python index = fila 6 de Excel
-        freq_row = 6     # Python index = fila 7 de Excel
+        # --- Leemos TODO el archivo con delimitador ; sin asumir cabeceras ---
+        raw = pd.read_csv(
+            uploaded_file,
+            delimiter=";",
+            header=None,
+            engine="python",
+            on_bad_lines="skip"   # ignora filas con columnas inconsistentes
+        )
 
-        # Leemos el archivo completo con ; como separador
-        raw = pd.read_csv(uploaded_file, delimiter=";", header=None)
-        st.dataframe(raw, hide_index=True)
+        # Extraer headers (fila 6 -> index 5 en pandas)
+        headers = raw.iloc[5].fillna("").tolist()
 
-        # Extraer headers y frecuencias
-        headers = raw.iloc[header_row].tolist()
-        freqs = raw.iloc[freq_row].tolist()
-
-        # Guardar frecuencias en un dict {columna: frecuencia}
+        # Extraer frecuencias (fila 7 -> index 6 en pandas)
+        freqs = raw.iloc[6].fillna("").tolist()
         freq_dict = {col: freq for col, freq in zip(headers, freqs)}
 
-        # ---- Leer datos desde fila 9 (Python index = 8) ----
-        df = pd.read_csv(uploaded_file, delimiter=";", skiprows=8, names=headers)
+        # Extraer datos desde fila 9 en adelante (index 8)
+        df = pd.read_csv(
+            uploaded_file,
+            delimiter=";",
+            skiprows=8,
+            names=headers,
+            engine="python",
+            on_bad_lines="skip"
+        )
 
         # Limpiar nombres de columnas
         df.columns = df.columns.str.strip()
 
-        # ---- Mostrar resultados ----
+        # --- Mostrar vista previa ---
         st.markdown("### Vista previa de tus datos:")
         st.dataframe(df.head(), hide_index=True)
 
