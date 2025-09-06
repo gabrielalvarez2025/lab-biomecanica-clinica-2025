@@ -12,7 +12,7 @@ def main_delsys():
     if uploaded_file is not None:
         st.success("¡Archivo CSV de Delsys cargado exitosamente! ✅")
 
-        header_row = pd.read_csv(uploaded_file, skiprows=5, nrows=1, header=None, engine="python")
+        header_row = pd.read_csv(uploaded_file, skiprows=5, nrows=1, header=None, engine="python", delimiter=";")
         #freq_row = pd.read_csv(uploaded_file, skiprows=6, nrows=1, header=None, engine="python")
 
         st.dataframe(header_row, hide_index=True)
