@@ -30,7 +30,21 @@ def main_delsys():
         
         n_cols = df.shape[1]
 
-        df.columns = header_row.iloc[0, :n_cols]  # Asignar nombres desde la fila 6
+        def make_unique(columns):
+            counts = {}
+            new_cols = []
+            for col in columns:
+                col_clean = col.strip()
+                if col_clean not in counts:
+                    counts[col_clean] = 1
+                    new_cols.append(col_clean)
+                else:
+                    counts[col_clean] += 1
+                    new_cols.append(f"{col_clean} m{counts[col_clean]}")
+            return new_cols
+        
+        # Asignar headers únicos
+        df.columns = make_unique(header_row.iloc[0, :df.shape[1]])
 
         st.markdown("### Vista previa de tus datos:")
         st.dataframe(df, hide_index=True)
