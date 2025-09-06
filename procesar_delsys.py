@@ -13,7 +13,7 @@ def main_delsys():
         st.success("¡Archivo CSV de Delsys cargado exitosamente! ✅")
 
         # Leer datos omitiendo las primeras filas de metadatos
-        df = pd.read_csv(uploaded_file, skiprows=6, delimiter=";")  
+        df = pd.read_csv(uploaded_file, skiprows=3, delimiter=";")  
         #df.columns = df.columns.str.strip()
 
         st.markdown("### Vista previa de tus datos:")
