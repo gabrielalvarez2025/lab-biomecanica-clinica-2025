@@ -63,7 +63,7 @@ def main_delsys():
         n_cols = int(df.shape[1])
         
         # Iterar de 0 hasta el número total de columnas, de 2 en 2
-        for i in range(0, n_cols, 2):
+        for i in range(0, n_cols):
             df_var = df.iloc[:, i:i+2]  # Tomar 2 columnas a la vez
             dfs_pequeños.append(df_var)
 
