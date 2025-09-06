@@ -35,7 +35,7 @@ def main_delsys():
         )
 
         # Eliminar las últimas 22 columnas
-        df = df.iloc[:, :-22]
+        df = df.iloc[1:, :-22]
 
         # Asignar headers, permitiendo duplicados con sufijos m1, m2...
         counts = {}
@@ -50,7 +50,7 @@ def main_delsys():
                 new_cols.append(f"{col_clean} m{counts[col_clean]}")
         df.columns = new_cols
 
-        #df = df.iloc[1:, :]
+        
 
         st.markdown("### Vista previa de tus datos:")
         st.dataframe(df, hide_index=True)
