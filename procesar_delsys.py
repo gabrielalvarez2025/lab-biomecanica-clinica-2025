@@ -23,7 +23,7 @@ def main_delsys():
         uploaded_file.seek(0)
         
         # Leer datos omitiendo las primeras filas de metadatos
-        df = pd.read_csv(uploaded_file, skiprows=7, delimiter=";")  
+        df = pd.read_csv(uploaded_file, skiprows=7, header=None, engine="python", delimiter=";")
         n_cols = df.shape[1]
 
         df.columns = header_row.iloc[0, :n_cols]  # Asignar nombres desde la fila 6
