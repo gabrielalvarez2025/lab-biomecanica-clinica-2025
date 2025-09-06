@@ -8,7 +8,7 @@ import streamlit.components.v1 as components
 from procesar_phyphox_acc import main_phyphox
 from procesar_amti import main_forceplate
 from procesar_opencap import main_opencap
-
+from procesar_delsys import main_delsys
 
 def play_emg_sumatoria():
     
@@ -335,6 +335,15 @@ def main_bioinstrumentacion():
                     color_parrafo= "#89BBB8"
                     )
     
+    # Tarjeta 3
+    parrafo_interactivo4 = "Procesar datos de EMG o IMU capturados con DELSYS"
+    botones_tarjeta(nombre_estado="mostrar_delsys",
+                    texto_boton="Procesamiento de datos Delsys",
+                    texto_parrafo=parrafo_interactivo4,
+                    color_boton= "#368581",
+                    color_parrafo= "#89BBB8"
+                    )
+    
     
     
     
@@ -348,6 +357,9 @@ def main_bioinstrumentacion():
     
     if st.session_state["mostrar_amti"]:
         main_forceplate()
+    
+    if st.session_state["mostrar_delsys"]:
+        main_delsys()
 
 
     st.markdown("---")
