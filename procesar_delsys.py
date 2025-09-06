@@ -17,7 +17,7 @@ def main_delsys():
         df.columns = df.columns.str.strip()
 
         st.markdown("### Vista previa de tus datos:")
-        st.dataframe(df.head(), hide_index=True)
+        st.dataframe(df, hide_index=True)
 
         # Separar grupos de señales
         imu_cols = [c for c in df.columns if "ACC" in c or "GYRO" in c]
