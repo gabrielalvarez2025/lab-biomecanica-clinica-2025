@@ -18,10 +18,14 @@ def main_delsys():
         st.dataframe(header_row, hide_index=True)
 
         
+
+        
         
         # Leer datos omitiendo las primeras filas de metadatos
         df = pd.read_csv(uploaded_file, skiprows=7, delimiter=";")  
-        df.columns = header_row.iloc[0]  # Asignar nombres desde la fila 6
+        n_cols = df.shape[1]
+
+        df.columns = header_row.iloc[0, :n_cols]  # Asignar nombres desde la fila 6
 
         st.markdown("### Vista previa de tus datos:")
         st.dataframe(df, hide_index=True)
