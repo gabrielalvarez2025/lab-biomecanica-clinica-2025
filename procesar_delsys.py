@@ -1,23 +1,61 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-uploaded_file = st.file_uploader("📂 Sube un CSV de Delsys", type="csv")
+def main_delsys():
+    st.markdown("---")
+    st.subheader("Procesando Datos EMG/IMU Delsys")
 
-if uploaded_file is not None:
-    st.success("Archivo cargado ✅")
+    uploaded_file = st.file_uploader("📂 Sube un archivo CSV de Delsys", type=["csv"])
 
-    # Leer todo como texto, sin parseo de columnas
-    raw = pd.read_csv(uploaded_file, header=None, dtype=str, engine="python")
+    if uploaded_file is not None:
+        st.success("¡Archivo CSV de Delsys cargado exitosamente! ✅")
 
-    # Eliminar filas de metadatos (0 a 6)
-    raw = raw.drop(index=range(0,7)).reset_index(drop=True)
+        # Leer datos omitiendo las primeras filas de metadatos
+        df = pd.read_csv(uploaded_file, skiprows=, delimiter="; | /t")  
+        #df.columns = df.columns.str.strip()
 
-    # Asignar fila de headers (ahora primera fila)
-    raw.columns = raw.iloc[0]
-    df = raw.drop(0).reset_index(drop=True)
+        st.markdown("### Vista previa de tus datos:")
+        st.dataframe(df, hide_index=True)
 
-    # Convertir comas a puntos y a float donde sea posible
-    for col in df.columns:
-        df[col] = df[col].str.replace(",", ".").astype(float, errors="ignore")
+        # ---- Leer headers (fila 6) y frecuencias (fila 7) ----
+        header_row = 5   # Python index = fila 6 de Excel
+        freq_row = 6     # Python index = fila 7 de Excel
 
-    st.dataframe(df)
+        # Separar grupos de señales
+        imu_cols = [c for c in df.columns if "ACC" in c or "GYRO" in c]
+        emg_cols = [c for c in df.columns if "EMG" in c]
+
+        st.markdown("---")
+        st.markdown("### Selecciona qué señales visualizar")
+
+        tab1, tab2 = st.tabs(["📈 IMU (ACC/GYRO)", "💪 EMG"])
+
+        with tab1:
+            if imu_cols:
+                selected_imu = st.multiselect("Selecciona canales IMU", options=imu_cols, default=imu_cols[:2])
+                if selected_imu:
+                    for sig in selected_imu:
+                        fig, ax = plt.subplots(figsize=(10, 4))
+                        sns.lineplot(x=df.index, y=df[sig], ax=ax)
+                        ax.set_title(f"{sig} en función del Tiempo (aprox)")
+                        ax.set_xlabel("Muestras")
+                        ax.set_ylabel(sig)
+                        st.pyplot(fig)
+            else:
+                st.warning("No se encontraron columnas IMU en el archivo.")
+
+        with tab2:
+            if emg_cols:
+                selected_emg = st.multiselect("Selecciona canales EMG", options=emg_cols, default=emg_cols[:2])
+                if selected_emg:
+                    for sig in selected_emg:
+                        fig, ax = plt.subplots(figsize=(10, 4))
+                        sns.lineplot(x=df.index, y=df[sig], ax=ax)
+                        ax.set_title(f"{sig} en función del Tiempo (aprox)")
+                        ax.set_xlabel("Muestras")
+                        ax.set_ylabel(sig)
+                        st.pyplot(fig)
+            else:
+                st.warning("No se encontraron columnas EMG en el archivo.")
