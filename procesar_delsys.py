@@ -15,7 +15,8 @@ def main_delsys():
         freq_row = 6     # Python index = fila 7 de Excel
 
         # Leemos el archivo completo con ; como separador
-        raw = pd.read_csv(uploaded_file, skiprows=6, delimiter=";", header=None)
+        raw = pd.read_csv(uploaded_file, delimiter=";", header=None)
+        st.dataframe(raw, hide_index=True)
 
         # Extraer headers y frecuencias
         headers = raw.iloc[header_row].tolist()
