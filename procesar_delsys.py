@@ -12,6 +12,9 @@ def main_delsys():
     if uploaded_file is not None:
         st.success("¡Archivo CSV de Delsys cargado exitosamente! ✅")
 
+        metadata = pd.read_csv(uploaded_file, nrows=7, header=None)
+        
+        
         # Leer datos omitiendo las primeras filas de metadatos
         df = pd.read_csv(uploaded_file, skiprows=7, delimiter=";")  
         df.columns = df.columns.str.strip()
