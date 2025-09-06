@@ -61,7 +61,7 @@ def main_delsys():
         dfs_pequeños = [] # Lista donde se guardarán los DataFrames pequeños
 
         # Iterar de 0 hasta el número total de columnas, de 2 en 2
-        for i in range(0, df.shape[1], step=2):
+        for i in range(0, df.shape[1], 2):
             df_var = df.iloc[:, i:i+2]  # Tomar 2 columnas a la vez
             dfs_pequeños.append(df_var)
 
