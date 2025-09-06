@@ -46,8 +46,10 @@ def main_delsys():
             if pd.notna(celda) and str(celda).strip() != ""
         ]
 
-        sensor_seleccionado = st.selectbox("Elige un sensor:", nombres_sensores)
-        st.write("Seleccionaste:", sensor_seleccionado)
+        #sensor_seleccionado = st.selectbox("Elige un sensor:", nombres_sensores)
+        st.write("Sensores disponibles:")
+        for sensor in nombres_sensores:
+            st.write("-", sensor)
 
         
 
