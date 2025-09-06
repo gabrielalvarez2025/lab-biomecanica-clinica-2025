@@ -55,9 +55,17 @@ def main_delsys():
         st.markdown("### Vista previa de tus datos:")
         st.dataframe(df, hide_index=True)
 
-        # ---- Leer headers (fila 6) y frecuencias (fila 7) ----
-        header_row = 5   # Python index = fila 6 de Excel
-        freq_row = 6     # Python index = fila 7 de Excel
+        
+        # --- Separar gran dataframe df en df pequeños por variable ---
+        
+        dfs_pequeños = [] # Lista donde se guardarán los DataFrames pequeños
+
+        # Iterar de 0 hasta el número total de columnas, de 2 en 2
+        for i in range(0, df.shape[1], step=2):
+            df_var = df.iloc[:, i:i+2]  # Tomar 2 columnas a la vez
+            dfs_pequeños.append(df_var)
+
+        st.dataframe(dfs_pequeños[0], hide_index=True)  # Mostrar el primer DataFrame pequeño como ejemplo
 
         # Separar grupos de señales
         imu_cols = [c for c in df.columns if "ACC" in c or "GYRO" in c]
