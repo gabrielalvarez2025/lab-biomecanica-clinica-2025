@@ -15,6 +15,8 @@ def main_delsys():
         header_row = pd.read_csv(uploaded_file, skiprows=5, nrows=1, header=None, engine="python")
         #freq_row = pd.read_csv(uploaded_file, skiprows=6, nrows=1, header=None, engine="python")
 
+        st.dataframe(header_row, hide_index=True)
+
         
         
         # Leer datos omitiendo las primeras filas de metadatos
