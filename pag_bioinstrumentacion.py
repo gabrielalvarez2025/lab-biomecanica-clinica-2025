@@ -300,6 +300,9 @@ def main_bioinstrumentacion():
     if "mostrar_amti" not in st.session_state:
         st.session_state["mostrar_amti"] = False
     
+    if "mostrar_delsys" not in st.session_state:
+        st.session_state["mostrar_delsys"] = False
+    
 
     # colores lindos:
     #color_boton= "#368581", color_parrafo= "#89BBB8"
