@@ -14,10 +14,14 @@ def main_delsys():
 
         # Leer datos omitiendo las primeras filas de metadatos
         df = pd.read_csv(uploaded_file, skiprows=6, delimiter=";")  
-        df.columns = df.columns.str.strip()
+        #df.columns = df.columns.str.strip()
 
         st.markdown("### Vista previa de tus datos:")
         st.dataframe(df, hide_index=True)
+
+        # ---- Leer headers (fila 6) y frecuencias (fila 7) ----
+        header_row = 5   # Python index = fila 6 de Excel
+        freq_row = 6     # Python index = fila 7 de Excel
 
         # Separar grupos de señales
         imu_cols = [c for c in df.columns if "ACC" in c or "GYRO" in c]
