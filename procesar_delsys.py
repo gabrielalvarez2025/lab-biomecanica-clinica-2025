@@ -26,7 +26,7 @@ def main_delsys():
         df = pd.read_csv(uploaded_file, skiprows=7, header=None, engine="python", delimiter=";")
         n_cols = df.shape[1]
 
-        df.columns = header_row.iloc[:, :n_cols]  # Asignar nombres desde la fila 6
+        df.columns = header_row.iloc[0, :n_cols]  # Asignar nombres desde la fila 6
 
         st.markdown("### Vista previa de tus datos:")
         st.dataframe(df, hide_index=True)
