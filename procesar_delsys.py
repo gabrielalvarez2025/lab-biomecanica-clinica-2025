@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import re
 
 def main_delsys():
     st.markdown("---")
@@ -25,10 +26,35 @@ def main_delsys():
         # Resetear el puntero del archivo
         uploaded_file.seek(0)
 
+        # Leer nombres sensores:
+        nombres_sensores = pd.read_csv(
+            uploaded_file,
+            skiprows=3, # omitir las primeras 3 filas
+            nrows=1,
+            header=None,
+            engine="python",
+            delimiter=";"
+        )
+
+        # Convertir esa fila a lista
+        fila = nombres_sensores.iloc[0].tolist()
+
+        # Limpiar y extraer solo los nombres (sin paréntesis)
+        nombres_sensores = [
+            re.sub(r"\s*\(.*?\)", "", str(celda)).strip()
+            for celda in fila
+            if pd.notna(celda) and str(celda).strip() != ""
+        ]
+
+        
+
+        # Resetear el puntero del archivo
+        uploaded_file.seek(0)
+
         # Leer datos omitiendo las primeras filas de metadatos
         df = pd.read_csv(
             uploaded_file,
-            skiprows=7,
+            skiprows=7, # omitir las primeras 7 filas
             header=None,
             engine="python",
             delimiter=";"
