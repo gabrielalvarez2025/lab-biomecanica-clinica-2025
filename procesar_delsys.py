@@ -24,6 +24,10 @@ def main_delsys():
         
         # Leer datos omitiendo las primeras filas de metadatos
         df = pd.read_csv(uploaded_file, skiprows=7, header=None, engine="python", delimiter=";")
+        
+        # Eliminar las últimas 18 columnas
+        df = df.iloc[:, :-18]
+        
         n_cols = df.shape[1]
 
         df.columns = header_row.iloc[0, :n_cols]  # Asignar nombres desde la fila 6
