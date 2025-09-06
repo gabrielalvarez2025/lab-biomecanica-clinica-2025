@@ -53,7 +53,7 @@ def main_delsys():
         
 
         st.markdown("### Vista previa de tus datos:")
-        #st.dataframe(df, hide_index=True)
+        st.dataframe(df, hide_index=True)
 
         
         # --- Separar gran dataframe df en df pequeños por variable ---
