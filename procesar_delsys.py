@@ -46,6 +46,9 @@ def main_delsys():
             if pd.notna(celda) and str(celda).strip() != ""
         ]
 
+        sensor_seleccionado = st.selectbox("Elige un sensor:", nombres_sensores)
+        st.write("Seleccionaste:", sensor_seleccionado)
+
         
 
         # Resetear el puntero del archivo
