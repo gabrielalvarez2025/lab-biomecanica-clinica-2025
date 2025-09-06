@@ -63,11 +63,10 @@ def main_delsys():
         n_cols = int(df.shape[1])
         
         # Iterar de 0 hasta el número total de columnas, de 2 en 2
-        for i in range(0, n_cols, 2):
-            df_var = df.iloc[:, i:i+2]  # Tomar 2 columnas a la vez
-            dfs_pequeños.append(df_var)
+        df_var1 = df.iloc[:, 0:1]  # Tomar 2 columnas a la vez
+        
 
-        st.dataframe(dfs_pequeños[0], hide_index=True)  # Mostrar el primer DataFrame pequeño como ejemplo
+        st.dataframe(df_var1, hide_index=True)  # Mostrar el primer DataFrame pequeño como ejemplo
 
         # Separar grupos de señales
         imu_cols = [c for c in df.columns if "ACC" in c or "GYRO" in c]
