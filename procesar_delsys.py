@@ -26,7 +26,7 @@ def main_delsys():
         df = pd.read_csv(uploaded_file, skiprows=7, header=None, engine="python", delimiter=";")
         
         # Eliminar las últimas 18 columnas
-        df = df.iloc[:, :-17]
+        df = df.iloc[:, :-22]
         
         n_cols = df.shape[1]
 
