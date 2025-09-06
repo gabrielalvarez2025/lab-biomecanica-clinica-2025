@@ -12,12 +12,14 @@ def main_delsys():
     if uploaded_file is not None:
         st.success("¡Archivo CSV de Delsys cargado exitosamente! ✅")
 
-        #metadata = pd.read_csv(uploaded_file, nrows=7, header=None)
+        header_row = pd.read_csv(uploaded_file, skiprows=5, nrows=1, header=None, engine="python")
+        #freq_row = pd.read_csv(uploaded_file, skiprows=6, nrows=1, header=None, engine="python")
+
         
         
         # Leer datos omitiendo las primeras filas de metadatos
         df = pd.read_csv(uploaded_file, skiprows=7, delimiter=";")  
-        df.columns = df.columns.str.strip()
+        df.columns = header_row.iloc[0]  # Asignar nombres desde la fila 6
 
         st.markdown("### Vista previa de tus datos:")
         st.dataframe(df, hide_index=True)
