@@ -180,14 +180,15 @@ def ejemplo_fr_botas():
     col1, col2 = st.columns([1, 3])
 
     with col1:
-        st.image("cat.gif", use_container_width=True)
+        st.markdown("¡Mira qué bonito!")
+        #st.image("cat.gif", use_container_width=True)
 
     with col2:
         # Leer el CSV de ejemplo
         try:
-            df = pd.read_csv("data_ejemplo.csv")
+            df = pd.read_csv("ejemplo_data_acc_phyphox_fr_botas.csv", sep=",")
         except FileNotFoundError:
-            st.error("No se encontró el archivo 'data_ejemplo.csv'.")
+            st.error("No se encontró el archivo 'ejemplo_data_acc_phyphox_fr_botas.csv'.")
             return
 
         df.columns = df.columns.str.strip()
