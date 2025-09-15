@@ -220,6 +220,33 @@ def butterworth_filter_bandpass(data, fs, order=1, low_cut=0.0, high_cut=10.0):
 # --------------------------
 # Función principal
 # --------------------------
+import pandas as pd
+import streamlit as st
+import plotly.graph_objects as go
+from scipy.signal import butter, filtfilt, find_peaks
+
+# --------------------------
+# Filtro Butterworth Pasa Banda
+# --------------------------
+def butterworth_filter_bandpass(data, fs, order=1, low_cut=0.0, high_cut=10.0):
+    nyquist = 0.5 * fs
+    if low_cut == 0 and high_cut >= nyquist:
+        return data  # sin filtro
+    elif low_cut == 0:
+        normal_cutoff = high_cut / nyquist
+        btype = "low"
+    elif high_cut >= nyquist:
+        normal_cutoff = low_cut / nyquist
+        btype = "high"
+    else:
+        normal_cutoff = [low_cut / nyquist, high_cut / nyquist]
+        btype = "band"
+    b, a = butter(order, normal_cutoff, btype=btype, analog=False)
+    return filtfilt(b, a, data)
+
+# --------------------------
+# Función principal
+# --------------------------
 def ejemplo_fr_botas():
     st.markdown("---")
     st.markdown("### Ejemplo: Midiendo la frecuencia respiratoria de un gato con tu teléfono")
