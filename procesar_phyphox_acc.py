@@ -170,9 +170,9 @@ def main_phyphox():
 def ejemplo_fr_botas():
     """
     Ejemplo de uso de phyphox:
-    - Col1: gif de un gato
+    - Col1: gif de un gato o mensaje
     - Col2: gráfico interactivo del eje Z (sin gravedad),
-            filtrado con Butterworth orden=5, cutoff=2 Hz
+            filtrado con Butterworth con parámetros ajustables
     """
     st.markdown("---")
     st.markdown("### Ejemplo: Midiendo la frecuencia respiratoria de un gato con tu teléfono")
@@ -181,7 +181,7 @@ def ejemplo_fr_botas():
 
     with col1:
         st.markdown("¡Mira qué bonito!")
-        #st.image("cat.gif", use_container_width=True)
+        # st.image("cat.gif", use_container_width=True)
 
     with col2:
         # Leer el CSV de ejemplo
@@ -206,8 +206,15 @@ def ejemplo_fr_botas():
         # Calcular frecuencia de muestreo
         fs = 1 / (t.iloc[1] - t.iloc[0])
 
-        # Aplicar filtro Butterworth (orden 5, cutoff 2 Hz)
-        z_filt = butterworth_filter(z, cutoff=2, fs=fs, order=5)
+        # -----------------------
+        # Inputs interactivos para filtro
+        # -----------------------
+        st.markdown("#### Ajusta el filtro Butterworth")
+        cutoff = st.number_input("Frecuencia de corte (Hz)", min_value=0.1, max_value=float(fs/2), value=2.0, step=0.1)
+        orden = st.slider("Orden del filtro", min_value=1, max_value=10, value=5)
+
+        # Aplicar filtro con parámetros ajustables
+        z_filt = butterworth_filter(z, cutoff=cutoff, fs=fs, order=orden)
 
         # Crear gráfico interactivo con Plotly
         fig = go.Figure()
@@ -225,7 +232,7 @@ def ejemplo_fr_botas():
             x=t, y=z_filt,
             mode="lines",
             line=dict(color="dodgerblue", width=2),
-            name="Acc Z filtrada"
+            name=f"Acc Z filtrada (cutoff={cutoff} Hz, orden={orden})"
         ))
 
         fig.update_layout(
