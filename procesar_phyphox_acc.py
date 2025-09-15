@@ -218,7 +218,7 @@ def ejemplo_fr_botas():
         st.markdown("Este es Botas")
         st.image("cat1.jpg", use_container_width=True)
         st.markdown("Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, colocamos un celular en su lomo mientras dormía.")
-        st.markdown("Si capturamos la aceleración lineal del celular en el eje vertical (eje Z), podemos observar las oscilaciones causadas por el tórax de Botas con cada ciclo respiratorio. En la señal, deberíamos ver un matrón de acelerometría que se repite en ciclos. Si contamos cuántos ciclos hay en un minuto, podemos calcular su frecuencia respiratoria.")
+        st.markdown("Si capturamos la aceleración lineal del celular en el eje vertical (eje Z), podemos observar las oscilaciones causadas por el tórax de Botas con cada ciclo respiratorio.")
 
     with col_text:
         st.markdown(" ")
@@ -307,3 +307,5 @@ def ejemplo_fr_botas():
         )
 
         st.plotly_chart(fig, use_container_width=True)
+
+        st.markdown("En la señal, deberíamos ver un matrón de acelerometría que se repite en ciclos. Si contamos cuántos ciclos hay en un minuto, podemos calcular su frecuencia respiratoria.")
