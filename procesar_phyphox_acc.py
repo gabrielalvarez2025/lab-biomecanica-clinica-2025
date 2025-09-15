@@ -201,13 +201,15 @@ def ejemplo_fr_botas():
             filtrado con Butterworth con parámetros ajustables
     """
     st.markdown("---")
-    st.markdown("### Ejemplo: Midiendo la frecuencia respiratoria de un gato con tu teléfono")
+    st.markdown("### Ejemplo: Usando el celular para evaluaciones instrumentadas en tu casa")
+    
 
     col_gif, col_plot = st.columns([1, 2])
     
     col_text, col_sliders = st.columns([1, 2])
 
     with col_gif:
+        st.markdown("##### Midiendo la frecuencia respiratoria de un gato con tu teléfono")
         st.image("cat1.jpg", use_container_width=True)
 
     with col_text:
