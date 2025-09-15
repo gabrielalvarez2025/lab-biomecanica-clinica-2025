@@ -220,61 +220,6 @@ def butterworth_filter_bandpass(data, fs, order=1, low_cut=0.0, high_cut=10.0):
 # --------------------------
 # Función principal
 # --------------------------
-import pandas as pd
-import streamlit as st
-import plotly.graph_objects as go
-from scipy.signal import butter, filtfilt, find_peaks
-
-# --------------------------
-# Filtro Butterworth Pasa Banda
-# --------------------------
-def butterworth_filter_bandpass(data, fs, order=1, low_cut=0.0, high_cut=10.0):
-    nyquist = 0.5 * fs
-    if low_cut == 0 and high_cut >= nyquist:
-        return data  # sin filtro
-    elif low_cut == 0:
-        normal_cutoff = high_cut / nyquist
-        btype = "low"
-    elif high_cut >= nyquist:
-        normal_cutoff = low_cut / nyquist
-        btype = "high"
-    else:
-        normal_cutoff = [low_cut / nyquist, high_cut / nyquist]
-        btype = "band"
-    b, a = butter(order, normal_cutoff, btype=btype, analog=False)
-    return filtfilt(b, a, data)
-
-# --------------------------
-# Función principal
-# --------------------------
-import pandas as pd
-import streamlit as st
-import plotly.graph_objects as go
-from scipy.signal import butter, filtfilt
-import numpy as np
-
-# --------------------------
-# Filtro Butterworth Pasa Banda
-# --------------------------
-def butterworth_filter_bandpass(data, fs, order=1, low_cut=0.0, high_cut=10.0):
-    nyquist = 0.5 * fs
-    if low_cut == 0 and high_cut >= nyquist:
-        return data  # sin filtro
-    elif low_cut == 0:
-        normal_cutoff = high_cut / nyquist
-        btype = "low"
-    elif high_cut >= nyquist:
-        normal_cutoff = low_cut / nyquist
-        btype = "high"
-    else:
-        normal_cutoff = [low_cut / nyquist, high_cut / nyquist]
-        btype = "band"
-    b, a = butter(order, normal_cutoff, btype=btype, analog=False)
-    return filtfilt(b, a, data)
-
-# --------------------------
-# Función principal
-# --------------------------
 def ejemplo_fr_botas():
     st.markdown("---")
     st.markdown("### Ejemplo: Midiendo la frecuencia respiratoria de un gato con tu teléfono")
@@ -315,11 +260,8 @@ def ejemplo_fr_botas():
         # Filtrar señal
         z_filt = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
 
-        # Detectar beats: > 2 desv estandar de la media
-        mean_val = np.mean(z_filt)
-        std_val = np.std(z_filt)
-        threshold = mean_val + 2 * std_val
-        beats_indices = np.where(z_filt > threshold)[0]
+        # Detectar peaks para marcar respiraciones
+        peaks, _ = find_peaks(z_filt, distance=int(fs*0.3))  # distancia mínima de 0.3s entre peaks
 
         # Crear gráfico Plotly
         fig = go.Figure()
@@ -333,9 +275,9 @@ def ejemplo_fr_botas():
             name=f"Acc Z filtrada (cutoff=({low_cut},{high_cut}) Hz, orden={orden})"
         ))
 
-        # Líneas verticales para beats
-        for idx in beats_indices:
-            fig.add_vline(x=t.iloc[idx], line=dict(color="yellow", width=1, dash="dash"), opacity=0.7)
+        # Líneas verticales en los peaks
+        for p in peaks:
+            fig.add_vline(x=t.iloc[p], line=dict(color="yellow", width=1, dash="dash"), opacity=0.7)
 
         fig.update_layout(
             title="Aceleración Z (sin gravedad, filtrada)",
