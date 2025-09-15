@@ -230,6 +230,7 @@ def ejemplo_fr_botas():
 
     with col_text2:
         st.markdown("En la señal, deberíamos ver un matrón de acelerometría que se repite en ciclos. Si contamos cuántos ciclos hay en un minuto, podemos calcular su frecuencia respiratoria.")
+        st.markdown("¿Cuál es la frecuencia respiratoria de Botas?")
 
     # Leer el CSV de ejemplo
     try:
