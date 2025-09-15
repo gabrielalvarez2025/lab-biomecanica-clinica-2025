@@ -5,7 +5,7 @@ import seaborn as sns
 import random
 import streamlit.components.v1 as components
 
-from procesar_phyphox_acc import main_phyphox
+from procesar_phyphox_acc import main_phyphox, ejemplo_fr_botas
 from procesar_amti import main_forceplate
 from procesar_opencap import main_opencap
 from procesar_delsys import main_delsys
@@ -287,7 +287,9 @@ def main_bioinstrumentacion():
 
     st.markdown("---")
     st.markdown("### Utilidad de la evaluación instrumentada")
-    
+
+    ejemplo_fr_botas()
+
 
 
     st.markdown("---")
