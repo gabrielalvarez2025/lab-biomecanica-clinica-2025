@@ -279,7 +279,7 @@ def ejemplo_fr_botas():
         ))
 
         fig.update_layout(
-            title="Aceleración Z (sin gravedad, filtrada)",
+            title=None,
             xaxis_title="Tiempo (s)",
             yaxis_title="Aceleración (m/s²)",
             plot_bgcolor="rgba(0,0,0,0)",
