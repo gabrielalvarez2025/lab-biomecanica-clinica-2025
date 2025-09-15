@@ -201,7 +201,7 @@ def ejemplo_fr_botas():
             filtrado con Butterworth con parámetros ajustables
     """
     st.markdown("---")
-    st.markdown("### Ejemplos: Usando el celular para realizar evaluaciones instrumentadas en tu casa")
+    st.markdown("### Ejemplos: Usando el celular para realizar evaluaciones instrumentadas en casa")
     
 
     col_gif, col_plot = st.columns([1, 2])
