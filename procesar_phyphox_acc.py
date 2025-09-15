@@ -205,7 +205,7 @@ def ejemplo_fr_botas():
     #st.markdown("---")
     st.markdown("##### Ejemplo 1: Midiendo la frecuencia respiratoria de un gato usando el celular")
 
-    proporcion = [45, 65]
+    proporcion = [40, 60]
 
     col_gif, col_plot = st.columns(proporcion)
     
