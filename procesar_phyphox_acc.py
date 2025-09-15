@@ -232,7 +232,19 @@ def ejemplo_fr_botas():
         # Calcular frecuencia de muestreo
         fs = 1 / (t.iloc[1] - t.iloc[0])
 
-        
+        # -----------------------
+        # Inputs interactivos para filtro
+        # -----------------------
+        st.markdown("#### Ajusta el filtro Butterworth")
+        low_cut, high_cut = st.slider(
+            "Selecciona el rango de frecuencias (Hz) para el filtro pasa banda",
+            min_value=0.0,
+            max_value=float(fs/2),
+            value=(0.0, 10.0),  # valores por defecto: low=0, high=10
+            step=0.1
+        )
+        orden = st.slider("Orden del filtro", min_value=1, max_value=5, value=5)
+
         # Aplicar filtro pasa banda
         z_filt = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
         #0, 10, 1
@@ -275,17 +287,3 @@ def ejemplo_fr_botas():
         )
 
         st.plotly_chart(fig, use_container_width=True)
-
-        # -----------------------
-        # Inputs interactivos para filtro
-        # -----------------------
-        st.markdown("#### Ajusta el filtro Butterworth")
-        low_cut, high_cut = st.slider(
-            "Selecciona el rango de frecuencias (Hz) para el filtro pasa banda",
-            min_value=0.0,
-            max_value=float(fs/2),
-            value=(0.0, 10.0),  # valores por defecto: low=0, high=10
-            step=0.1
-        )
-        orden = st.slider("Orden del filtro", min_value=1, max_value=5, value=5)
-
