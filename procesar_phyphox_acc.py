@@ -211,6 +211,8 @@ def ejemplo_fr_botas():
     with col_gif:
         st.markdown(" ")
         st.markdown(" ")
+        st.markdown(" ")
+        st.markdown(" ")
         st.image("cat1.jpg", use_container_width=True)
 
     with col_text:
