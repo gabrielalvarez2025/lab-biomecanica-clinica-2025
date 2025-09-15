@@ -166,3 +166,76 @@ def main_phyphox():
                 )
 
                 st.plotly_chart(fig, use_container_width=True)
+
+def ejemplo_fr_botas():
+    """
+    Ejemplo de uso de phyphox:
+    - Col1: gif de un gato
+    - Col2: gráfico interactivo del eje Z (sin gravedad),
+            filtrado con Butterworth orden=5, cutoff=2 Hz
+    """
+    st.markdown("---")
+    st.markdown("### Ejemplo: Midiendo la frecuencia respiratoria de un gato con tu teléfono")
+
+    col1, col2 = st.columns([1, 3])
+
+    with col1:
+        st.image("cat.gif", use_container_width=True)
+
+    with col2:
+        # Leer el CSV de ejemplo
+        try:
+            df = pd.read_csv("data_ejemplo.csv")
+        except FileNotFoundError:
+            st.error("No se encontró el archivo 'data_ejemplo.csv'.")
+            return
+
+        df.columns = df.columns.str.strip()
+
+        # Preparar columna Z sin gravedad
+        if "Acceleration z (m/s^2)" not in df.columns:
+            st.error("El CSV no tiene la columna 'Acceleration z (m/s^2)'.")
+            return
+
+        df["Acceleration z (m/s^2) [no g]"] = df["Acceleration z (m/s^2)"] - 9.8
+
+        t = df["Time (s)"]
+        z = df["Acceleration z (m/s^2) [no g]"]
+
+        # Calcular frecuencia de muestreo
+        fs = 1 / (t.iloc[1] - t.iloc[0])
+
+        # Aplicar filtro Butterworth (orden 5, cutoff 2 Hz)
+        z_filt = butterworth_filter(z, cutoff=2, fs=fs, order=5)
+
+        # Crear gráfico interactivo con Plotly
+        fig = go.Figure()
+
+        # Señal original en gris
+        fig.add_trace(go.Scatter(
+            x=t, y=z,
+            mode="lines",
+            line=dict(color="lightgray", width=1),
+            name="Acc Z original"
+        ))
+
+        # Señal filtrada en azul
+        fig.add_trace(go.Scatter(
+            x=t, y=z_filt,
+            mode="lines",
+            line=dict(color="dodgerblue", width=2),
+            name="Acc Z filtrada"
+        ))
+
+        fig.update_layout(
+            title="Aceleración Z (sin gravedad, filtrada)",
+            xaxis_title="Tiempo (s)",
+            yaxis_title="Aceleración (m/s²)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="rgba(0,0,0,0)",
+            font=dict(color="white"),
+            margin=dict(l=40, r=20, t=40, b=40),
+            height=400
+        )
+
+        st.plotly_chart(fig, use_container_width=True)
