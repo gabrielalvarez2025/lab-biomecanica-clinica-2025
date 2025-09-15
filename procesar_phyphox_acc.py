@@ -217,7 +217,7 @@ def ejemplo_fr_botas():
         #st.markdown(" ")
         st.markdown("Este es Botas")
         st.image("cat1.jpg", use_container_width=True)
-        st.markdown("Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, colocamos un celular en su lomo mientras dormía.")
+        st.markdown("Con el objetivo de medir su FR en reposo de forma más exacta, usaremos los sensores del celular.")
         st.markdown("Si capturamos la aceleración lineal del celular en el eje vertical (eje Z), podemos observar las oscilaciones causadas por el tórax de Botas con cada ciclo respiratorio.")
 
     with col_text:
