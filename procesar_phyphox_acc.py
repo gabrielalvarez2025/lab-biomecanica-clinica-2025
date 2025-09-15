@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 from scipy.signal import butter, filtfilt   # 👈 importar
+import plotly.graph_objects as go   # 👈 agregar import
+
 
 # --------------------------
 # Filtro Butterworth
@@ -138,19 +140,29 @@ def main_phyphox():
                 y_min = st.number_input(f"min ↓", value=float(df_filtered[col].min()), step=0.5, key=f"ymin_{col}")
             
             with col_plot1:
-                fig, ax = plt.subplots(figsize=(10, 4), facecolor="none")
-                ax.set_facecolor("none")
+                # 👉 Plotly en lugar de Matplotlib
+                fig = go.Figure()
 
-                ax.tick_params(colors="white")
-                ax.xaxis.label.set_color("white")
-                ax.yaxis.label.set_color("white")
-                ax.title.set_color("white")
+                fig.add_trace(go.Scatter(
+                    x=df_filtered["Time (s)"],
+                    y=df_filtered[col],
+                    mode="lines",
+                    line=dict(color=color, width=2),
+                    name=label
+                ))
 
-                sns.lineplot(x=df_filtered["Time (s)"], y=df_filtered[col], ax=ax, color=color)
+                # Ajustar límites del eje Y
+                fig.update_yaxes(range=[y_min, y_max], title="Aceleración (m/s²)")
+                fig.update_xaxes(title="Tiempo (s)")
 
-                ax.set_ylim(y_min, y_max)
-                ax.set_title(f"{label} en el Tiempo", fontsize=14)
-                ax.set_xlabel("Tiempo (s)")
-                ax.set_ylabel("Aceleración (m/s²)")
+                # Estilo general
+                fig.update_layout(
+                    title=f"{label} en el Tiempo",
+                    plot_bgcolor="rgba(0,0,0,0)",
+                    paper_bgcolor="rgba(0,0,0,0)",
+                    font=dict(color="white"),
+                    margin=dict(l=40, r=20, t=40, b=40),
+                    height=400
+                )
 
-                st.pyplot(fig, transparent=True)
+                st.plotly_chart(fig, use_container_width=True)
