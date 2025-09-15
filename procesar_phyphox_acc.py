@@ -209,6 +209,8 @@ def ejemplo_fr_botas():
 
     col_gif, col_plot = st.columns(proporcion)
     
+    col_text1, col_text2 = st.columns(proporcion)
+    
     col_text, col_sliders = st.columns(proporcion)
 
     with col_gif:
@@ -218,11 +220,16 @@ def ejemplo_fr_botas():
         st.markdown("Este es Botas")
         st.image("cat1.jpg", use_container_width=True)
         st.markdown("Con el objetivo de medir su FR en reposo de forma más exacta, usaremos los sensores del celular.")
-        st.markdown("Si capturamos la aceleración lineal del celular en el eje vertical (eje Z), podemos observar las oscilaciones causadas por el tórax de Botas con cada ciclo respiratorio.")
+        
 
     with col_text:
         st.markdown(" ")
 
+    with col_text1:
+        st.markdown("Si capturamos la aceleración lineal del celular en el eje vertical (eje Z), podemos observar las oscilaciones causadas por el tórax de Botas con cada ciclo respiratorio.")
+
+    with col_text2:
+        st.markdown("En la señal, deberíamos ver un matrón de acelerometría que se repite en ciclos. Si contamos cuántos ciclos hay en un minuto, podemos calcular su frecuencia respiratoria.")
 
     # Leer el CSV de ejemplo
     try:
@@ -308,4 +315,4 @@ def ejemplo_fr_botas():
 
         st.plotly_chart(fig, use_container_width=True)
 
-        st.markdown("En la señal, deberíamos ver un matrón de acelerometría que se repite en ciclos. Si contamos cuántos ciclos hay en un minuto, podemos calcular su frecuencia respiratoria.")
+        
