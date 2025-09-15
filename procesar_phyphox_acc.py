@@ -202,8 +202,8 @@ def ejemplo_fr_botas():
     """
     st.markdown("---")
     #st.markdown("### Ejemplos: Usando el celular para realizar evaluaciones instrumentadas en casa")
-    st.markdown("---")
-    st.markdown("##### Ejemplo 1: Midiendo la frecuencia respiratoria de un gato usando el ACC del teléfono")
+    #st.markdown("---")
+    st.markdown("##### Ejemplo 1: Midiendo la frecuencia respiratoria de un gato usando el celular")
 
     col_gif, col_plot = st.columns([1, 2])
     
