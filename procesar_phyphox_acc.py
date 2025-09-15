@@ -206,8 +206,8 @@ def ejemplo_fr_botas():
     col1, col2 = st.columns([1, 3])
 
     with col1:
-        st.markdown("¡Mira qué bonito!")
-        # st.image("cat.gif", use_container_width=True)
+        #st.markdown("¡Mira qué bonito! --")
+        st.image("cat1.jpg", use_container_width=True)
 
     with col2:
         # Leer el CSV de ejemplo
@@ -243,7 +243,7 @@ def ejemplo_fr_botas():
             value=(0.0, 10.0),  # valores por defecto: low=0, high=10
             step=0.1
         )
-        orden = st.slider("Orden del filtro", min_value=1, max_value=10, value=5)
+        orden = st.slider("Orden del filtro", min_value=1, max_value=5, value=5)
 
         # Aplicar filtro pasa banda
         z_filt = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
