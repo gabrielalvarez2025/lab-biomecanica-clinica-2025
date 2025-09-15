@@ -209,7 +209,7 @@ def ejemplo_fr_botas():
     col_text, col_sliders = st.columns([1, 2])
 
     with col_gif:
-        
+        st.markdown("Este es Botas. Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, colocamos un celular en su lomo mientras dormía.")
         st.image("cat1.jpg", use_container_width=True)
 
     with col_text:
