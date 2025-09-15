@@ -259,7 +259,7 @@ def ejemplo_fr_botas():
         fig.add_trace(go.Scatter(
             x=t, y=z_filt,
             mode="lines",
-            line=dict(color="orange", width=2),
+            line=dict(color="#FFA500", width=2),
             name=f"Acc Z filtrada (cutoff = ( {round(low_cut, 2)} , {round(high_cut, 2)} ) Hz, orden {orden})"
         ))
 
