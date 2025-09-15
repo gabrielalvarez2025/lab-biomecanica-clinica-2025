@@ -242,8 +242,15 @@ def ejemplo_fr_botas():
             plot_bgcolor="rgba(0,0,0,0)",
             paper_bgcolor="rgba(0,0,0,0)",
             font=dict(color="white"),
-            margin=dict(l=40, r=20, t=40, b=40),
-            height=400
+            margin=dict(l=40, r=20, t=60, b=40),  # un poco más de margen arriba para la leyenda
+            height=400,
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="center",
+                x=0.5
+            )
         )
 
         st.plotly_chart(fig, use_container_width=True)
