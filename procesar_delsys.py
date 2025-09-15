@@ -27,6 +27,21 @@ def main_delsys():
         uploaded_file.seek(0)
 
         # Leer nombres sensores:
+        duracion_registro = pd.read_csv(
+            uploaded_file,
+            skiprows=1, # omitir 1 fila
+            nrows=1,
+            header=None,
+            engine="python",
+            delimiter=";"
+        )
+
+        duracion_registro = duracion_registro.iloc[0, 1]
+
+        # Resetear el puntero del archivo
+        uploaded_file.seek(0)
+
+        # Leer nombres sensores:
         nombres_sensores = pd.read_csv(
             uploaded_file,
             skiprows=3, # omitir las primeras 3 filas
