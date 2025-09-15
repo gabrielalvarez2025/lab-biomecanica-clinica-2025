@@ -17,6 +17,32 @@ def butterworth_filter(data, cutoff, fs, order=4):
     y = filtfilt(b, a, data)
     return y
 
+def butterworth_filter_bandpass(data, fs, order=4, low_cut=None, high_cut=None):
+    """
+    Aplica un filtro Butterworth:
+    - low_cut: frecuencia de corte inferior (Hz)
+    - high_cut: frecuencia de corte superior (Hz)
+    """
+    nyquist = 0.5 * fs
+
+    if low_cut and high_cut:
+        # Filtro pasa banda
+        normal_cutoff = [low_cut/nyquist, high_cut/nyquist]
+        btype = "band"
+    elif low_cut:
+        normal_cutoff = low_cut / nyquist
+        btype = "high"
+    elif high_cut:
+        normal_cutoff = high_cut / nyquist
+        btype = "low"
+    else:
+        # Sin filtro
+        return data
+
+    b, a = butter(order, normal_cutoff, btype=btype, analog=False)
+    y = filtfilt(b, a, data)
+    return y
+
 
 def main_phyphox():
     st.markdown("---")
@@ -210,11 +236,12 @@ def ejemplo_fr_botas():
         # Inputs interactivos para filtro
         # -----------------------
         st.markdown("#### Ajusta el filtro Butterworth")
-        cutoff = st.number_input("Frecuencia de corte (Hz)", min_value=0.1, max_value=float(fs/2), value=2.0, step=0.1)
+        low_cut = st.number_input("Frecuencia mínima (Hz, para pasa banda)", min_value=0.0, max_value=float(fs/2), value=0.1, step=0.1)
+        high_cut = st.number_input("Frecuencia máxima (Hz, para pasa banda)", min_value=0.1, max_value=float(fs/2), value=2.0, step=0.1)
         orden = st.slider("Orden del filtro", min_value=1, max_value=10, value=5)
 
-        # Aplicar filtro con parámetros ajustables
-        z_filt = butterworth_filter(z, cutoff=cutoff, fs=fs, order=orden)
+        # Aplicar filtro pasa banda
+        z_filt = butterworth_filter(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
 
         # Crear gráfico interactivo con Plotly
         fig = go.Figure()
