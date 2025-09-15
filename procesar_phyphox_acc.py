@@ -203,35 +203,43 @@ def ejemplo_fr_botas():
     st.markdown("---")
     st.markdown("### Ejemplo: Midiendo la frecuencia respiratoria de un gato con tu teléfono")
 
-    col1, col2 = st.columns([1, 2])
+    col1_1, col1_2 = st.columns([1, 2])
+    
+    col2_1, col2_2 = st.columns([1, 2])
 
-    with col1:
-        #st.markdown("¡Mira qué bonito! --")
+    with col1_1:
         st.image("cat1.jpg", use_container_width=True)
 
-    with col2:
-        # Leer el CSV de ejemplo
-        try:
-            df = pd.read_csv("ejemplo_data_acc_phyphox_fr_botas.csv", sep=",")
-        except FileNotFoundError:
-            st.error("No se encontró el archivo 'ejemplo_data_acc_phyphox_fr_botas.csv'.")
-            return
+    with col1_2:
+        st.markdown(" gasvhjbknlkmsañ")
 
-        df.columns = df.columns.str.strip()
 
-        # Preparar columna Z sin gravedad
-        if "Acceleration z (m/s^2)" not in df.columns:
-            st.error("El CSV no tiene la columna 'Acceleration z (m/s^2)'.")
-            return
+    # Leer el CSV de ejemplo
+    try:
+        df = pd.read_csv("ejemplo_data_acc_phyphox_fr_botas.csv", sep=",")
+    except FileNotFoundError:
+        st.error("No se encontró el archivo 'ejemplo_data_acc_phyphox_fr_botas.csv'.")
+        return
 
-        df["Acceleration z (m/s^2) [no g]"] = df["Acceleration z (m/s^2)"] - 9.8
+    df.columns = df.columns.str.strip()
 
-        t = df["Time (s)"]
-        z = df["Acceleration z (m/s^2) [no g]"]
+    # Preparar columna Z sin gravedad
+    if "Acceleration z (m/s^2)" not in df.columns:
+        st.error("El CSV no tiene la columna 'Acceleration z (m/s^2)'.")
+        return
 
-        # Calcular frecuencia de muestreo
-        fs = 1 / (t.iloc[1] - t.iloc[0])
+    df["Acceleration z (m/s^2) [no g]"] = df["Acceleration z (m/s^2)"] - 9.8
 
+    t = df["Time (s)"]
+    z = df["Acceleration z (m/s^2) [no g]"]
+
+    # Calcular frecuencia de muestreo
+    fs = 1 / (t.iloc[1] - t.iloc[0])
+    
+    
+    with col2_1:
+        #st.markdown("¡Mira qué bonito! --")
+        
         # -----------------------
         # Inputs interactivos para filtro
         # -----------------------
@@ -244,6 +252,11 @@ def ejemplo_fr_botas():
             step=0.1
         )
         orden = st.slider("Orden del filtro", min_value=1, max_value=5, value=5)
+
+    with col2_2:
+        
+
+        
 
         # Aplicar filtro pasa banda
         z_filt = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
