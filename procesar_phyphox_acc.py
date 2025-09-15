@@ -203,14 +203,14 @@ def ejemplo_fr_botas():
     st.markdown("---")
     st.markdown("### Ejemplo: Midiendo la frecuencia respiratoria de un gato con tu teléfono")
 
-    col1_1, col1_2 = st.columns([1, 2])
+    col_gif, col_plot = st.columns([1, 2])
     
-    col2_1, col2_2 = st.columns([1, 2])
+    col_text, col_sliders = st.columns([1, 2])
 
-    with col1_1:
+    with col_gif:
         st.image("cat1.jpg", use_container_width=True)
 
-    with col1_2:
+    with col_text:
         st.markdown(" gasvhjbknlkmsañ")
 
 
@@ -237,7 +237,7 @@ def ejemplo_fr_botas():
     fs = 1 / (t.iloc[1] - t.iloc[0])
     
     
-    with col2_1:
+    with col_sliders:
         #st.markdown("¡Mira qué bonito! --")
         
         # -----------------------
@@ -253,11 +253,8 @@ def ejemplo_fr_botas():
         )
         orden = st.slider("Orden del filtro", min_value=1, max_value=5, value=5)
 
-    with col2_2:
+    with col_plot:
         
-
-        
-
         # Aplicar filtro pasa banda
         z_filt = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
         #0, 10, 1
