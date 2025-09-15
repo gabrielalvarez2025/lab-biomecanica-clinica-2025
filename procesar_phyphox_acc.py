@@ -193,34 +193,13 @@ def main_phyphox():
 
                 st.plotly_chart(fig, use_container_width=True)
 
-import pandas as pd
-import streamlit as st
-import plotly.graph_objects as go
-from scipy.signal import butter, filtfilt, find_peaks
-
-# --------------------------
-# Filtro Butterworth Pasa Banda
-# --------------------------
-def butterworth_filter_bandpass(data, fs, order=1, low_cut=0.0, high_cut=10.0):
-    nyquist = 0.5 * fs
-    if low_cut == 0 and high_cut >= nyquist:
-        return data  # sin filtro
-    elif low_cut == 0:
-        normal_cutoff = high_cut / nyquist
-        btype = "low"
-    elif high_cut >= nyquist:
-        normal_cutoff = low_cut / nyquist
-        btype = "high"
-    else:
-        normal_cutoff = [low_cut / nyquist, high_cut / nyquist]
-        btype = "band"
-    b, a = butter(order, normal_cutoff, btype=btype, analog=False)
-    return filtfilt(b, a, data)
-
-# --------------------------
-# Función principal
-# --------------------------
 def ejemplo_fr_botas():
+    """
+    Ejemplo de uso de phyphox:
+    - Col1: gif de un gato o mensaje
+    - Col2: gráfico interactivo del eje Z (sin gravedad),
+            filtrado con Butterworth con parámetros ajustables
+    """
     st.markdown("---")
     st.markdown("### Ejemplo: Midiendo la frecuencia respiratoria de un gato con tu teléfono")
 
@@ -231,7 +210,7 @@ def ejemplo_fr_botas():
         # st.image("cat.gif", use_container_width=True)
 
     with col2:
-        # Leer CSV de ejemplo
+        # Leer el CSV de ejemplo
         try:
             df = pd.read_csv("ejemplo_data_acc_phyphox_fr_botas.csv", sep=",")
         except FileNotFoundError:
@@ -240,6 +219,7 @@ def ejemplo_fr_botas():
 
         df.columns = df.columns.str.strip()
 
+        # Preparar columna Z sin gravedad
         if "Acceleration z (m/s^2)" not in df.columns:
             st.error("El CSV no tiene la columna 'Acceleration z (m/s^2)'.")
             return
@@ -249,35 +229,39 @@ def ejemplo_fr_botas():
         t = df["Time (s)"]
         z = df["Acceleration z (m/s^2) [no g]"]
 
+        # Calcular frecuencia de muestreo
         fs = 1 / (t.iloc[1] - t.iloc[0])
 
-        # Inputs interactivos para el filtro
+        # -----------------------
+        # Inputs interactivos para filtro
+        # -----------------------
         st.markdown("#### Ajusta el filtro Butterworth")
-        low_cut = st.number_input("Frecuencia mínima (Hz)", min_value=0.0, max_value=float(fs/2), value=0.0, step=0.1)
-        high_cut = st.number_input("Frecuencia máxima (Hz)", min_value=0.1, max_value=float(fs/2), value=10.0, step=0.1)
-        orden = st.slider("Orden del filtro", min_value=1, max_value=10, value=1)
+        low_cut = st.number_input("Frecuencia mínima (Hz, para pasa banda)", min_value=0.0, max_value=float(fs/2), value=0.1, step=0.1)
+        high_cut = st.number_input("Frecuencia máxima (Hz, para pasa banda)", min_value=0.1, max_value=float(fs/2), value=2.0, step=0.1)
+        orden = st.slider("Orden del filtro", min_value=1, max_value=10, value=5)
 
-        # Filtrar señal
+        # Aplicar filtro pasa banda
         z_filt = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
+        #0, 10, 1
 
-        # Detectar peaks para marcar respiraciones
-        peaks, _ = find_peaks(z_filt, distance=int(fs*0.3))  # distancia mínima de 0.3s entre peaks
-
-        # Crear gráfico Plotly
+        # Crear gráfico interactivo con Plotly
         fig = go.Figure()
 
-        # Señal original
-        fig.add_trace(go.Scatter(x=t, y=z, mode="lines", line=dict(color="lightgray", width=1), name="Acc Z original"))
-
-        # Señal filtrada
+        # Señal original en gris
         fig.add_trace(go.Scatter(
-            x=t, y=z_filt, mode="lines", line=dict(color="red", width=2),
-            name=f"Acc Z filtrada (cutoff=({low_cut},{high_cut}) Hz, orden={orden})"
+            x=t, y=z,
+            mode="lines",
+            line=dict(color="lightgray", width=1),
+            name="Acc Z original"
         ))
 
-        # Líneas verticales en los peaks
-        for p in peaks:
-            fig.add_vline(x=t.iloc[p], line=dict(color="yellow", width=1, dash="dash"), opacity=0.7)
+        # Señal filtrada en azul
+        fig.add_trace(go.Scatter(
+            x=t, y=z_filt,
+            mode="lines",
+            line=dict(color="red", width=2),
+            name=f"Acc Z filtrada (cutoff = ( {round(low_cut, 2)} , {round(high_cut, 2)} ) Hz, orden {orden})"
+        ))
 
         fig.update_layout(
             title="Aceleración Z (sin gravedad, filtrada)",
@@ -286,7 +270,7 @@ def ejemplo_fr_botas():
             plot_bgcolor="rgba(0,0,0,0)",
             paper_bgcolor="rgba(0,0,0,0)",
             font=dict(color="white"),
-            margin=dict(l=40, r=20, t=60, b=40),
+            margin=dict(l=40, r=20, t=60, b=40),  # un poco más de margen arriba para la leyenda
             height=400,
             legend=dict(
                 orientation="h",
