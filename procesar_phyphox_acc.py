@@ -241,7 +241,7 @@ def ejemplo_fr_botas():
         orden = st.slider("Orden del filtro", min_value=1, max_value=10, value=5)
 
         # Aplicar filtro pasa banda
-        z_filt = butterworth_filter(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
+        z_filt = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
 
         # Crear gráfico interactivo con Plotly
         fig = go.Figure()
