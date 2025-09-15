@@ -285,6 +285,13 @@ def main_bioinstrumentacion():
     # Configuración tema seaborn
     sns.set_theme(style="darkgrid", palette="pastel")
 
+    st.markdown("---")
+    st.markdown("### Utilidad de la evaluación instrumentada")
+    
+
+
+    st.markdown("---")
+
     
     # Fin listado de contenidos
     st.markdown("---")
