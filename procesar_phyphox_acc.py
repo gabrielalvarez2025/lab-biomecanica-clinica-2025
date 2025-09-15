@@ -215,9 +215,10 @@ def ejemplo_fr_botas():
         st.markdown(" ")
         st.markdown(" ")
         st.image("cat1.jpg", use_container_width=True)
+        st.markdown("Este es Botas. Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, colocamos un celular en su lomo mientras dormía.")
 
     with col_text:
-        st.markdown("Este es Botas. Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, colocamos un celular en su lomo mientras dormía.")
+        st.markdown(" ")
 
 
     # Leer el CSV de ejemplo
