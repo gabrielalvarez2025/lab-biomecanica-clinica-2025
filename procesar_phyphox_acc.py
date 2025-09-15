@@ -203,7 +203,7 @@ def ejemplo_fr_botas():
     st.markdown("---")
     st.markdown("### Ejemplo: Midiendo la frecuencia respiratoria de un gato con tu teléfono")
 
-    col1, col2 = st.columns([1, 3])
+    col1, col2 = st.columns([1, 2])
 
     with col1:
         #st.markdown("¡Mira qué bonito! --")
