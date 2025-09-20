@@ -236,7 +236,7 @@ def ejemplo_fr_botas():
 
     with col_gif:
         st.markdown(" ")
-        st.markdown("##### El experimento")
+        st.markdown(" ")
         #st.markdown(" ")
         st.markdown("Este es Botas")
         st.image("cat3.gif", use_container_width=True)
