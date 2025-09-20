@@ -211,7 +211,7 @@ def ejemplo_fr_botas():
     
     col_text1, col_text2 = st.columns(proporcion)
     
-    col_text, col_sliders = st.columns([60, 40])
+    col_text, col_sliders = st.columns([55, 45])
 
     with col_gif:
         st.markdown(" ")
