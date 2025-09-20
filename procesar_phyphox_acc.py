@@ -207,11 +207,39 @@ def ejemplo_fr_botas():
 
     proporcion = [35, 65]
 
+    # Bloque fijo en la parte superior con gato (fixed position)
+    st.markdown(
+    """
+    <style>
+    .fixed-container {
+        position: fixed;
+        top: 80px;   /* separación desde arriba */
+        left: 50px;  /* separación desde el borde izquierdo */
+        width: 90%;  /* ancho del bloque completo */
+        z-index: 100;
+        background-color: rgba(30, 30, 30, 0.8); /* opcional, para contraste */
+        padding: 10px;
+        border-radius: 10px;
+    }
+    </style>
+    <div class="fixed-container" id="fixed-cols">
+    """,
+    unsafe_allow_html=True
+)
+
     col_gif, col_plot = st.columns(proporcion)
+
+    # cerrar el div
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+    # resto del contenido para hacer scroll
+    for i in range(50):
+        st.write("Fila ", i)
     
-    col_text1, col_text2 = st.columns(proporcion)
-    
-    col_text_filter, col_sliders = st.columns([55, 45])
+        col_text1, col_text2 = st.columns(proporcion)
+        
+        col_text_filter, col_sliders = st.columns([55, 45])
 
     with col_gif:
         st.markdown(" ")
