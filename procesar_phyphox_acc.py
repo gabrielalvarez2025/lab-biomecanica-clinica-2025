@@ -213,8 +213,7 @@ def ejemplo_fr_botas():
         """
         <style>
         .sticky-container {
-            position: sticky;
-            position: sticky;
+            position: fixed;
             top: 70px;   /* distancia desde arriba antes de pegarse */
             z-index: 100;
             background-color: rgba(30,30,30,0.8); /* opcional: fondo semitransparente */
