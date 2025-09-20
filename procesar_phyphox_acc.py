@@ -229,7 +229,7 @@ def ejemplo_fr_botas():
     )
 
     # Abrimos el contenedor fijo
-    st.markdown('<div class="fixed-container">', unsafe_allow_html=True)
+    #st.markdown('<div class="fixed-container">', unsafe_allow_html=True)
 
     col_gif, col_plot = st.columns(proporcion)
 
