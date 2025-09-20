@@ -328,7 +328,7 @@ def ejemplo_fr_botas():
         st.markdown(" ")
         st.markdown("Botas tiene asma y su veterinaria nos ha pedido que una vez a la semana monitoreemos su frecuencia respiratoria (FR) de reposo en casa.")
         st.markdown("Para hacer esto, debemos esperar a que esté quieto y tranquilo, y con un cronómetro, contar sus respiraciones en un minuto. Es decir, una evaluación sencilla.")
-        st.markdown("Sin embargo, como estudiante de Kinesiología que está cursando su ramo de Análisis de Movimiento y aprendiendo a usar bioinstrumentos, te preguntas... ¿podemos complementar esta evaluación visual con un registro más objetivo? ¿Podemos usar algún bioinstrumento casero para cuantificar su FR?")
+        st.markdown("Sin embargo, como estudiante de Kinesiología que está cursando su ramo de Análisis de Movimiento y aprendiendo a usar bioinstrumentos, te preguntas... ¿podemos complementar esta evaluación con un registro más objetivo? ¿Podemos usar algún bioinstrumento casero para cuantificar su FR?")
         
         
         st.markdown("⤹ <small>Presiona la leyenda para ocultar/mostrar las curvas</small>", unsafe_allow_html=True)
