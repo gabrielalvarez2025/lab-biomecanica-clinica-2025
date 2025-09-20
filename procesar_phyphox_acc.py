@@ -282,7 +282,7 @@ def ejemplo_fr_botas():
     
     
     with col_text_filter:
-        st.markdown("Cuando capturamosu señales usando sensores, es común que haya ruido contaminando la señal. Ruido es todo aquello que no es parte de la señal que queremos medir.")
+        st.markdown("Cuando capturamos señales usando sensores, es común que haya ruido contaminando la señal. Ruido es todo aquello que no es parte de la señal que queremos medir.")
         st.markdown("En este caso, queremos medir las oscilaciones causadas por la respiración, pero al mismo tiempo sensamos otras fuentes de movimiento, que generan ruido en la señal. Por ejemplo, cada vez que Botas respira, ronronea. Esa vibración genera movimiento que contamina la señal que queremos medir.")
         st.markdown("Para eliminar ruido de una señal, podemos usar un **filtro digital**.")
         st.markdown("Un filtro digital es un algoritmo que procesa la señal en términos de las frecuencias que la componen y, al igual que un colador, deja pasar solo las frecuencias que nos interesan, ignorando las demás.")
@@ -317,7 +317,7 @@ def ejemplo_fr_botas():
 
     with col_plot:
         
-        st.markdown("⤹ Presiona la leyenda para ocultar/mostrar las curvas")
+        st.markdown("<small>⤹ Presiona la leyenda para ocultar/mostrar las curvas</small>", unsafe_allow_html=True)
         
         # Aplicar filtro pasa banda
         z_filt = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
