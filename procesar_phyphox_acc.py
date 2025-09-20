@@ -291,7 +291,7 @@ def ejemplo_fr_botas():
         # -----------------------
         st.markdown("##### Ajusta el filtro Butterworth")
         low_cut, high_cut = st.slider(
-            "Selecciona el rango de frecuencias (Hz) para el filtro pasa banda",
+            "Elige la banda de frecuencias (Hz) que dejarás pasar",
             min_value=0.0,
             max_value=float(fs/2)/2,
             value=(0.0, 10.0),  # valores por defecto: low=0, high=10
