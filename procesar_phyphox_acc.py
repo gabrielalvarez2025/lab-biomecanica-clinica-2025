@@ -216,9 +216,9 @@ def ejemplo_fr_botas():
 
         col_gif, col_plot = st.columns(proporcion)
 
-        col_text1, col_text2 = st.columns(proporcion)
+        col_text1, col_text2 = st.columns(2)
 
-        col_calculo_fr1, col_calculo_fr2 = st.columns(proporcion)
+        col_calculo_fr1, col_calculo_fr2 = st.columns(2)
     
     
     with col_web_right:
@@ -252,7 +252,7 @@ def ejemplo_fr_botas():
 
     with col_calculo_fr1:
         st.markdown("También podemos contar los ciclos en 15 segundos y luego multiplicar por 4 para hacer una estimación rápida.")
-        st.markdown("###### ¿Cuál es la frecuencia respiratoria de Botas?")
+        st.markdown("##### ¿Cuál es la frecuencia respiratoria de Botas?")
         
 
     # Leer el CSV de ejemplo
