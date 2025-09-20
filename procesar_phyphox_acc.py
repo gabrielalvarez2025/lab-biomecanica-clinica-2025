@@ -222,8 +222,7 @@ def ejemplo_fr_botas():
         st.markdown("Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, usaremos los sensores del celular.")
         
 
-    with col_text:
-        st.markdown(" ")
+    
 
     with col_text1:
         st.markdown("Si capturamos la aceleración lineal del celular en el eje vertical (eje Z), podemos observar las oscilaciones causadas por el tórax de Botas con cada ciclo respiratorio.")
