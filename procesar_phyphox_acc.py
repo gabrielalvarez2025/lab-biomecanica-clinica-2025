@@ -325,6 +325,10 @@ def ejemplo_fr_botas():
     with col_plot:
         
         st.markdown("⤹ <small>Presiona la leyenda para ocultar/mostrar las curvas</small>", unsafe_allow_html=True)
+
+        st.markdown("Botas tiene asma y su veterinaria nos ha pedido que una vez a la semana monitoreemos su frecuencia respiratoria (FR) de reposo en casa.")
+        st.markdown("Para hacer esto, debemos esperar a que esté quieto y tranquilo, y con un cronómetro, contar sus respiraciones en un minuto. Es decir, una evaluación sencilla.")
+        st.markdown("Pero, ¿podemos complementar esta evaluación visual con un registro más objetivo? ¿Podemos usar un bioinstrumento casero para cuantificar su FR?")
         
         # Aplicar filtro pasa banda
         z_filt = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
