@@ -325,11 +325,11 @@ def ejemplo_fr_botas():
         fig.add_trace(go.Scatter(
             x=t, y=z,
             mode="lines",
-            line=dict(color="lightgray", width=1),
+            line=dict(color="lightgray", width=1, alpha=0.5),
             name="Señal original"
         ))
 
-        # Señal filtrada en azul
+        # Señal filtrada en naranjo
         fig.add_trace(go.Scatter(
             x=t, y=z_filt,
             mode="lines",
