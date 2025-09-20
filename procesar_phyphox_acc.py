@@ -272,7 +272,7 @@ def ejemplo_fr_botas():
         st.markdown("Cuando capturamos señales usando sensores, es común que haya ruido contaminando la señal. Ruido es todo aquello que no es parte de la señal que queremos medir.")
         st.markdown("En este caso, queremos medir las oscilaciones causadas por la respiración, pero al mismo tiempo sensamos otras fuentes de movimiento, que generan ruido en la señal. Por ejemplo, cada vez que Botas respira, ronronea. Esa vibración genera movimiento que contamina la señal que queremos medir.")
         st.markdown("Para eliminar ruido de una señal, podemos usar un **filtro digital**.")
-        st.markdown("Un filtro digital es un algoritmo que procesa la señal y, al igual que un colador, deja pasar solo las frecuencias que nos interesan, ignorando las demás.")
+        st.markdown("Un filtro digital es un algoritmo que procesa la señal en términos de las frecuencias que la componen y, al igual que un colador, deja pasar solo las frecuencias que nos interesan, ignorando las demás.")
         st.markdown("Hay muchos tipos de filtros digitales. En este ejemplo, usaremos un filtro 'de pasa banda', es decir, un filtro que deja pasar sólo un rango de frecuencias que nosotros seleccionamos.")
         
         st.markdown("La respiración en reposo se repite pocas veces por segundo (20 a 30 rpm en un gato), por lo que ocurre a una frecuencia baja (0.3 a 0.4 Hz). En cambio, el ronroneo ocurre a una frecuencia más alta (p.ej. 25 Hz).")
