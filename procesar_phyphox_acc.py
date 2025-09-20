@@ -217,12 +217,11 @@ def ejemplo_fr_botas():
         col_gif, col_plot = st.columns(proporcion)
 
         col_text1, col_text2 = st.columns(proporcion)
-        #st.markdown("---")
     
     
     with col_web_right:
         
-        col_text_filter, col_sliders = st.columns([55, 45])
+        col_text_filter, col_sliders = st.columns(2)
 
         
 
