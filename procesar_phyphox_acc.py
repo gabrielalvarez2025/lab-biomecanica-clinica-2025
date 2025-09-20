@@ -284,7 +284,7 @@ def ejemplo_fr_botas():
         st.markdown("La respiración en reposo se repite pocas veces por segundo (20 a 30 rpm en un gato), por lo que ocurre a una frecuencia baja (0.3 a 0.4 Hz). En cambio, el ronroneo ocurre a una frecuencia más alta (p.ej. 25 Hz).")
         st.markdown("Por lo tanto, para limpiar nuestra señal, podemos usar un filtro que deje pasar las frecuencias bajas (ej. FR), pero bloquee las frecuencias altas (ej. ronroneo).")
         
-        st.markdown("A la derecha, puedes deslizar los sliders para jugar con los parámetros del filtro para ver cómo afectan la señal filtrada. Actualmente, el filtro está dejando pasar las frecuencias entre 0 y 10 Hz, y bloqueando todas las demás hacia derecha y hacia izquierda.")
+        st.markdown("Abajo, puedes deslizar los sliders para jugar con los parámetros del filtro para ver cómo afectan la señal filtrada. Actualmente, el filtro está dejando pasar las frecuencias entre 0 y 10 Hz, y bloqueando todas las demás hacia derecha y hacia izquierda.")
         
         # -----------------------
         # Inputs interactivos para filtro
