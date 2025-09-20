@@ -217,6 +217,8 @@ def ejemplo_fr_botas():
         col_gif, col_plot = st.columns(proporcion)
 
         col_text1, col_text2 = st.columns(proporcion)
+
+        col_calculo_fr1, col_calculo_fr2 = st.columns(proporcion)
     
     
     with col_web_right:
@@ -243,9 +245,15 @@ def ejemplo_fr_botas():
 
     with col_text2:
         st.markdown("En la señal, deberíamos ver un patrón de acelerometría que se repite en ciclos. Si contamos cuántos ciclos hay en un minuto, podemos calcular su frecuencia respiratoria.")
+        
+
+    with col_calculo_fr1:
+        st.image("img_capture_plot_cat_fr.png", use_container_width=True)
+
+    with col_calculo_fr2:
         st.markdown("También podemos contar los ciclos en 15 segundos y luego multiplicar por 4 para hacer una estimación rápida.")
         st.markdown("¿Cuál es la frecuencia respiratoria de Botas?")
-        st.image("img_capture_plot_cat_fr.png", use_container_width=True)
+        
 
     # Leer el CSV de ejemplo
     try:
