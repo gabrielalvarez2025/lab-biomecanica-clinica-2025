@@ -202,11 +202,14 @@ def ejemplo_fr_botas():
     """
 
     st.set_page_config(layout="wide")
-    col_web_left, col_web_right = st.columns(2)
-    proporcion = [35, 65]
 
     st.markdown("---")
     st.markdown("##### Ejemplo 1: Midiendo la frecuencia respiratoria de un gato usando el celular")
+
+    col_web_left, col_web_right = st.columns(2)
+    proporcion = [35, 65]
+
+    
 
 
     with col_web_left:
