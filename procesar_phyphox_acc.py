@@ -255,7 +255,11 @@ def ejemplo_fr_botas():
 
     with col_calculo_fr1:
         st.markdown("También podemos contar los ciclos en 15 segundos y luego multiplicar por 4 para hacer una estimación rápida.")
-        st.markdown("##### ¿Cuál es la frecuencia respiratoria de Botas?")
+        st.markdown("##### Analicemos:")
+        st.markdown("Ya observaste y mediste; estás en la 3° etapa de evaluación: análisis.")
+        st.markdown("¿Cuál es la frecuencia respiratoria de Botas?")
+        st.markdown("Considerando que el rango de FR en reposo normal para un gato es 20 a 30 rpm, ¿qué podría estar pasando con Botas?")
+        
         
 
     # Leer el CSV de ejemplo
