@@ -318,7 +318,7 @@ def ejemplo_fr_botas():
             x=t, y=z_filt,
             mode="lines",
             line=dict(color="#FFA500", width=2),
-            name=f"Acc Z filtrada (cutoff = ( {round(low_cut, 2)} , {round(high_cut, 2)} ) Hz, orden {orden})"
+            name=f"Señal filtrada (cutoff = ( {round(low_cut, 2)} , {round(high_cut, 2)} ) Hz, orden {orden})"
         ))
 
         fig.update_layout(
