@@ -233,6 +233,14 @@ def ejemplo_fr_botas():
 
     col_gif, col_plot = st.columns(proporcion)
 
+    with col_gif:
+        st.markdown(" ")
+        st.markdown(" ")
+        #st.markdown(" ")
+        st.markdown("Este es Botas")
+        st.image("cat3.gif", use_container_width=True)
+        st.markdown("Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, usaremos los sensores del celular.")
+
     # cerrar el div
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -243,13 +251,7 @@ def ejemplo_fr_botas():
     
     col_text_filter, col_sliders = st.columns([55, 45])
 
-    with col_gif:
-        st.markdown(" ")
-        st.markdown(" ")
-        #st.markdown(" ")
-        st.markdown("Este es Botas")
-        st.image("cat3.gif", use_container_width=True)
-        st.markdown("Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, usaremos los sensores del celular.")
+   
         
 
     
