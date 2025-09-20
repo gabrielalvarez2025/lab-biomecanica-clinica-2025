@@ -211,7 +211,7 @@ def ejemplo_fr_botas():
     
     col_text1, col_text2 = st.columns(proporcion)
     
-    col_text, col_sliders = st.columns([55, 45])
+    col_text_filter, col_sliders = st.columns([55, 45])
 
     with col_gif:
         st.markdown(" ")
@@ -254,6 +254,18 @@ def ejemplo_fr_botas():
     # Calcular frecuencia de muestreo
     fs = 1 / (t.iloc[1] - t.iloc[0])
     
+    
+    with col_text_filter:
+        st.markdown("Cuando capturamos señales usando sensores, es comúnu que haya ruido contaminando la señal. Ruido es todo aquello que no es parte de la señal que queremos medir. En este caso, queremos medir las oscilaciones causadas por la respiración, pero hay otras fuentes de movimiento que logramos sensar y que generan ruido en la señal.")
+        st.markdown("Por ejemplo, cada vez que Botas respira, ronronea. Esa vibración genera movimiento que contamina la señal que queremos medir.")
+        st.markdown("Para eliminar ruido de una señal, podemos usar un filtro digital.")
+        st.markdown("Un filtro digital es un algoritmo que procesa la señal y, al igual que un colador, deja pasar solo las frecuencias que nos interesan, ignorando las demás.")
+        st.markdown("Hay muchos tipos de filtros digitales. En este ejemplo, usaremos un filtro 'de pasa banda', es decir, un filtro que deja pasar sólo un rango de frecuencias que nosotros seleccionamos.")
+        
+        st.markdown("La respiración en reposo se repite pocas veces por segundo (20 a 30 rpm en un gato), por lo que ocurre a una frecuencia baja (0.3 a 0.4 Hz). En cambio, el ronroneo ocurre a una frecuencia más alta (p.ej. 25 Hz).")
+        st.markdown("Por lo tanto, para limpiar nuestra señal, podemos usar un filtro que deje pasar las frecuencias bajas (ej. FR), pero bloquee las frecuencias altas (ej. ronroneo).")
+        
+        st.markdown("A la derecha, puedes deslizar los sliders para jugar con los parámetros del filtro para ver cómo afectan la señal filtrada. Actualmente, el filtro está dejando pasar las frecuencias entre 0 y 10 Hz, y bloqueando todas las demás hacia derecha y hacia izquierda.")
     
     with col_sliders:
         #st.markdown("¡Mira qué bonito! --")
