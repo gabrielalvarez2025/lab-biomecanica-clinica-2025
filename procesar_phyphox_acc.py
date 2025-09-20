@@ -200,41 +200,28 @@ def ejemplo_fr_botas():
     - Col2: gráfico interactivo del eje Z (sin gravedad),
             filtrado con Butterworth con parámetros ajustables
     """
-    
+
     st.set_page_config(layout="wide")
-
-
-    st.markdown("---")
-    #st.markdown("### Ejemplos: Usando el celular para realizar evaluaciones instrumentadas en casa")
-    #st.markdown("---")
-    st.markdown("##### Ejemplo 1: Midiendo la frecuencia respiratoria de un gato usando el celular")
-
+    col_web_left, col_web_right = st.columns(2)
     proporcion = [35, 65]
 
-    # Bloque fijo en la parte superior con gato (fixed position)
-    # CSS para bloque fijo
-    st.markdown(
-        """
-        <style>
-        .sticky-container {
-            position: fixed;
-            top: 70px;   /* distancia desde arriba antes de pegarse */
-            z-index: 100;
-            background-color: rgba(30,30,30,0.8); /* opcional: fondo semitransparente */
-            border-radius: 10px;
-            padding: 10px;
-        }
-        </style>
-        <div class="sticky-container">
-        """,
-        unsafe_allow_html=True
-    )
 
+    with col_web_left:
 
-    # Abrimos el contenedor fijo
-    #st.markdown('<div class="fixed-container">', unsafe_allow_html=True)
+        st.markdown("---")
+        st.markdown("##### Ejemplo 1: Midiendo la frecuencia respiratoria de un gato usando el celular")
 
-    col_gif, col_plot = st.columns(proporcion)
+        col_gif, col_plot = st.columns(proporcion)
+    
+    
+    with col_web_right:
+        
+        col_text1, col_text2 = st.columns(proporcion)
+        
+        col_text_filter, col_sliders = st.columns([55, 45])
+
+   
+        
 
     with col_gif:
         st.markdown(" ")
@@ -244,20 +231,6 @@ def ejemplo_fr_botas():
         st.image("cat3.gif", use_container_width=True)
         st.markdown("Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, usaremos los sensores del celular.")
 
-    # cerrar el div
-    st.markdown("</div>", unsafe_allow_html=True)
-
-
-    # resto del contenido para hacer scroll
-    
-    col_text1, col_text2 = st.columns(proporcion)
-    
-    col_text_filter, col_sliders = st.columns([55, 45])
-
-   
-        
-
-    
 
     with col_text1:
         st.markdown("Si capturamos la aceleración lineal del celular en el eje vertical (eje Z), podemos observar las oscilaciones causadas por el tórax de Botas con cada ciclo respiratorio.")
