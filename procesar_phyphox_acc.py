@@ -215,10 +215,31 @@ def ejemplo_fr_botas():
     
     
     with col_web_right:
+
+        # Bloque CSS para scroll independiente
+        st.markdown(
+            """
+            <style>
+            .scrollable-block {
+                height: 500px; /* alto fijo del bloque con scroll */
+                overflow-y: auto; /* scroll vertical independiente */
+                padding: 10px;
+                border: 1px solid #444;
+                border-radius: 8px;
+                background-color: rgba(30,30,30,0.8);
+            }
+            </style>
+            <div class="scrollable-block">
+            """,
+            unsafe_allow_html=True
+        )
         
         col_text1, col_text2 = st.columns(proporcion)
         
         col_text_filter, col_sliders = st.columns([55, 45])
+
+        # Cerrar el div
+        st.markdown("</div>", unsafe_allow_html=True)
 
    
         
