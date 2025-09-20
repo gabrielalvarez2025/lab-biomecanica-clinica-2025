@@ -213,7 +213,7 @@ def ejemplo_fr_botas():
         """
         <style>
         .sticky-container {
-            position: -webkit-sticky;
+            position: sticky;
             position: sticky;
             top: 70px;   /* distancia desde arriba antes de pegarse */
             z-index: 100;
