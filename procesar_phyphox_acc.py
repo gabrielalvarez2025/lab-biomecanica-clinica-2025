@@ -239,7 +239,7 @@ def ejemplo_fr_botas():
         col_text_filter, col_sliders = st.columns([55, 45])
 
         # Cerrar el div
-        st.markdown("</div>", unsafe_allow_html=True)
+        #st.markdown("</div>", unsafe_allow_html=True)
 
    
         
