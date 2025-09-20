@@ -208,6 +208,7 @@ def ejemplo_fr_botas():
     proporcion = [35, 65]
 
     # Bloque fijo en la parte superior con gato (fixed position)
+    # CSS para bloque fijo
     st.markdown(
     """
     <style>
@@ -225,7 +226,10 @@ def ejemplo_fr_botas():
     <div class="fixed-container" id="fixed-cols">
     """,
     unsafe_allow_html=True
-)
+    )
+
+    # Abrimos el contenedor fijo
+    st.markdown('<div class="fixed-container">', unsafe_allow_html=True)
 
     col_gif, col_plot = st.columns(proporcion)
 
