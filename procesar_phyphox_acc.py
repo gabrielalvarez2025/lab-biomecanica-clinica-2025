@@ -238,12 +238,10 @@ def ejemplo_fr_botas():
 
 
     # resto del contenido para hacer scroll
-    for i in range(50):
-        st.write("Fila ", i)
     
-        col_text1, col_text2 = st.columns(proporcion)
-        
-        col_text_filter, col_sliders = st.columns([55, 45])
+    col_text1, col_text2 = st.columns(proporcion)
+    
+    col_text_filter, col_sliders = st.columns([55, 45])
 
     with col_gif:
         st.markdown(" ")
