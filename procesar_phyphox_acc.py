@@ -316,7 +316,7 @@ def ejemplo_fr_botas():
 
         # 👉 Rango inicial de ejes
         fig.update_xaxes(range=[2.5, 20])
-        fig.update_yaxes(range=[-2, 2])
+        fig.update_yaxes(range=[-2, 1.5])
         
         st.plotly_chart(fig, use_container_width=True)
 
