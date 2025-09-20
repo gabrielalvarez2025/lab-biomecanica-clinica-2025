@@ -214,6 +214,8 @@ def ejemplo_fr_botas():
 
     with col_web_left:
 
+        st.markdown("Veamos un ejemplo de un escenario doméstico en el que podríamos usar un celular para capturar señales biológicas y así complementar una evaluación clínica.")
+        
         col_gif, col_plot = st.columns(proporcion)
 
         col_text1, col_text2 = st.columns(2)
