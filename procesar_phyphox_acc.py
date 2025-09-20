@@ -213,7 +213,7 @@ def ejemplo_fr_botas():
     """
     <style>
     .fixed-container {
-        position: fixed;
+        position: sticky;
         top: 80px;   /* separación desde arriba */
         left: 50px;  /* separación desde el borde izquierdo */
         width: 90%;  /* ancho del bloque completo */
