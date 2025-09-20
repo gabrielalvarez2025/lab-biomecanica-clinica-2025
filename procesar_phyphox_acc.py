@@ -252,7 +252,7 @@ def ejemplo_fr_botas():
 
     with col_calculo_fr1:
         st.markdown("También podemos contar los ciclos en 15 segundos y luego multiplicar por 4 para hacer una estimación rápida.")
-        st.markdown("¿Cuál es la frecuencia respiratoria de Botas?")
+        st.markdown("###### ¿Cuál es la frecuencia respiratoria de Botas?")
         
 
     # Leer el CSV de ejemplo
