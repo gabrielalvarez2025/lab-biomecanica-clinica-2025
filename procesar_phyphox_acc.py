@@ -210,23 +210,23 @@ def ejemplo_fr_botas():
     # Bloque fijo en la parte superior con gato (fixed position)
     # CSS para bloque fijo
     st.markdown(
-    """
-    <style>
-    .fixed-container {
-        position: sticky;
-        top: 80px;   /* separación desde arriba */
-        left: 50px;  /* separación desde el borde izquierdo */
-        width: 90%;  /* ancho del bloque completo */
-        z-index: 100;
-        background-color: rgba(30, 30, 30, 0.8); /* opcional, para contraste */
-        padding: 10px;
-        border-radius: 10px;
-    }
-    </style>
-    <div class="fixed-container" id="fixed-cols">
-    """,
-    unsafe_allow_html=True
+        """
+        <style>
+        .sticky-container {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 70px;   /* distancia desde arriba antes de pegarse */
+            z-index: 100;
+            background-color: rgba(30,30,30,0.8); /* opcional: fondo semitransparente */
+            border-radius: 10px;
+            padding: 10px;
+        }
+        </style>
+        <div class="sticky-container">
+        """,
+        unsafe_allow_html=True
     )
+
 
     # Abrimos el contenedor fijo
     #st.markdown('<div class="fixed-container">', unsafe_allow_html=True)
