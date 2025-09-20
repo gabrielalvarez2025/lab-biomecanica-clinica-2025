@@ -221,6 +221,7 @@ def ejemplo_fr_botas():
     
     with col_web_right:
         
+        st.markdown("##### Filtrando la señal")
         col_text_filter, col_sliders = st.columns(2)
 
         
