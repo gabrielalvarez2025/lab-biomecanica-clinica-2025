@@ -218,6 +218,9 @@ def ejemplo_fr_botas():
 
         col_text1, col_text2 = st.columns(2)
 
+        st.markdown(" ")
+        st.markdown(" ")
+
         col_calculo_fr1, col_calculo_fr2 = st.columns(2)
     
     
