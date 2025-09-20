@@ -265,7 +265,7 @@ def ejemplo_fr_botas():
         low_cut, high_cut = st.slider(
             "Selecciona el rango de frecuencias (Hz) para el filtro pasa banda",
             min_value=0.0,
-            max_value=float(fs/2),
+            max_value=200#float(fs/2),
             value=(0.0, 10.0),  # valores por defecto: low=0, high=10
             step=0.1
         )
