@@ -206,7 +206,7 @@ def ejemplo_fr_botas():
     st.markdown("---")
     st.markdown("##### Ejemplo 1: Midiendo la frecuencia respiratoria de un gato usando el celular")
 
-    col_web_left, col_web_right = st.columns(2)
+    col_web_left, col_web_esp, col_web_right = st.columns([48, 4, 48])
     proporcion = [35, 65]
 
     
