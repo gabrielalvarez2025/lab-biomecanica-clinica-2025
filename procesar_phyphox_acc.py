@@ -211,7 +211,7 @@ def ejemplo_fr_botas():
     
     col_text1, col_text2 = st.columns(proporcion)
     
-    col_text, col_sliders = st.columns(proporcion)
+    col_text, col_sliders = st.columns([70, 30])
 
     with col_gif:
         st.markdown(" ")
@@ -285,7 +285,7 @@ def ejemplo_fr_botas():
             x=t, y=z,
             mode="lines",
             line=dict(color="lightgray", width=1),
-            name="Acc Z original"
+            name="Señal original"
         ))
 
         # Señal filtrada en azul
