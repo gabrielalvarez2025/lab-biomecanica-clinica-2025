@@ -215,7 +215,7 @@ def ejemplo_fr_botas():
     with col_web_left:
 
         col_gif, col_plot = st.columns(proporcion)
-        st.markdown("---")
+        #st.markdown("---")
     
     
     with col_web_right:
