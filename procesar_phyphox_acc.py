@@ -200,6 +200,10 @@ def ejemplo_fr_botas():
     - Col2: gráfico interactivo del eje Z (sin gravedad),
             filtrado con Butterworth con parámetros ajustables
     """
+    
+    st.set_page_config(layout="wide")
+
+
     st.markdown("---")
     #st.markdown("### Ejemplos: Usando el celular para realizar evaluaciones instrumentadas en casa")
     #st.markdown("---")
