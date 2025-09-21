@@ -217,19 +217,21 @@ def ejemplo_fr_botas():
     #with col_web_left_expermiento:
     
 
-    tab_caso, tab_filtro  = st.tabs([
+    tab_caso, tab_medicion, tab_data, tab_analisis, tab_filtro  = st.tabs([
         "Ejemplo", 
+        "La medición", 
+        "Los datos capturados",
+        "Analizando los datos",
         "Sobre el filtrado de los datos"
         ])    
         
-    
+    #st.markdown("##### El caso")
 
     with tab_caso:
-        #st.markdown("##### El caso")
         st.markdown("##### El caso<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>", unsafe_allow_html=True)
         col_img_botas, col_caso = st.columns(proporcion)
 
-    
+    with tab_medicion:
         #st.markdown("##### La medición")
         st.markdown("##### La medición<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>", unsafe_allow_html=True)
         
@@ -237,10 +239,10 @@ def ejemplo_fr_botas():
         st.markdown("Para poder iniciar y detener el registro, usas una app (ej. 'Accelerometer' o 'PhyPhox') que te permita acceder al acelerómetro en tiempo real y descargar los datos como tabla.")
         
     
-        #with col_web_right_expermiento:
+    #with col_web_right_expermiento:
         
         
-    
+    with tab_data:
         #st.markdown("##### Los datos capturados")
         st.markdown(
             "##### Los datos capturados<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>",
@@ -252,7 +254,7 @@ def ejemplo_fr_botas():
 
 
     
-    
+    with tab_analisis:
         st.markdown(
             "##### Analizando los datos:<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>",
             unsafe_allow_html=True
@@ -269,15 +271,7 @@ def ejemplo_fr_botas():
         col_text_filter1, col_text_filter2 = st.columns(2)
 
 
-        #with col_web_right_filtrado:
-
-    
-
-    
-
-        
-
-   
+  
         
 
     with col_img_botas:
