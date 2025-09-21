@@ -210,7 +210,7 @@ def ejemplo_fr_botas():
     proporcion = [35, 65]
 
     
-
+    espacio = st.markdown(" ")
 
     with col_web_left:
 
@@ -255,6 +255,8 @@ def ejemplo_fr_botas():
         
         
     with col_gif:
+        espacio
+        espacio
         st.image("cat3.gif", use_container_width=True)
 
     with col_text1:
