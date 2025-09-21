@@ -1,6 +1,8 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
+import plotly.express as px
+import pandas as pd
 from pydub import AudioSegment
 
 def main_control_motor():
@@ -8,9 +10,7 @@ def main_control_motor():
 
 
 
-    import streamlit as st
-    import plotly.express as px
-    import pandas as pd
+    
 
     # Ejemplo de eventos
     data = {
