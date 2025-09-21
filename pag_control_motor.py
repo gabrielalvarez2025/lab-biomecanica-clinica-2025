@@ -57,7 +57,7 @@ def main_control_motor():
         title="Cronología de teorías del control motor",
     )
 
-    fig.update_traces(textposition="outside")
+    fig.update_traces(textposition="inside")
     fig.update_yaxes(autorange="reversed", showticklabels=False)
 
     # Ajustes de layout
