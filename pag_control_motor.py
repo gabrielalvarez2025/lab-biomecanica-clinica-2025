@@ -15,12 +15,12 @@ def main_control_motor():
     # Datos de la cronología (más realista)
     data = {
         "Teoría": [
-            "Teoría refleja",
-            "Teoría jerárquica",
-            "Teoría de los programas motores",
-            "Modelos internos (directo e inverso)",
-            "Hipótesis del Manifold No-controlado (UCM)",
-            "Teoría de los sistemas dinámicos"
+            "T. refleja",
+            "T. jerárquica",
+            "T. de los Programas Motores",
+            "T. de Modelos internos",
+            "Hip. del Manifold No-controlado (UCM)",
+            "Sistemas dinámicos"
         ],
         "Inicio": [
             "1900-01-01",   # Refleja (Sherrington, principios del siglo XX)
