@@ -275,7 +275,7 @@ def ejemplo_fr_botas():
     with col_img_botas:
         
         st.markdown("Este es Botas")
-        st.image("img_botas.png", use_container_width=True)
+        st.image("img_botas1.png", use_container_width=True)
         #st.image("cat3.gif", use_container_width=True)
 
     with col_caso:
