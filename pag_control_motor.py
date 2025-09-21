@@ -98,7 +98,7 @@ def main_control_motor():
 
     
 
-    st.markdown("## Teorías del Control Motor: detalle completo")
+    st.markdown("## Teorías del Control Motor")
 
     # Crear tabs para cada teoría
     tab_refleja, tab_jerarquica, tab_pm, tab_sistemas, tab_dinamicos, tab_ecologica = st.tabs([
