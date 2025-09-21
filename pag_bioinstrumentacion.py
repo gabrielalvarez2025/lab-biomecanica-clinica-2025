@@ -274,25 +274,11 @@ def main_bioinstrumentacion():
 
     st.header("Unidad 1: Bioinstrumentación")
 
-    st.markdown(
-        "- Electromiografía (EMG)\n"
-        "- Plataforma de fuerza\n"
-        "- Videofotogrametría\n"
-        "- Goniometría"
-    )
-
-
     # Configuración tema seaborn
     sns.set_theme(style="darkgrid", palette="pastel")
     #st.set_page_config(layout="wide")
 
-    st.markdown("---")
-    st.markdown("### Utilidad de la evaluación instrumentada")
-
     
-
-
-
     st.markdown("---")
 
     
