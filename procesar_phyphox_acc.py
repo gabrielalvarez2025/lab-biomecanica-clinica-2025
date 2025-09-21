@@ -246,7 +246,7 @@ def ejemplo_fr_botas():
         #st.image("cat3.gif", use_container_width=True)
 
     with col_caso:
-        st.markdown(" ")
+        
         st.markdown(" ")
         st.markdown(" ")
         st.markdown("Botas tiene asma y su veterinaria nos ha pedido que una vez a la semana monitoreemos su frecuencia respiratoria (FR) de reposo en casa.")
