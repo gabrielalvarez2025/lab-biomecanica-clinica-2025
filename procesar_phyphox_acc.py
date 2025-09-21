@@ -259,7 +259,7 @@ def ejemplo_fr_botas():
         col_calculo_analisis_texto1, col_calculo_analisis_texto2 = st.columns(2)
     
 
-    st.markdown("---")
+    
     
     with tab_filtro:
         #with col_web_left_filtrado:
