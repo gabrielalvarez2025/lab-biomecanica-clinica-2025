@@ -90,3 +90,73 @@ def main_control_motor():
     )
 
     st.plotly_chart(fig, use_container_width=True)
+
+
+    tabs = st.tabs([
+        "Teoría refleja",
+        "Teoría jerárquica",
+        "Teoría de los programas motores",
+        "Modelos internos",
+        "Hipótesis UCM",
+        "Sistemas dinámicos"
+    ])
+
+    with tabs[0]:
+        st.markdown("### 🔹 Teoría refleja (1900–1930)")
+        st.markdown(
+            """
+            - Basada en **arcos reflejos** como unidad fundamental del movimiento.  
+            - El movimiento se explica como la suma de reflejos simples.  
+            - Limitación: no puede explicar movimientos voluntarios complejos.  
+            """
+        )
+
+    with tabs[1]:
+        st.markdown("### 🔹 Teoría jerárquica (1930–1960)")
+        st.markdown(
+            """
+            - El control motor se organiza en **niveles jerárquicos** (corteza, tronco encefálico, médula).  
+            - El nivel superior domina a los inferiores.  
+            - Limitación: hoy sabemos que los niveles inferiores también influyen en los superiores.  
+            """
+        )
+
+    with tabs[2]:
+        st.markdown("### 🔹 Teoría de los programas motores (1960–1980)")
+        st.markdown(
+            """
+            - Propone la existencia de **programas motores almacenados** que generan patrones de movimiento.  
+            - Ejemplo: esquema de movimientos como "caminar" o "escribir".  
+            - Limitación: no explica la flexibilidad y adaptación en entornos cambiantes.  
+            """
+        )
+
+    with tabs[3]:
+        st.markdown("### 🔹 Modelos internos (1980–actualidad)")
+        st.markdown(
+            """
+            - Basados en **neurociencias computacionales**.  
+            - El cerebro construye modelos para predecir (modelo directo) y calcular comandos (modelo inverso).  
+            - Útiles para explicar aprendizaje motor y control predictivo.  
+            """
+        )
+
+    with tabs[4]:
+        st.markdown("### 🔹 Hipótesis del Manifold No Controlado (UCM) (1990–actualidad)")
+        st.markdown(
+            """
+            - Propuesta por **Latash y colaboradores**.  
+            - El sistema motor **no controla cada grado de libertad**, sino que organiza variabilidad hacia tareas relevantes.  
+            - Explica la **coordinación y redundancia** en el movimiento.  
+            """
+        )
+
+    with tabs[5]:
+        st.markdown("### 🔹 Teoría de los sistemas dinámicos (2000–actualidad)")
+        st.markdown(
+            """
+            - Inspirada en la teoría de sistemas complejos.  
+            - El movimiento surge de la **autoorganización** entre individuo, tarea y entorno.  
+            - Explica fenómenos como transiciones súbitas en patrones de movimiento.  
+            """
+        )
