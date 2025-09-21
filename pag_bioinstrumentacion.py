@@ -312,85 +312,101 @@ def main_bioinstrumentacion():
     
     # Presentar botones tarjeta
     presentar_botones_tarjeta()
-    
-    
-    # Tarjeta 1: Ejemplo Botas
-    parrafo_ejemplo_botas = "Aprende a medir la frecuencia respiratoria de un gato llamado Botas usando tu celular. Presiona el botón para ver un ejemplo de uso de instrumentos para complementar una evaluación clínica. "
-    botones_tarjeta(nombre_estado="mostrar_ejemplo_botas",
-                    texto_boton="Ejemplo de evaluación instrumentada: Medición de frecuencia respiratoria ",
-                    texto_parrafo=parrafo_ejemplo_botas,
-                    color_boton= "#368581",
-                    color_parrafo= "#89BBB8"
-                    )
-    
-    # Tarjeta 2: Sumatoria de PAUMs
-    parrafo_sumatoria = "Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras <b>(PAUMs)</b>, esta simulación te ayudará a entenderlo."
-    botones_tarjeta(nombre_estado="mostrar_sumatoria",
-                    texto_boton="Sumatoria de ondas",
-                    texto_parrafo=parrafo_sumatoria,
-                    color_boton= "#368581",
-                    color_parrafo= "#89BBB8"
-                    )
-    
-    # Tarjeta 3
-    parrafo_interactivo2 = "Procesar datos de acelerometría tomados con el celular usando Phyphox"
-    botones_tarjeta(nombre_estado="mostrar_torques",
-                    texto_boton="Procesamiento de datos de acelerómetro con PhyPhox",
-                    texto_parrafo=parrafo_interactivo2,
-                    color_boton= "#368581",
-                    color_parrafo= "#89BBB8"
-                    )
-    
-    # Tarjeta 4
-    parrafo_interactivo3 = "Procesar datos de la plataforma de fuerza del laboratorio (plataforma AMTI)"
-    botones_tarjeta(nombre_estado="mostrar_amti",
-                    texto_boton="Procesamiento de datos plataforma",
-                    texto_parrafo=parrafo_interactivo3,
-                    color_boton= "#368581",
-                    color_parrafo= "#89BBB8"
-                    )
-    
-    # Tarjeta 5
-    parrafo_interactivo4 = "Procesar datos de EMG o IMU capturados con DELSYS"
-    botones_tarjeta(nombre_estado="mostrar_delsys",
-                    texto_boton="Procesamiento de datos Delsys",
-                    texto_parrafo=parrafo_interactivo4,
-                    color_boton= "#368581",
-                    color_parrafo= "#89BBB8"
-                    )
-    
-    # Tarjeta 6
-    parrafo_interactivo5 = "Procesar datos de VFG capturados con OpenCap"
-    botones_tarjeta(nombre_estado="mostrar_opencap",
-                    texto_boton="Procesamiento de datos OpenCap",
-                    texto_parrafo=parrafo_interactivo5,
-                    color_boton= "#368581",
-                    color_parrafo= "#89BBB8"
-                    )
-    
-    
-    
-    
 
-    # ✅ Mostrar contenido si fue activado
-    if st.session_state["mostrar_ejemplo_botas"]:
-        ejemplo_fr_botas()
+    tab_ejemplos, tab_simulaciones, tab_procesamiento = st.tabs([
+        "Ejemplos de evaluación instrumentada",
+        "Elementos interacivos para aprender",
+        "Procesar datos reales"
+    ])
     
-    if st.session_state["mostrar_sumatoria"]:
-        play_emg_sumatoria()
     
-    if st.session_state["mostrar_torques"]:
+    with tab_ejemplos:
+        # Tarjeta 1: Ejemplo Botas
+        parrafo_ejemplo_botas = "Aprende a medir la frecuencia respiratoria de un gato llamado Botas usando tu celular. Presiona el botón para ver un ejemplo de uso de instrumentos para complementar una evaluación clínica. "
+        botones_tarjeta(nombre_estado="mostrar_ejemplo_botas",
+                        texto_boton="Ejemplo de evaluación instrumentada: Medición de frecuencia respiratoria ",
+                        texto_parrafo=parrafo_ejemplo_botas,
+                        color_boton= "#368581",
+                        color_parrafo= "#89BBB8"
+                        )
+        
+        # ✅ Mostrar contenido si fue activado
+        if st.session_state["mostrar_ejemplo_botas"]:
+            ejemplo_fr_botas()
+    
+    
+    with tab_simulaciones:
+        # Tarjeta 2: Sumatoria de PAUMs
+        parrafo_sumatoria = "Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras <b>(PAUMs)</b>, esta simulación te ayudará a entenderlo."
+        botones_tarjeta(nombre_estado="mostrar_sumatoria",
+                        texto_boton="Sumatoria de ondas",
+                        texto_parrafo=parrafo_sumatoria,
+                        color_boton= "#368581",
+                        color_parrafo= "#89BBB8"
+                        )
+        
+        if st.session_state["mostrar_sumatoria"]:
+            play_emg_sumatoria()
+    
+    with tab_procesamiento:
+        # Tarjeta 3
+        parrafo_interactivo2 = "Procesar datos de acelerometría tomados con el celular usando Phyphox"
+        botones_tarjeta(nombre_estado="mostrar_torques",
+                        texto_boton="Procesamiento de datos de acelerómetro con PhyPhox",
+                        texto_parrafo=parrafo_interactivo2,
+                        color_boton= "#368581",
+                        color_parrafo= "#89BBB8"
+                        )
+        
+        # Tarjeta 4
+        parrafo_interactivo3 = "Procesar datos de la plataforma de fuerza del laboratorio (plataforma AMTI)"
+        botones_tarjeta(nombre_estado="mostrar_amti",
+                        texto_boton="Procesamiento de datos plataforma",
+                        texto_parrafo=parrafo_interactivo3,
+                        color_boton= "#368581",
+                        color_parrafo= "#89BBB8"
+                        )
+        
+        # Tarjeta 5
+        parrafo_interactivo4 = "Procesar datos de EMG o IMU capturados con DELSYS"
+        botones_tarjeta(nombre_estado="mostrar_delsys",
+                        texto_boton="Procesamiento de datos Delsys",
+                        texto_parrafo=parrafo_interactivo4,
+                        color_boton= "#368581",
+                        color_parrafo= "#89BBB8"
+                        )
+        
+        # Tarjeta 6
+        parrafo_interactivo5 = "Procesar datos de VFG capturados con OpenCap"
+        botones_tarjeta(nombre_estado="mostrar_opencap",
+                        texto_boton="Procesamiento de datos OpenCap",
+                        texto_parrafo=parrafo_interactivo5,
+                        color_boton= "#368581",
+                        color_parrafo= "#89BBB8"
+                        )
+        
+        if st.session_state["mostrar_torques"]:
         main_phyphox()
     
-    if st.session_state["mostrar_amti"]:
-        main_forceplate()
-    
-    if st.session_state["mostrar_delsys"]:
-        main_delsys()
+        if st.session_state["mostrar_amti"]:
+            main_forceplate()
+        
+        if st.session_state["mostrar_delsys"]:
+            main_delsys()
 
-    if st.session_state["mostrar_opencap"]:
-        st.markdown("---")
-        main_opencap()
+        if st.session_state["mostrar_opencap"]:
+            st.markdown("---")
+            main_opencap()
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
 
 
     st.markdown("---")
