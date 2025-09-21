@@ -289,7 +289,7 @@ def main_bioinstrumentacion():
     st.markdown("---")
     st.markdown("### Utilidad de la evaluación instrumentada")
 
-    ejemplo_fr_botas()
+    
 
 
 
@@ -301,6 +301,9 @@ def main_bioinstrumentacion():
     # Inicio de elementos interactivos
 
     # Inicialización segura SOLO una vez (para botones que usan session_state)
+    if "mostrar_ejemplo_botas" not in st.session_state:
+        st.session_state["mostrar_ejemplo_botas"] = False
+    
     if "mostrar_sumatoria" not in st.session_state:
         st.session_state["mostrar_sumatoria"] = False
 
@@ -320,6 +323,16 @@ def main_bioinstrumentacion():
     
     # Presentar botones tarjeta
     presentar_botones_tarjeta()
+    
+    
+    # Tarjeta 1: Ejemplo Botas
+    parrafo_ejemplo_botas = "Presiona este botón para ver un ejemplo de uso de instrumentos para complementar la evaluación instrumentada. Aprende a medir la frecuencia respiratoria de un gato llamado Botas usando tu celular."
+    botones_tarjeta(nombre_estado="mostrar_ejemplo_botas",
+                    texto_boton="Ejemplo de evaluación instrumentada: Medición de frecuencia respiratoria ",
+                    texto_parrafo=parrafo_ejemplo_botas,
+                    color_boton= "#368581",
+                    color_parrafo= "#89BBB8"
+                    )
     
     # Tarjeta 1: Sumatoria de PAUMs
     parrafo_sumatoria = "Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras <b>(PAUMs)</b>, esta simulación te ayudará a entenderlo."
@@ -362,6 +375,9 @@ def main_bioinstrumentacion():
     
 
     # ✅ Mostrar contenido si fue activado
+    if st.session_state["mostrar_ejemplo_botas"]:
+        ejemplo_fr_botas()
+    
     if st.session_state["mostrar_sumatoria"]:
         play_emg_sumatoria()
     
