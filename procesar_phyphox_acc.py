@@ -100,7 +100,8 @@ def main_phyphox():
 
             if filtrar_check:
                 cutoff = st.number_input("Frecuencia de corte (Hz)", min_value=0.1, value=5.0, step=0.1)
-                orden = st.slider("Orden del filtro Butterworth", min_value=1, max_value=10, value=4)
+                orden = 5
+                #orden = st.slider("Orden del filtro Butterworth", min_value=1, max_value=10, value=4)
             else:
                 cutoff, orden = None, None
 
