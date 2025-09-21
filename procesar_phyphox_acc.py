@@ -507,7 +507,7 @@ def ejemplo_fr_botas():
     fig2.add_trace(go.Scatter(
         x=t, y=z,
         mode="lines",
-        line=dict(color="lightgray", width=0.7),
+        line=dict(color="lightgray", width=0.5),
         name="Clickea aquí para ver/ocultar la Señal original"
     ))
 
