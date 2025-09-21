@@ -202,7 +202,18 @@ def main_opencap():
     if "pantalla" not in st.session_state:
         st.session_state["pantalla"] = None    
 
-    col_instrucciones, col_convertir = st.columns(2)
+    tab_instrucciones, tab_procesar = st.tabs([
+        "Instrucciones para usar OpenCap",
+        "Quiero procesar mis datos tomados con OpenCap"
+    ])
+
+    with tab_instrucciones:
+        instrucciones_opencap()
+    
+    with tab_procesar:
+        procesar_opencap()
+    
+    """ col_instrucciones, col_convertir = st.columns(2)
 
     with col_instrucciones:
         if st.button("Instrucciones para usar OpenCap"):
@@ -226,6 +237,7 @@ def main_opencap():
             instrucciones_opencap()
         elif st.session_state["pantalla"] == "procesar":
             procesar_opencap()
+    """
 
     
     
