@@ -409,6 +409,7 @@ def ejemplo_fr_botas():
             mode="lines",
             line=dict(color="lightgray", width=0.7),
             name="Clickea aquí para ocultar/ver la Señal original"
+            visible="legendonly"   # 👈 esto la deja oculta al inicio
         ))
 
         # Señal filtrada en naranjo
@@ -443,6 +444,11 @@ def ejemplo_fr_botas():
         
         st.plotly_chart(fig, use_container_width=True)
     
+
+
+
+
+
     with col_web_right_filtrado:
         
         fig = go.Figure()
