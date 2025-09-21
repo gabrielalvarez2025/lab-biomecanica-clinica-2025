@@ -206,13 +206,14 @@ def ejemplo_fr_botas():
     st.markdown("---")
     st.markdown("##### Ejemplo 1: Midiendo la frecuencia respiratoria de un gato usando el celular")
 
-    col_web_left, col_web_esp, col_web_right = st.columns([48, 4, 48])
     proporcion = [35, 65]
 
     
-    espacio = st.markdown(" ")
-
-    with col_web_left:
+    col_web_left_expermiento, col_web_esp_experimento, col_web_right_expermiento = st.columns([48, 4, 48])
+    st.markdown("---")
+    col_web_left_filtrado, col_web_esp_filtrado, col_web_right_filtrado = st.columns([48, 4, 48])
+    
+    with col_web_left_expermiento:
 
         st.markdown("Veamos un ejemplo de un escenario doméstico en el que podríamos usar un celular para capturar señales biológicas y así complementar una evaluación clínica.")
         
@@ -220,6 +221,10 @@ def ejemplo_fr_botas():
 
         col_text1, col_gif = st.columns([65, 35])
         
+        
+    
+    
+    with col_web_right_expermiento:
         col_text2, col_plot = st.columns(proporcion)
 
         
@@ -228,13 +233,18 @@ def ejemplo_fr_botas():
         st.markdown(" ")
 
         col_calculo_fr1, col_calculo_fr2 = st.columns(2)
-    
-    
-    with col_web_right:
         
+        
+
+    
+
+    with col_web_left_filtrado:
         st.markdown("##### Filtrando la señal")
         st.markdown('Te habrás dado cuenta que en el gráfico distinguimos la "señal original", (en blanco) de la "señal filtrada" (en naranjo). Esto se debe a que aplicamoos uno de los posibles pasos de procesamiento de señales a la señal de aceleración capturada: el filtrado.')
         col_text_filter, col_sliders = st.columns(2)
+
+
+    with col_web_right_filtrado:
 
         
 
