@@ -300,6 +300,7 @@ def ejemplo_fr_botas():
         
         st.markdown("A partir de la tabla de datos, podemos graficar la aceleración en función del tiempo.")
         st.markdown("Si graficamos la señal, deberíamos ver un patrón de acelerometría que se repite en ciclos.")
+        st.markdown("En este caso, cada ciclo tiene un peak, así que cada peak nos marca un ciclo respiratorio.")
         
     
 
