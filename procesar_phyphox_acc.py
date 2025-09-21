@@ -254,7 +254,8 @@ def ejemplo_fr_botas():
         st.markdown("Sin embargo, como estudiante de Kinesiología que está cursando su ramo de Análisis de Movimiento y aprendiendo a usar bioinstrumentos, te preguntas... ¿podemos complementar esta evaluación con un registro más objetivo? ¿Podemos usar algún bioinstrumento casero para cuantificar su FR?")
         
         
-
+    with col_gif:
+        st.image("cat3.gif", use_container_width=True)
 
     with col_text1:
         st.markdown("Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, te propones usar el acelerómetro de tu celular.")
