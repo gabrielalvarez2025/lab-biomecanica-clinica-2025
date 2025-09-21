@@ -255,8 +255,9 @@ def ejemplo_fr_botas():
         
         
     with col_gif:
-        espacio
-        espacio
+        st.markdown(" ")
+        st.markdown(" ")
+        st.markdown(" ")
         st.image("cat3.gif", use_container_width=True)
 
     with col_text1:
