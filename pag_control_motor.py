@@ -21,7 +21,7 @@ def main_control_motor():
             "Teoría jerárquica",
             "Teoría de los programas motores",
             "Modelos internos (directo e inverso)",
-            "Hipótesis del Manifold Incontrolado (UCM)",
+            "Hipótesis del Manifold No-controlado (UCM)",
             "Teoría de los sistemas dinámicos"
         ],
         "Inicio": [
@@ -36,9 +36,9 @@ def main_control_motor():
             "1930-01-01",   # Fin reflejo
             "1960-01-01",   # Fin jerárquica
             "1980-01-01",   # Fin programas motores
-            "1990-01-01",   # Fin modelos internos
-            "2000-01-01",   # Fin UCM
-            "2025-01-01"    # Actualidad
+            "2025-01-01",   # Fin modelos internos
+            "2025-01-01",   # Fin UCM
+            "2025-01-01"    # TSD
         ]
     }
 
