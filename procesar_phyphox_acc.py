@@ -349,7 +349,7 @@ def ejemplo_fr_botas():
         col_plot_sub1, col_plot_sub2 = st.columns([3, 7])
         
         with col_plot_sub2:
-            st.markdown("⤹ <small>Haz click en la leyenda para ocultar las curvas</small>", unsafe_allow_html=True)
+            st.markdown("⤹ <small>Haz click en la leyenda para ocultar cada curvas</small>", unsafe_allow_html=True)
         
         # Aplicar filtro pasa banda
         z_filt = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
