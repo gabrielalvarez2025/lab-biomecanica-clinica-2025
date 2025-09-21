@@ -320,6 +320,8 @@ def ejemplo_fr_botas():
     
     with col_calculo_analisis_texto2:
         
+        st.markdown("Trata de responder:")
+        
         st.markdown("1. ¿Cuál es la frecuencia respiratoria de Botas?")
         st.markdown("2. Considerando que el rango de FR en reposo normal para un gato es 20 a 30 rpm, ¿qué podría estar pasando con Botas?")
 
