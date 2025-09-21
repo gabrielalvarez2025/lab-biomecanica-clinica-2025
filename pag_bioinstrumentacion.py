@@ -195,21 +195,24 @@ def play_emg_sumatoria():
     #st.markdown("---")
 
 
-def generar_triangulo():
-    """Genera lados válidos de un triángulo usando desigualdad triangular"""
-    while True:
-        a = random.uniform(2, 10)  # BC
-        b = random.uniform(2, 10)  # AC
-        c = random.uniform(2, 10)  # AB
-        if a + b > c and a + c > b and b + c > a:
-            return a, b, c
-
-def mostrar_valor(dato, valor):
-    """Muestra '¿ ?' si el dato es el oculto, sino el valor con 2 decimales"""
-    oculto = st.session_state.get("oculto", None)
-    return "¿ ?" if dato == oculto else f"{valor:.2f}"
-
 def play_vfg_teorema_coseno():
+
+    def generar_triangulo():
+        """Genera lados válidos de un triángulo usando desigualdad triangular"""
+        while True:
+            a = random.uniform(2, 10)  # BC
+            b = random.uniform(2, 10)  # AC
+            c = random.uniform(2, 10)  # AB
+            if a + b > c and a + c > b and b + c > a:
+                return a, b, c
+
+    def mostrar_valor(dato, valor):
+        """Muestra '¿ ?' si el dato es el oculto, sino el valor con 2 decimales"""
+        oculto = st.session_state.get("oculto", None)
+        return "¿ ?" if dato == oculto else f"{valor:.2f}"
+
+
+
     st.set_page_config(layout="centered", initial_sidebar_state="expanded")
     st.title("Teorema del Coseno")
 
