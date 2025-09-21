@@ -4,4 +4,7 @@ import matplotlib.pyplot as plt
 from pydub import AudioSegment
 
 def main_control_motor():
-    st.markdown("k")
+    st.markdown("#### Teorías del control motor")
+
+    teorias = {
+        "Teoría de la retroalimentación": "Esta teoría sugiere que el control"}
