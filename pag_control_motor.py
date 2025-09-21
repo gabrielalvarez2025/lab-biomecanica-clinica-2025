@@ -45,6 +45,9 @@ def main_control_motor():
     df["Inicio"] = pd.to_datetime(df["Inicio"])
     df["Fin"] = pd.to_datetime(df["Fin"])
 
+    # Asegurarse de que la columna Teoría sea categórica con el orden correcto
+    df["Teoría"] = pd.Categorical(df["Teoría"], categories=data["Teoría"], ordered=True)
+
     colors = px.colors.qualitative.Plotly
 
     fig = px.timeline(
