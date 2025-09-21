@@ -262,6 +262,8 @@ def ejemplo_fr_botas():
 
     col_sliders, = st.columns([100])
 
+    st.markdown("---")
+
         
 
    
