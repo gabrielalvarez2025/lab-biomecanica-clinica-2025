@@ -216,7 +216,7 @@ def ejemplo_fr_botas():
 
         st.markdown("Veamos un ejemplo de un escenario doméstico en el que podríamos usar un celular para capturar señales biológicas y así complementar una evaluación clínica.")
         
-        col_gif, col_caso = st.columns(proporcion)
+        col_img_botas, col_caso = st.columns(proporcion)
 
         col_gif, col_plot = st.columns(2)
 
@@ -239,7 +239,7 @@ def ejemplo_fr_botas():
    
         
 
-    with col_gif:
+    with col_img_botas:
         
         st.markdown("Este es Botas")
         st.image("img_botas.png", use_container_width=True)
