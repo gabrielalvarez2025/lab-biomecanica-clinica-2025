@@ -234,6 +234,7 @@ def ejemplo_fr_botas():
         )
         
         col_text1, col_gif = st.columns([65, 35])
+        st.markdown("Para poder iniciar y detener el registro, usas una app (ej. 'Accelerometer' o 'PhyPhox') que te permita acceder al acelerómetro en tiempo real y descargar los datos como tabla.")
         
         
     
@@ -299,7 +300,7 @@ def ejemplo_fr_botas():
         st.markdown("Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, te propones usar el acelerómetro de tu celular.")
         st.markdown("Si colocas el celular sobre su tórax mientras duerme, este se moverá hacia arriba y abajo con cada respiración. Este movimiento es sensado como aceleración por el acelerómetro del celular.")
         st.markdown("Si registramos la aceleración lineal del celular en el eje vertical (eje Z), podremos observar las oscilaciones causadas por el tórax de Botas con cada ciclo respiratorio.")
-        st.markdown("Para poder iniciar y detener el registro, usas una app (ej. 'Accelerometer' o 'PhyPhox') que te permita acceder al acelerómetro en tiempo real y descargar los datos como tabla.")
+        
 
         
 
