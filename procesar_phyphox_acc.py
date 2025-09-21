@@ -408,7 +408,7 @@ def ejemplo_fr_botas():
             x=t, y=z,
             mode="lines",
             line=dict(color="lightgray", width=0.7),
-            name="Clickea aquí para ocultar/ver la Señal original"
+            name="Clickea aquí para ocultar/ver la Señal original",
             visible="legendonly"   # 👈 esto la deja oculta al inicio
         ))
 
