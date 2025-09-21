@@ -554,7 +554,7 @@ def ejemplo_fr_botas():
         fig3 = go.Figure()
 
         # Señal original en gris
-        fig3.add_trace(go.Scatter
+        fig3.add_trace(go.Scatter)
                        
     with tab2:
         st.markdown("##### Explicación del filtro")
