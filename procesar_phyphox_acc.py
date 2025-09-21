@@ -210,11 +210,9 @@ def ejemplo_fr_botas():
     proporcion = [35, 65]
 
     
-    col_web_left_expermiento, col_web_esp_experimento, col_web_right_expermiento = st.columns([48, 4, 48])
-    st.markdown("---")
-    col_web_left_filtrado, col_web_esp_filtrado, col_web_right_filtrado = st.columns([48, 4, 48])
+    #col_web_left_expermiento, col_web_esp_experimento, col_web_right_expermiento = st.columns([48, 4, 48])
+    #col_web_left_filtrado, col_web_esp_filtrado, col_web_right_filtrado = st.columns([48, 4, 48]) 
     
-    #with col_web_left_expermiento:
     
 
     tab_caso, tab_medicion, tab_data, tab_analisis, tab_filtro  = st.tabs([
@@ -225,9 +223,10 @@ def ejemplo_fr_botas():
         "Sobre el filtrado de los datos"
         ])    
         
-    #st.markdown("##### El caso")
+
 
     with tab_caso:
+        #st.markdown("##### El caso")
         st.markdown("##### El caso<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>", unsafe_allow_html=True)
         col_img_botas, col_caso = st.columns(proporcion)
 
@@ -238,8 +237,6 @@ def ejemplo_fr_botas():
         col_text1, col_gif = st.columns([65, 35])
         st.markdown("Para poder iniciar y detener el registro, usas una app (ej. 'Accelerometer' o 'PhyPhox') que te permita acceder al acelerómetro en tiempo real y descargar los datos como tabla.")
         
-    
-    #with col_web_right_expermiento:
         
         
     with tab_data:
@@ -395,17 +392,6 @@ def ejemplo_fr_botas():
 
 
     with col_plot:
-        
-        #col_plot_sub1, col_plot_sub2 = st.columns([3, 7])
-        
-        #with col_plot_sub2:
-        #    st.markdown(
-        #        '⤹ <span style="font-size:10px; color:rgba(255,255,255,0.8)">Haz click en la leyenda para ocultar cada curva</span>', 
-        #        unsafe_allow_html=True)
-        
-        
-
-        
         
         # Crear gráfico interactivo con Plotly
         fig1 = go.Figure()
