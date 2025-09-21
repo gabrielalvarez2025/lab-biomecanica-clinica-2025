@@ -218,7 +218,12 @@ def ejemplo_fr_botas():
 
         
         
-        st.markdown("##### El caso")
+        #st.markdown("##### El caso")
+        st.markdown(
+            "##### El caso<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>",
+            unsafe_allow_html=True
+        )
+
         
         col_img_botas, col_caso = st.columns(proporcion)
 
@@ -232,7 +237,7 @@ def ejemplo_fr_botas():
     with col_web_right_expermiento:
         
         
-        st.markdown("##### Los datos capturados")
+        #st.markdown("##### Los datos capturados")
         st.markdown(
             "##### Los datos capturados<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>",
             unsafe_allow_html=True
