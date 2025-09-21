@@ -43,54 +43,96 @@ def main_control_motor():
     }
 
     
-    # Crear DataFrame
-    df = pd.DataFrame(data)
-    df["Inicio"] = pd.to_datetime(df["Inicio"])
-    df["Fin"] = pd.to_datetime(df["Fin"])
+    import streamlit as st
+import plotly.express as px
+import pandas as pd
 
-    # Timeline con Plotly
+# Datos según tu información literal
+data = {
+    "Teoría": [
+        "Teoría Refleja (Reflex Theory)",
+        "Teoría Jerárquica (Hierarchical Theory)",
+        "Teorías de Programación Motora (Motor Programming Theories)",
+        "Teoría de Sistemas (Systems Theory)",
+        "Teoría de Sistemas Dinámicos (Dynamic Systems Theory)",
+        "Teoría Ecológica (Ecological Theory)",
+        "Modelos Internos (directo e inverso)",
+        "Hipótesis del Manifold No-Controlado (UCM)"
+    ],
+    "Inicio": [
+        "1906-01-01",
+        "1930-01-01",
+        "1960-01-01",
+        "1920-01-01",
+        "1980-01-01",
+        "1960-01-01",
+        "1980-01-01",
+        "1990-01-01"
+    ],
+    "Fin": [
+        "1950-01-01",
+        "1970-01-01",
+        "1990-01-01",
+        "1966-01-01",
+        "2025-01-01",
+        "2025-01-01",
+        "2025-01-01",
+        "2025-01-01"
+    ]
+}
+
+    df = pd.DataFrame(data)
+
+    # Colores asignados arbitrariamente
+    colors = px.colors.qualitative.Plotly
+
     fig = px.timeline(
         df,
         x_start="Inicio",
         x_end="Fin",
         y="Teoría",
         color="Teoría",
-        text="Teoría",   # Etiquetas sobre las barras
-        title="Cronología de teorías del control motor",
+        color_discrete_sequence=colors
     )
 
+    # Configuraciones del gráfico
+    fig.update_yaxes(
+        autorange="reversed",  # para que la primera teoría quede arriba
+        tickvals=[]  # eliminamos ticks en eje Y, solo quedarán las barras
+    )
+
+    # Etiquetas dentro de la barra
     fig.update_traces(
-        textposition="inside",  # texto dentro de las barras
-        insidetextanchor="middle",  # centrado
-        textfont=dict(
-            color="black",     # color blanco
-            size=12            # mismo tamaño para todas
-        )
+        text=df["Teoría"],
+        textposition="inside",
+        textfont=dict(color="white", size=12)
     )
-    fig.update_yaxes(autorange="reversed", showticklabels=False)
 
-    # Ajustes de layout
+    # Leyenda debajo
     fig.update_layout(
-        xaxis_title="Año",
-        yaxis_title="",
-        hovermode="closest",
-        height=600,
         legend=dict(
             orientation="h",
-            y=-0.2,
-            x=0.5,
-            xanchor="center"
-        )
+            yanchor="top",
+            y=-0.3,
+            xanchor="center",
+            x=0.5
+        ),
+        margin=dict(l=20, r=20, t=20, b=80),
+        height=500,
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)"
     )
 
     # Grid vertical cada 5 años
     fig.update_xaxes(
-        tickformat="%Y",
-        dtick="M120",         # cada 60 meses = 5 años
+        dtick="1825",  # aprox 5 años en días
+        tickangle=45,
         showgrid=True,
-        gridcolor="lightgray"
+        gridwidth=1,
+        gridcolor="LightGray"
     )
 
+    # Mostrar en Streamlit
     st.plotly_chart(fig, use_container_width=True)
 
 
