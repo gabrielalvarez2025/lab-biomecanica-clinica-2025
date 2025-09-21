@@ -124,10 +124,10 @@ def main_control_motor():
     - La estructura básica de un reflejo consiste en un receptor, un conductor y un efector (músculo).
 
     **Limitaciones:**  
-    • No puede considerarse la unidad básica del comportamiento si se reconocen los movimientos espontáneos y voluntarios, ya que el reflejo debe ser activado por un agente externo.  
-    • No explica adecuadamente el movimiento que ocurre en ausencia de un estímulo sensorial.  
-    • No explica los movimientos rápidos (secuencias de movimientos que ocurren demasiado rápido para que la retroalimentación sensorial del movimiento precedente desencadene el siguiente).  
-    • El concepto de encadenamiento de reflejos no explica la capacidad de producir movimientos novedosos.
+    - No puede considerarse la unidad básica del comportamiento si se reconocen los movimientos espontáneos y voluntarios, ya que el reflejo debe ser activado por un agente externo.  
+    - No explica adecuadamente el movimiento que ocurre en ausencia de un estímulo sensorial.  
+    - No explica los movimientos rápidos (secuencias de movimientos que ocurren demasiado rápido para que la retroalimentación sensorial del movimiento precedente desencadene el siguiente).  
+    - El concepto de encadenamiento de reflejos no explica la capacidad de producir movimientos novedosos.
         """)
 
     with tab_jerarquica:
@@ -136,14 +136,14 @@ def main_control_motor():
     **Cronología:** Principios a mediados del siglo XX. Hughlings Jackson argumentó que el cerebro tenía niveles de control superior, medio e inferior. Rudolf Magnus exploró reflejos en los años 1920, y Georg Schaltenbrand (1928) y Stephan Weisz (1938) aplicaron estos conceptos al desarrollo y el equilibrio. Investigadores como Arnold Gesell (1940s) y Myrtle McGraw (1945) describieron la maduración motora bajo este marco (Teoría Neuromaduracional).
 
     **Postulados Principales:**  
-    • El sistema nervioso está organizado como una jerarquía.  
-    • El control organizacional es de arriba hacia abajo (top down): cada nivel sucesivamente superior ejerce control sobre el nivel inferior. En una jerarquía vertical estricta, no hay control de abajo hacia arriba.  
-    • Los centros superiores normalmente inhiben los centros reflejos inferiores.  
-    • La teoría Reflejo/Jerárquica sugiere que el control motor surge de reflejos que están anidados dentro de niveles del SNC organizados jerárquicamente.  
-    • La maduración normal del motor se atribuye a una creciente corticalización del SNC, lo que resulta en la emergencia de niveles de control superiores sobre reflejos de nivel inferior.
+    - El sistema nervioso está organizado como una jerarquía.  
+    - El control organizacional es de arriba hacia abajo (top down): cada nivel sucesivamente superior ejerce control sobre el nivel inferior. En una jerarquía vertical estricta, no hay control de abajo hacia arriba.  
+    - Los centros superiores normalmente inhiben los centros reflejos inferiores.  
+    - La teoría Reflejo/Jerárquica sugiere que el control motor surge de reflejos que están anidados dentro de niveles del SNC organizados jerárquicamente.  
+    - La maduración normal del motor se atribuye a una creciente corticalización del SNC, lo que resulta en la emergencia de niveles de control superiores sobre reflejos de nivel inferior.
 
     **Limitaciones:**  
-    • No puede explicar el dominio del comportamiento reflejo en ciertas situaciones en adultos normales (por ejemplo, pisar un alfiler resulta en control de abajo hacia arriba o bottom-up control).
+    - No puede explicar el dominio del comportamiento reflejo en ciertas situaciones en adultos normales (por ejemplo, pisar un alfiler resulta en control de abajo hacia arriba o bottom-up control).
         """)
 
     with tab_pm:
@@ -152,29 +152,29 @@ def main_control_motor():
     **Cronología:** Mediados del siglo XX (los científicos que contribuyeron incluyen a Bernstein, 1967; Keele, 1968; Wilson, 1961). Experimentos a principios de los años 1960 (saltamontes/langosta) apoyaron esta visión.
 
     **Postulados Principales:**  
-    • Se enfocan en la fisiología de las acciones en lugar de las reacciones.  
-    • Un concepto clave es el patrón motor central (o programa motor), el cual es más flexible que el reflejo porque puede ser activado tanto por estímulos sensoriales como por procesos centrales.  
-    • El movimiento es posible en ausencia de acción refleja.  
-    • El término programa motor puede usarse para identificar un Generador de Patrón Central (CPG), un circuito neural específico, estereotipado y cableado (como el que genera la marcha).  
-    • El término también describe programas motores de alto nivel que almacenan las reglas abstractas para generar movimientos. Estas reglas permiten realizar la tarea con una variedad de sistemas efectores (por ejemplo, escribir la firma con la mano o con la boca mantiene los elementos constantes del patrón).
+    - Se enfocan en la fisiología de las acciones en lugar de las reacciones.  
+    - Un concepto clave es el patrón motor central (o programa motor), el cual es más flexible que el reflejo porque puede ser activado tanto por estímulos sensoriales como por procesos centrales.  
+    - El movimiento es posible en ausencia de acción refleja.  
+    - El término programa motor puede usarse para identificar un Generador de Patrón Central (CPG), un circuito neural específico, estereotipado y cableado (como el que genera la marcha).  
+    - El término también describe programas motores de alto nivel que almacenan las reglas abstractas para generar movimientos. Estas reglas permiten realizar la tarea con una variedad de sistemas efectores (por ejemplo, escribir la firma con la mano o con la boca mantiene los elementos constantes del patrón).
 
     **Limitaciones:**  
-    • Un programa motor central no puede considerarse el único determinante de la acción.  
-    • No tiene en cuenta que el sistema nervioso debe lidiar con variables musculoesqueléticas y ambientales (como la gravedad, la inercia o la fatiga muscular) al lograr el control del movimiento.
+    - Un programa motor central no puede considerarse el único determinante de la acción.  
+    - No tiene en cuenta que el sistema nervioso debe lidiar con variables musculoesqueléticas y ambientales (como la gravedad, la inercia o la fatiga muscular) al lograr el control del movimiento.
         """)
 
     with tab_sistemas:
         st.markdown("""
-    **4. Teoría de Sistemas (Systems Theory)**  
+    **Teoría de Sistemas (Systems Theory)**  
     **Cronología:** Principios y mediados del siglo XX. Nicolai Bernstein (1896–1966) fue un científico ruso que comenzó a desarrollar esta perspectiva.
 
     **Postulados Principales:**  
-    • No se puede entender el control neural del movimiento sin comprender las características del sistema que se mueve (el cuerpo) y las fuerzas externas e internas que actúan sobre él (gravedad, inercia).  
-    • El cuerpo es visto como un sistema mecánico.  
-    • El mismo comando central puede resultar en movimientos muy diferentes debido a la interacción entre fuerzas externas y variaciones en las condiciones iniciales.  
-    • Un desafío clave es el problema de los grados de libertad redundantes. La coordinación del movimiento es el proceso de dominar estos grados de libertad.  
-    • Como solución, Bernstein hipotetizó que los niveles superiores del sistema nervioso activan niveles inferiores que, a su vez, activan sinergias (grupos de músculos que se ven obligados a actuar juntos como una unidad).  
-    • El control del movimiento integrado está probablemente distribuido a través de muchos sistemas interactuantes que trabajan cooperativamente.
+    - No se puede entender el control neural del movimiento sin comprender las características del sistema que se mueve (el cuerpo) y las fuerzas externas e internas que actúan sobre él (gravedad, inercia).  
+    - El cuerpo es visto como un sistema mecánico.  
+    - El mismo comando central puede resultar en movimientos muy diferentes debido a la interacción entre fuerzas externas y variaciones en las condiciones iniciales.  
+    - Un desafío clave es el problema de los grados de libertad redundantes. La coordinación del movimiento es el proceso de dominar estos grados de libertad.  
+    - Como solución, Bernstein hipotetizó que los niveles superiores del sistema nervioso activan niveles inferiores que, a su vez, activan sinergias (grupos de músculos que se ven obligados a actuar juntos como una unidad).  
+    - El control del movimiento integrado está probablemente distribuido a través de muchos sistemas interactuantes que trabajan cooperativamente.
         """)
 
     with tab_dinamicos:
