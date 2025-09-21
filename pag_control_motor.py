@@ -9,77 +9,41 @@ def main_control_motor():
     st.markdown("#### Teorías del control motor")
 
 
+    
+
+    # Datos según tu información literal
     data = {
         "Teoría": [
-            "Teoría Refleja",
-            "Teoría Jerárquica",
-            "Teorías de Programación Motora",
-            "Teoría de Sistemas",
-            "Teoría de Sistemas Dinámicos",
-            "Teoría Ecológica",
-            "Modelos Internos",
+            "Teoría Refleja (Reflex Theory)",
+            "Teoría Jerárquica (Hierarchical Theory)",
+            "Teorías de Programación Motora (Motor Programming Theories)",
+            "Teoría de Sistemas (Systems Theory)",
+            "Teoría de Sistemas Dinámicos (Dynamic Systems Theory)",
+            "Teoría Ecológica (Ecological Theory)",
+            "Modelos Internos (directo e inverso)",
             "Hipótesis del Manifold No-Controlado (UCM)"
         ],
         "Inicio": [
-            "1906-01-01",  # Refleja (Sherrington, principios del siglo XX)
-            "1930-01-01",  # Jerárquica (Jackson, Magnus)
-            "1960-01-01",  # Programas Motores (Bernstein, Keele, 1960s)
-            "1920-01-01",  # Sistemas (Bernstein, desarrollo inicial)
-            "1980-01-01",  # Sistemas Dinámicos (Kelso, 1980s)
-            "1960-01-01",  # Ecológica (Gibson, 1960s)
-            "1980-01-01",  # Modelos Internos (Kawato, Wolpert, 80s-90s)
-            "1990-01-01"   # UCM (Scholz & Schöner, 1990s)
+            "1906-01-01",
+            "1930-01-01",
+            "1960-01-01",
+            "1920-01-01",
+            "1980-01-01",
+            "1960-01-01",
+            "1980-01-01",
+            "1990-01-01"
         ],
         "Fin": [
-            "1950-01-01",  # Refleja
-            "1970-01-01",  # Jerárquica
-            "1990-01-01",  # Programas Motores
-            "1966-01-01",  # Sistemas (Bernstein fallece, evolución a dinámicos)
-            "2025-01-01",  # Sistemas Dinámicos → vigente
-            "2025-01-01",  # Ecológica → vigente
-            "2025-01-01",  # Modelos Internos → vigente
-            "2025-01-01"   # UCM → vigente
+            "1950-01-01",
+            "1970-01-01",
+            "1990-01-01",
+            "1966-01-01",
+            "2025-01-01",
+            "2025-01-01",
+            "2025-01-01",
+            "2025-01-01"
         ]
     }
-
-    
-    import streamlit as st
-import plotly.express as px
-import pandas as pd
-
-# Datos según tu información literal
-data = {
-    "Teoría": [
-        "Teoría Refleja (Reflex Theory)",
-        "Teoría Jerárquica (Hierarchical Theory)",
-        "Teorías de Programación Motora (Motor Programming Theories)",
-        "Teoría de Sistemas (Systems Theory)",
-        "Teoría de Sistemas Dinámicos (Dynamic Systems Theory)",
-        "Teoría Ecológica (Ecological Theory)",
-        "Modelos Internos (directo e inverso)",
-        "Hipótesis del Manifold No-Controlado (UCM)"
-    ],
-    "Inicio": [
-        "1906-01-01",
-        "1930-01-01",
-        "1960-01-01",
-        "1920-01-01",
-        "1980-01-01",
-        "1960-01-01",
-        "1980-01-01",
-        "1990-01-01"
-    ],
-    "Fin": [
-        "1950-01-01",
-        "1970-01-01",
-        "1990-01-01",
-        "1966-01-01",
-        "2025-01-01",
-        "2025-01-01",
-        "2025-01-01",
-        "2025-01-01"
-    ]
-}
 
     df = pd.DataFrame(data)
 
