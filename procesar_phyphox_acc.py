@@ -454,6 +454,8 @@ def ejemplo_fr_botas():
     # Inputs interactivos para filtro
     # -----------------------
     
+    st.markdown(" ")
+    st.markdown(" ")
     st.markdown("##### Ajusta aquí el filtro digital:")
 
     col_filter_slider1, col_filter_slider2 = st.columns(2)
