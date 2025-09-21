@@ -119,9 +119,9 @@ def main_control_motor():
     **Cronología:** Finales del siglo XIX y principios del siglo XX. Sir Charles Sherrington escribió la base experimental de esta teoría en 1906. Esta visión persistió sin ser cuestionada por muchos clínicos durante 50 años.
 
     **Postulados Principales:**  
-    • Los reflejos son los bloques de construcción (building blocks) del comportamiento complejo.  
-    • El comportamiento complejo se explica a través de la acción combinada de reflejos individuales encadenados (chained together).  
-    • La estructura básica de un reflejo consiste en un receptor, un conductor y un efector (músculo).
+    - Los reflejos son los bloques de construcción (building blocks) del comportamiento complejo.  
+    - El comportamiento complejo se explica a través de la acción combinada de reflejos individuales encadenados (chained together).  
+    - La estructura básica de un reflejo consiste en un receptor, un conductor y un efector (músculo).
 
     **Limitaciones:**  
     • No puede considerarse la unidad básica del comportamiento si se reconocen los movimientos espontáneos y voluntarios, ya que el reflejo debe ser activado por un agente externo.  
