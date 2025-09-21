@@ -45,54 +45,50 @@ def main_control_motor():
     
     # Crear DataFrame
     df = pd.DataFrame(data)
+    df["Inicio"] = pd.to_datetime(df["Inicio"])
+    df["Fin"] = pd.to_datetime(df["Fin"])
 
-    # Colores asignados arbitrariamente
-    colors = px.colors.qualitative.Plotly
-
+    # Timeline con Plotly
     fig = px.timeline(
         df,
         x_start="Inicio",
         x_end="Fin",
         y="Teoría",
         color="Teoría",
-        color_discrete_sequence=colors
+        text="Teoría",   # Etiquetas sobre las barras
+        title="Cronología de teorías del control motor",
     )
 
-    # Configuraciones del gráfico
-    fig.update_yaxes(
-        autorange="reversed",  # para que la primera teoría quede arriba
-        tickvals=[]  # eliminamos ticks en eje Y, solo quedarán las barras
-    )
-
-    # Etiquetas dentro de la barra
     fig.update_traces(
-        text=df["Teoría"],
-        textposition="inside",
-        textfont=dict(color="white", size=12)
+        textposition="inside",  # texto dentro de las barras
+        insidetextanchor="middle",  # centrado
+        textfont=dict(
+            color="white",     # color blanco
+            size=12            # mismo tamaño para todas
+        )
     )
+    fig.update_yaxes(autorange="reversed", showticklabels=False)
 
-    # Leyenda debajo
+    # Ajustes de layout
     fig.update_layout(
+        xaxis_title="Año",
+        yaxis_title="",
+        hovermode="closest",
+        height=600,
         legend=dict(
             orientation="h",
-            yanchor="top",
-            y=-0.3,
-            xanchor="center",
-            x=0.5
-        ),
-        margin=dict(l=20, r=20, t=20, b=80),
-        height=500,
-        plot_bgcolor="rgba(0,0,0,0)",
-        paper_bgcolor="rgba(0,0,0,0)"
+            y=-0.2,
+            x=0.5,
+            xanchor="center"
+        )
     )
 
     # Grid vertical cada 5 años
     fig.update_xaxes(
-        dtick="1825",  # aprox 5 años en días
-        tickangle=45,
+        tickformat="%Y",
+        dtick="M120",         # cada 60 meses = 5 años
         showgrid=True,
-        gridwidth=1,
-        gridcolor="LightGray"
+        gridcolor="lightgray"
     )
 
     st.plotly_chart(fig, use_container_width=True)
