@@ -394,12 +394,12 @@ def ejemplo_fr_botas():
         #orden = st.slider("Elige el orden del filtro", min_value=1, max_value=10, value=5)
 
         st.markdown(
-            f"""En este momento, tu señal filtrada ignora todas las frecuencias inferiores a 
-            <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
-            y superiores a 
-            <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>. 
-            Estás mirando sólo las oscilaciones que ocurren entre los 
-            <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
+            f"""En este momento, tu señal filtrada ignora todas las frecuencias 
+            <span style="color:#FFA500;"><b>inferiores a {round(low_cut, 2)} Hz</b></span> 
+            y 
+            <span style="color:#FFA500;"><b>superiores a {round(high_cut, 2)} Hz</b></span>. 
+            Estás mirando sólo las oscilaciones que ocurren 
+            <span style="color:#FFA500;"><b>entre los {round(low_cut, 2)} Hz</b></span> 
             y 
             <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>.
             """,
