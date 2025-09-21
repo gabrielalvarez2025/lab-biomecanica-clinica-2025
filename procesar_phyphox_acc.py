@@ -217,40 +217,48 @@ def ejemplo_fr_botas():
     #with col_web_left_expermiento:
     
 
-        
+    tab_caso, tab_medicion, tab_data, tab_analisis,  = st.tabs([
+        "El caso", 
+        "La medición", 
+        "Los datos capturados",
+        "Analizando los datos"
+        ])    
         
     #st.markdown("##### El caso")
-    st.markdown("##### El caso<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>", unsafe_allow_html=True)
 
-    
-    col_img_botas, col_caso = st.columns(proporcion)
+    with tab_caso:
+        st.markdown("##### El caso<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>", unsafe_allow_html=True)
+        col_img_botas, col_caso = st.columns(proporcion)
 
-    #st.markdown("##### La medición")
-    st.markdown("##### La medición<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>", unsafe_allow_html=True)
-    
-    col_text1, col_gif = st.columns([65, 35])
-    st.markdown("Para poder iniciar y detener el registro, usas una app (ej. 'Accelerometer' o 'PhyPhox') que te permita acceder al acelerómetro en tiempo real y descargar los datos como tabla.")
+    with tab_medicion:
+        #st.markdown("##### La medición")
+        st.markdown("##### La medición<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>", unsafe_allow_html=True)
+        
+        col_text1, col_gif = st.columns([65, 35])
+        st.markdown("Para poder iniciar y detener el registro, usas una app (ej. 'Accelerometer' o 'PhyPhox') que te permita acceder al acelerómetro en tiempo real y descargar los datos como tabla.")
         
     
     #with col_web_right_expermiento:
         
         
-    #st.markdown("##### Los datos capturados")
-    st.markdown(
-        "##### Los datos capturados<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>",
-        unsafe_allow_html=True
-    )
-    col_text2, col_plot = st.columns(proporcion)
+    with tab_data:
+        #st.markdown("##### Los datos capturados")
+        st.markdown(
+            "##### Los datos capturados<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>",
+            unsafe_allow_html=True
+        )
+        col_text2, col_plot = st.columns(proporcion)
 
-    col_text_fr1, col_text_fr2 = st.columns(2)
+        col_text_fr1, col_text_fr2 = st.columns(2)
 
 
     
-    st.markdown(
-        "##### Analizando los datos:<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>",
-        unsafe_allow_html=True
-    )
-    col_calculo_analisis_texto1, col_calculo_analisis_texto2 = st.columns(2)
+    with tab_analisis:
+        st.markdown(
+            "##### Analizando los datos:<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>",
+            unsafe_allow_html=True
+        )
+        col_calculo_analisis_texto1, col_calculo_analisis_texto2 = st.columns(2)
     
 
     st.markdown("---")
