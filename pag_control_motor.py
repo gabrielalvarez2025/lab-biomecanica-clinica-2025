@@ -204,8 +204,10 @@ def main_control_motor():
 
     with tab_ecologica:
         st.markdown("""
-    **5. Teoría Ecológica (Ecological Theory)**  
-    **Cronología:** Los años 1960. James Gibson comenzó a explorar cómo los sistemas motores interactúan con el entorno para el comportamiento orientado a objetivos. Sus estudiantes la expandieron, llamándola enfoque ecológico.
+    **Teoría Ecológica (Ecological Theory)**  
+    
+    **Cronología:**
+    Los años 1960. James Gibson comenzó a explorar cómo los sistemas motores interactúan con el entorno para el comportamiento orientado a objetivos. Sus estudiantes la expandieron, llamándola enfoque ecológico.
 
     **Postulados Principales:**  
     - El control motor evolucionó para que los animales pudieran afrontar el entorno, moviéndose eficazmente para alcanzar metas (ejemplo: encontrar comida).  
