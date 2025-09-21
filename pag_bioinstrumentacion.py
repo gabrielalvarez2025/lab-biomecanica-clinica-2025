@@ -386,7 +386,7 @@ def main_bioinstrumentacion():
                         )
         
         if st.session_state["mostrar_torques"]:
-        main_phyphox()
+            main_phyphox()
     
         if st.session_state["mostrar_amti"]:
             main_forceplate()
