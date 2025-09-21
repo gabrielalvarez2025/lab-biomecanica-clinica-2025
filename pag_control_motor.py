@@ -11,13 +11,13 @@ def main_control_motor():
 
     data = {
         "Teoría": [
-            "Teoría Refleja (Reflex Theory)",
-            "Teoría Jerárquica (Hierarchical Theory)",
-            "Teorías de Programación Motora (Motor Programming Theories)",
-            "Teoría de Sistemas (Systems Theory)",
-            "Teoría de Sistemas Dinámicos (Dynamic Systems Theory)",
-            "Teoría Ecológica (Ecological Theory)",
-            "Modelos Internos (directo e inverso)",
+            "Teoría Refleja",
+            "Teoría Jerárquica",
+            "Teorías de Programación Motora",
+            "Teoría de Sistemas",
+            "Teoría de Sistemas Dinámicos",
+            "Teoría Ecológica",
+            "Modelos Internos",
             "Hipótesis del Manifold No-Controlado (UCM)"
         ],
         "Inicio": [
