@@ -324,7 +324,7 @@ def main_bioinstrumentacion():
         # Tarjeta 1: Ejemplo Botas
         parrafo_ejemplo_botas = "Aprende a medir la frecuencia respiratoria de un gato llamado Botas usando tu celular. Presiona el botón para ver un ejemplo de uso de instrumentos para complementar una evaluación clínica. "
         botones_tarjeta(nombre_estado="mostrar_ejemplo_botas",
-                        texto_boton="Ejemplo de evaluación instrumentada: Medición de frecuencia respiratoria ",
+                        texto_boton="Ejemplo 1: Midiendo la frecuencia respiratoria de un gato",
                         texto_parrafo=parrafo_ejemplo_botas,
                         color_boton= "#368581",
                         color_parrafo= "#89BBB8"
