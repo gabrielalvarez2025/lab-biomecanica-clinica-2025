@@ -161,7 +161,7 @@ def main_control_motor():
             """
         )
 
-    import streamlit as st
+    
 
     st.markdown("## Teorías del Control Motor: detalle completo")
 
