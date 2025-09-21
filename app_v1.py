@@ -68,6 +68,9 @@ st.sidebar.markdown("---")  # línea horizontal para separar
 query_params = st.query_params
 pagina_url = query_params.get("page", None)
 
+if pagina_url == "bioinstrumentos":
+    pagina = pag_bioinstrumentacion
+
 if pagina_url == "opencap":
     pagina = pag_opencap
 
