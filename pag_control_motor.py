@@ -166,7 +166,8 @@ def main_control_motor():
     with tab_sistemas:
         st.markdown("""
     **Teoría de Sistemas (Systems Theory)**  
-    **Cronología:** Principios y mediados del siglo XX. Nicolai Bernstein (1896–1966) fue un científico ruso que comenzó a desarrollar esta perspectiva.
+    **Cronología:**
+    Principios y mediados del siglo XX. Nicolai Bernstein (1896–1966) fue un científico ruso que comenzó a desarrollar esta perspectiva.
 
     **Postulados Principales:**  
     - No se puede entender el control neural del movimiento sin comprender las características del sistema que se mueve (el cuerpo) y las fuerzas externas e internas que actúan sobre él (gravedad, inercia).  
