@@ -9,94 +9,88 @@ def main_control_motor():
     st.markdown("#### Teorías del control motor")
 
 
-    
-
-    # Datos según tu información literal
     data = {
         "Teoría": [
-            "Teoría Refleja (Reflex Theory)",
-            "Teoría Jerárquica (Hierarchical Theory)",
-            "Teorías de Programación Motora (Motor Programming Theories)",
-            "Teoría de Sistemas (Systems Theory)",
-            "Teoría de Sistemas Dinámicos (Dynamic Systems Theory)",
-            "Teoría Ecológica (Ecological Theory)",
-            "Modelos Internos (directo e inverso)",
+            "Teoría Refleja",
+            "Teoría Jerárquica",
+            "Teorías de Programación Motora",
+            "Teoría de Sistemas",
+            "Teoría de Sistemas Dinámicos",
+            "Teoría Ecológica",
+            "Modelos Internos",
             "Hipótesis del Manifold No-Controlado (UCM)"
         ],
         "Inicio": [
-            "1906-01-01",
-            "1930-01-01",
-            "1960-01-01",
-            "1920-01-01",
-            "1980-01-01",
-            "1960-01-01",
-            "1980-01-01",
-            "1990-01-01"
+            "1906-01-01",  # Refleja (Sherrington, principios del siglo XX)
+            "1930-01-01",  # Jerárquica (Jackson, Magnus)
+            "1960-01-01",  # Programas Motores (Bernstein, Keele, 1960s)
+            "1920-01-01",  # Sistemas (Bernstein, desarrollo inicial)
+            "1980-01-01",  # Sistemas Dinámicos (Kelso, 1980s)
+            "1960-01-01",  # Ecológica (Gibson, 1960s)
+            "1980-01-01",  # Modelos Internos (Kawato, Wolpert, 80s-90s)
+            "1990-01-01"   # UCM (Scholz & Schöner, 1990s)
         ],
         "Fin": [
-            "1950-01-01",
-            "1970-01-01",
-            "1990-01-01",
-            "1966-01-01",
-            "2025-01-01",
-            "2025-01-01",
-            "2025-01-01",
-            "2025-01-01"
+            "1950-01-01",  # Refleja
+            "1970-01-01",  # Jerárquica
+            "1990-01-01",  # Programas Motores
+            "1966-01-01",  # Sistemas (Bernstein fallece, evolución a dinámicos)
+            "2025-01-01",  # Sistemas Dinámicos → vigente
+            "2025-01-01",  # Ecológica → vigente
+            "2025-01-01",  # Modelos Internos → vigente
+            "2025-01-01"   # UCM → vigente
         ]
     }
 
+    
+    # Crear DataFrame
     df = pd.DataFrame(data)
+    df["Inicio"] = pd.to_datetime(df["Inicio"])
+    df["Fin"] = pd.to_datetime(df["Fin"])
 
-    # Colores asignados arbitrariamente
-    colors = px.colors.qualitative.Plotly
-
+    # Timeline con Plotly
     fig = px.timeline(
         df,
         x_start="Inicio",
         x_end="Fin",
         y="Teoría",
         color="Teoría",
-        color_discrete_sequence=colors
+        text="Teoría",   # Etiquetas sobre las barras
+        title="Cronología de teorías del control motor",
     )
 
-    # Configuraciones del gráfico
-    fig.update_yaxes(
-        autorange="reversed",  # para que la primera teoría quede arriba
-        tickvals=[]  # eliminamos ticks en eje Y, solo quedarán las barras
-    )
-
-    # Etiquetas dentro de la barra
     fig.update_traces(
-        text=df["Teoría"],
-        textposition="inside",
-        textfont=dict(color="white", size=12)
+        textposition="inside",  # texto dentro de las barras
+        insidetextanchor="middle",  # centrado
+        textfont=dict(
+            color="black",     # color blanco
+            size=12            # mismo tamaño para todas
+        )
     )
+    fig.update_yaxes(autorange="reversed", showticklabels=False)
 
-    # Leyenda debajo
+    # Ajustes de layout
     fig.update_layout(
+        xaxis_title="Año",
+        yaxis_title="",
+        hovermode="closest",
+        height=600,
         legend=dict(
             orientation="h",
-            yanchor="top",
-            y=-0.3,
-            xanchor="center",
-            x=0.5
-        ),
-        margin=dict(l=20, r=20, t=20, b=80),
-        height=500,
-        plot_bgcolor="rgba(0,0,0,0)",
-        paper_bgcolor="rgba(0,0,0,0)"
+            y=-0.2,
+            x=0.5,
+            xanchor="center"
+        )
     )
 
     # Grid vertical cada 5 años
     fig.update_xaxes(
-        dtick="1825",  # aprox 5 años en días
-        tickangle=45,
+        tickformat="%Y",
+        dtick="M120",         # cada 60 meses = 5 años
         showgrid=True,
-        gridwidth=1,
-        gridcolor="LightGray"
+        gridcolor="lightgray"
     )
 
-    # Mostrar en Streamlit
     st.plotly_chart(fig, use_container_width=True)
 
 
