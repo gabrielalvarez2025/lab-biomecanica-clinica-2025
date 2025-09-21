@@ -460,94 +460,95 @@ def ejemplo_fr_botas():
 
     
     
-    # -----------------------
-    # Inputs interactivos para filtro
-    # -----------------------
-    
-    st.markdown(" ")
-    st.markdown(" ")
-    st.markdown("##### Ajusta aquí el filtro digital:")
+    with tab_filtro:
+        # -----------------------
+        # Inputs interactivos para filtro
+        # -----------------------
+        
+        st.markdown(" ")
+        st.markdown(" ")
+        st.markdown("##### Ajusta aquí el filtro digital:")
 
-    col_filter_slider1, col_filter_slider2 = st.columns(2)
-    
-    with col_filter_slider1:
+        col_filter_slider1, col_filter_slider2 = st.columns(2)
+        
+        with col_filter_slider1:
 
-        low_cut, high_cut = st.slider(
-            "Elige la banda de frecuencias (Hz) que dejarás pasar:",
-            min_value=0.0,
-            max_value=float(fs/2)/2,
-            value=(0.0, 10.0),  # valores por defecto: low=0, high=10
-            step=0.1
+            low_cut, high_cut = st.slider(
+                "Elige la banda de frecuencias (Hz) que dejarás pasar:",
+                min_value=0.0,
+                max_value=float(fs/2)/2,
+                value=(0.0, 10.0),  # valores por defecto: low=0, high=10
+                step=0.1
+            )
+        
+            orden = 5
+            #orden = st.slider("Elige el orden del filtro", min_value=1, max_value=10, value=5)
+
+            st.markdown(
+                f"""El filtro deja pasar sólo las oscilaciones que ocurren entre los 
+                <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
+                y 
+                <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>.
+                """,
+                unsafe_allow_html=True
+            )
+
+        # Aplicar filtro pasa banda
+        z_filt_sliders = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
+
+        with col_filter_slider2:
+
+            st.markdown(
+                f"""En este momento, tu señal filtrada ignora todas las frecuencias inferiores a 
+                <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
+                y superiores a 
+                <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>.
+                """,
+                unsafe_allow_html=True
+            )
+
+            st.markdown("¡Mira como cambia la señal! :")
+        
+        # Plot modificable seccion filtrado
+        fig2 = go.Figure()
+
+        # Señal original en gris
+        fig2.add_trace(go.Scatter(
+            x=t, y=z,
+            mode="lines",
+            line=dict(color="lightgray", width=0.5),
+            name="Clickea aquí para ver/ocultar la Señal original"
+        ))
+
+        # Señal filtrada en naranjo
+        fig2.add_trace(go.Scatter(
+            x=t, y=z_filt_sliders,
+            mode="lines",
+            line=dict(color="#FFA500", width=1.5),
+            name=f"Clickea aquí para ver/ocultar la Señal filtrada ({round(low_cut, 2)}-{round(high_cut, 2)} Hz, orden {orden})"
+        ))
+
+        fig2.update_layout(
+            title=" ",
+            xaxis_title="Tiempo (s)",
+            yaxis_title="Aceleración (m/s²)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="rgba(0,0,0,0)",
+            font=dict(color="white"),
+            margin=dict(l=40, r=20, t=0, b=40),  # un poco más de margen arriba para la leyenda
+            height=400,
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=0.1,
+                xanchor="center",
+                x=0.5
+            )
         )
-    
-        orden = 5
-        #orden = st.slider("Elige el orden del filtro", min_value=1, max_value=10, value=5)
 
-        st.markdown(
-            f"""El filtro deja pasar sólo las oscilaciones que ocurren entre los 
-            <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
-            y 
-            <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>.
-            """,
-            unsafe_allow_html=True
-        )
-
-    # Aplicar filtro pasa banda
-    z_filt_sliders = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
-
-    with col_filter_slider2:
-
-        st.markdown(
-            f"""En este momento, tu señal filtrada ignora todas las frecuencias inferiores a 
-            <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
-            y superiores a 
-            <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>.
-            """,
-            unsafe_allow_html=True
-        )
-
-        st.markdown("¡Mira como cambia la señal! :")
-    
-    # Plot modificable seccion filtrado
-    fig2 = go.Figure()
-
-    # Señal original en gris
-    fig2.add_trace(go.Scatter(
-        x=t, y=z,
-        mode="lines",
-        line=dict(color="lightgray", width=0.5),
-        name="Clickea aquí para ver/ocultar la Señal original"
-    ))
-
-    # Señal filtrada en naranjo
-    fig2.add_trace(go.Scatter(
-        x=t, y=z_filt_sliders,
-        mode="lines",
-        line=dict(color="#FFA500", width=1.5),
-        name=f"Clickea aquí para ver/ocultar la Señal filtrada ({round(low_cut, 2)}-{round(high_cut, 2)} Hz, orden {orden})"
-    ))
-
-    fig2.update_layout(
-        title=" ",
-        xaxis_title="Tiempo (s)",
-        yaxis_title="Aceleración (m/s²)",
-        plot_bgcolor="rgba(0,0,0,0)",
-        paper_bgcolor="rgba(0,0,0,0)",
-        font=dict(color="white"),
-        margin=dict(l=40, r=20, t=0, b=40),  # un poco más de margen arriba para la leyenda
-        height=400,
-        legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=0.1,
-            xanchor="center",
-            x=0.5
-        )
-    )
-
-    # 👉 Rango inicial de ejes
-    fig2.update_xaxes(range=[2.5, 20])
-    fig2.update_yaxes(range=[-1.0, 1.0])
-    
-    st.plotly_chart(fig2, use_container_width=True)
+        # 👉 Rango inicial de ejes
+        fig2.update_xaxes(range=[2.5, 20])
+        fig2.update_yaxes(range=[-1.0, 1.0])
+        
+        st.plotly_chart(fig2, use_container_width=True)
 
