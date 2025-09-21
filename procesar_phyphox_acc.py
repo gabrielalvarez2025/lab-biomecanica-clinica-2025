@@ -225,6 +225,9 @@ def ejemplo_fr_botas():
     
     
     with col_web_right_expermiento:
+        
+        
+        st.markdown("##### La medición")
         col_text2, col_plot = st.columns(proporcion)
 
         
