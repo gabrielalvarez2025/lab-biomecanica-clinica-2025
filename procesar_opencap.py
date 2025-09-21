@@ -368,14 +368,6 @@ def main_opencap():
 
                         # Agregar curva al gráfico
                         fig_compare.add_trace(go.Scatter(
-                            x=df_trial[df_trial.columns[0]],  # tiempo
-                            y=df_trial[selected_joint],
-                            mode="lines",
-                            name=trial
-                        ))
-
-                        # Agregar curva al gráfico
-                        fig_compare.add_trace(go.Scatter(
                             x=x_vals,
                             y=df_trial[selected_joint],
                             mode="lines",
@@ -384,7 +376,7 @@ def main_opencap():
 
                     fig_compare.update_layout(
                         title=f"Comparación de {selected_joint} entre Trials",
-                        xaxis_title="Tiempo (s)",
+                        xaxis_title=x_axis_title,
                         yaxis_title="Ángulo (°)",
                         template="plotly_white",
                         legend=dict(
