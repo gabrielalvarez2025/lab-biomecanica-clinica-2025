@@ -314,15 +314,15 @@ def ejemplo_fr_botas():
 
     with col_calculo_analisis_texto1:
         
+        st.markdown("De actuerdo a David Winter, la evaluación biomecánica tiene 3 etapas: observación, medición y análisis.")
+        st.markdown("Ya observaste y mediste; ahora vamos de lleno a la 3° etapa de evaluación: analizar. Aquí, puedes aprovechar tus conocimientos técnicos, habilidades deductivas y sentido común para, a partir de los datos, inferir, comparar, contrastar, concluir, etc.")
         
-        st.markdown("Ya observaste y mediste; estás en la 3° etapa de evaluación: análisis.")
+    
+    with col_calculo_analisis_texto2:
+        
         st.markdown("1. ¿Cuál es la frecuencia respiratoria de Botas?")
         st.markdown("2. Considerando que el rango de FR en reposo normal para un gato es 20 a 30 rpm, ¿qué podría estar pasando con Botas?")
 
-    
-    #with col_calculo_analisis_texto2:
-        
-        #st.image("img_capture_plot_cat_fr.png", use_container_width=True)
 
     
         
