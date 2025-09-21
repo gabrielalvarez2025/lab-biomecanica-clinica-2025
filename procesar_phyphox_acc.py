@@ -254,7 +254,7 @@ def ejemplo_fr_botas():
 
     with col_web_left_filtrado:
         st.markdown("##### Filtrando la señal")
-        st.markdown('Te habrás dado cuenta que en el gráfico distinguimos la "señal original", (en blanco) de la "señal filtrada" (en naranjo). Esto se debe a que aplicamoos uno de los posibles pasos de procesamiento de señales a la señal de aceleración capturada: el filtrado.')
+        st.markdown('Te habrás dado cuenta que en el gráfico distinguimos la "señal original" (en blanco), de la "señal filtrada" (en naranjo). Esto se debe a que aplicamoos uno de los posibles pasos de procesamiento de señales a la señal de aceleración capturada: el filtrado.')
         col_text_filter1, col_text_filter2 = st.columns(2)
 
 
