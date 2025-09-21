@@ -64,7 +64,7 @@ def main_control_motor():
         insidetextanchor="middle",  # centrado
         textfont=dict(
             color="black",     # color blanco
-            size=9            # mismo tamaño para todas
+            size=12            # mismo tamaño para todas
         )
     )
     fig.update_yaxes(autorange="reversed", showticklabels=False)
