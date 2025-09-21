@@ -18,7 +18,7 @@ def main_control_motor():
             "T. de Sistemas Dinámicos",
             "T. Ecológica",
             "T. Modelos Internos",
-            "Hip. del Manifold No-Controlado (UCM)"
+            "Hip. Manifold No-Controlado (UCM)"
         ],
         "Inicio": [
             "1906-01-01",  # Refleja (Sherrington, principios del siglo XX)
@@ -63,7 +63,7 @@ def main_control_motor():
         textposition="inside",  # texto dentro de las barras
         insidetextanchor="middle",  # centrado
         textfont=dict(
-            color="white",     # color blanco
+            color="black",     # color blanco
             size=12            # mismo tamaño para todas
         )
     )
