@@ -391,8 +391,8 @@ def ejemplo_fr_botas():
             value=(0.0, 10.0),  # valores por defecto: low=0, high=10
             step=0.1
         )
-        orden = 5
-        #orden = st.slider("Orden del filtro", min_value=1, max_value=5, value=5)
+        #orden = 5
+        orden = st.slider("Orden del filtro", min_value=1, max_value=5, value=5)
 
 
     with col_plot:
