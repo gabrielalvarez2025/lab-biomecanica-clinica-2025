@@ -242,7 +242,7 @@ def ejemplo_fr_botas():
         st.markdown("Este es Botas")
         st.image("img_botas.png", use_container_width=True)
         #st.image("cat3.gif", use_container_width=True)
-        st.markdown("Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, usaremos los sensores del celular.")
+        st.markdown("Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, te propones usar el acelerómetro de tu celular.")
 
 
     with col_text1:
