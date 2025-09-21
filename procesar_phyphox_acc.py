@@ -378,45 +378,8 @@ def ejemplo_fr_botas():
         st.markdown("En el gráfico que viste, la señal original (ruidosa) está en blanco y la filtrada (limpia) en naranjo. Decidimos filtrar la señal dejando pasar sólo las frecuencias entre 0 Hz a 10 Hz, y bloqueando todas las demás hacia derecha y hacia izquierda. A nuestro criterio, vimos que estos parámetros permiten visualizar bien los ciclos respiratorios, pues la FR es un fenómeno de frecuencias más bien bajas.")
         
         st.markdown("Abajo, puedes deslizar los sliders para jugar con los parámetros del filtro, elegir otros, y así ver cómo estos cambios afectan la señal filtrada (naranjo).")
-        #with col_sliders:
-
-        # -----------------------
-        # Inputs interactivos para filtro
-        # -----------------------
         
-        st.markdown("##### Ajusta aquí el filtro digital:")
-
-        col_filter_slider1, col_filter_slider2 = st.columns(2)
         
-        with col_filter_slider1:
-
-            low_cut, high_cut = st.slider(
-                "Elige la banda de frecuencias (Hz) que dejarás pasar:",
-                min_value=0.0,
-                max_value=float(fs/2)/2,
-                value=(0.0, 10.0),  # valores por defecto: low=0, high=10
-                step=0.1
-            )
-        
-            orden = 5
-            #orden = st.slider("Elige el orden del filtro", min_value=1, max_value=10, value=5)
-
-        with col_filter_slider2:
-
-            st.markdown(
-                f"""En este momento, tu señal filtrada ignora todas las frecuencias inferiores a 
-                <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
-                y superiores a 
-                <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>. 
-                El filtro deja pasar sólo las oscilaciones que ocurren entre los 
-                <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
-                y 
-                <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>.
-                """,
-                unsafe_allow_html=True
-            )
-
-            st.markdown("¡Mira como cambia la señal! :")
 
     # Aplicar filtro pasa banda
     z_filt_sliders = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
@@ -486,6 +449,45 @@ def ejemplo_fr_botas():
         st.plotly_chart(fig1, use_container_width=True)
     
 
+    
+    
+    # -----------------------
+    # Inputs interactivos para filtro
+    # -----------------------
+    
+    st.markdown("##### Ajusta aquí el filtro digital:")
+
+    col_filter_slider1, col_filter_slider2 = st.columns(2)
+    
+    with col_filter_slider1:
+
+        low_cut, high_cut = st.slider(
+            "Elige la banda de frecuencias (Hz) que dejarás pasar:",
+            min_value=0.0,
+            max_value=float(fs/2)/2,
+            value=(0.0, 10.0),  # valores por defecto: low=0, high=10
+            step=0.1
+        )
+    
+        orden = 5
+        #orden = st.slider("Elige el orden del filtro", min_value=1, max_value=10, value=5)
+
+    with col_filter_slider2:
+
+        st.markdown(
+            f"""En este momento, tu señal filtrada ignora todas las frecuencias inferiores a 
+            <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
+            y superiores a 
+            <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>. 
+            El filtro deja pasar sólo las oscilaciones que ocurren entre los 
+            <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
+            y 
+            <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>.
+            """,
+            unsafe_allow_html=True
+        )
+
+        st.markdown("¡Mira como cambia la señal! :")
     
     # Plot modificable seccion filtrado
     fig2 = go.Figure()
