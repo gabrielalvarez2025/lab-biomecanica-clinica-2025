@@ -436,10 +436,10 @@ def ejemplo_fr_botas():
         
         
         # Crear gráfico interactivo con Plotly
-        fig = go.Figure()
+        fig1 = go.Figure()
 
         # Señal original en gris
-        fig.add_trace(go.Scatter(
+        fig1.add_trace(go.Scatter(
             x=t, y=z,
             mode="lines",
             line=dict(color="lightgray", width=0.7),
@@ -448,14 +448,14 @@ def ejemplo_fr_botas():
         ))
 
         # Señal filtrada en naranjo
-        fig.add_trace(go.Scatter(
+        fig1.add_trace(go.Scatter(
             x=t, y=z_filt_sliders,
             mode="lines",
             line=dict(color="#FFA500", width=1.5),
             name=f"Clickea aquí para ver/ocultar la Señal filtrada ({round(low_cut, 2)}-{round(high_cut, 2)} Hz, orden {orden}"
         ))
 
-        fig.update_layout(
+        fig1.update_layout(
             title=" ",
             xaxis_title="Tiempo (s)",
             yaxis_title="Aceleración (m/s²)",
@@ -474,18 +474,18 @@ def ejemplo_fr_botas():
         )
 
         # 👉 Rango inicial de ejes
-        fig.update_xaxes(range=[2.5, 20])
-        fig.update_yaxes(range=[-1.5, 0.5])
+        fig1.update_xaxes(range=[2.5, 20])
+        fig1.update_yaxes(range=[-1.5, 0.5])
         
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig1, use_container_width=True)
     
 
     
     # Plot modificable seccion filtrado
-    fig = go.Figure()
+    fig2 = go.Figure()
 
     # Señal original en gris
-    fig.add_trace(go.Scatter(
+    fig2.add_trace(go.Scatter(
         x=t, y=z,
         mode="lines",
         line=dict(color="lightgray", width=0.7),
@@ -493,14 +493,14 @@ def ejemplo_fr_botas():
     ))
 
     # Señal filtrada en naranjo
-    fig.add_trace(go.Scatter(
+    fig2.add_trace(go.Scatter(
         x=t, y=z_filt_fixed,
         mode="lines",
         line=dict(color="#FFA500", width=1.5),
         name=f"Clickea aquí para ver/ocultar la Señal filtrada ({round(low_cut, 2)}-{round(high_cut, 2)} Hz, orden {orden})"
     ))
 
-    fig.update_layout(
+    fig2.update_layout(
         title=" ",
         xaxis_title="Tiempo (s)",
         yaxis_title="Aceleración (m/s²)",
@@ -519,10 +519,10 @@ def ejemplo_fr_botas():
     )
 
     # 👉 Rango inicial de ejes
-    fig.update_xaxes(range=[2.5, 20])
-    fig.update_yaxes(range=[-1.5, 0.5])
+    fig2.update_xaxes(range=[2.5, 20])
+    fig2.update_yaxes(range=[-1.5, 0.5])
     
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig2, use_container_width=True)
 
         
 
