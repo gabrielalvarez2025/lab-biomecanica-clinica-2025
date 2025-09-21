@@ -386,31 +386,37 @@ def ejemplo_fr_botas():
         
         st.markdown("##### Ajusta aquí el filtro digital:")
 
-        low_cut, high_cut = st.slider(
-            "Elige la banda de frecuencias (Hz) que dejarás pasar:",
-            min_value=0.0,
-            max_value=float(fs/2)/2,
-            value=(0.0, 10.0),  # valores por defecto: low=0, high=10
-            step=0.1
-        )
+        col_filter_slider1, col_filter_slider2 = st.columns(2)
         
-        orden = 5
-        #orden = st.slider("Elige el orden del filtro", min_value=1, max_value=10, value=5)
+        with col_filter_slider1:
 
-        st.markdown(
-            f"""En este momento, tu señal filtrada ignora todas las frecuencias inferiores a 
-            <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
-            y superiores a 
-            <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>. 
-            El filtro deja pasar sólo las oscilaciones que ocurren entre los 
-            <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
-            y 
-            <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>.
-            """,
-            unsafe_allow_html=True
-        )
+            low_cut, high_cut = st.slider(
+                "Elige la banda de frecuencias (Hz) que dejarás pasar:",
+                min_value=0.0,
+                max_value=float(fs/2)/2,
+                value=(0.0, 10.0),  # valores por defecto: low=0, high=10
+                step=0.1
+            )
+        
+            orden = 5
+            #orden = st.slider("Elige el orden del filtro", min_value=1, max_value=10, value=5)
 
-        st.markdown("¡Observa como cambia la señal! :")
+        with col_filter_slider2:
+
+            st.markdown(
+                f"""En este momento, tu señal filtrada ignora todas las frecuencias inferiores a 
+                <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
+                y superiores a 
+                <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>. 
+                El filtro deja pasar sólo las oscilaciones que ocurren entre los 
+                <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
+                y 
+                <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>.
+                """,
+                unsafe_allow_html=True
+            )
+
+            st.markdown("¡Mira como cambia la señal! :")
 
     # Aplicar filtro pasa banda
     z_filt_sliders = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
