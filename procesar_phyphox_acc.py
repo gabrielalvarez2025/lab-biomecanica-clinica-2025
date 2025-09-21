@@ -349,7 +349,7 @@ def ejemplo_fr_botas():
         st.error("El CSV no tiene la columna 'Acceleration z (m/s^2)'.")
         return
 
-    df["Acceleration z (m/s^2) [no g]"] = df["Acceleration z (m/s^2)"] - 9.8 -0.5
+    df["Acceleration z (m/s^2) [no g]"] = df["Acceleration z (m/s^2)"] - 9.8 +0.5
 
     t = df["Time (s)"]
     z = df["Acceleration z (m/s^2) [no g]"]
