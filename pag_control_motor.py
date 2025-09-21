@@ -58,6 +58,8 @@ def main_control_motor():
 
     fig.update_traces(textposition="inside")  # Poner etiquetas sobre la barra
     fig.update_yaxes(autorange="reversed")     # Para que empiece desde arriba
+    fig.update_yaxes(showticklabels=False)      # Quitar etiquetas del eje Y
+
 
     # Ajustes de layout
     fig.update_layout(
