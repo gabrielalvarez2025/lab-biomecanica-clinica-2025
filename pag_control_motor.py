@@ -61,7 +61,7 @@ def main_control_motor():
         textposition="inside",  # texto dentro de las barras
         insidetextanchor="middle",  # centrado
         textfont=dict(
-            color="white",     # color blanco
+            color="k",     # color blanco
             size=9            # mismo tamaño para todas
         )
     )
