@@ -7,7 +7,7 @@ import streamlit.components.v1 as components
 
 from procesar_phyphox_acc import main_phyphox, ejemplo_fr_botas
 from procesar_amti import main_forceplate
-from procesar_opencap import main_opencap
+from pag_opencap import main_opencap
 from procesar_delsys import main_delsys
 
 def play_emg_sumatoria():
