@@ -30,7 +30,7 @@ def main_control_motor():
             "1960-01-01",   # Programas motores
             "1980-01-01",   # Modelos internos
             "1990-01-01",   # UCM
-            "2000-01-01"    # Sistemas dinámicos
+            "2000-01-01"    # Hipotesis punto de equilibrio
         ],
         "Fin": [
             "1930-01-01",   # Fin reflejo
@@ -38,7 +38,7 @@ def main_control_motor():
             "1980-01-01",   # Fin programas motores
             "2025-01-01",   # Fin modelos internos
             "2025-01-01",   # Fin UCM
-            "2025-01-01"    # TSD
+            "2025-01-01"    # Hipotesis punto de equilibrio
         ]
     }
 
