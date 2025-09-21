@@ -18,7 +18,7 @@ def main_control_motor():
             "Teoría de Sistemas Dinámicos",
             "Teoría Ecológica",
             "Modelos Internos",
-            "Hipótesis del Manifold No-Controlado (UCM)"
+            "Hip. del Manifold No-Controlado (UCM)"
         ],
         "Inicio": [
             "1906-01-01",  # Refleja (Sherrington, principios del siglo XX)
