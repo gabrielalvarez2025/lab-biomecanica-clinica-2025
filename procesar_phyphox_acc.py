@@ -543,6 +543,22 @@ def ejemplo_fr_botas():
     
     st.plotly_chart(fig2, use_container_width=True)
 
+
+
+    tab1, tab2, tab3 = st.tabs(["📈 Señal", "📝 Explicación", "⚙️ Parámetros"])
+
+    with tab1:
+        st.markdown("##### Señal filtrada")
+        st.markdown("Aquí puedes ver la señal filtrada con los parámetros que elegiste en la pestaña 'Parámetros'.")
+        
+        fig3 = go.Figure()
+
+        # Señal original en gris
+        fig3.add_trace(go.Scatter
+                       
+    with tab2:
+        st.markdown("##### Explicación del filtro")
+
         
 
 
