@@ -284,7 +284,6 @@ def ejemplo_fr_botas():
         st.markdown("Si colocas el celular sobre su tórax mientras duerme, este se moverá hacia arriba y abajo con cada respiración. Este movimiento es sensado como aceleración por el acelerómetro del celular.")
         st.markdown("Si registramos la aceleración lineal del celular en el eje vertical (eje Z), podremos observar las oscilaciones causadas por el tórax de Botas con cada ciclo respiratorio.")
         
-        
 
     with col_text2:
         
@@ -292,19 +291,20 @@ def ejemplo_fr_botas():
         st.markdown("Si contamos cuántos ciclos hay en un minuto, podemos calcular su frecuencia respiratoria.")
         st.markdown("También podemos contar el número de ciclos en 15 segundos y luego multiplicar por 4 para hacer una estimación rápida.")
         
-        
-        
 
+    with col_calculo_fr1:
+        
+        st.markdown("##### Analizando los datos:\n---")
+        st.markdown("Ya observaste y mediste; estás en la 3° etapa de evaluación: análisis.")
+        st.markdown("¿Cuál es la frecuencia respiratoria de Botas?")
+        st.markdown("Considerando que el rango de FR en reposo normal para un gato es 20 a 30 rpm, ¿qué podría estar pasando con Botas?")
+
+    
     with col_calculo_fr2:
         
         st.image("img_capture_plot_cat_fr.png", use_container_width=True)
 
-    with col_calculo_fr1:
-        
-        st.markdown("##### Analizando los datos:")
-        st.markdown("Ya observaste y mediste; estás en la 3° etapa de evaluación: análisis.")
-        st.markdown("¿Cuál es la frecuencia respiratoria de Botas?")
-        st.markdown("Considerando que el rango de FR en reposo normal para un gato es 20 a 30 rpm, ¿qué podría estar pasando con Botas?")
+    
         
         
 
