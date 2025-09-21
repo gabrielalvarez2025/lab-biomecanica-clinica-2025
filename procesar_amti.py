@@ -145,7 +145,7 @@ def main_forceplate():
             #show_Cz = st.checkbox("Cz (mm)", False)
 
 
-        if show_Cx or show_Cy:
+        #if show_Cx or show_Cy:
 
         # Lista de señales a graficar
         signals = []
