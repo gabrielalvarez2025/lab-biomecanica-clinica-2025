@@ -218,9 +218,11 @@ def ejemplo_fr_botas():
         
         col_img_botas, col_caso = st.columns(proporcion)
 
+        col_text1, col_text2 = st.columns(2)
+        
         col_gif, col_plot = st.columns(proporcion)
 
-        col_text1, col_text2 = st.columns(2)
+        
 
         st.markdown(" ")
         st.markdown(" ")
