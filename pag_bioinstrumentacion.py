@@ -322,11 +322,7 @@ def main_bioinstrumentacion():
     
     with tab_ejemplos:
         # Tarjeta 1: Ejemplo Botas
-        parrafo_ejemplo_botas, = st.columns([100])
-
-        with parrafo_ejemplo_botas:
-            st.markdown("Aprende a medir la frecuencia respiratoria de un gato llamado Botas usando tu celular. Presiona el botón para ver un ejemplo de uso de instrumentos para complementar una evaluación clínica. ")
-            st.markdown("Presiona el botón para ver un ejemplo de uso de instrumentos para complementar una evaluación clínica.")
+        parrafo_ejemplo_botas = "Aprende a medir la frecuencia respiratoria de un gato llamado Botas usando tu celular. Presiona el botón para ver un ejemplo de uso de instrumentos para complementar una evaluación clínica. "
         botones_tarjeta(nombre_estado="mostrar_ejemplo_botas",
                         texto_boton="Ejemplo 1: Midiendo la frecuencia respiratoria de un gato",
                         texto_parrafo=parrafo_ejemplo_botas,
