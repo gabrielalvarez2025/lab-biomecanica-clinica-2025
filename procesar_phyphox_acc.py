@@ -381,8 +381,7 @@ def ejemplo_fr_botas():
         
         
 
-    # Aplicar filtro pasa banda
-    z_filt_sliders = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
+    
     
         
         
@@ -471,6 +470,9 @@ def ejemplo_fr_botas():
     
         orden = 5
         #orden = st.slider("Elige el orden del filtro", min_value=1, max_value=10, value=5)
+
+    # Aplicar filtro pasa banda
+    z_filt_sliders = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
 
     with col_filter_slider2:
 
