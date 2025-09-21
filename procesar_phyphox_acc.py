@@ -282,12 +282,12 @@ def ejemplo_fr_botas():
 
         st.markdown("Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, te propones usar el acelerómetro de tu celular.")
         st.markdown("Si colocas el celular sobre su tórax mientras duerme, este se moverá hacia arriba y abajo con cada respiración. Este movimiento es sensado como aceleración por el acelerómetro del celular.")
+        st.markdown("Si registramos la aceleración lineal del celular en el eje vertical (eje Z), podremos observar las oscilaciones causadas por el tórax de Botas con cada ciclo respiratorio.")
         
         
 
     with col_text2:
         
-        st.markdown("Si registramos la aceleración lineal del celular en el eje vertical (eje Z), podremos observar las oscilaciones causadas por el tórax de Botas con cada ciclo respiratorio.")
         st.markdown("En la señal (en el gráfico), deberíamos ver un patrón de acelerometría que se repite en ciclos. Si contamos cuántos ciclos hay en un minuto, podemos calcular su frecuencia respiratoria.")
         st.markdown("También podemos contar los ciclos en 15 segundos y luego multiplicar por 4 para hacer una estimación rápida.")
         
