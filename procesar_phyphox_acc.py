@@ -435,6 +435,6 @@ def ejemplo_fr_botas():
         fig.update_xaxes(range=[2.5, 20])
         fig.update_yaxes(range=[-1.5, 0.5])
         
-        st.plotly_chart(fig, use_container_width=True, height=400)
+        st.plotly_chart(fig, use_container_width=True, height=200)
 
         
