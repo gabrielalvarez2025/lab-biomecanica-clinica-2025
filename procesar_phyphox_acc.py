@@ -216,7 +216,11 @@ def ejemplo_fr_botas():
 
         st.markdown("Veamos un ejemplo de un escenario doméstico en el que podríamos usar un celular para capturar señales biológicas y así complementar una evaluación clínica.")
         
-        col_gif, col_plot = st.columns(proporcion)
+        col_gif, col_caso = st.columns(proporcion)
+
+        col_text11, col_text12 = st.columns(2)
+
+        
 
         col_text1, col_text2 = st.columns(2)
 
@@ -242,10 +246,11 @@ def ejemplo_fr_botas():
         st.markdown("Este es Botas")
         st.image("img_botas.png", use_container_width=True)
         #st.image("cat3.gif", use_container_width=True)
-        st.markdown("Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, te propones usar el acelerómetro de tu celular.")
+        
 
 
     with col_text1:
+        st.markdown("Con el objetivo de medir su frecuencia respiratoria en reposo de forma más exacta, te propones usar el acelerómetro de tu celular.")
         st.markdown("Si capturamos la aceleración lineal del celular en el eje vertical (eje Z), podemos observar las oscilaciones causadas por el tórax de Botas con cada ciclo respiratorio.")
 
     with col_text2:
