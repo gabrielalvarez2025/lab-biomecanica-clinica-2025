@@ -12,9 +12,7 @@ def main_control_motor():
 
     
 
-    st.markdown("### 📜 Línea de tiempo de las teorías del control motor")
-
-    # Datos de teorías (fechas aproximadas para ilustrar)
+    # Datos de la cronología (más realista)
     data = {
         "Teoría": [
             "Teoría refleja",
@@ -25,34 +23,44 @@ def main_control_motor():
             "Teoría de los sistemas dinámicos"
         ],
         "Inicio": [
-            "1900-01-01",   # Refleja
-            "1930-01-01",   # Jerárquica
-            "1960-01-01",   # Programas motores
-            "1980-01-01",   # Modelos internos
-            "1990-01-01",   # UCM
-            "2000-01-01"    # Hipotesis punto de equilibrio
+            "1900-01-01",   # Refleja (Sherrington, principios del siglo XX)
+            "1930-01-01",   # Jerárquica (Jackson, Magnus)
+            "1960-01-01",   # Programas motores (Keele, Schmidt, 60s-70s)
+            "1980-01-01",   # Modelos internos (Kawato, Wolpert, 80s-90s)
+            "1990-01-01",   # UCM (Scholz & Schöner, 90s)
+            "1990-01-01"    # Sistemas dinámicos (Kelso, 80s-90s, pero vigentes)
         ],
         "Fin": [
-            "1930-01-01",   # Fin reflejo
-            "1960-01-01",   # Fin jerárquica
-            "1980-01-01",   # Fin programas motores
-            "2025-01-01",   # Fin modelos internos
-            "2025-01-01",   # Fin UCM
-            "2025-01-01"    # Hipotesis punto de equilibrio
+            "1950-01-01",   # Refleja → superada por otras
+            "1970-01-01",   # Jerárquica → crítica con evidencia posterior
+            "1990-01-01",   # Programas motores → cuestionados
+            "2025-01-01",   # Modelos internos → aún vigentes
+            "2025-01-01",   # UCM → actual
+            "2025-01-01"    # Sistemas dinámicos → actual
         ]
     }
 
+    # Crear DataFrame
     df = pd.DataFrame(data)
+    df["Inicio"] = pd.to_datetime(df["Inicio"])
+    df["Fin"] = pd.to_datetime(df["Fin"])
 
-    # Crear timeline
-    fig = px.timeline(df, x_start="Inicio", x_end="Fin", y="Teoría", color="Teoría")
-    fig.update_yaxes(autorange="reversed")  # orden cronológico de arriba hacia abajo
+    # Timeline con Plotly
+    fig = px.timeline(
+        df,
+        x_start="Inicio",
+        x_end="Fin",
+        y="Teoría",
+        color="Teoría",
+        title="Cronología de teorías del control motor",
+    )
+
+    fig.update_yaxes(autorange="reversed")  # Para que empiece desde arriba
     fig.update_layout(
-        height=500,
-        title="Evolución de las teorías del control motor",
         xaxis_title="Año",
         yaxis_title="Teoría",
-        legend=dict(orientation="h", y=-0.2)
+        hovermode="closest",
+        height=600
     )
 
     st.plotly_chart(fig, use_container_width=True)
