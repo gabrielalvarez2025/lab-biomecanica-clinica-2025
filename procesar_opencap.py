@@ -357,7 +357,7 @@ def main_opencap():
 
                         df_trial = pd.read_csv(data_buffer_trial, delimiter=r"\s+", engine="python")
 
-                        # Normalizar si corresponde
+                        # Normalizar si True
                         if normalize_time:
                             x_vals = (df_trial[df_trial.columns[0]] - df_trial[df_trial.columns[0]].min()) / \
                                     (df_trial[df_trial.columns[0]].max() - df_trial[df_trial.columns[0]].min()) * 100

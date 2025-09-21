@@ -111,7 +111,16 @@ def main_forceplate():
 
         st.markdown("### Selecciona las señales a graficar:")
 
-        col_select_1, col_select_2, col_select_3 = st.columns(3)
+        tab_fuerzas, tab_posturografia = st.tabs([
+            "Fuerzas y torques",
+            "Posturografía (COP)"
+        ])
+        
+        with tab_fuerzas:
+            col_select_1, col_select_2 = st.columns(2)
+
+        with tab_posturografia:
+            esp1, col_select_3, esp2 = st.columns([20, 60, 20])
 
         with col_select_1:
             st.markdown("###### Fuerzas:")
