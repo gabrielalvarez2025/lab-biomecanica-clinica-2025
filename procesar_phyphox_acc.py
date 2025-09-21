@@ -405,6 +405,8 @@ def ejemplo_fr_botas():
             """,
             unsafe_allow_html=True
         )
+
+        st.markdown("¡Observa como cambia la señal! :")
         
         
         
