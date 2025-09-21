@@ -420,7 +420,7 @@ def ejemplo_fr_botas():
             plot_bgcolor="rgba(0,0,0,0)",
             paper_bgcolor="rgba(0,0,0,0)",
             font=dict(color="white"),
-            margin=dict(l=40, r=20, t=1, b=40),  # un poco más de margen arriba para la leyenda
+            margin=dict(l=40, r=20, t=0, b=40),  # un poco más de margen arriba para la leyenda
             height=400,
             legend=dict(
                 orientation="h",
