@@ -52,15 +52,25 @@ def main_control_motor():
         x_end="Fin",
         y="Teoría",
         color="Teoría",
+        text="Teoría",   # Agregar etiquetas
         title="Cronología de teorías del control motor",
     )
 
-    fig.update_yaxes(autorange="reversed")  # Para que empiece desde arriba
+    fig.update_traces(textposition="outside")  # Poner etiquetas sobre la barra
+    fig.update_yaxes(autorange="reversed")     # Para que empiece desde arriba
+
+    # Ajustes de layout
     fig.update_layout(
         xaxis_title="Año",
-        yaxis_title="Teoría",
+        yaxis_title="",
         hovermode="closest",
-        height=600
+        height=600,
+        legend=dict(
+            orientation="h",    # Horizontal
+            y=-0.2,             # Debajo del gráfico
+            x=0.5,              # Centrado
+            xanchor="center"
+        )
     )
 
     st.plotly_chart(fig, use_container_width=True)
