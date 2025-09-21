@@ -380,7 +380,7 @@ def ejemplo_fr_botas():
         # Inputs interactivos para filtro
         # -----------------------
         
-        st.markdown("##### Ajusta aquí el filtro digital")
+        st.markdown("###### Ajusta aquí el filtro digital:")
 
         low_cut, high_cut = st.slider(
             "Elige la banda de frecuencias (Hz) que dejarás pasar:",
