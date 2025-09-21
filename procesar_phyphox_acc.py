@@ -360,7 +360,7 @@ def ejemplo_fr_botas():
     
     with col_text_filter2:
         
-        st.markdown("La respiración en reposo se repite pocas veces por segundo (20 a 30 rpm en un gato), por lo que ocurre a una frecuencia baja (0.3 a 0.4 Hz). En cambio, el ronroneo ocurre a una frecuencia más alta (p.ej. 25 Hz).")
+        st.markdown("La respiración en reposo se repite pocas veces por segundo (20 a 30 rpm en un gato), por lo que ocurre a una frecuencia baja (0.3 a 0.5 Hz). En cambio, el ronroneo ocurre a una frecuencia más alta (p.ej. 25 Hz).")
         st.markdown("Por lo tanto, para limpiar nuestra señal, podemos usar un filtro que deje pasar las frecuencias bajas (ej. FR), pero bloquee las frecuencias altas (ej. ronroneo).")
         
         st.markdown("En el gráfico que viste, la señal original (ruidosa) está en blanco y la filtrada (limpia) en naranjo. Decidimos filtrar la señal dejando pasar sólo las frecuencias entre 0 Hz a 10 Hz, y bloqueando todas las demás hacia derecha y hacia izquierda. A nuestro criterio, vimos que estos parámetros permiten visualizar bien los ciclos respiratorios, pues la FR es un fenómeno de frecuencias más bien bajas.")
