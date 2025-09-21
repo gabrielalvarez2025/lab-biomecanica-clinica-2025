@@ -244,7 +244,7 @@ def ejemplo_fr_botas():
         col_text_filter, col_sliders = st.columns(2)
 
 
-    with col_web_right_filtrado:
+    #with col_web_right_filtrado:
 
         
 
