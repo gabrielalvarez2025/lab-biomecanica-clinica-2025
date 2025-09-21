@@ -195,9 +195,6 @@ def instrucciones_opencap():
 
 def main_opencap():
     
-    st.header("Aplicando videofotogrametría con OpenCap")
-    st.markdown("---")
-
     # inicializar estado si no existe
     if "pantalla" not in st.session_state:
         st.session_state["pantalla"] = None    

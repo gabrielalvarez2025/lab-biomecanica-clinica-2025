@@ -72,6 +72,8 @@ if pagina_url == "bioinstrumentos":
     pagina = pag_bioinstrumentacion
 
 if pagina_url == "opencap":
+    st.header("Aplicando videofotogrametría con OpenCap")
+    st.markdown("---")
     pagina = pag_opencap
 
 
@@ -96,4 +98,6 @@ elif pagina == pag_marcha:
     mostrar(main_marcha, 1)
 
 elif pagina == pag_opencap:
+    st.header("Aplicando videofotogrametría con OpenCap")
+    st.markdown("---")
     mostrar(main_opencap, True)
