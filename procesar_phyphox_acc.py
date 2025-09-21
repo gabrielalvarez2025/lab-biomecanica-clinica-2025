@@ -402,7 +402,7 @@ def ejemplo_fr_botas():
             x=t, y=z,
             mode="lines",
             line=dict(color="lightgray", width=0.7),
-            name="Clickea aquí para ver la Señal original"
+            name="Clickea aquí para ver/ocultar la Señal original"
         ))
 
         # Señal filtrada en naranjo
@@ -410,7 +410,7 @@ def ejemplo_fr_botas():
             x=t, y=z_filt,
             mode="lines",
             line=dict(color="#FFA500", width=1.5),
-            name=f"Clickea aquí para ver la Señal filtrada ({round(low_cut, 2)} - {round(high_cut, 2)}) Hz, orden {orden}"
+            name=f"Clickea aquí para ver/ocultar la Señal filtrada ({round(low_cut, 2)} - {round(high_cut, 2)}) Hz, orden {orden}"
         ))
 
         fig.update_layout(
