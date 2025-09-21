@@ -40,6 +40,7 @@ def main_control_motor():
         ]
     }
 
+    
     # Crear DataFrame
     df = pd.DataFrame(data)
     df["Inicio"] = pd.to_datetime(df["Inicio"])
@@ -52,14 +53,12 @@ def main_control_motor():
         x_end="Fin",
         y="Teoría",
         color="Teoría",
-        text="Teoría",   # Agregar etiquetas
+        text="Teoría",   # Etiquetas sobre las barras
         title="Cronología de teorías del control motor",
     )
 
-    fig.update_traces(textposition="inside")  # Poner etiquetas sobre la barra
-    fig.update_yaxes(autorange="reversed")     # Para que empiece desde arriba
-    fig.update_yaxes(showticklabels=False)      # Quitar etiquetas del eje Y
-
+    fig.update_traces(textposition="outside")
+    fig.update_yaxes(autorange="reversed", showticklabels=False)
 
     # Ajustes de layout
     fig.update_layout(
@@ -68,11 +67,19 @@ def main_control_motor():
         hovermode="closest",
         height=600,
         legend=dict(
-            orientation="h",    # Horizontal
-            y=-0.2,             # Debajo del gráfico
-            x=0.5,              # Centrado
+            orientation="h",
+            y=-0.2,
+            x=0.5,
             xanchor="center"
         )
+    )
+
+    # Grid vertical cada 5 años
+    fig.update_xaxes(
+        tickformat="%Y",
+        dtick="M60",         # cada 60 meses = 5 años
+        showgrid=True,
+        gridcolor="lightgray"
     )
 
     st.plotly_chart(fig, use_container_width=True)
