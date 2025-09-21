@@ -423,9 +423,9 @@ def ejemplo_fr_botas():
             margin=dict(l=40, r=20, t=0, b=40),  # un poco más de margen arriba para la leyenda
             height=400,
             legend=dict(
-                orientation=20,
+                orientation="h",
                 yanchor="bottom",
-                y=1.02,
+                y=0.9,
                 xanchor="center",
                 x=0.5
             )
