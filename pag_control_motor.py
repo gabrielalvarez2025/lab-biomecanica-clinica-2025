@@ -9,34 +9,36 @@ def main_control_motor():
     st.markdown("#### Teorías del control motor")
 
 
-
-    
-
-    # Datos de la cronología (más realista)
     data = {
         "Teoría": [
-            "T. refleja",
-            "T. jerárquica",
-            "T. de los Programas Motores",
-            "T. de Modelos internos",
-            "Hip. del Manifold No-controlado (UCM)",
-            "Sistemas dinámicos"
+            "Teoría Refleja (Reflex Theory)",
+            "Teoría Jerárquica (Hierarchical Theory)",
+            "Teorías de Programación Motora (Motor Programming Theories)",
+            "Teoría de Sistemas (Systems Theory)",
+            "Teoría de Sistemas Dinámicos (Dynamic Systems Theory)",
+            "Teoría Ecológica (Ecological Theory)",
+            "Modelos Internos (directo e inverso)",
+            "Hipótesis del Manifold No-Controlado (UCM)"
         ],
         "Inicio": [
-            "1900-01-01",   # Refleja (Sherrington, principios del siglo XX)
-            "1930-01-01",   # Jerárquica (Jackson, Magnus)
-            "1960-01-01",   # Programas motores (Keele, Schmidt, 60s-70s)
-            "1980-01-01",   # Modelos internos (Kawato, Wolpert, 80s-90s)
-            "1990-01-01",   # UCM (Scholz & Schöner, 90s)
-            "1990-01-01"    # Sistemas dinámicos (Kelso, 80s-90s, pero vigentes)
+            "1906-01-01",  # Refleja (Sherrington, principios del siglo XX)
+            "1930-01-01",  # Jerárquica (Jackson, Magnus)
+            "1960-01-01",  # Programas Motores (Bernstein, Keele, 1960s)
+            "1920-01-01",  # Sistemas (Bernstein, desarrollo inicial)
+            "1980-01-01",  # Sistemas Dinámicos (Kelso, 1980s)
+            "1960-01-01",  # Ecológica (Gibson, 1960s)
+            "1980-01-01",  # Modelos Internos (Kawato, Wolpert, 80s-90s)
+            "1990-01-01"   # UCM (Scholz & Schöner, 1990s)
         ],
         "Fin": [
-            "1950-01-01",   # Refleja → superada por otras
-            "1970-01-01",   # Jerárquica → crítica con evidencia posterior
-            "1990-01-01",   # Programas motores → cuestionados
-            "2025-01-01",   # Modelos internos → aún vigentes
-            "2025-01-01",   # UCM → actual
-            "2025-01-01"    # Sistemas dinámicos → actual
+            "1950-01-01",  # Refleja
+            "1970-01-01",  # Jerárquica
+            "1990-01-01",  # Programas Motores
+            "1966-01-01",  # Sistemas (Bernstein fallece, evolución a dinámicos)
+            "2025-01-01",  # Sistemas Dinámicos → vigente
+            "2025-01-01",  # Ecológica → vigente
+            "2025-01-01",  # Modelos Internos → vigente
+            "2025-01-01"   # UCM → vigente
         ]
     }
 
