@@ -471,6 +471,15 @@ def ejemplo_fr_botas():
         orden = 5
         #orden = st.slider("Elige el orden del filtro", min_value=1, max_value=10, value=5)
 
+        st.markdown(
+            f"""El filtro deja pasar sólo las oscilaciones que ocurren entre los 
+            <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
+            y 
+            <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>.
+            """,
+            unsafe_allow_html=True
+        )
+
     # Aplicar filtro pasa banda
     z_filt_sliders = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
 
@@ -480,10 +489,6 @@ def ejemplo_fr_botas():
             f"""En este momento, tu señal filtrada ignora todas las frecuencias inferiores a 
             <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
             y superiores a 
-            <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>. 
-            El filtro deja pasar sólo las oscilaciones que ocurren entre los 
-            <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
-            y 
             <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>.
             """,
             unsafe_allow_html=True
