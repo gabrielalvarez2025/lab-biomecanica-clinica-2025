@@ -374,24 +374,14 @@ def ejemplo_fr_botas():
         st.markdown("En el gráfico que viste, la señal original (ruidosa) está en blanco y la filtrada (limpia) en naranjo. Decidimos filtrar la señal dejando pasar sólo las frecuencias entre 0 Hz a 10 Hz, y bloqueando todas las demás hacia derecha y hacia izquierda. A nuestro criterio, vimos que estos parámetros permiten visualizar bien los ciclos respiratorios, pues la FR es un fenómeno de frecuencias más bien bajas.")
         
         st.markdown("Abajo, puedes deslizar los sliders para jugar con los parámetros del filtro, elegir otros, y así ver cómo estos cambios afectan la señal filtrada (naranjo).")
-        
-        
-        
-
-    with col_sliders:
-
-        
-        st.markdown(" ")
-        st.markdown(" ")
-        st.markdown("##### Ajusta aquí el filtro digital")
-
-        esp1, col_slider_freq, esp2 = st.columns([20,60,20])
+        #with col_sliders:
 
         # -----------------------
         # Inputs interactivos para filtro
         # -----------------------
+        
+        st.markdown("##### Ajusta aquí el filtro digital")
 
-        #with col_slider_freq:    
         low_cut, high_cut = st.slider(
             "Elige la banda de frecuencias (Hz) que dejarás pasar:",
             min_value=0.0,
@@ -400,9 +390,13 @@ def ejemplo_fr_botas():
             step=0.1
         )
         
-        
         orden = 5
         #orden = st.slider("Elige el orden del filtro", min_value=1, max_value=10, value=5)
+        
+        
+        
+
+    
 
 
     with col_plot:
