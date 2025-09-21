@@ -312,8 +312,8 @@ def ejemplo_fr_botas():
         
         
         st.markdown("Ya observaste y mediste; estás en la 3° etapa de evaluación: análisis.")
-        st.markdown("¿Cuál es la frecuencia respiratoria de Botas?")
-        st.markdown("Considerando que el rango de FR en reposo normal para un gato es 20 a 30 rpm, ¿qué podría estar pasando con Botas?")
+        st.markdown("1. ¿Cuál es la frecuencia respiratoria de Botas?")
+        st.markdown("2. Considerando que el rango de FR en reposo normal para un gato es 20 a 30 rpm, ¿qué podría estar pasando con Botas?")
 
     
     with col_calculo_analisis_texto2:
@@ -436,5 +436,7 @@ def ejemplo_fr_botas():
         fig.update_yaxes(range=[-1.5, 0.5])
         
         st.plotly_chart(fig, use_container_width=True)
+
+    
 
         
