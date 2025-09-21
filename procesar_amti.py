@@ -122,6 +122,10 @@ def main_forceplate():
         with tab_posturografia:
             esp1, col_select_3, esp2 = st.columns([20, 60, 20])
 
+            st.markdown("Estatocinesiograma: trayectoria del COP (Cx vs Cy)")
+
+            st.markdown("Estabilograma: posición del COP en el tiempo")
+
         with col_select_1:
             st.markdown("###### Fuerzas:")
             show_Fx = st.checkbox("Fx (N)", False)
@@ -139,6 +143,9 @@ def main_forceplate():
             show_Cx = st.checkbox("Cx (mm)", True)
             show_Cy = st.checkbox("Cy (mm)", True)
             #show_Cz = st.checkbox("Cz (mm)", False)
+
+
+        if show_Cx or show_Cy:
 
         # Lista de señales a graficar
         signals = []
