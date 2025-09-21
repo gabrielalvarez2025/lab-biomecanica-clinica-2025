@@ -489,7 +489,7 @@ def ejemplo_fr_botas():
         legend=dict(
             orientation="h",
             yanchor="bottom",
-            y=0.9,
+            y=0.1,
             xanchor="center",
             x=0.5
         )
