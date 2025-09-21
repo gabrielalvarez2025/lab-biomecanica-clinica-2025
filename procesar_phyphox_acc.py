@@ -249,6 +249,8 @@ def ejemplo_fr_botas():
         )
         col_text2, col_plot = st.columns(proporcion)
 
+        col_text_fr1, col_text_fr2 = st.columns(2)
+
 
         
         st.markdown(
@@ -256,6 +258,8 @@ def ejemplo_fr_botas():
             unsafe_allow_html=True
         )
         col_calculo_analisis_texto1, col_calculo_analisis_texto2 = st.columns(2)
+
+        
 
         
         
@@ -308,7 +312,14 @@ def ejemplo_fr_botas():
         
         st.markdown("A partir de la tabla de datos, podemos graficar la aceleración en función del tiempo.")
         st.markdown("Si graficamos la señal, deberíamos ver un patrón de acelerometría que se repite en ciclos.")
+        
+    
+
+    with col_text_fr1:
         st.markdown("Si logramos contar cuántos ciclos ocurren en un minuto, podemos calcular la frecuencia respiratoria de Botas.")
+        
+    
+    with col_text_fr1:
         st.markdown("También podemos contar el número de ciclos en 15 segundos y luego multiplicar por 4 para hacer una estimación rápida.")
         
 
