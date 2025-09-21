@@ -441,7 +441,7 @@ def main_bioinstrumentacion():
     
     
 
-    st.header("Unidad 1: Bioinstrumentación")
+    st.header("Bioinstrumentación")
 
     # Configuración tema seaborn
     sns.set_theme(style="darkgrid", palette="pastel")
