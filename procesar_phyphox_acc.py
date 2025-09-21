@@ -359,7 +359,7 @@ def ejemplo_fr_botas():
         st.markdown("Para eliminar ruido de una señal, podemos usar un **filtro digital**.")
         st.markdown("Un filtro digital es un algoritmo que procesa la señal en términos de las frecuencias que la componen y, al igual que un colador, deja pasar solo las frecuencias que nos interesan, ignorando las demás.")
         st.markdown("El resultado es una señal filtrada más limpia, que idealmente contiene sólo la información que nos interesa estudiar.")
-        st.markdown("Existen muchos tipos de filtros digitales. En este ejemplo, usaremos un filtro 'de pasa banda', es decir, un filtro que deja pasar sólo un rango de frecuencias que nosotros seleccionamos.")
+        st.markdown("Existen muchos tipos de filtros digitales. En este ejemplo, usaremos un filtro 'de pasa banda', es decir, un filtro que deja pasar sólo aquel rango de frecuencias que nosotros seleccionemos.")
         
     
     with col_text_filter2:
