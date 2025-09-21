@@ -101,22 +101,23 @@ def main_control_motor():
     st.markdown("## Teorías del Control Motor: detalle completo")
 
     # Crear tabs para cada teoría
-    tab_refleja, tab_jerarquica, tab_pm, tab_sistemas, tab_dinamicos, tab_ecologica, tab_conclusion = st.tabs([
+    tab_refleja, tab_jerarquica, tab_pm, tab_sistemas, tab_dinamicos, tab_ecologica = st.tabs([
         "Teoría Refleja",
         "Teoría Jerárquica",
         "Programación Motora",
         "Teoría de Sistemas",
         "Sistemas Dinámicos",
-        "Teoría Ecológica",
-        "Conclusión"
+        "Teoría Ecológica"
     ])
 
     
 
     with tab_refleja:
         st.markdown("""
-    **1. Teoría Refleja (Reflex Theory)**  
-    **Cronología:** Finales del siglo XIX y principios del siglo XX. Sir Charles Sherrington escribió la base experimental de esta teoría en 1906. Esta visión persistió sin ser cuestionada por muchos clínicos durante 50 años.
+    **Teoría Refleja (Reflex Theory)**  
+    
+    **Cronología:**
+    Finales del siglo XIX y principios del siglo XX. Sir Charles Sherrington escribió la base experimental de esta teoría en 1906. Esta visión persistió sin ser cuestionada por muchos clínicos durante 50 años.
 
     **Postulados Principales:**  
     - Los reflejos son los bloques de construcción (building blocks) del comportamiento complejo.  
@@ -132,8 +133,10 @@ def main_control_motor():
 
     with tab_jerarquica:
         st.markdown("""
-    **2. Teoría Jerárquica (Hierarchical Theory)**  
-    **Cronología:** Principios a mediados del siglo XX. Hughlings Jackson argumentó que el cerebro tenía niveles de control superior, medio e inferior. Rudolf Magnus exploró reflejos en los años 1920, y Georg Schaltenbrand (1928) y Stephan Weisz (1938) aplicaron estos conceptos al desarrollo y el equilibrio. Investigadores como Arnold Gesell (1940s) y Myrtle McGraw (1945) describieron la maduración motora bajo este marco (Teoría Neuromaduracional).
+    **Teoría Jerárquica (Hierarchical Theory)**  
+    
+    **Cronología:**
+    Principios a mediados del siglo XX. Hughlings Jackson argumentó que el cerebro tenía niveles de control superior, medio e inferior. Rudolf Magnus exploró reflejos en los años 1920, y Georg Schaltenbrand (1928) y Stephan Weisz (1938) aplicaron estos conceptos al desarrollo y el equilibrio. Investigadores como Arnold Gesell (1940s) y Myrtle McGraw (1945) describieron la maduración motora bajo este marco (Teoría Neuromaduracional).
 
     **Postulados Principales:**  
     - El sistema nervioso está organizado como una jerarquía.  
@@ -148,8 +151,10 @@ def main_control_motor():
 
     with tab_pm:
         st.markdown("""
-    **3. Teorías de Programación Motora (Motor Programming Theories)**  
-    **Cronología:** Mediados del siglo XX (los científicos que contribuyeron incluyen a Bernstein, 1967; Keele, 1968; Wilson, 1961). Experimentos a principios de los años 1960 (saltamontes/langosta) apoyaron esta visión.
+    **Teorías de Programación Motora (Motor Programming Theories)**  
+    
+    **Cronología:**
+    Mediados del siglo XX (los científicos que contribuyeron incluyen a Bernstein, 1967; Keele, 1968; Wilson, 1961). Experimentos a principios de los años 1960 (saltamontes/langosta) apoyaron esta visión.
 
     **Postulados Principales:**  
     - Se enfocan en la fisiología de las acciones en lugar de las reacciones.  
@@ -182,17 +187,19 @@ def main_control_motor():
     with tab_dinamicos:
         st.markdown("""
     **Teoría de Sistemas Dinámicos (Dynamic Systems Theory)**  
-    **Cronología:** Desde la propuesta inicial de Bernstein. Es una expansión de la Teoría de Sistemas y a menudo se utilizan los términos indistintamente.
+    
+    **Cronología:**
+    Desde la propuesta inicial de Bernstein. Es una expansión de la Teoría de Sistemas y a menudo se utilizan los términos indistintamente.
 
     **Postulados Principales:**  
-    • El movimiento es una propiedad emergente. Emerge de la interacción de múltiples elementos que se autoorganizan (self-organization) basándose en propiedades dinámicas, sin necesidad de comandos o programas motores de un centro superior.  
-    • Muestra propiedades no lineales: el resultado no es proporcional a la entrada. Un pequeño cambio en un parámetro puede provocar una transformación en el comportamiento (ejemplo: al aumentar la velocidad lineal, un animal pasa repentinamente de caminar a trotar).  
-    • Introduce el concepto de parámetro de control, una variable que regula el cambio en el comportamiento de todo el sistema (ejemplo: la velocidad en la transición de la marcha).  
-    • La variabilidad inherente en el movimiento humano es crítica para la función óptima (no es vista como un error, a diferencia de otras teorías).  
-    • Un estado atractor es un patrón de movimiento preferido y altamente estable.
+    - El movimiento es una propiedad emergente. Emerge de la interacción de múltiples elementos que se autoorganizan (self-organization) basándose en propiedades dinámicas, sin necesidad de comandos o programas motores de un centro superior.  
+    - Muestra propiedades no lineales: el resultado no es proporcional a la entrada. Un pequeño cambio en un parámetro puede provocar una transformación en el comportamiento (ejemplo: al aumentar la velocidad lineal, un animal pasa repentinamente de caminar a trotar).  
+    - Introduce el concepto de parámetro de control, una variable que regula el cambio en el comportamiento de todo el sistema (ejemplo: la velocidad en la transición de la marcha).  
+    - La variabilidad inherente en el movimiento humano es crítica para la función óptima (no es vista como un error, a diferencia de otras teorías).  
+    - Un estado atractor es un patrón de movimiento preferido y altamente estable.
 
     **Limitaciones:**  
-    • La limitación de algunas variaciones de este modelo es la presunción de que el sistema nervioso tiene un papel menos importante en la determinación del comportamiento, dando un papel más dominante a las fórmulas matemáticas y los principios de la mecánica corporal.
+    - La limitación de algunas variaciones de este modelo es la presunción de que el sistema nervioso tiene un papel menos importante en la determinación del comportamiento, dando un papel más dominante a las fórmulas matemáticas y los principios de la mecánica corporal.
         """)
 
     with tab_ecologica:
@@ -201,18 +208,14 @@ def main_control_motor():
     **Cronología:** Los años 1960. James Gibson comenzó a explorar cómo los sistemas motores interactúan con el entorno para el comportamiento orientado a objetivos. Sus estudiantes la expandieron, llamándola enfoque ecológico.
 
     **Postulados Principales:**  
-    • El control motor evolucionó para que los animales pudieran afrontar el entorno, moviéndose eficazmente para alcanzar metas (ejemplo: encontrar comida).  
-    • Se centra en cómo detectamos la información relevante en el entorno para la acción.  
-    • El organismo es visto como un sistema de percepción/acción que explora activamente el entorno, no como un sistema sensorial/motor reactivo.  
-    • La organización de la acción es específica de la tarea y del entorno en el que se realiza.  
-    • La percepción se enfoca en detectar la información ambiental que sustentará las acciones necesarias para lograr el objetivo.
+    - El control motor evolucionó para que los animales pudieran afrontar el entorno, moviéndose eficazmente para alcanzar metas (ejemplo: encontrar comida).  
+    - Se centra en cómo detectamos la información relevante en el entorno para la acción.  
+    - El organismo es visto como un sistema de percepción/acción que explora activamente el entorno, no como un sistema sensorial/motor reactivo.  
+    - La organización de la acción es específica de la tarea y del entorno en el que se realiza.  
+    - La percepción se enfoca en detectar la información ambiental que sustentará las acciones necesarias para lograr el objetivo.
 
     **Limitaciones:**  
-    • Ha tendido a dar menos énfasis a la organización y función del sistema nervioso que conduce a esta interacción, cambiando el énfasis de la investigación del sistema nervioso a la interfaz organismo/entorno.
+    - Ha tendido a dar menos énfasis a la organización y función del sistema nervioso que conduce a esta interacción, cambiando el énfasis de la investigación del sistema nervioso a la interfaz organismo/entorno.
         """)
 
-    with tab_conclusion:
-        st.markdown("""
-    **Conclusión Integrada**  
-    No existe una única teoría de control motor que sea completamente aceptada. La mejor teoría se considera a menudo una teoría integral o integrada que combina elementos de todas las teorías presentadas, reconociendo que el movimiento surge de una interacción dinámica entre la percepción, la cognición y los sistemas de acción, así como la interacción entre el individuo, la tarea y el entorno.
-        """)
+    
