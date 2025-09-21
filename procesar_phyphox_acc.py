@@ -219,25 +219,17 @@ def ejemplo_fr_botas():
         
         
         #st.markdown("##### El caso")
-        st.markdown(
-            "##### El caso<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>",
-            unsafe_allow_html=True
-        )
+        st.markdown("##### El caso<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>", unsafe_allow_html=True)
 
         
         col_img_botas, col_caso = st.columns(proporcion)
 
         #st.markdown("##### La medición")
-        st.markdown(
-            "##### La medición<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>",
-            unsafe_allow_html=True
-        )
+        st.markdown("##### La medición<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>", unsafe_allow_html=True)
         
         col_text1, col_gif = st.columns([65, 35])
         st.markdown("Para poder iniciar y detener el registro, usas una app (ej. 'Accelerometer' o 'PhyPhox') que te permita acceder al acelerómetro en tiempo real y descargar los datos como tabla.")
         
-        
-    
     
     with col_web_right_expermiento:
         
@@ -258,22 +250,17 @@ def ejemplo_fr_botas():
             unsafe_allow_html=True
         )
         col_calculo_analisis_texto1, col_calculo_analisis_texto2 = st.columns(2)
-
-        
-
-        
-        
-        
-
     
 
     with col_web_left_filtrado:
         st.markdown("##### Filtrando la señal")
         st.markdown('Te habrás dado cuenta que en el gráfico distinguimos la "señal original", (en blanco) de la "señal filtrada" (en naranjo). Esto se debe a que aplicamoos uno de los posibles pasos de procesamiento de señales a la señal de aceleración capturada: el filtrado.')
-        col_text_filter, col_sliders = st.columns(2)
+        col_text_filter1, col_text_filter2 = st.columns(2)
 
 
-    #with col_web_right_filtrado:
+    with col_web_right_filtrado:
+
+        col_sliders, = st.columns([100])
 
         
 
@@ -362,7 +349,7 @@ def ejemplo_fr_botas():
     fs = 1 / (t.iloc[1] - t.iloc[0])
     
     
-    with col_text_filter:
+    with col_text_filter1:
         st.markdown("Cuando capturamos señales usando sensores, es común que haya ruido contaminando la señal. Ruido es todo aquello que no es parte de la señal que queremos medir.")
         st.markdown("En este caso, queremos medir las oscilaciones causadas por la respiración, pero al mismo tiempo sensamos otras fuentes de movimiento, que generan ruido en la señal. Por ejemplo, cada vez que Botas respira, ronronea. Esa vibración genera movimiento que contamina la señal que queremos medir.")
         st.markdown("Para eliminar ruido de una señal, podemos usar un **filtro digital**.")
@@ -370,10 +357,7 @@ def ejemplo_fr_botas():
         st.markdown("Existen muchos tipos de filtros digitales. En este ejemplo, usaremos un filtro 'de pasa banda', es decir, un filtro que deja pasar sólo un rango de frecuencias que nosotros seleccionamos.")
         
     
-    with col_sliders:
-        #st.markdown("¡Mira qué bonito! --")
-
-        
+    with col_text_filter2:
         
         st.markdown("La respiración en reposo se repite pocas veces por segundo (20 a 30 rpm en un gato), por lo que ocurre a una frecuencia baja (0.3 a 0.4 Hz). En cambio, el ronroneo ocurre a una frecuencia más alta (p.ej. 25 Hz).")
         st.markdown("Por lo tanto, para limpiar nuestra señal, podemos usar un filtro que deje pasar las frecuencias bajas (ej. FR), pero bloquee las frecuencias altas (ej. ronroneo).")
@@ -383,6 +367,10 @@ def ejemplo_fr_botas():
         st.markdown("Abajo, puedes deslizar los sliders para jugar con los parámetros del filtro, elegir otros, y así ver cómo estos cambios afectan la señal filtrada (naranjo).")
         
         
+        
+
+    with col_sliders:
+
         # -----------------------
         # Inputs interactivos para filtro
         # -----------------------
@@ -395,6 +383,7 @@ def ejemplo_fr_botas():
             step=0.1
         )
         orden = st.slider("Orden del filtro", min_value=1, max_value=5, value=5)
+
 
     with col_plot:
         
