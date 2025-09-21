@@ -381,8 +381,10 @@ def ejemplo_fr_botas():
     with col_sliders:
 
         
+        st.markdown(" ")
+        st.markdown(" ")
         st.markdown("##### Ajusta aquí el filtro digital")
-        
+
         col_slider_freq, col_slider_orden = st.columns(2)
 
         # -----------------------
