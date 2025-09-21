@@ -332,6 +332,9 @@ def main_opencap():
                         placeholder="Elige una articulación..."
                     )
 
+                # Checkbox para normalizar
+                normalize_time = st.checkbox("Normalizar tiempo (0–100%)", value=False)
+
                 if selected_trials and selected_joint:
                     fig_compare = go.Figure()
 
@@ -353,6 +356,15 @@ def main_opencap():
                         data_buffer_trial = io.StringIO(data_str_trial)
 
                         df_trial = pd.read_csv(data_buffer_trial, delimiter=r"\s+", engine="python")
+
+                        # Normalizar si corresponde
+                        if normalize_time:
+                            x_vals = (df_trial[df_trial.columns[0]] - df_trial[df_trial.columns[0]].min()) / \
+                                    (df_trial[df_trial.columns[0]].max() - df_trial[df_trial.columns[0]].min()) * 100
+                            x_axis_title = "Tiempo normalizado (%)"
+                        else:
+                            x_vals = df_trial[df_trial.columns[0]]
+                            x_axis_title = "Tiempo (s)"
 
                         # Agregar curva al gráfico
                         fig_compare.add_trace(go.Scatter(
