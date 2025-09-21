@@ -346,7 +346,7 @@ def ejemplo_fr_botas():
 
     with col_plot:
         
-        col_plot_sub1, col_plot_sub2 = st.columns([1, 9])
+        col_plot_sub1, col_plot_sub2 = st.columns([3, 7])
         
         with col_plot_sub2:
             st.markdown("⤹ <small>Presiona la leyenda para ocultar/mostrar las curvas</small>", unsafe_allow_html=True)
