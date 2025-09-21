@@ -301,6 +301,9 @@ def main_bioinstrumentacion():
     
     if "mostrar_delsys" not in st.session_state:
         st.session_state["mostrar_delsys"] = False
+
+    if "mostrar_opencap" not in st.session_state:
+        st.session_state["mostrar_opencap"] = False
     
 
     # colores lindos:
@@ -320,7 +323,7 @@ def main_bioinstrumentacion():
                     color_parrafo= "#89BBB8"
                     )
     
-    # Tarjeta 1: Sumatoria de PAUMs
+    # Tarjeta 2: Sumatoria de PAUMs
     parrafo_sumatoria = "Si tienes dudas de por qué la señal de EMG tiene la forma que tiene o cuál es su relación con los potenciales de acción de unidades motoras <b>(PAUMs)</b>, esta simulación te ayudará a entenderlo."
     botones_tarjeta(nombre_estado="mostrar_sumatoria",
                     texto_boton="Sumatoria de ondas",
@@ -329,7 +332,7 @@ def main_bioinstrumentacion():
                     color_parrafo= "#89BBB8"
                     )
     
-    # Tarjeta 2
+    # Tarjeta 3
     parrafo_interactivo2 = "Procesar datos de acelerometría tomados con el celular usando Phyphox"
     botones_tarjeta(nombre_estado="mostrar_torques",
                     texto_boton="Procesamiento de datos de acelerómetro con PhyPhox",
@@ -338,7 +341,7 @@ def main_bioinstrumentacion():
                     color_parrafo= "#89BBB8"
                     )
     
-    # Tarjeta 3
+    # Tarjeta 4
     parrafo_interactivo3 = "Procesar datos de la plataforma de fuerza del laboratorio (plataforma AMTI)"
     botones_tarjeta(nombre_estado="mostrar_amti",
                     texto_boton="Procesamiento de datos plataforma",
@@ -347,11 +350,20 @@ def main_bioinstrumentacion():
                     color_parrafo= "#89BBB8"
                     )
     
-    # Tarjeta 3
+    # Tarjeta 5
     parrafo_interactivo4 = "Procesar datos de EMG o IMU capturados con DELSYS"
     botones_tarjeta(nombre_estado="mostrar_delsys",
                     texto_boton="Procesamiento de datos Delsys",
                     texto_parrafo=parrafo_interactivo4,
+                    color_boton= "#368581",
+                    color_parrafo= "#89BBB8"
+                    )
+    
+    # Tarjeta 6
+    parrafo_interactivo5 = "Procesar datos de VFG capturados con OpenCap"
+    botones_tarjeta(nombre_estado="mostrar_opencap",
+                    texto_boton="Procesamiento de datos OpenCap",
+                    texto_parrafo=parrafo_interactivo5,
                     color_boton= "#368581",
                     color_parrafo= "#89BBB8"
                     )
@@ -375,6 +387,9 @@ def main_bioinstrumentacion():
     
     if st.session_state["mostrar_delsys"]:
         main_delsys()
+
+    if st.session_state["mostrar_opencap"]:
+        main_opencap()
 
 
     st.markdown("---")
