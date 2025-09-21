@@ -386,7 +386,7 @@ def ejemplo_fr_botas():
             "Elige la banda de frecuencias (Hz) que dejarás pasar:",
             min_value=0.0,
             max_value=float(fs/2)/2,
-            value=(0.3, 10.0),  # valores por defecto: low=0, high=10
+            value=(0.33, 10.0),  # valores por defecto: low=0, high=10
             step=0.1
         )
         
