@@ -215,6 +215,7 @@ def ejemplo_fr_botas():
     col_web_left_filtrado, col_web_esp_filtrado, col_web_right_filtrado = st.columns([48, 4, 48])
     
     #with col_web_left_expermiento:
+    
 
         
         
@@ -355,6 +356,11 @@ def ejemplo_fr_botas():
 
     # Calcular frecuencia de muestreo
     fs = 1 / (t.iloc[1] - t.iloc[0])
+
+    # Aplicar filtro pasa banda
+    z_filt_sliders = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
+    z_filt_fixed = butterworth_filter_bandpass(z, fs=fs, order=5, low_cut=0.0, high_cut=10.0)
+    
     
     
     with col_text_filter1:
@@ -423,10 +429,7 @@ def ejemplo_fr_botas():
         #        '⤹ <span style="font-size:10px; color:rgba(255,255,255,0.8)">Haz click en la leyenda para ocultar cada curva</span>', 
         #        unsafe_allow_html=True)
         
-        # Aplicar filtro pasa banda
-        z_filt_sliders = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
-        z_filt_fixed = butterworth_filter_bandpass(z, fs=fs, order=5, low_cut=0.0, high_cut=10.0)
-        #0, 10, 1
+        
 
         # Crear gráfico interactivo con Plotly
         fig = go.Figure()
