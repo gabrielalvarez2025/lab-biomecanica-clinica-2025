@@ -233,6 +233,10 @@ def ejemplo_fr_botas():
         
         
         st.markdown("##### Los datos capturados")
+        st.markdown(
+            "##### Los datos capturados<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>",
+            unsafe_allow_html=True
+        )
         col_text2, col_plot = st.columns(proporcion)
 
         
