@@ -404,7 +404,7 @@ def ejemplo_fr_botas():
             orden = st.slider(
                 "Elige el orden del filtro", 
                 min_value=1, 
-                max_value=5, 
+                max_value=10, 
                 value=5)
 
 
