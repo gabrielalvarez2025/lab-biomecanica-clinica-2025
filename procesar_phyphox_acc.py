@@ -227,7 +227,11 @@ def ejemplo_fr_botas():
         
         col_img_botas, col_caso = st.columns(proporcion)
 
-        st.markdown("##### La medición")
+        #st.markdown("##### La medición")
+        st.markdown(
+            "##### La medición<div style='border-bottom:1px solid white; width:100%; margin-top:5px; margin-bottom:10px;'></div>",
+            unsafe_allow_html=True
+        )
         
         col_text1, col_gif = st.columns([65, 35])
         
