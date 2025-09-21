@@ -8,7 +8,6 @@ from pydub import AudioSegment
 def main_control_motor():
     st.markdown("#### Teorías del control motor")
 
-
     data = {
         "Teoría": [
             "Teoría Refleja",
@@ -21,32 +20,31 @@ def main_control_motor():
             "Hipótesis del Manifold No-Controlado (UCM)"
         ],
         "Inicio": [
-            "1906-01-01",  # Refleja (Sherrington, principios del siglo XX)
-            "1930-01-01",  # Jerárquica (Jackson, Magnus)
-            "1960-01-01",  # Programas Motores (Bernstein, Keele, 1960s)
-            "1920-01-01",  # Sistemas (Bernstein, desarrollo inicial)
-            "1980-01-01",  # Sistemas Dinámicos (Kelso, 1980s)
-            "1960-01-01",  # Ecológica (Gibson, 1960s)
-            "1980-01-01",  # Modelos Internos (Kawato, Wolpert, 80s-90s)
-            "1990-01-01"   # UCM (Scholz & Schöner, 1990s)
+            "1906-01-01",
+            "1930-01-01",
+            "1960-01-01",
+            "1920-01-01",
+            "1980-01-01",
+            "1960-01-01",
+            "1980-01-01",
+            "1990-01-01"
         ],
         "Fin": [
-            "1950-01-01",  # Refleja
-            "1970-01-01",  # Jerárquica
-            "1990-01-01",  # Programas Motores
-            "1966-01-01",  # Sistemas (Bernstein fallece, evolución a dinámicos)
-            "2025-01-01",  # Sistemas Dinámicos → vigente
-            "2025-01-01",  # Ecológica → vigente
-            "2025-01-01",  # Modelos Internos → vigente
-            "2025-01-01"   # UCM → vigente
+            "1950-01-01",
+            "1970-01-01",
+            "1990-01-01",
+            "1966-01-01",
+            "2025-01-01",
+            "2025-01-01",
+            "2025-01-01",
+            "2025-01-01"
         ]
     }
 
-    
-    # Crear DataFrame
     df = pd.DataFrame(data)
+    df["Inicio"] = pd.to_datetime(df["Inicio"])
+    df["Fin"] = pd.to_datetime(df["Fin"])
 
-    # Colores asignados arbitrariamente
     colors = px.colors.qualitative.Plotly
 
     fig = px.timeline(
@@ -58,20 +56,17 @@ def main_control_motor():
         color_discrete_sequence=colors
     )
 
-    # Configuraciones del gráfico
     fig.update_yaxes(
-        autorange="reversed",  # para que la primera teoría quede arriba
-        tickvals=[]  # eliminamos ticks en eje Y, solo quedarán las barras
+        autorange="reversed",
+        tickvals=[]
     )
 
-    # Etiquetas dentro de la barra
     fig.update_traces(
         text=df["Teoría"],
         textposition="inside",
         textfont=dict(color="white", size=12)
     )
 
-    # Leyenda debajo
     fig.update_layout(
         legend=dict(
             orientation="h",
@@ -86,20 +81,16 @@ def main_control_motor():
         paper_bgcolor="rgba(0,0,0,0)"
     )
 
-    # Grid vertical cada 5 años
     fig.update_xaxes(
-        tickformat="%Y",        # mostrar solo año
-        dtick="M60",            # 60 meses = 5 años
+        tickformat="%Y",
+        dtick="M60",
         tickangle=45,
         showgrid=True,
         gridwidth=1,
         gridcolor="LightGray"
     )
+
     st.plotly_chart(fig, use_container_width=True)
-
-
-    
-
     
 
     st.markdown("## Teorías del Control Motor")
