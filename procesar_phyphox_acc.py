@@ -216,7 +216,7 @@ def ejemplo_fr_botas():
     
 
     tab_caso, tab_medicion, tab_data, tab_analisis, tab_filtro  = st.tabs([
-        "Ejemplo", 
+        "El caso", 
         "La medición", 
         "Los datos capturados",
         "Analizando los datos",
