@@ -378,6 +378,8 @@ def ejemplo_fr_botas():
         st.markdown("En el gráfico que viste, la señal original (ruidosa) está en blanco y la filtrada (limpia) en naranjo. Decidimos filtrar la señal dejando pasar sólo las frecuencias entre 0 Hz a 10 Hz, y bloqueando todas las demás hacia derecha y hacia izquierda. A nuestro criterio, vimos que estos parámetros permiten visualizar bien los ciclos respiratorios, pues la FR es un fenómeno de frecuencias más bien bajas.")
         
         st.markdown("Abajo, puedes deslizar los sliders para jugar con los parámetros del filtro, elegir otros, y así ver cómo estos cambios afectan la señal filtrada (naranjo).")
+
+        st.markdown("Mientras más amplia sea la banda (rango) de frecuencias que dejas pasar, más parecida será la señal filtrada a la original y, por tanto, más ruidosa. ¡Pero cuidado! si filtras mucho o inadecuadamente, puedes filtrar datos de tu fenómeno de interés y perder información importante sobre la señal que quieres estudiar, distorsionándola.")
         
         
 
