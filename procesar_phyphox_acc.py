@@ -420,7 +420,7 @@ def ejemplo_fr_botas():
             x=t, y=z_filt_fixed,
             mode="lines",
             line=dict(color="#FFA500", width=1.5),
-            name=f"Clickea aquí para ver/ocultar la Señal filtrada ({round(low_cut, 2)}-{round(high_cut, 2)} Hz, orden {orden}"
+            name=f"Clickea aquí para ver/ocultar la Señal filtrada (0-10 Hz, orden 5"
         ))
 
         fig1.update_layout(
