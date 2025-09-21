@@ -357,9 +357,7 @@ def ejemplo_fr_botas():
     # Calcular frecuencia de muestreo
     fs = 1 / (t.iloc[1] - t.iloc[0])
 
-    # Aplicar filtro pasa banda
-    z_filt_sliders = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
-    z_filt_fixed = butterworth_filter_bandpass(z, fs=fs, order=5, low_cut=0.0, high_cut=10.0)
+    
     
     
     
