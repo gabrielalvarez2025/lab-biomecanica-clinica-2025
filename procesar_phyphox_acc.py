@@ -205,6 +205,7 @@ def ejemplo_fr_botas():
 
     st.markdown("---")
     st.markdown("##### Ejemplo 1: Midiendo la frecuencia respiratoria de un gato usando el celular")
+    st.markdown("Veamos un ejemplo de un escenario doméstico en el que podríamos usar un celular para capturar señales biológicas y así complementar una evaluación clínica.")
 
     proporcion = [35, 65]
 
@@ -215,7 +216,9 @@ def ejemplo_fr_botas():
     
     with col_web_left_expermiento:
 
-        st.markdown("Veamos un ejemplo de un escenario doméstico en el que podríamos usar un celular para capturar señales biológicas y así complementar una evaluación clínica.")
+        
+        
+        st.markdown("##### El caso")
         
         col_img_botas, col_caso = st.columns(proporcion)
 
