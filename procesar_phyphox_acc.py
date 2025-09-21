@@ -271,15 +271,17 @@ def ejemplo_fr_botas():
         
         st.markdown("Si registramos la aceleración lineal del celular en el eje vertical (eje Z), podremos observar las oscilaciones causadas por el tórax de Botas con cada ciclo respiratorio.")
         st.markdown("En la señal (en el gráfico), deberíamos ver un patrón de acelerometría que se repite en ciclos. Si contamos cuántos ciclos hay en un minuto, podemos calcular su frecuencia respiratoria.")
+        st.markdown("También podemos contar los ciclos en 15 segundos y luego multiplicar por 4 para hacer una estimación rápida.")
         
         
         
 
     with col_calculo_fr2:
+        
         st.image("img_capture_plot_cat_fr.png", use_container_width=True)
 
     with col_calculo_fr1:
-        st.markdown("También podemos contar los ciclos en 15 segundos y luego multiplicar por 4 para hacer una estimación rápida.")
+        
         st.markdown("##### Analicemos:")
         st.markdown("Ya observaste y mediste; estás en la 3° etapa de evaluación: análisis.")
         st.markdown("¿Cuál es la frecuencia respiratoria de Botas?")
