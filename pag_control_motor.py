@@ -77,7 +77,7 @@ def main_control_motor():
     # Grid vertical cada 5 años
     fig.update_xaxes(
         tickformat="%Y",
-        dtick="M60",         # cada 60 meses = 5 años
+        dtick="M120",         # cada 60 meses = 5 años
         showgrid=True,
         gridcolor="lightgray"
     )
