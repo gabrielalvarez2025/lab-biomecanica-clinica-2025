@@ -389,6 +389,7 @@ def main_bioinstrumentacion():
         main_delsys()
 
     if st.session_state["mostrar_opencap"]:
+        st.markdown("---")
         main_opencap()
 
 
