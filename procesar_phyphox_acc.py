@@ -398,7 +398,7 @@ def ejemplo_fr_botas():
             <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
             y superiores a 
             <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>. 
-            Estás mirando sólo las oscilaciones que ocurren entre los 
+            El filtro deja pasar sólo las oscilaciones que ocurren entre los 
             <span style="color:#FFA500;"><b>{round(low_cut, 2)} Hz</b></span> 
             y 
             <span style="color:#FFA500;"><b>{round(high_cut, 2)} Hz</b></span>.
