@@ -88,13 +88,13 @@ def main_control_motor():
 
     # Grid vertical cada 5 años
     fig.update_xaxes(
-        dtick="1825",  # aprox 5 años en días
+        tickformat="%Y",        # mostrar solo año
+        dtick="M60",            # 60 meses = 5 años
         tickangle=45,
         showgrid=True,
         gridwidth=1,
         gridcolor="LightGray"
     )
-
     st.plotly_chart(fig, use_container_width=True)
 
 
