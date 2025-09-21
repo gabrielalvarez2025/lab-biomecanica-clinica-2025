@@ -451,6 +451,51 @@ def ejemplo_fr_botas():
         fig.update_yaxes(range=[-1.5, 0.5])
         
         st.plotly_chart(fig, use_container_width=True)
+    
+    with col_web_right_filtrado:
+        
+        fig = go.Figure()
+
+        # Señal original en gris
+        fig.add_trace(go.Scatter(
+            x=t, y=z,
+            mode="lines",
+            line=dict(color="lightgray", width=0.7),
+            name="Clickea aquí para ver/ocultar la Señal original"
+        ))
+
+        # Señal filtrada en naranjo
+        fig.add_trace(go.Scatter(
+            x=t, y=z_filt,
+            mode="lines",
+            line=dict(color="#FFA500", width=1.5),
+            name=f"Clickea aquí para ver/ocultar la Señal filtrada ({round(low_cut, 2)}-{round(high_cut, 2)} Hz, orden {orden}"
+        ))
+
+        fig.update_layout(
+            title=" ",
+            xaxis_title="Tiempo (s)",
+            yaxis_title="Aceleración (m/s²)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="rgba(0,0,0,0)",
+            font=dict(color="white"),
+            margin=dict(l=40, r=20, t=0, b=40),  # un poco más de margen arriba para la leyenda
+            height=400,
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=0.9,
+                xanchor="center",
+                x=0.5
+            )
+        )
+
+        # 👉 Rango inicial de ejes
+        fig.update_xaxes(range=[2.5, 20])
+        fig.update_yaxes(range=[-1.5, 0.5])
+        
+        st.plotly_chart(fig, use_container_width=True)
+
 
     
 
