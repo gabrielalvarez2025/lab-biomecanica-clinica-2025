@@ -73,7 +73,7 @@ def main_control_motor():
         yaxis_title="",
         hovermode="closest",
         height=600,
-        legend=None
+        legend=False
     )
 
     # Grid vertical cada 5 años
