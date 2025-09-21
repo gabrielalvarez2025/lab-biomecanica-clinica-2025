@@ -77,8 +77,7 @@ def main_control_motor():
             orientation="h",
             y=-0.2,
             x=0.5,
-            xanchor="center",
-            showlegend=False
+            xanchor="center"
         )
     )
 
