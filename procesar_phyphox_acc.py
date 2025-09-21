@@ -424,7 +424,8 @@ def ejemplo_fr_botas():
         #        unsafe_allow_html=True)
         
         # Aplicar filtro pasa banda
-        z_filt = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
+        z_filt_sliders = butterworth_filter_bandpass(z, fs=fs, order=orden, low_cut=low_cut, high_cut=high_cut)
+        z_filt_fixed = butterworth_filter_bandpass(z, fs=fs, order=5, low_cut=0.0, high_cut=10.0)
         #0, 10, 1
 
         # Crear gráfico interactivo con Plotly
@@ -441,7 +442,7 @@ def ejemplo_fr_botas():
 
         # Señal filtrada en naranjo
         fig.add_trace(go.Scatter(
-            x=t, y=z_filt,
+            x=t, y=z_filt_sliders,
             mode="lines",
             line=dict(color="#FFA500", width=1.5),
             name=f"Clickea aquí para ver/ocultar la Señal filtrada ({round(low_cut, 2)}-{round(high_cut, 2)} Hz, orden {orden}"
@@ -486,7 +487,7 @@ def ejemplo_fr_botas():
 
     # Señal filtrada en naranjo
     fig.add_trace(go.Scatter(
-        x=t, y=z_filt,
+        x=t, y=z_filt_fixed,
         mode="lines",
         line=dict(color="#FFA500", width=1.5),
         name=f"Clickea aquí para ver/ocultar la Señal filtrada ({round(low_cut, 2)}-{round(high_cut, 2)} Hz, orden {orden})"
