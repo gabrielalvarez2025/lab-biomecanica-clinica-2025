@@ -166,8 +166,7 @@ def main_control_motor():
     st.markdown("## Teorías del Control Motor: detalle completo")
 
     # Crear tabs para cada teoría
-    tab_intro, tab_refleja, tab_jerarquica, tab_pm, tab_sistemas, tab_dinamicos, tab_ecologica, tab_conclusion = st.tabs([
-        "Introducción",
+    tab_refleja, tab_jerarquica, tab_pm, tab_sistemas, tab_dinamicos, tab_ecologica, tab_conclusion = st.tabs([
         "Teoría Refleja",
         "Teoría Jerárquica",
         "Programación Motora",
@@ -177,12 +176,7 @@ def main_control_motor():
         "Conclusión"
     ])
 
-    with tab_intro:
-        st.markdown("""
-    La respuesta a su consulta sobre las teorías del control motor y lo que postula cada una se presenta a continuación, organizada cronológicamente según la información disponible en las fuentes.  
-    Las teorías de control motor son grupos de ideas abstractas sobre el control del movimiento. Estas teorías dan significado a los hechos y reflejan diferentes puntos de vista filosóficos sobre cómo el cerebro controla el movimiento, a menudo haciendo hincapié en diferentes aspectos de la organización neurofisiológica y neuroanatómica subyacente.  
-    A continuación, se presenta una cronología de las principales teorías de control motor:
-        """)
+    
 
     with tab_refleja:
         st.markdown("""
