@@ -222,6 +222,8 @@ def ejemplo_fr_botas():
         
         col_img_botas, col_caso = st.columns(proporcion)
 
+        st.markdown("##### La medición")
+        
         col_text1, col_gif = st.columns([65, 35])
         
         
@@ -230,7 +232,7 @@ def ejemplo_fr_botas():
     with col_web_right_expermiento:
         
         
-        st.markdown("##### La medición")
+        st.markdown("##### Los datos capturados")
         col_text2, col_plot = st.columns(proporcion)
 
         
