@@ -449,7 +449,7 @@ def ejemplo_fr_botas():
 
         # Señal filtrada en naranjo
         fig1.add_trace(go.Scatter(
-            x=t, y=z_filt_sliders,
+            x=t, y=z_filt_fixed,
             mode="lines",
             line=dict(color="#FFA500", width=1.5),
             name=f"Clickea aquí para ver/ocultar la Señal filtrada ({round(low_cut, 2)}-{round(high_cut, 2)} Hz, orden {orden}"
@@ -494,7 +494,7 @@ def ejemplo_fr_botas():
 
     # Señal filtrada en naranjo
     fig2.add_trace(go.Scatter(
-        x=t, y=z_filt_fixed,
+        x=t, y=z_filt_sliders,
         mode="lines",
         line=dict(color="#FFA500", width=1.5),
         name=f"Clickea aquí para ver/ocultar la Señal filtrada ({round(low_cut, 2)}-{round(high_cut, 2)} Hz, orden {orden})"
