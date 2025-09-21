@@ -421,7 +421,7 @@ def ejemplo_fr_botas():
             paper_bgcolor="rgba(0,0,0,0)",
             font=dict(color="white"),
             margin=dict(l=40, r=20, t=0, b=40),  # un poco más de margen arriba para la leyenda
-            height=400,
+            height=200,
             legend=dict(
                 orientation="h",
                 yanchor="bottom",
@@ -435,6 +435,6 @@ def ejemplo_fr_botas():
         fig.update_xaxes(range=[2.5, 20])
         fig.update_yaxes(range=[-1.5, 0.5])
         
-        st.plotly_chart(fig, use_container_width=True, height=200)
+        st.plotly_chart(fig, use_container_width=True)
 
         
