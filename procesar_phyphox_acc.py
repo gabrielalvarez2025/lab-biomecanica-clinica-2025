@@ -288,7 +288,7 @@ def ejemplo_fr_botas():
 
     with col_text2:
         
-        st.markdown("Si graficamos la señal de acelerometría en eje Z, deberíamos ver un patrón de acelerometría que se repite en ciclos. Si contamos cuántos ciclos hay en un minuto, podemos calcular su frecuencia respiratoria.")
+        st.markdown("Si graficamos la señal, deberíamos ver un patrón de acelerometría que se repite en ciclos. Si contamos cuántos ciclos hay en un minuto, podemos calcular su frecuencia respiratoria.")
         st.markdown("También podemos contar el número de ciclos en 15 segundos y luego multiplicar por 4 para hacer una estimación rápida.")
         
         
