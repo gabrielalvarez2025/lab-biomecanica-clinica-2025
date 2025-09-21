@@ -374,6 +374,14 @@ def main_opencap():
                             name=trial
                         ))
 
+                        # Agregar curva al gráfico
+                        fig_compare.add_trace(go.Scatter(
+                            x=x_vals,
+                            y=df_trial[selected_joint],
+                            mode="lines",
+                            name=trial
+                        ))
+
                     fig_compare.update_layout(
                         title=f"Comparación de {selected_joint} entre Trials",
                         xaxis_title="Tiempo (s)",
