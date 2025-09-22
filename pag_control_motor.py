@@ -240,12 +240,12 @@ def main_control_motor():
             # A synergy → puntos alineados a lo largo de la UCM
             x = np.random.uniform(2, 8, n_points)
             y = -x + valor_deseado + np.random.normal(0, 0.8, n_points)
-            subtitle = "B: A synergy<br>(VarUCM/VarORT > 1)"
+            subtitle = "Sinergia"
         else:
             # Not a synergy → dispersión aleatoria, relación VarUCM/VarORT < 1
             x = np.random.uniform(2, 8, n_points)
             y = -x + valor_deseado + np.random.normal(0, 3, n_points)
-            subtitle = "<br>(VarUCM/VarORT < 1)</br>"
+            subtitle = "No es sinergia"
 
         fig = go.Figure()
 
