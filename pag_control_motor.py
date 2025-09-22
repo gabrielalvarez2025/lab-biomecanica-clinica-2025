@@ -263,7 +263,7 @@ def main_control_motor():
             x=[0, 10], 
             y=[10, 0],
             mode="lines",
-            line=dict(color="#45A2A2", dash=":"),
+            line=dict(color="#45A2A2", dash="dash"),
             name="Var<sub>UCM</sub> (Buena)"
         ))
 
