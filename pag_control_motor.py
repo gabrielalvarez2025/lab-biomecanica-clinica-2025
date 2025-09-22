@@ -243,7 +243,7 @@ def main_control_motor():
 
         if var_ort == 0.0:
             var_ort = 0.000000001
-            ratio_var = "&infin"
+            ratio_var = "♾️"
         else:
             ratio_var = round((var_ucm / var_ort), 2)
 
