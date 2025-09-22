@@ -225,33 +225,27 @@ def main_control_motor():
 
     
     st.markdown("---")
-
     st.markdown("### Perspectivas actuales")
-
     st.markdown("#### Hipótesis del descontrol múltiple (UCM)")
 
-    # reproducibilidad
     np.random.seed(42)
     n_points = 24
 
     # ----- Plot A: Not a synergy (VarUCM/VarORT < 1) -----
-    # Generamos puntos con mayor dispersión en la dirección ortogonal a la UCM
     x_A = np.random.uniform(2, 8, n_points)
-    y_A = -x_A + 10 + np.random.normal(0, 3, n_points)  # dispersión fuerte ortogonal
+    y_A = -x_A + 10 + np.random.normal(0, 3, n_points)  # más dispersión ortogonal
 
     # ----- Plot B: A synergy (VarUCM/VarORT > 1) -----
-    # Puntos con mayor dispersión a lo largo de la línea UCM (y=-x+10)
     x_B = np.random.uniform(2, 8, n_points)
     y_B = -x_B + 10 + np.random.normal(0, 0.8, n_points)  # poca dispersión ortogonal
 
     # ----- Visualización -----
     fig, axes = plt.subplots(1, 2, figsize=(12, 6))
 
-    # Colores pastel
     color_A = "#AEC6CF"  # azul pastel
     color_B = "#FFB347"  # naranja pastel
 
-    # --- Plot A ---
+    # Plot A
     axes[0].scatter(x_A, y_A, c=color_A, edgecolor="k", s=80)
     axes[0].plot([0, 10], [10, 0], "r--", lw=2, alpha=0.6, label="UCM: y = -x + 10")
     axes[0].set_title("A: Not a synergy\n(VarUCM/VarORT < 1)", fontsize=12)
@@ -261,7 +255,7 @@ def main_control_motor():
     axes[0].grid(True, linestyle="--", alpha=0.6)
     axes[0].legend()
 
-    # --- Plot B ---
+    # Plot B
     axes[1].scatter(x_B, y_B, c=color_B, edgecolor="k", s=80)
     axes[1].plot([0, 10], [10, 0], "r--", lw=2, alpha=0.6, label="UCM: y = -x + 10")
     axes[1].set_title("B: A synergy\n(VarUCM/VarORT > 1)", fontsize=12)
@@ -272,4 +266,6 @@ def main_control_motor():
     axes[1].legend()
 
     plt.tight_layout()
-    plt.show()
+
+    # 👇 esta es la clave en Streamlit
+    st.pyplot(fig)
