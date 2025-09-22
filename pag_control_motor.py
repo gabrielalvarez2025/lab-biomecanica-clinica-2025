@@ -243,12 +243,13 @@ def main_control_motor():
 
         var_ucm = np.sqrt(2 * valor_deseado**2) / 2
 
-        if ratio_var > 1:    
+        if ratio_var > 1:     # si es sinergia
             var_ort = var_ucm / ratio_var
 
 
         else: # ratio <= 1
             var_ort = var_ucm * ratio_var
+            var_ort, var_ucm = var_ucm, var_ort
 
         var_ucm = var_ucm * elipse_size
         var_ort = var_ort * elipse_size
