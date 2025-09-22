@@ -340,6 +340,17 @@ def main_control_motor():
         return fig
 
 
+    st.markdown("Cuando tratamos de realizar una tarea motora, el sistema nervioso lidia con una gran cantidad de grados de libertad (muchos músculos, articulaciones, segmentos corporales, etc. que pueden moverse de muchas maneras diferentes). Algunas combinaciones de estos grados de libertad resultan en outcomes exitosos para lo que queremos lograr; otros llevan a outcomes fallidos.")
+    st.markdown("Uno de los grandes problemas del control motor es entender cómo el sistema nervioso maneja esta gran cantidad de alternativas para realizar una misma tarea y selecciona una combinación adecuada de grados de libertad para lograr el objetivo de forma exitosa.")
+
+    st.markdown("La hipótesis del manifold no-controlado (uncontrolled manifold hypothesis, UCM) propone que el sistema nervioso organiza los grados de libertad en sinergias funcionales que estabilizan las variables de desempeño que son relevantes para la tarea (por ejemplo, la posición de la mano al alcanzar un objeto).")
+    st.markdown("Una sinergia es un conjunto de elementos del sistema que están vinculados para actuar como una unidad funcional. Las sinergias permiten que el sistema nervioso controle múltiples grados de libertad. Al coordinar estos elementos, las sinergias logran reducir la complejidad del control y estabilizar alguna variable de desempeño.")
+
+    st.markdown("Cada vez que realizas un movimiento, mediado por dos elementos con el potencial de formar una sinergia, los grados de libertad pueden hacer variar el resultado de la tarea. Por ejemplo, si consideramos la articulación del codo y del hombro al hacer un lanzamiento de básquet, hay muchas combinaciones posibles de ángulos de codo y hombro que pueden llevar a que el balón sea lanzado con éxito. Algunas combinaciones pueden ser más precisas que otras.")
+
+    st.markdown("En la hipótesis UCM, las variaciones en los grados de libertad se dividen en dos componentes: ")
+    
+    
     # ---- Uso en Streamlit ----
     col1, esp, col2 = st.columns([0.49, 0.02, 0.49])
     
