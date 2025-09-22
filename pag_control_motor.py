@@ -229,63 +229,85 @@ def main_control_motor():
     st.markdown("### Perspectivas actuales")
     st.markdown("#### Hipótesis del descontrol múltiple (UCM)")
 
+    
     np.random.seed(42)
     n_points = 24
 
     # ----- Plot A: Not a synergy (VarUCM/VarORT < 1) -----
     x_A = np.random.uniform(2, 8, n_points)
-    y_A = -x_A + 10 + np.random.normal(0, 3, n_points)  # más dispersión ortogonal
+    y_A = -x_A + 10 + np.random.normal(0, 3, n_points)
 
     figA = go.Figure()
     figA.add_trace(go.Scatter(
         x=x_A, y=y_A,
         mode="markers",
-        marker=dict(color="#AEC6CF", size=12, line=dict(color="black", width=1)),
-        name="Puntos"
+        marker=dict(color="#FFB347", size=10),  # naranjo sin contorno
+        showlegend=False
     ))
+    # UCM line
     figA.add_trace(go.Scatter(
         x=[0, 10], y=[10, 0],
         mode="lines",
-        line=dict(color="red", dash="dash"),
-        name="UCM: y=-x+10"
+        line=dict(color="rgba(255,255,255,0.5)", dash="dash"),
+        name="VarUCM"
+    ))
+    # ORT line
+    figA.add_trace(go.Scatter(
+        x=[0, 10], y=[0, 10],
+        mode="lines",
+        line=dict(color="rgba(255,255,255,0.5)", dash="dash"),
+        name="VarORT"
     ))
 
     figA.update_layout(
-        title="A: Not a synergy (VarUCM/VarORT < 1)",
-        xaxis=dict(range=[0, 12], showgrid=False, gridcolor="white"),
-        yaxis=dict(range=[0, 12], showgrid=False, gridcolor="white"),
+        title=dict(text="A: Not a synergy<br>(VarUCM/VarORT < 1)", x=0.5),
+        xaxis=dict(range=[0, 12], showgrid=False, zeroline=False, color="white"),
+        yaxis=dict(range=[0, 12], showgrid=False, zeroline=False, color="white", scaleanchor="x", scaleratio=1),
         plot_bgcolor="rgba(0,0,0,0)",
         paper_bgcolor="rgba(0,0,0,0)",
         font=dict(color="white"),
         legend=dict(font=dict(color="white"))
     )
-    st.plotly_chart(figA, use_container_width=True)
 
     # ----- Plot B: A synergy (VarUCM/VarORT > 1) -----
     x_B = np.random.uniform(2, 8, n_points)
-    y_B = -x_B + 10 + np.random.normal(0, 0.8, n_points)  # menos dispersión ortogonal
+    y_B = -x_B + 10 + np.random.normal(0, 0.8, n_points)
 
     figB = go.Figure()
     figB.add_trace(go.Scatter(
         x=x_B, y=y_B,
         mode="markers",
-        marker=dict(color="#FFB347", size=12, line=dict(color="black", width=1)),
-        name="Puntos"
+        marker=dict(color="#FFB347", size=10),  # naranjo sin contorno
+        showlegend=False
     ))
+    # UCM line
     figB.add_trace(go.Scatter(
         x=[0, 10], y=[10, 0],
         mode="lines",
-        line=dict(color="red", dash="dash"),
-        name="UCM: y=-x+10"
+        line=dict(color="rgba(255,255,255,0.5)", dash="dash"),
+        name="VarUCM"
+    ))
+    # ORT line
+    figB.add_trace(go.Scatter(
+        x=[0, 10], y=[0, 10],
+        mode="lines",
+        line=dict(color="rgba(255,255,255,0.5)", dash="dash"),
+        name="VarORT"
     ))
 
     figB.update_layout(
-        title="B: A synergy (VarUCM/VarORT > 1)",
-        xaxis=dict(range=[0, 12], showgrid=True, gridcolor="white"),
-        yaxis=dict(range=[0, 12], showgrid=True, gridcolor="white"),
+        title=dict(text="B: A synergy<br>(VarUCM/VarORT > 1)", x=0.5),
+        xaxis=dict(range=[0, 12], showgrid=False, zeroline=False, color="white"),
+        yaxis=dict(range=[0, 12], showgrid=False, zeroline=False, color="white", scaleanchor="x", scaleratio=1),
         plot_bgcolor="rgba(0,0,0,0)",
         paper_bgcolor="rgba(0,0,0,0)",
         font=dict(color="white"),
         legend=dict(font=dict(color="white"))
     )
-    st.plotly_chart(figB, use_container_width=True)
+
+    # ----- Mostrar en columnas -----
+    col1, col2 = st.columns(2)
+    with col1:
+        st.plotly_chart(figA, use_container_width=True)
+    with col2:
+        st.plotly_chart(figB, use_container_width=True)
