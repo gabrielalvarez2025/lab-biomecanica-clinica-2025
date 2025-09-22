@@ -353,7 +353,7 @@ def main_control_motor():
     st.markdown("En la hipótesis UCM, las variaciones en los grados de libertad se dividen en dos componentes: ")
 
 
-    esp1, col_plot, esp2 = st.columns([15, 70, 15])
+    esp1, col_plot, esp2 = st.columns([25, 50, 25])
 
     with col_plot:
         st.plotly_chart(crear_plot_sinergia_ucm(title="Sinergia", synergy=True, ratio_var=1), 
