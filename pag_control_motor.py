@@ -255,11 +255,11 @@ def main_control_motor():
         eje_ort = var_ort * largo_max_ejes
 
 
-        if dof_x == None:
+        if not dof_x:
             dof_x = "Grado de libertad A<br>" \
             "(por ej. Fuerza mano izquierda)"
         
-        if dof_y == None:
+        if not dof_y:
             dof_x = "Grado de libertad A<br>" \
             "(por ej. Fuerza mano derecha)"
 
