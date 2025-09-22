@@ -324,7 +324,7 @@ def main_control_motor():
                 scaleratio=1
             ),
             legend=dict(
-                orientation="h",      # horizontal
+                orientation="v",      # horizontal
                 y=1.05,               # encima del plot (1 = top del plot, >1 sobre él)
                 x=0.5,                # centrada horizontalmente
                 xanchor="center",
