@@ -235,6 +235,7 @@ def main_control_motor():
         n_points: int = 24,
         valor_deseado: float = 10,
         mostrar_numeros: bool = True,
+        mostrar_elipse: bool = True,
         var_ucm: float = 1,
         var_ort: float = 1,
         dof_x: str = "Grado de libertad A<br>(por ej. Fuerza mano izquierda)",
@@ -303,16 +304,17 @@ def main_control_motor():
 
         fig = go.Figure()
 
-        # ----- Elipse -----
-        fig.add_trace(go.Scatter(
-            x=x_ellipse_rot,
-            y=y_ellipse_rot,
-            mode="lines",
-            line=dict(color="#3C3718", width=1),
-            fill="toself",
-            fillcolor="rgba(204,197,37,0.05)",
-            showlegend=False
-        ))
+        if mostrar_elipse:
+            # ----- Elipse -----
+            fig.add_trace(go.Scatter(
+                x=x_ellipse_rot,
+                y=y_ellipse_rot,
+                mode="lines",
+                line=dict(color="#3C3718", width=1),
+                fill="toself",
+                fillcolor="rgba(204,197,37,0.05)",
+                showlegend=False
+            ))
 
         
 
@@ -401,6 +403,13 @@ def main_control_motor():
         st.plotly_chart(crear_plot_sinergia_ucm(n_points=24, valor_deseado=10, mostrar_numeros=False,
                                                 var_ucm=1, 
                                                 var_ort=0), 
+                        use_container_width=True,
+                        config={"staticPlot": True}
+                        )
+        
+        st.plotly_chart(crear_plot_sinergia_ucm(n_points=24, valor_deseado=10, mostrar_numeros=False, mostrar_elipse=False,
+                                                var_ucm=1, 
+                                                var_ort=1), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
