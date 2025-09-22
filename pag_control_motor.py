@@ -410,7 +410,7 @@ def main_control_motor():
         
         # SÍ es sinergia (ratio > 1)
         plot_es_sinergia = crear_plot_sinergia_ucm(mostrar_numeros=True, elipse_size=0.9, 
-                                                   ratio_var=16/4)
+                                                   ratio_var=16/5)
         
         st.plotly_chart(plot_es_sinergia, use_container_width=True, config={"staticPlot": True})
     
