@@ -440,6 +440,10 @@ def main_control_motor():
 
 
     
+    st.markdown(" ")
+    st.markdown(" ")
+    st.markdown("---")
+    st.markdown(" ")
     
     col_sinergia_debil, esp_sinergias, col_sinergia_fuerte = st.columns([0.49, 0.02, 0.49])
 
