@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
+from scipy.stats import chi2
 from pydub import AudioSegment
 
 def main_control_motor():
