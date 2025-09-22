@@ -221,3 +221,51 @@ def main_control_motor():
         """)
 
     
+    st.markdown("---")
+
+    st.markdown("### Perspectivas actuales")
+
+    st.markdown("#### Hipótesis del descontrol múltiple (UCM)")
+
+    np.random.seed(42)  # reproducibilidad
+
+    n_points = 24
+
+    # ----- Plot A: Not a synergy (VarUCM/VarORT < 1) -----
+    # Generamos puntos dispersos sin alineación clara
+    x_A = np.random.normal(5, 2, n_points)
+    y_A = np.random.normal(5, 2, n_points)
+
+    # ----- Plot B: A synergy (VarUCM/VarORT > 1) -----
+    # Generamos puntos elipsoidales alineados con la línea y=-x+10
+    x_B = np.random.uniform(0, 10, n_points)
+    noise = np.random.normal(0, 1, n_points)  # pequeña dispersión
+    y_B = -x_B + 10 + noise
+
+    # ----- Visualización -----
+    fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+
+    # Colores pastel
+    color_A = "#AEC6CF"  # azul pastel
+    color_B = "#FFB347"  # naranja pastel
+
+    # Plot A
+    axes[0].scatter(x_A, y_A, c=color_A, edgecolor="k", s=80)
+    axes[0].set_title("A: Not a synergy\n(VarUCM/VarORT < 1)", fontsize=12)
+    axes[0].set_xlim(0, 12)
+    axes[0].set_ylim(0, 12)
+    axes[0].set_aspect("equal", "box")
+    axes[0].grid(True, linestyle="--", alpha=0.6)
+
+    # Plot B
+    axes[1].scatter(x_B, y_B, c=color_B, edgecolor="k", s=80)
+    axes[1].plot([0, 10], [10, 0], "r--", lw=2, alpha=0.6, label="UCM: y = -x + 10")
+    axes[1].set_title("B: A synergy\n(VarUCM/VarORT > 1)", fontsize=12)
+    axes[1].set_xlim(0, 12)
+    axes[1].set_ylim(0, 12)
+    axes[1].set_aspect("equal", "box")
+    axes[1].grid(True, linestyle="--", alpha=0.6)
+    axes[1].legend()
+
+    plt.tight_layout()
+    plt.show()
