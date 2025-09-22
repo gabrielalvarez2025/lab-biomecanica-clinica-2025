@@ -408,8 +408,8 @@ def main_control_motor():
                         )
         
         st.plotly_chart(crear_plot_sinergia_ucm(n_points=50, valor_deseado=10, mostrar_numeros=False, mostrar_elipse=False,
-                                                var_ucm=0.5, 
-                                                var_ort=0.5), 
+                                                var_ucm=0.8, 
+                                                var_ort=0.8), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
