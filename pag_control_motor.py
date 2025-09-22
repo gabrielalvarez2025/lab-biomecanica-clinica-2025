@@ -286,6 +286,8 @@ def main_control_motor():
                 showline=True,
                 linewidth=2,
                 linecolor="white"
+                scaleanchor="y",  # asegura 1:1
+                scaleratio=1
             ),
             yaxis=dict(
                 range=[0, 12],
