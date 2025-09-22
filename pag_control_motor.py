@@ -244,17 +244,18 @@ def main_control_motor():
         puntos_size = 5
 
         # ----- Inicializar puntos en session_state -----
-        if "x_points" not in st.session_state or "y_points" not in st.session_state:
-            if synergy:
-                x = np.random.uniform(2, 8, n_points)
-                ortho_noise = np.random.normal(0, 1, n_points)
-                uc_noise = np.random.normal(0, ratio_var, n_points)
-                y = -x + valor_deseado + ortho_noise + uc_noise
-            else:
-                x = np.random.uniform(2, 8, n_points)
-                y = np.random.uniform(2, 8, n_points)
-            st.session_state.x_points = list(x)
-            st.session_state.y_points = list(y)
+        if boton_agregar:
+            if "x_points" not in st.session_state or "y_points" not in st.session_state:
+                if synergy:
+                    x = np.random.uniform(2, 8, n_points)
+                    ortho_noise = np.random.normal(0, 1, n_points)
+                    uc_noise = np.random.normal(0, ratio_var, n_points)
+                    y = -x + valor_deseado + ortho_noise + uc_noise
+                else:
+                    x = np.random.uniform(2, 8, n_points)
+                    y = np.random.uniform(2, 8, n_points)
+                st.session_state.x_points = list(x)
+                st.session_state.y_points = list(y)
 
         # ----- Botón para agregar punto -----
         if boton_agregar:
