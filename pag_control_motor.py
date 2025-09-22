@@ -231,7 +231,7 @@ def main_control_motor():
     st.markdown("#### Hipótesis del descontrol múltiple (UCM)")
 
 
-    def crear_plot_sinergia_ucm(title: str, synergy: bool = True, n_points: int = 24, valor_deseado = 10, ratio_var: float = 0.7):
+    def crear_plot_sinergia_ucm(title: str, synergy: bool = True, n_points: int = 24, valor_deseado = 10, ratio_var: float = 0.7, mostrar_numeros=False):
         
         np.random.seed(42)  # reproducibilidad
 
@@ -312,7 +312,8 @@ def main_control_motor():
                 linewidth=2,
                 linecolor="white",
                 fixedrange=True,  # bloquea zoom/pan
-                scaleanchor="y", scaleratio=1
+                scaleanchor="y", scaleratio=1,
+                showticklabels=mostrar_numeros
             ),
             yaxis=dict(
                 range=[0, 12],
@@ -323,7 +324,8 @@ def main_control_motor():
                 linewidth=2,
                 linecolor="white",
                 fixedrange=True,  # bloquea zoom/pan
-                scaleanchor="x", scaleratio=1
+                scaleanchor="x", scaleratio=1,
+                showticklabels=mostrar_numeros
             ),
             legend=dict(
                 orientation="v",      # horizontal
