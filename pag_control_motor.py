@@ -264,7 +264,7 @@ def main_control_motor():
             y=[10, 0],
             mode="lines",
             line=dict(color="#45A2A2", dash="dash"),
-            name="Var<sub>UCM</sub> (Variabilidad Buena)"
+            name="Var<sub>UCM</sub> (Buena)"
         ))
 
         # Línea Var ORT
@@ -273,7 +273,7 @@ def main_control_motor():
             y=[0, 10],
             mode="lines",
             line=dict(color="#D54341", dash="dash"),
-            name="Var<sub>ORT</sub> (Variabilidad Mala)"
+            name="Var<sub>ORT</sub> (Mala)"
         ))
 
         # ----- Elipse IC95% -----
