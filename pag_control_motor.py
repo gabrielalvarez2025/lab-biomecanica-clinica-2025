@@ -253,7 +253,7 @@ def main_control_motor():
         fig.add_trace(go.Scatter(
             x=x, y=y,
             mode="markers",
-            marker=dict(color="#45A2A2", size=puntos_size),  # naranjo pastel sin contorno
+            marker=dict(color="#CCA525", size=puntos_size),  # naranjo pastel sin contorno
             showlegend=False
         ))
 
