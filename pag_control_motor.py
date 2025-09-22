@@ -401,8 +401,7 @@ def main_control_motor():
     with col1:
         
         # NO es sinergia (ratio <= 1)
-        plot_no_sinergia = crear_plot_sinergia_ucm(
-            mostrar_numeros=True, elipse_size=1,
+        plot_no_sinergia = crear_plot_sinergia_ucm(mostrar_numeros=True, elipse_size=0.9,
             ratio_var=0.3
             )
         
@@ -411,7 +410,7 @@ def main_control_motor():
     with col2:
         
         # SÍ es sinergia (ratio > 1)
-        plot_es_sinergia = crear_plot_sinergia_ucm(mostrar_numeros=True, elipse_size=1,
+        plot_es_sinergia = crear_plot_sinergia_ucm(mostrar_numeros=True, elipse_size=0.9,
             ratio_var=4
             )
         
