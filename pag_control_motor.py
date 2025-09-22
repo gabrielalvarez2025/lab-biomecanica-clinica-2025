@@ -231,23 +231,25 @@ def main_control_motor():
     st.markdown("#### Hipótesis del descontrol múltiple (UCM)")
 
 
-    def crear_plot_sinergia_ucm(title: str, synergy: bool = True, n_points: int = 24, valor_deseado = 10):
+    def crear_plot_sinergia_ucm(title: str, synergy: bool = True, n_points: int = 24, valor_deseado = 10, ratio_var: float = 0.7):
         
         np.random.seed(42)  # reproducibilidad
 
         puntos_size = 5
         
         if synergy:
-            # A synergy → puntos alineados a lo largo de la UCM
+            # A synergy → elipse alargada a lo largo de UCM
             x = np.random.uniform(2, 8, n_points)
-            y = -x + valor_deseado + np.random.normal(0, 0.8, n_points)
-            subtitle = "Es sinergia"
+            # la desviación ortogonal es menor, la a lo largo de la UCM mayor
+            ortho_noise = np.random.normal(0, 1, n_points)         # perpendicular
+            uc_noise = np.random.normal(0, ratio_var, n_points)  # a lo largo de la UCM
+            y = -x + valor_deseado + ortho_noise + uc_noise
+            subtitle = f"Es sinergia (VarUCM/VarORT ≈ {ratio_var})"
         else:
             # Not a synergy → dispersión aleatoria, relación VarUCM/VarORT < 1
             x = np.random.uniform(2, 8, n_points)
             y = np.random.uniform(2, 8, n_points)
-            subtitle = "No es sinergia"
-
+            subtitle = f"No es sinergia (VarUCM/VarORT < 1)"
         fig = go.Figure()
 
         # Puntos
