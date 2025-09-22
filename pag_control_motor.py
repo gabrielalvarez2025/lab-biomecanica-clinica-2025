@@ -400,7 +400,7 @@ def main_control_motor():
     with col1:
         plot_no_sinergia = crear_plot_sinergia_ucm(
             mostrar_numeros=True, 
-            ratio_var=1.7, 
+            ratio_var=0.3, 
             elipse_size=1
             )
         
@@ -408,7 +408,7 @@ def main_control_motor():
     
     with col2:
         plot_es_sinergia = crear_plot_sinergia_ucm(
-            ratio_var=0.3, 
+            ratio_var=1.7, 
             elipse_size=1
             )
         
