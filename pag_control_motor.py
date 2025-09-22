@@ -272,7 +272,7 @@ def main_control_motor():
             x=[0, 10], 
             y=[0, 10],
             mode="lines",
-            line=dict(color="#D54341", dash="dot"),
+            line=dict(color="#D54341", dash="dash"),
             name="Var<sub>ORT</sub> (Mala)"
         ))
 
