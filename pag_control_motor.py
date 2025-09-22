@@ -393,7 +393,7 @@ def main_control_motor():
     esp1, col_plot, esp2 = st.columns([25, 50, 25])
 
     with col_plot:
-        st.plotly_chart(crear_plot_sinergia_ucm(n_points=24, valor_deseado=10, 
+        st.plotly_chart(crear_plot_sinergia_ucm(n_points=24, valor_deseado=10, mostrar_numeros=False
                                                 var_ucm=1, 
                                                 var_ort=0), 
                         use_container_width=True,
