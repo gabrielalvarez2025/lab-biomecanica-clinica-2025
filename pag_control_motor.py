@@ -418,7 +418,7 @@ def main_control_motor():
     with col1:
         
         # NO es sinergia (ratio <= 1)
-        plot_no_sinergia = crear_plot_sinergia_ucm(mostrar_numeros=False,
+        plot_no_sinergia = crear_plot_sinergia_ucm(mostrar_numeros=False, dof_y="Ángulo de rodilla", dof_x="Ángulo de cadera"
                                                    var_ucm=0.3,
                                                    var_ort=0.45
                                                    )
