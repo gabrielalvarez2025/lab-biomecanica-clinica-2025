@@ -243,15 +243,21 @@ def main_control_motor():
         np.random.seed(42)
         puntos_size = 5
 
-        # ----- Dibujar elipse -----
-        theta = np.linspace(0, 2*np.pi, 100)
-        x_ellipse = var_ucm * np.cos(theta)
-        y_ellipse = var_ort * np.sin(theta)
+        # ----- Rotación 45° (VarUCM alineada con y=-x+valor_deseado) -----
+        theta_rot = np.pi / 4
+        R = np.array([[np.cos(theta_rot), -np.sin(theta_rot)],
+                    [np.sin(theta_rot),  np.cos(theta_rot)]])
 
-        # Centrar elipse en el medio del plot
+        # ----- Dibujar elipse -----
+        t = np.linspace(0, 2*np.pi, 100)
+        x_ellipse = var_ucm * np.cos(t)
+        y_ellipse = var_ort * np.sin(t)
+        ellipse_coords = R @ np.array([x_ellipse, y_ellipse])
+        
+        # Centrar en medio del plot
         x_center, y_center = valor_deseado / 2, valor_deseado / 2
-        x_ellipse += x_center
-        y_ellipse += y_center
+        x_ellipse_rot = ellipse_coords[0, :] + x_center
+        y_ellipse_rot = ellipse_coords[1, :] + y_center
 
         # ----- Distribuir puntos aleatorios dentro de la elipse -----
         points_x, points_y = [], []
