@@ -325,7 +325,7 @@ def main_control_motor():
             ),
             legend=dict(
                 orientation="v",      # horizontal
-                y=1.05,               # encima del plot (1 = top del plot, >1 sobre él)
+                y=1.0,               # encima del plot (1 = top del plot, >1 sobre él)
                 x=0.5,                # centrada horizontalmente
                 xanchor="center",
                 yanchor="bottom",     # ancla la parte inferior de la leyenda a y
