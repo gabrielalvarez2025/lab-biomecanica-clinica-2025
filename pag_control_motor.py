@@ -456,7 +456,7 @@ def main_control_motor():
 
     with col_sinergia_fuerte:
         
-        st.markdown("##### Sinergia fuerte".center)
+        st.markdown("##### Sinergia fuerte", width="stretch")
 
         plot_sinergia_fuerte = crear_plot_sinergia_ucm(mostrar_numeros=False, mostrar_elipse=1,
                                                    var_ucm=0.83,
