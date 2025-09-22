@@ -4,7 +4,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
-from scipy.stats import chi2
 from pydub import AudioSegment
 
 def main_control_motor():
@@ -232,8 +231,9 @@ def main_control_motor():
 
 
     def crear_plot_sinergia_ucm(title: str, synergy: bool = True, n_points: int = 24, valor_deseado = 10):
-    
+        
         np.random.seed(42)  # reproducibilidad
+
         puntos_size = 5
         
         if synergy:
@@ -246,9 +246,9 @@ def main_control_motor():
             x = np.random.uniform(2, 8, n_points)
             y = np.random.uniform(2, 8, n_points)
             subtitle = "No es sinergia"
-        
+
         fig = go.Figure()
-        
+
         # Puntos
         fig.add_trace(go.Scatter(
             x=x, y=y,
@@ -256,13 +256,13 @@ def main_control_motor():
             marker=dict(color="#CCA525", size=puntos_size),  # naranjo pastel sin contorno
             showlegend=False
         ))
-        
+
         # Línea Var UCM
         fig.add_trace(go.Scatter(
             x=[0, 10], 
             y=[10, 0],
             mode="lines",
-            line=dict(color="white", dash="dash", width=2),
+            line=dict(color="#45A2A2", dash="dash"),
             name="VarUCM"
         ))
 
@@ -271,35 +271,13 @@ def main_control_motor():
             x=[0, 10], 
             y=[0, 10],
             mode="lines",
-            line=dict(color="white", dash="dash", width=2),
+            line=dict(color="#D54341", dash="dash"),
             name="VarORT"
-        ))
-
-        # ----- Elipse IC95% -----
-        cov = np.cov(x, y)
-        mean_x, mean_y = np.mean(x), np.mean(y)
-        chi2_val = chi2.ppf(0.70, df=2)  # IC95%
-        
-        theta = np.linspace(0, 2*np.pi, 100)
-        circle = np.array([np.cos(theta), np.sin(theta)])  # círculo unitario
-        vals, vecs = np.linalg.eigh(cov)
-        ellipse = vecs @ np.diag(np.sqrt(vals * chi2_val)) @ circle
-        ellipse[0, :] += mean_x
-        ellipse[1, :] += mean_y
-        
-        fig.add_trace(go.Scatter(
-            x=ellipse[0, :],
-            y=ellipse[1, :],
-            mode="lines",
-            line=dict(color="#CCA525", width=1),  # naranjo pastel
-            fill="toself",
-            fillcolor="rgba(204,197,37,0.2)",  # mismo naranjo pastel alpha=0.4
-            showlegend=False
         ))
 
         # Layout
         fig.update_layout(
-            title=dict(text=f"{subtitle}", x=0.5, xanchor="center"),
+            title=dict(text=f"{subtitle}", x=0.10, y=0.75),
             xaxis=dict(
                 range=[0, 12],
                 showgrid=False,
@@ -308,9 +286,8 @@ def main_control_motor():
                 showline=True,
                 linewidth=2,
                 linecolor="white",
-                scaleanchor="y",
-                scaleratio=1,
-                fixedrange=True  # no zoom
+                scaleanchor="y",  # asegura 1:1
+                scaleratio=1
             ),
             yaxis=dict(
                 range=[0, 12],
@@ -320,16 +297,14 @@ def main_control_motor():
                 showline=True,
                 linewidth=2,
                 linecolor="white",
-                scaleanchor="x",
-                scaleratio=1,
-                fixedrange=True  # no zoom
+                scaleanchor="x",  # asegura 1:1
+                scaleratio=1
             ),
             plot_bgcolor="rgba(0,0,0,0)",
             paper_bgcolor="rgba(0,0,0,0)",
             font=dict(color="white"),
             legend=dict(font=dict(color="white"))
         )
-        
         return fig
 
 
