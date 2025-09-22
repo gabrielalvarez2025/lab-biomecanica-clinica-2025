@@ -381,13 +381,13 @@ def main_control_motor():
     col1, esp, col2 = st.columns([0.49, 0.02, 0.49])
     
     with col1:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=False, ratio_var=1, mostrar_numeros=True, mostrar_elipse=False), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=False, ratio_var=0.1, mostrar_numeros=True, mostrar_elipse=False), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
     
     with col2:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="A synergy", synergy=True), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="A synergy", synergy=True, ratio_var=1, mostrar_numeros=True, mostrar_elipse=False), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
