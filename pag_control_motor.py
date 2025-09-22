@@ -253,7 +253,7 @@ def main_control_motor():
         fig.add_trace(go.Scatter(
             x=x, y=y,
             mode="markers",
-            marker=dict(color="#FFB347", size=puntos_size),  # naranjo pastel sin contorno
+            marker=dict(color="#45A2A2", size=puntos_size),  # naranjo pastel sin contorno
             showlegend=False
         ))
 
@@ -269,7 +269,7 @@ def main_control_motor():
         fig.add_trace(go.Scatter(
             x=[0, 10], y=[0, 10],
             mode="lines",
-            line=dict(color="#45A2A2", dash="dash"),
+            line=dict(color="#FFB347", dash="dash"),
             name="VarORT"
         ))
 
