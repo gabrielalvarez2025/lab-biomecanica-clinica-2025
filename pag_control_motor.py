@@ -235,7 +235,6 @@ def main_control_motor():
         title: str,
         ratio_var: float,
         elipse_size: float = 1.0,
-        synergy: bool = True,
         n_points: int = 24,
         valor_deseado: float = 10,
         mostrar_numeros: bool = False
