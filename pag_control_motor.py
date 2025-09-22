@@ -249,17 +249,9 @@ def main_control_motor():
         var_ucm = var_ucm * elipse_size
         var_ort = var_ort * elipse_size
 
-        if not synergy and (ratio_var > 1):
+        if ratio_var > 1:
 
             var_ucm, var_ort = var_ort, var_ucm
-        
-        
-
-
-
-
-
-
         
 
         # ----- Rotación 45° (VarUCM alineada con y=-x+valor_deseado) -----
@@ -289,7 +281,16 @@ def main_control_motor():
                 points_x.append(pt_rot[0,0] + x_center)
                 points_y.append(pt_rot[1,0] + y_center)
 
-        subtitle = f"{'Es sinergia' if synergy else 'No es sinergia'}"
+        if (var_ucm / var_ort) > 1: # si es sinergia
+            sinergia = True
+            subtitle = f"{'Es sinergia'}
+        else:
+            subtitle = f"{'No es sinergia'}
+            # else if (var_ucm / var_ort) <=1, no es sinergia
+
+        
+        
+        subtitle = f"{'Es sinergia' if sinergia else 'No es sinergia'}"
 
         fig = go.Figure()
 
