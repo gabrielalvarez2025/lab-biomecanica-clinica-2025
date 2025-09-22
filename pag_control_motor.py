@@ -236,7 +236,9 @@ def main_control_motor():
         valor_deseado: float = 10,
         mostrar_numeros: bool = True,
         var_ucm: float = 1,
-        var_ort: float = 1
+        var_ort: float = 1,
+        dof_x: str = None,
+        dof_y: str = None
     ):
         np.random.seed(42)
         puntos_size = 5
@@ -251,6 +253,15 @@ def main_control_motor():
 
         eje_ucm = var_ucm * largo_max_ejes
         eje_ort = var_ort * largo_max_ejes
+
+
+        if dof_x is None:
+            dof_x = "Grado de libertad A<br>" \
+            "(por ej. Fuerza mano izquierda)"
+        
+        if dof_y is None:
+            dof_x = "Grado de libertad A<br>" \
+            "(por ej. Fuerza mano derecha)"
 
         
 
@@ -340,7 +351,7 @@ def main_control_motor():
         fig.update_layout(
             title=dict(text=subtitle, x=0.5, y=0.9, xanchor="center"),
             xaxis=dict(
-                title="Grado de libertad B<br>(por ej. Fuerza mano izquierda)",
+                title=dof_x,
                 range=[0, valor_deseado],
                 showgrid=False,
                 showline=True,
@@ -352,7 +363,7 @@ def main_control_motor():
                 showticklabels=mostrar_numeros
             ),
             yaxis=dict(
-                title="Grado de libertad A<br>(por ej. Fuerza mano derecha)",
+                title=dof_y,
                 range=[0, valor_deseado],
                 showgrid=False,
                 showline=True,
