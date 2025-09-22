@@ -351,6 +351,15 @@ def main_control_motor():
     st.markdown("Cada vez que realizas un movimiento, mediado por dos elementos con el potencial de formar una sinergia, los grados de libertad pueden hacer variar el resultado de la tarea. Por ejemplo, si consideramos la articulación del codo y del hombro al hacer un lanzamiento de básquet, hay muchas combinaciones posibles de ángulos de codo y hombro que pueden llevar a que el balón sea lanzado con éxito. Algunas combinaciones pueden ser más precisas que otras.")
 
     st.markdown("En la hipótesis UCM, las variaciones en los grados de libertad se dividen en dos componentes: ")
+
+
+    esp1, col_plot, esp2 = st.columns([35, 30, 35])
+
+    with col_plot:
+        st.plotly_chart(crear_plot_sinergia_ucm(title="Sinergia", synergy=True, ratio_var=1), 
+                        use_container_width=True,
+                        config={"staticPlot": True}
+                        )
     
     
     # ---- Uso en Streamlit ----
