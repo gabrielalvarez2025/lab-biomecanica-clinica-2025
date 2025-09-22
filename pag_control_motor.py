@@ -237,8 +237,8 @@ def main_control_motor():
         mostrar_numeros: bool = True,
         var_ucm: float = 1,
         var_ort: float = 1,
-        dof_x: str = None,
-        dof_y: str = None
+        dof_x: str = "Grado de libertad A<br>(por ej. Fuerza mano izquierda)",
+        dof_y: str = "Grado de libertad A<br>(por ej. Fuerza mano derecha)"
     ):
         np.random.seed(42)
         puntos_size = 5
@@ -255,13 +255,7 @@ def main_control_motor():
         eje_ort = var_ort * largo_max_ejes
 
 
-        if not dof_x:
-            dof_x = "Grado de libertad A<br>" \
-            "(por ej. Fuerza mano izquierda)"
         
-        if not dof_y:
-            dof_x = "Grado de libertad A<br>" \
-            "(por ej. Fuerza mano derecha)"
 
         
 
