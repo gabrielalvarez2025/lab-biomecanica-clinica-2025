@@ -237,7 +237,8 @@ def main_control_motor():
         n_points: int = 24,
         valor_deseado: float = 10,
         ratio_var: float = 1,
-        mostrar_numeros: bool = False
+        mostrar_numeros: bool = False,
+        mostrar_elipse: bool = True
     ):
         np.random.seed(42)
         puntos_size = 5
@@ -277,16 +278,17 @@ def main_control_motor():
 
         fig = go.Figure()
 
-        # ----- Elipse -----
-        fig.add_trace(go.Scatter(
-            x=x_ellipse_rot,
-            y=y_ellipse_rot,
-            mode="lines",
-            line=dict(color="#3C3718", width=1),
-            fill="toself",
-            fillcolor="rgba(204,197,37,0.05)",
-            showlegend=False
-        ))
+        if mostrar_elipse:
+            # ----- Elipse -----
+            fig.add_trace(go.Scatter(
+                x=x_ellipse_rot,
+                y=y_ellipse_rot,
+                mode="lines",
+                line=dict(color="#3C3718", width=1),
+                fill="toself",
+                fillcolor="rgba(204,197,37,0.05)",
+                showlegend=False
+            ))
 
         # ----- Puntos -----
         fig.add_trace(go.Scatter(
@@ -378,7 +380,7 @@ def main_control_motor():
     col1, esp, col2 = st.columns([0.49, 0.02, 0.49])
     
     with col1:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=False, ratio_var=1, mostrar_numeros=True), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=False, ratio_var=1, mostrar_numeros=True, mostrar_elipse=False), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
