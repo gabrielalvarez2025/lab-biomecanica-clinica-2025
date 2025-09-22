@@ -341,7 +341,7 @@ def main_control_motor():
 
 
     # ---- Uso en Streamlit ----
-    col1, col2 = st.columns(2)
+    col1, esp, col2 = st.columns([0.49, 0.02, 0.49])
     
     with col1:
         st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=False), 
