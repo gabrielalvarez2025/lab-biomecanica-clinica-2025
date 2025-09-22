@@ -358,12 +358,12 @@ def main_control_motor():
     esp1, col_plot, esp2 = st.columns([1, 99, 1])
 
     with col_plot:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="Sinergia", synergy=True, ratio_var=1, mostrar_numeros=True), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="Sinergia", synergy=True, n_points=24, valor_deseado=10, var_ucm=14, var_ort=1), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
     
-    
+    """
     # ---- Uso en Streamlit ----
     col1, esp, col2 = st.columns([0.49, 0.02, 0.49])
     
@@ -378,3 +378,4 @@ def main_control_motor():
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
+    """
