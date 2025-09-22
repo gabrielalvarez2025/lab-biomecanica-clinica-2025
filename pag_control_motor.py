@@ -241,7 +241,7 @@ def main_control_motor():
     figA.add_trace(go.Scatter(
         x=x_A, y=y_A,
         mode="markers",
-        marker=dict(color="#DBD4CA", size=5),  # naranjo sin contorno
+        marker=dict(color="#DBD4CA", size=10),  # naranjo sin contorno
         showlegend=False
     ))
     # UCM line
@@ -277,7 +277,7 @@ def main_control_motor():
     figB.add_trace(go.Scatter(
         x=x_B, y=y_B,
         mode="markers",
-        marker=dict(color="#DBD4CA", size=5),  # naranjo sin contorno
+        marker=dict(color="#DBD4CA", size=10),  # naranjo sin contorno
         showlegend=False
     ))
     # UCM line
