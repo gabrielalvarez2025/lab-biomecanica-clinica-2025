@@ -275,6 +275,28 @@ def main_control_motor():
             name="VarORT"
         ))
 
+        # ----- Elipse IC95% -----
+        cov = np.cov(x, y)
+        mean_x, mean_y = np.mean(x), np.mean(y)
+        chi2_val = chi2.ppf(0.70, df=2)  # IC95%
+        
+        theta = np.linspace(0, 2*np.pi, 100)
+        circle = np.array([np.cos(theta), np.sin(theta)])  # círculo unitario
+        vals, vecs = np.linalg.eigh(cov)
+        ellipse = vecs @ np.diag(np.sqrt(vals * chi2_val)) @ circle
+        ellipse[0, :] += mean_x
+        ellipse[1, :] += mean_y
+        
+        fig.add_trace(go.Scatter(
+            x=ellipse[0, :],
+            y=ellipse[1, :],
+            mode="lines",
+            line=dict(color="#CCA525", width=1),  # naranjo pastel
+            fill="toself",
+            fillcolor="rgba(204,197,37,0.2)",  # mismo naranjo pastel alpha=0.4
+            showlegend=False
+        ))
+
         # Layout
         fig.update_layout(
             title=dict(text=f"{subtitle}", x=0.10, y=0.75),
