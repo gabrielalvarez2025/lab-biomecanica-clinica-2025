@@ -252,8 +252,8 @@ def main_control_motor():
 
     figA.update_layout(
         title="A: Not a synergy (VarUCM/VarORT < 1)",
-        xaxis=dict(range=[0, 12], showgrid=True, gridcolor="white"),
-        yaxis=dict(range=[0, 12], showgrid=True, gridcolor="white"),
+        xaxis=dict(range=[0, 12], showgrid=False, gridcolor="white"),
+        yaxis=dict(range=[0, 12], showgrid=False, gridcolor="white"),
         plot_bgcolor="rgba(0,0,0,0)",
         paper_bgcolor="rgba(0,0,0,0)",
         font=dict(color="white"),
