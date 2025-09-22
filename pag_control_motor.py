@@ -262,12 +262,13 @@ def main_control_motor():
         # ----- Distribuir puntos aleatorios dentro de la elipse -----
         points_x, points_y = [], []
         while len(points_x) < n_points:
-            x_rand = np.random.uniform(x_center - var_ucm, x_center + var_ucm)
-            y_rand = np.random.uniform(y_center - var_ort, y_center + var_ort)
-            # Verificar si el punto está dentro de la elipse
-            if ((x_rand - x_center)**2 / var_ucm**2 + (y_rand - y_center)**2 / var_ort**2) <= 1:
-                points_x.append(x_rand)
-                points_y.append(y_rand)
+            x_rand = np.random.uniform(-var_ucm, var_ucm)
+            y_rand = np.random.uniform(-var_ort, var_ort)
+            if (x_rand/var_ucm)**2 + (y_rand/var_ort)**2 <= 1:
+                # Rotar y centrar
+                pt_rot = R @ np.array([[x_rand], [y_rand]])
+                points_x.append(pt_rot[0,0] + x_center)
+                points_y.append(pt_rot[1,0] + y_center)
 
         subtitle = f"{'Es sinergia' if synergy else 'No es sinergia'}"
 
@@ -275,8 +276,8 @@ def main_control_motor():
 
         # ----- Elipse -----
         fig.add_trace(go.Scatter(
-            x=x_ellipse,
-            y=y_ellipse,
+            x=x_ellipse_rot,
+            y=y_ellipse_rot,
             mode="lines",
             line=dict(color="#3C3718", width=1),
             fill="toself",
