@@ -244,7 +244,7 @@ def main_control_motor():
         else:
             # Not a synergy → dispersión aleatoria, relación VarUCM/VarORT < 1
             x = np.random.uniform(2, 8, n_points)
-            y = -x + valor_deseado + np.random.normal(1, 3, n_points)
+            y = -x + valor_deseado + np.random.normal(2, 3, n_points)
             subtitle = "No es sinergia"
 
         fig = go.Figure()
