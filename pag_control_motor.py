@@ -237,7 +237,7 @@ def main_control_motor():
         elipse_size: float = 1.0,
         n_points: int = 24,
         valor_deseado: float = 10,
-        mostrar_numeros: bool = False
+        mostrar_numeros: bool = True
     ):
         np.random.seed(42)
         puntos_size = 5
@@ -393,7 +393,8 @@ def main_control_motor():
     col1, esp, col2 = st.columns([0.49, 0.02, 0.49])
     
     with col1:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", mostrar_numeros=True, ratio_var=1.7, elipse_size=0.30), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", mostrar_numeros=True, 
+                                                ratio_var=1.7, elipse_size=0.30), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
