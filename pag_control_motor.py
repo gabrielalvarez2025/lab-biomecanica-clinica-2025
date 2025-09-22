@@ -261,7 +261,7 @@ def main_control_motor():
             x=[0, 10], 
             y=[10, 0],
             mode="lines",
-            line=dict(color="white", dash="dash", width=2, alpha=0.5),
+            line=dict(color="white", dash="dash", width=2),
             name="VarUCM"
         ))
 
@@ -270,7 +270,7 @@ def main_control_motor():
             x=[0, 10], 
             y=[0, 10],
             mode="lines",
-            line=dict(color="white", dash="dash", width=2, alpha=0.5),
+            line=dict(color="white", dash="dash", width=2),
             name="VarORT"
         ))
 
