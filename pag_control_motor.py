@@ -404,7 +404,7 @@ def main_control_motor():
     with col2:
         plot_es_sinergia = crear_plot_sinergia_ucm(
             ratio_var=0.3, 
-            elipse_size=0.5
+            elipse_size=1
             )
         
         st.plotly_chart(plot_es_sinergia, use_container_width=True, config={"staticPlot": True})
