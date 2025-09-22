@@ -303,14 +303,7 @@ def main_control_motor():
             showlegend=False
         ))
 
-        # ----- Puntos -----
-        fig.add_trace(go.Scatter(
-            x=points_x,
-            y=points_y,
-            mode="markers",
-            marker=dict(color="#D7AD17", size=puntos_size),
-            showlegend=False
-        ))
+        
 
         # ----- Líneas VarUCM y VarORT -----
         fig.add_trace(go.Scatter(
@@ -326,6 +319,15 @@ def main_control_motor():
             mode="lines",
             line=dict(color="#D54341", dash="dash"),
             name="Var<sub>ORT</sub>"
+        ))
+
+        # ----- Puntos -----
+        fig.add_trace(go.Scatter(
+            x=points_x,
+            y=points_y,
+            mode="markers",
+            marker=dict(color="#D7AD17", size=puntos_size),
+            showlegend=False
         ))
 
         # ----- Layout -----
