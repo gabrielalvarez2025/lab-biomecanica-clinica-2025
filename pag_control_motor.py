@@ -244,7 +244,7 @@ def main_control_motor():
         else:
             # Not a synergy → dispersión aleatoria, relación VarUCM/VarORT < 1
             x = np.random.uniform(2, 8, n_points)
-            y = -x + valor_deseado + np.random.normal(0, 3, n_points)
+            y = -x + valor_deseado + np.random.normal(1, 3, n_points)
             subtitle = "No es sinergia"
 
         fig = go.Figure()
@@ -259,7 +259,8 @@ def main_control_motor():
 
         # Línea Var UCM
         fig.add_trace(go.Scatter(
-            x=[0, 10], y=[10, 0],
+            x=[0, 10], 
+            y=[10, 0],
             mode="lines",
             line=dict(color="#45A2A2", dash="dash"),
             name="VarUCM"
@@ -267,7 +268,8 @@ def main_control_motor():
 
         # Línea Var ORT
         fig.add_trace(go.Scatter(
-            x=[0, 10], y=[0, 10],
+            x=[0, 10], 
+            y=[0, 10],
             mode="lines",
             line=dict(color="#D54341", dash="dash"),
             name="VarORT"
