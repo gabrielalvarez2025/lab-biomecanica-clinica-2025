@@ -393,7 +393,7 @@ def main_control_motor():
     with col_plot:
         st.plotly_chart(crear_plot_sinergia_ucm(n_points=24, valor_deseado=10, 
                                                 var_ucm=1, 
-                                                var_ort=0.000001), 
+                                                var_ort=0), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
@@ -407,7 +407,7 @@ def main_control_motor():
         # NO es sinergia (ratio <= 1)
         plot_no_sinergia = crear_plot_sinergia_ucm(mostrar_numeros=True,
                                                    var_ucm=0.3,
-                                                   var_ort=0.0
+                                                   var_ort=0.45
                                                    )
         
         st.plotly_chart(plot_no_sinergia, use_container_width=True, config={"staticPlot": True})
