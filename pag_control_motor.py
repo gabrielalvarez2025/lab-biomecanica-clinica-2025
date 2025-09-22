@@ -242,15 +242,18 @@ def main_control_motor():
         puntos_size = 5
 
         var_ucm = np.sqrt(2 * valor_deseado**2) / 2
-        var_ort = var_ucm / ratio_var
 
-        if ratio_var < 1:
-            var_ucm, var_ort = var_ort, var_ucm
+        if ratio_var < 1:    
+            var_ort = var_ucm / ratio_var
+
+
+        else: # ratio <= 1
+            var_ort = var_ucm * ratio_var
 
         var_ucm = var_ucm * elipse_size
         var_ort = var_ort * elipse_size
 
-        
+            
         
 
         # ----- Rotación 45° (VarUCM alineada con y=-x+valor_deseado) -----
