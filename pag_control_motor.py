@@ -232,27 +232,23 @@ def main_control_motor():
 
 
     def crear_plot_sinergia_ucm(
-        ratio_var: float,
-        elipse_size: float = 1.0,
         n_points: int = 24,
         valor_deseado: float = 10,
-        mostrar_numeros: bool = True
+        mostrar_numeros: bool = True,
+        var_ucm: float = 1,
+        var_ort: float = 1
     ):
         np.random.seed(42)
         puntos_size = 5
 
-        var_ucm = np.sqrt(2 * valor_deseado**2) / 2
+        largo_max_ejes = np.sqrt(2 * valor_deseado**2)
 
-        if ratio_var > 1:     # si es sinergia
-            var_ort = var_ucm / ratio_var
+        eje_ucm = var_ucm * largo_max_ejes
+        eje_ort = var_ort * largo_max_ejes
 
+        ratio_var = var_ucm / var_ort
 
-        else: # ratio <= 1
-            var_ort = var_ucm * ratio_var
-            var_ort, var_ucm = var_ucm, var_ort
-
-        var_ucm = var_ucm * elipse_size
-        var_ort = var_ort * elipse_size
+        
 
             
         
@@ -264,8 +260,8 @@ def main_control_motor():
 
         # ----- Dibujar elipse -----
         t = np.linspace(0, 2*np.pi, 100)
-        x_ellipse = var_ucm * np.cos(t)
-        y_ellipse = var_ort * np.sin(t)
+        x_ellipse = (eje_ucm/2) * np.cos(t)
+        y_ellipse = (eje_ort/2) * np.sin(t)
         ellipse_coords = R @ np.array([x_ellipse, y_ellipse])
         
         # Centrar en medio del plot
@@ -276,18 +272,18 @@ def main_control_motor():
         # ----- Distribuir puntos aleatorios dentro de la elipse -----
         points_x, points_y = [], []
         while len(points_x) < n_points:
-            x_rand = np.random.uniform(-var_ucm, var_ucm)
-            y_rand = np.random.uniform(-var_ort, var_ort)
-            if (x_rand/var_ucm)**2 + (y_rand/var_ort)**2 <= 1:
+            x_rand = np.random.uniform(-(eje_ucm/2), (eje_ucm/2))
+            y_rand = np.random.uniform(-(eje_ort/2), (eje_ort/2))
+            if (x_rand/(eje_ucm/2))**2 + (y_rand/(eje_ort/2))**2 <= 1:
                 # Rotar y centrar
                 pt_rot = R @ np.array([[x_rand], [y_rand]])
                 points_x.append(pt_rot[0,0] + x_center)
                 points_y.append(pt_rot[1,0] + y_center)
 
         if (var_ucm / var_ort) > 1: # si es sinergia
-            subtitle = 'Es sinergia'
+            subtitle = f'Es sinergia (Rvar = {round(ratio_var)})'
         else:
-            subtitle = 'No es sinergia'
+            subtitle = f'No es sinergia (Rvar = {round(ratio_var)})'
             # else if (var_ucm / var_ort) <=1, no es sinergia
 
         
