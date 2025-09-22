@@ -263,7 +263,7 @@ def main_control_motor():
             y=[10, 0],
             mode="lines",
             line=dict(color="#45A2A2", dash="dash"),
-            name="VarUCM"
+            name="Es sinergia"
         ))
 
         # Línea Var ORT
@@ -272,12 +272,12 @@ def main_control_motor():
             y=[0, 10],
             mode="lines",
             line=dict(color="#D54341", dash="dash"),
-            name="VarORT"
+            name="NO es sinergia"
         ))
 
         # Layout
         fig.update_layout(
-            title=dict(text=f"{subtitle}", x=0.07, y=0.65),
+            title=dict(text=f"{subtitle}", x=0.10, y=0.75),
             xaxis=dict(
                 range=[0, 12],
                 showgrid=False,
