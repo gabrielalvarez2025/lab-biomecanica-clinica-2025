@@ -446,7 +446,7 @@ def main_control_motor():
     with col_sinergia_debil:
         
         plot_sinergia_debil = crear_plot_sinergia_ucm(mostrar_numeros=False, mostrar_elipse=1,
-                                                   var_ucm=0.82,
+                                                   var_ucm=0.40,
                                                    var_ort=0.2
                                                    )
         
