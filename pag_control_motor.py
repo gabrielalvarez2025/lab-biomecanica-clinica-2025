@@ -249,6 +249,12 @@ def main_control_motor():
         var_ucm = var_ucm * elipse_size
         var_ort = var_ort * elipse_size
 
+        if synergy and (ratio_var > 1):
+
+            var_ucm, var_ort = var_ort, var_ucm
+        
+        
+
 
 
 
