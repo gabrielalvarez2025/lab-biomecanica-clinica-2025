@@ -282,9 +282,9 @@ def main_control_motor():
 
         if (var_ucm / var_ort) > 1: # si es sinergia
             sinergia = True
-            subtitle = f"{'Es sinergia'}
+            subtitle = 'Es sinergia'
         else:
-            subtitle = f"{'No es sinergia'}
+            subtitle = 'No es sinergia'
             # else if (var_ucm / var_ort) <=1, no es sinergia
 
         
