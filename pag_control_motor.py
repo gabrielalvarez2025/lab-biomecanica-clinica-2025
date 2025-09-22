@@ -335,7 +335,7 @@ def main_control_motor():
             plot_bgcolor="rgba(0,0,0,0)",
             paper_bgcolor="rgba(0,0,0,0)",
             font=dict(color="white"),
-            legend=dict(font=dict(color="white"))
+            #legend=dict(font=dict(color="white"))
         )
         return fig
 
