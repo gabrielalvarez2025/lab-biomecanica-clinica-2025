@@ -245,7 +245,6 @@ def main_control_motor():
             # Not a synergy → dispersión aleatoria, relación VarUCM/VarORT < 1
             x = np.random.uniform(2, 8, n_points)
             y = -x + valor_deseado + np.random.normal(0, 3, n_points)
-            title = "Not a synergy",
             subtitle = "<br>(VarUCM/VarORT < 1)</br>"
 
         fig = go.Figure()
@@ -276,7 +275,7 @@ def main_control_motor():
 
         # Layout
         fig.update_layout(
-            title=title,
+            title=dict(text=f"{subtitle}", x=0.5),
             xaxis=dict(
                 range=[0, 12],
                 showgrid=False,
