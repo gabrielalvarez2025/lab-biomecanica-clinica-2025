@@ -231,118 +231,122 @@ def main_control_motor():
     st.markdown("#### Hipótesis del descontrol múltiple (UCM)")
 
 
-    def crear_plot_sinergia_ucm(title: str, synergy: bool = True, n_points: int = 24, valor_deseado = 10, ratio_var: float = 0.7, mostrar_numeros=False):
-        
+    def crear_plot_sinergia_ucm(
+        title: str,
+        synergy: bool = True,
+        n_points: int = 24,
+        valor_deseado: float = 10,
+        ratio_var: float = 0.7,
+        mostrar_numeros: bool = False,
+        boton_agregar: bool = False
+    ):
         np.random.seed(42)  # reproducibilidad
-
         puntos_size = 5
-        
-        if synergy:
-            # A synergy → elipse alargada a lo largo de UCM
-            x = np.random.uniform(2, 8, n_points)
-            # la desviación ortogonal es menor, la a lo largo de la UCM mayor
-            ortho_noise = np.random.normal(0, 1, n_points)         # perpendicular
-            uc_noise = np.random.normal(0, ratio_var, n_points)  # a lo largo de la UCM
-            y = -x + valor_deseado + ortho_noise + uc_noise
-            subtitle = f"Es sinergia (VarUCM/VarORT ≈ {ratio_var})"
-        else:
-            # Not a synergy → dispersión aleatoria, relación VarUCM/VarORT < 1
-            x = np.random.uniform(2, 8, n_points)
-            y = np.random.uniform(2, 8, n_points)
-            subtitle = f"No es sinergia (VarUCM/VarORT < 1)"
+
+        # ----- Inicializar puntos en session_state -----
+        if "x_points" not in st.session_state or "y_points" not in st.session_state:
+            if synergy:
+                x = np.random.uniform(2, 8, n_points)
+                ortho_noise = np.random.normal(0, 1, n_points)
+                uc_noise = np.random.normal(0, ratio_var, n_points)
+                y = -x + valor_deseado + ortho_noise + uc_noise
+            else:
+                x = np.random.uniform(2, 8, n_points)
+                y = np.random.uniform(2, 8, n_points)
+            st.session_state.x_points = list(x)
+            st.session_state.y_points = list(y)
+
+        # ----- Botón para agregar punto -----
+        if boton_agregar:
+            if st.button("Agregar punto"):
+                # Nuevo punto según la lógica de synergy
+                if synergy:
+                    new_x = np.random.uniform(2, 8)
+                    new_y = -new_x + valor_deseado + np.random.normal(0, 1) + np.random.normal(0, ratio_var)
+                else:
+                    new_x = np.random.uniform(2, 8)
+                    new_y = np.random.uniform(2, 8)
+                st.session_state.x_points.append(new_x)
+                st.session_state.y_points.append(new_y)
+
+        # ----- Usar puntos actuales -----
+        x = np.array(st.session_state.x_points)
+        y = np.array(st.session_state.y_points)
+        subtitle = f"{'Es sinergia' if synergy else 'No es sinergia'} (VarUCM/VarORT ≈ {ratio_var if synergy else '<1'})"
+
         fig = go.Figure()
 
-        # Puntos
+        # ----- Puntos -----
         fig.add_trace(go.Scatter(
             x=x, y=y,
             mode="markers",
-            marker=dict(color="#D7AD17", size=puntos_size),  # naranjo pastel sin contorno
+            marker=dict(color="#D7AD17", size=puntos_size),
             showlegend=False
         ))
 
-        # Línea Var UCM
-        fig.add_trace(go.Scatter(
-            x=[0, 10], 
-            y=[10, 0],
-            mode="lines",
-            line=dict(color="#45A2A2", dash="dash"),
-            name="Var<sub>UCM</sub> (Buena)"
-        ))
-
-        # Línea Var ORT
-        fig.add_trace(go.Scatter(
-            x=[0, 10], 
-            y=[0, 10],
-            mode="lines",
-            line=dict(color="#D54341", dash="dash"),
-            name="Var<sub>ORT</sub> (Mala)"
-        ))
+        # ----- Líneas -----
+        fig.add_trace(go.Scatter(x=[0, 10], y=[10, 0], mode="lines", line=dict(color="#45A2A2", dash="dash"), name="Var<sub>UCM</sub>"))
+        fig.add_trace(go.Scatter(x=[0, 10], y=[0, 10], mode="lines", line=dict(color="#D54341", dash="dash"), name="Var<sub>ORT</sub>"))
 
         # ----- Elipse IC95% -----
         cov = np.cov(x, y)
         mean_x, mean_y = np.mean(x), np.mean(y)
-        chi2_val = chi2.ppf(0.80, df=2)  # IC95%
-        
+        chi2_val = chi2.ppf(0.80, df=2)
         theta = np.linspace(0, 2*np.pi, 100)
-        circle = np.array([np.cos(theta), np.sin(theta)])  # círculo unitario
+        circle = np.array([np.cos(theta), np.sin(theta)])
         vals, vecs = np.linalg.eigh(cov)
         ellipse = vecs @ np.diag(np.sqrt(vals * chi2_val)) @ circle
         ellipse[0, :] += mean_x
         ellipse[1, :] += mean_y
-        
         fig.add_trace(go.Scatter(
             x=ellipse[0, :],
             y=ellipse[1, :],
             mode="lines",
-            line=dict(color="#3C3718", width=1),  # naranjo pastel
+            line=dict(color="#3C3718", width=1),
             fill="toself",
-            fillcolor="rgba(204,197,37,0.05)",  # mismo naranjo pastel alpha=0.4
+            fillcolor="rgba(204,197,37,0.05)",
             showlegend=False
         ))
 
-        # Layout
+        # ----- Layout -----
         fig.update_layout(
-            title=dict(text=f"{subtitle}", x=0.10, y=0.9),
+            title=dict(text=subtitle, x=0.10, y=0.9),
             xaxis=dict(
-                range=[0, 12],
+                range=[0, valor_deseado],
                 showgrid=False,
-                zeroline=False,
-                color="white",
                 showline=True,
-                linewidth=2,
                 linecolor="white",
-                fixedrange=True,  # bloquea zoom/pan
-                scaleanchor="y", scaleratio=1,
+                linewidth=2,
+                fixedrange=True,
+                scaleanchor="y",
+                scaleratio=1,
                 showticklabels=mostrar_numeros
             ),
             yaxis=dict(
-                range=[0, 12],
+                range=[0, valor_deseado],
                 showgrid=False,
-                zeroline=False,
-                color="white",
                 showline=True,
-                linewidth=2,
                 linecolor="white",
-                fixedrange=True,  # bloquea zoom/pan
-                scaleanchor="x", scaleratio=1,
+                linewidth=2,
+                fixedrange=True,
+                scaleanchor="x",
+                scaleratio=1,
                 showticklabels=mostrar_numeros
-            ),
-            legend=dict(
-                orientation="v",      # horizontal
-                y=1.0,               # encima del plot (1 = top del plot, >1 sobre él)
-                x=0.5,                # centrada horizontalmente
-                xanchor="left",
-                yanchor="top",     # ancla la parte inferior de la leyenda a y
-                font=dict(color="white"),
-                bgcolor="rgba(0,0,0,0)"  # fondo transparente
             ),
             plot_bgcolor="rgba(0,0,0,0)",
             paper_bgcolor="rgba(0,0,0,0)",
             font=dict(color="white"),
-            #legend=dict(font=dict(color="white"))
+            legend=dict(
+                orientation="v",
+                y=1.0,
+                x=0.5,
+                xanchor="left",
+                yanchor="top",
+                font=dict(color="white"),
+                bgcolor="rgba(0,0,0,0)"
+            )
         )
         return fig
-
 
     st.markdown("Cuando tratamos de realizar una tarea motora, el sistema nervioso lidia con una gran cantidad de grados de libertad (muchos músculos, articulaciones, segmentos corporales, etc. que pueden moverse de muchas maneras diferentes). Algunas combinaciones de estos grados de libertad resultan en outcomes exitosos para lo que queremos lograr; otros llevan a outcomes fallidos.")
     st.markdown("Uno de los grandes problemas del control motor es entender cómo el sistema nervioso maneja esta gran cantidad de alternativas para realizar una misma tarea y selecciona una combinación adecuada de grados de libertad para lograr el objetivo de forma exitosa.")
