@@ -236,12 +236,15 @@ def main_control_motor():
         synergy: bool = True,
         n_points: int = 24,
         valor_deseado: float = 10,
-        var_ucm: float = 3,   # semieje mayor (a)
-        var_ort: float = 1,   # semieje menor (b)
+        ratio_var: float = 1,
         mostrar_numeros: bool = False
     ):
         np.random.seed(42)
         puntos_size = 5
+
+        var_ucm = np.sqrt(2 * valor_deseado**2)
+
+        var_ort = ratio_var / var_ucm
 
         # ----- Rotación 45° (VarUCM alineada con y=-x+valor_deseado) -----
         theta_rot = np.pi / 4 * 3
@@ -365,7 +368,7 @@ def main_control_motor():
     esp1, col_plot, esp2 = st.columns([1, 99, 1])
 
     with col_plot:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="Sinergia", synergy=True, n_points=24, valor_deseado=10, var_ucm=14, var_ort=1), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="Sinergia", synergy=True, n_points=24, valor_deseado=10, ratio_var=1), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
@@ -375,7 +378,7 @@ def main_control_motor():
     col1, esp, col2 = st.columns([0.49, 0.02, 0.49])
     
     with col1:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=False, var_ucm=10, var_ort=1, mostrar_numeros=True), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=False, ratio_var=1, mostrar_numeros=True), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
