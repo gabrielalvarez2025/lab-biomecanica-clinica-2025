@@ -289,7 +289,7 @@ def main_control_motor():
 
         
         
-        subtitle = f"{'Es sinergia' if sinergia else 'No es sinergia'}"
+        
 
         fig = go.Figure()
 
