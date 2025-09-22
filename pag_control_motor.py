@@ -400,7 +400,8 @@ def main_control_motor():
                         )
     
     with col2:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="A synergy", ratio_var=0.3), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="A synergy", 
+                                                ratio_var=0.3, elipse_size=0.5), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
