@@ -102,6 +102,7 @@ def main_control_motor():
 
     # Crear tabs para cada teoría
     tab_intro, tab_refleja, tab_jerarquica, tab_pm, tab_sistemas, tab_dinamicos, tab_ecologica = st.tabs([
+        "Introducción",
         "Teoría Refleja",
         "Teoría Jerárquica",
         "Programación Motora",
