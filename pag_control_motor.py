@@ -248,9 +248,8 @@ def main_control_motor():
         var_ucm = var_ucm * elipse_size
         var_ort = var_ort * elipse_size
 
-        #if ratio_var > 1:
-        #
-        #    var_ucm, var_ort = var_ort, var_ucm
+        if ratio_var > 1:
+            var_ucm, var_ort = var_ort, var_ucm
         
 
         # ----- Rotación 45° (VarUCM alineada con y=-x+valor_deseado) -----
@@ -394,14 +393,16 @@ def main_control_motor():
     
     with col1:
         st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", mostrar_numeros=True, 
-                                                ratio_var=1.7, elipse_size=0.30), 
+                                                ratio_var=1.7, 
+                                                elipse_size=0.30), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
     
     with col2:
         st.plotly_chart(crear_plot_sinergia_ucm(title="A synergy", 
-                                                ratio_var=0.3, elipse_size=0.5), 
+                                                ratio_var=0.3, 
+                                                elipse_size=0.50), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
