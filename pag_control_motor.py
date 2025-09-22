@@ -439,12 +439,14 @@ def main_control_motor():
         st.plotly_chart(plot_es_sinergia, use_container_width=True, config={"staticPlot": True})
 
 
+    
+    
     col_sinergia_debil, esp_sinergias, col_sinergia_fuerte = st.columns([0.49, 0.02, 0.49])
 
     with col_sinergia_debil:
         
         plot_sinergia_debil = crear_plot_sinergia_ucm(mostrar_numeros=False, mostrar_elipse=1,
-                                                   var_ucm=0.8,
+                                                   var_ucm=0.82,
                                                    var_ort=0.2
                                                    )
         
@@ -453,7 +455,7 @@ def main_control_motor():
     with col_sinergia_fuerte:
         
         plot_sinergia_fuerte = crear_plot_sinergia_ucm(mostrar_numeros=False, mostrar_elipse=1,
-                                                   var_ucm=0.8,
+                                                   var_ucm=0.83,
                                                    var_ort=0.2
                                                    )
         
