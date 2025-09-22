@@ -229,85 +229,86 @@ def main_control_motor():
     st.markdown("### Perspectivas actuales")
     st.markdown("#### Hipótesis del descontrol múltiple (UCM)")
 
-    
-    np.random.seed(42)
-    n_points = 24
 
-    # ----- Plot A: Not a synergy (VarUCM/VarORT < 1) -----
-    x_A = np.random.uniform(2, 8, n_points)
-    y_A = -x_A + 10 + np.random.normal(0, 3, n_points)
+    def crear_plot_sinergia_ucm(title: str, synergy: bool = True, n_points: int = 24, valor_deseado = 10):
+        
+        np.random.seed(42)  # reproducibilidad
 
-    figA = go.Figure()
-    figA.add_trace(go.Scatter(
-        x=x_A, y=y_A,
-        mode="markers",
-        marker=dict(color="#DBD4CA", size=10),  # naranjo sin contorno
-        showlegend=False
-    ))
-    # UCM line
-    figA.add_trace(go.Scatter(
-        x=[0, 10], y=[10, 0],
-        mode="lines",
-        line=dict(color="rgba(255,255,255,0.5)", dash="dash"),
-        name="VarUCM"
-    ))
-    # ORT line
-    figA.add_trace(go.Scatter(
-        x=[0, 10], y=[0, 10],
-        mode="lines",
-        line=dict(color="rgba(255,255,255,0.5)", dash="dash"),
-        name="VarORT"
-    ))
+        puntos_size = 8
+        
+        if synergy:
+            # A synergy → puntos alineados a lo largo de la UCM
+            x = np.random.uniform(2, 8, n_points)
+            y = -x + valor_deseado + np.random.normal(0, 0.8, n_points)
+            subtitle = "B: A synergy<br>(VarUCM/VarORT > 1)"
+        else:
+            # Not a synergy → dispersión aleatoria, relación VarUCM/VarORT < 1
+            x = np.random.uniform(2, 8, n_points)
+            y = -x + valor_deseado + np.random.normal(0, 3, n_points)
+            subtitle = "A: Not a synergy<br>(VarUCM/VarORT < 1)"
 
-    figA.update_layout(
-        title=dict(text="A: Not a synergy<br>(VarUCM/VarORT < 1)", x=0.5),
-        xaxis=dict(range=[0, 12], showgrid=False, zeroline=False, color="white"),
-        yaxis=dict(range=[0, 12], showgrid=False, zeroline=False, color="white", scaleanchor="x", scaleratio=1),
-        plot_bgcolor="rgba(0,0,0,0)",
-        paper_bgcolor="rgba(0,0,0,0)",
-        font=dict(color="white"),
-        legend=dict(font=dict(color="white"))
-    )
+        fig = go.Figure()
 
-    # ----- Plot B: A synergy (VarUCM/VarORT > 1) -----
-    x_B = np.random.uniform(2, 8, n_points)
-    y_B = -x_B + 10 + np.random.normal(0, 0.8, n_points)
+        # Puntos
+        fig.add_trace(go.Scatter(
+            x=x, y=y,
+            mode="markers",
+            marker=dict(color="#FFB347", size=puntos_size),  # naranjo pastel sin contorno
+            showlegend=False
+        ))
 
-    figB = go.Figure()
-    figB.add_trace(go.Scatter(
-        x=x_B, y=y_B,
-        mode="markers",
-        marker=dict(color="#DBD4CA", size=10),  # naranjo sin contorno
-        showlegend=False
-    ))
-    # UCM line
-    figB.add_trace(go.Scatter(
-        x=[0, 10], y=[10, 0],
-        mode="lines",
-        line=dict(color="rgba(255,255,255,0.5)", dash="dash"),
-        name="VarUCM"
-    ))
-    # ORT line
-    figB.add_trace(go.Scatter(
-        x=[0, 10], y=[0, 10],
-        mode="lines",
-        line=dict(color="rgba(255,255,255,0.5)", dash="dash"),
-        name="VarORT"
-    ))
+        # Línea Var UCM
+        fig.add_trace(go.Scatter(
+            x=[0, 10], y=[10, 0],
+            mode="lines",
+            line=dict(color="rgba(255,255,255,0.5)", dash="dash"),
+            name="VarUCM"
+        ))
 
-    figB.update_layout(
-        title=dict(text="B: A synergy<br>(VarUCM/VarORT > 1)", x=0.5),
-        xaxis=dict(range=[0, 12], showgrid=False, zeroline=False, color="white"),
-        yaxis=dict(range=[0, 12], showgrid=False, zeroline=False, color="white", scaleanchor="x", scaleratio=1),
-        plot_bgcolor="rgba(0,0,0,0)",
-        paper_bgcolor="rgba(0,0,0,0)",
-        font=dict(color="white"),
-        legend=dict(font=dict(color="white"))
-    )
+        # Línea Var ORT
+        fig.add_trace(go.Scatter(
+            x=[0, 10], y=[0, 10],
+            mode="lines",
+            line=dict(color="rgba(255,255,255,0.5)", dash="dash"),
+            name="VarORT"
+        ))
 
-    # ----- Mostrar en columnas -----
+        # Layout
+        fig.update_layout(
+            title=dict(text=f"{subtitle}", x=0.5),
+            xaxis=dict(
+                range=[0, 12],
+                showgrid=False,
+                zeroline=False,
+                color="white",
+                showline=True,
+                linewidth=2,
+                linecolor="white"
+            ),
+            yaxis=dict(
+                range=[0, 12],
+                showgrid=False,
+                zeroline=False,
+                color="white",
+                showline=True,
+                linewidth=2,
+                linecolor="white",
+                scaleanchor="x",  # asegura 1:1
+                scaleratio=1
+            ),
+            plot_bgcolor="rgba(0,0,0,0)",
+            paper_bgcolor="rgba(0,0,0,0)",
+            font=dict(color="white"),
+            legend=dict(font=dict(color="white"))
+        )
+        return fig
+
+
+    # ---- Uso en Streamlit ----
     col1, col2 = st.columns(2)
+    
     with col1:
-        st.plotly_chart(figA, use_container_width=True)
+        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=False), use_container_width=True)
+    
     with col2:
-        st.plotly_chart(figB, use_container_width=True)
+        st.plotly_chart(crear_plot_sinergia_ucm(title="A synergy", synergy=True), use_container_width=True)
