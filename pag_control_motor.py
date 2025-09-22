@@ -287,9 +287,9 @@ def main_control_motor():
                 points_y.append(pt_rot[1,0] + y_center)
 
         if (var_ucm / var_ort) > 1: # si es sinergia
-            subtitle = f'Es sinergia (Rvar = {ratio_var})'
+            subtitle = f'Es sinergia (ratio = {ratio_var})'
         else:
-            subtitle = f'No es sinergia (Rvar = {ratio_var})'
+            subtitle = f'No es sinergia (ratio = {ratio_var})'
             # else if (var_ucm / var_ort) <=1, no es sinergia
 
         
