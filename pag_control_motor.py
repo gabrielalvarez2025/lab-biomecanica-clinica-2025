@@ -230,10 +230,11 @@ def main_control_motor():
     st.markdown("#### Hipótesis del descontrol múltiple (UCM)")
 
 
-    def crear_plot_sinergia_ucm(title: str, synergy: bool = True, n_points: int = 24, valor_deseado=10):
+    def crear_plot_sinergia_ucm(title: str, synergy: bool = True, n_points: int = 24, valor_deseado = 10):
+        
         np.random.seed(42)  # reproducibilidad
 
-        puntos_size = 8
+        puntos_size = 5
         
         if synergy:
             # A synergy → puntos alineados a lo largo de la UCM
@@ -241,7 +242,7 @@ def main_control_motor():
             y = -x + valor_deseado + np.random.normal(0, 0.8, n_points)
             subtitle = "Es sinergia"
         else:
-            # Not a synergy → dispersión aleatoria
+            # Not a synergy → dispersión aleatoria, relación VarUCM/VarORT < 1
             x = np.random.uniform(2, 8, n_points)
             y = np.random.uniform(2, 8, n_points)
             subtitle = "No es sinergia"
@@ -258,23 +259,25 @@ def main_control_motor():
 
         # Línea Var UCM
         fig.add_trace(go.Scatter(
-            x=[0, 10], y=[10, 0],
+            x=[0, 10], 
+            y=[10, 0],
             mode="lines",
-            line=dict(color="rgba(255,255,255,0.5)", dash="dash"),
+            line=dict(color="#45A2A2", dash="dash"),
             name="VarUCM"
         ))
 
         # Línea Var ORT
         fig.add_trace(go.Scatter(
-            x=[0, 10], y=[0, 10],
+            x=[0, 10], 
+            y=[0, 10],
             mode="lines",
-            line=dict(color="rgba(255,255,255,0.5)", dash="dash"),
+            line=dict(color="#D54341", dash="dash"),
             name="VarORT"
         ))
 
         # Layout
         fig.update_layout(
-            title=dict(text=subtitle, x=0.5, y=0.95, xanchor="center", yanchor="top"),
+            title=dict(text=f"{subtitle}", x=0.10, y=0.75),
             xaxis=dict(
                 range=[0, 12],
                 showgrid=False,
@@ -292,7 +295,7 @@ def main_control_motor():
                 showline=True,
                 linewidth=2,
                 linecolor="white",
-                scaleanchor="x",
+                scaleanchor="x",  # asegura 1:1
                 scaleratio=1
             ),
             plot_bgcolor="rgba(0,0,0,0)",
@@ -300,7 +303,6 @@ def main_control_motor():
             font=dict(color="white"),
             legend=dict(font=dict(color="white"))
         )
-        
         return fig
 
 
