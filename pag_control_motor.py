@@ -279,7 +279,7 @@ def main_control_motor():
         # ----- Elipse IC95% -----
         cov = np.cov(x, y)
         mean_x, mean_y = np.mean(x), np.mean(y)
-        chi2_val = chi2.ppf(0.90, df=2)  # IC95%
+        chi2_val = chi2.ppf(0.80, df=2)  # IC95%
         
         theta = np.linspace(0, 2*np.pi, 100)
         circle = np.array([np.cos(theta), np.sin(theta)])  # círculo unitario
