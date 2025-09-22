@@ -340,7 +340,7 @@ def main_control_motor():
         fig.update_layout(
             title=dict(text=subtitle, x=0.5, y=0.9, xanchor="center"),
             xaxis=dict(
-                title="Grado de libertad B<br>mano izquierda",
+                title="Grado de libertad B<br>(por ej. Fuerza mano izquierda)",
                 range=[0, valor_deseado],
                 showgrid=False,
                 showline=True,
@@ -352,7 +352,7 @@ def main_control_motor():
                 showticklabels=mostrar_numeros
             ),
             yaxis=dict(
-                title="Grado de libertad A",
+                title="Grado de libertad A<br>(por ej. Fuerza mano derecha)",
                 range=[0, valor_deseado],
                 showgrid=False,
                 showline=True,
