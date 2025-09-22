@@ -323,6 +323,15 @@ def main_control_motor():
                 scaleanchor="x",  # asegura 1:1
                 scaleratio=1
             ),
+            legend=dict(
+                orientation="h",      # horizontal
+                y=1.05,               # encima del plot (1 = top del plot, >1 sobre él)
+                x=0.5,                # centrada horizontalmente
+                xanchor="center",
+                yanchor="bottom",     # ancla la parte inferior de la leyenda a y
+                font=dict(color="white"),
+                bgcolor="rgba(0,0,0,0)"  # fondo transparente
+            ),
             plot_bgcolor="rgba(0,0,0,0)",
             paper_bgcolor="rgba(0,0,0,0)",
             font=dict(color="white"),
