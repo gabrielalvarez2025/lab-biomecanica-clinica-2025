@@ -277,7 +277,7 @@ def main_control_motor():
 
         # Layout
         fig.update_layout(
-            title=dict(text=f"{subtitle}", x=0.1, y=0.65),
+            title=dict(text=f"{subtitle}", x=0.07, y=0.65),
             xaxis=dict(
                 range=[0, 12],
                 showgrid=False,
