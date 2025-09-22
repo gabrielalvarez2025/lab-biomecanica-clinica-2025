@@ -396,7 +396,7 @@ def main_control_motor():
         plot_no_sinergia = crear_plot_sinergia_ucm(
             mostrar_numeros=True, 
             ratio_var=1.7, 
-            elipse_size=0.50
+            elipse_size=1
             )
         
         st.plotly_chart(plot_no_sinergia, use_container_width=True, config={"staticPlot": True})
