@@ -228,7 +228,7 @@ def main_control_motor():
     
     st.markdown("---")
     st.markdown("### Perspectivas actuales")
-    st.markdown("#### Hipótesis del descontrol múltiple (UCMm)")
+    st.markdown("#### Hipótesis del descontrol múltiple (UCM)")
 
 
     def crear_plot_sinergia_ucm(title: str, synergy: bool = True, n_points: int = 24, valor_deseado = 10):
@@ -294,7 +294,7 @@ def main_control_motor():
             mode="lines",
             line=dict(color="#5D5529", width=1),  # naranjo pastel
             fill="toself",
-            fillcolor="rgba(204,197,37,0.2)",  # mismo naranjo pastel alpha=0.4
+            fillcolor="rgba(204,197,37,0.05)",  # mismo naranjo pastel alpha=0.4
             showlegend=False
         ))
 
