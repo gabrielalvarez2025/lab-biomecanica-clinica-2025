@@ -327,7 +327,7 @@ def main_control_motor():
                 orientation="v",      # horizontal
                 y=1.0,               # encima del plot (1 = top del plot, >1 sobre él)
                 x=0.5,                # centrada horizontalmente
-                xanchor="center",
+                xanchor="left",
                 yanchor="top",     # ancla la parte inferior de la leyenda a y
                 font=dict(color="white"),
                 bgcolor="rgba(0,0,0,0)"  # fondo transparente
