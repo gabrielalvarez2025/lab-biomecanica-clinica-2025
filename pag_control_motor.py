@@ -241,12 +241,18 @@ def main_control_motor():
         np.random.seed(42)
         puntos_size = 5
 
+        if var_ort == 0.0:
+            var_ort = 0.000000001
+            ratio_var = "&infin"
+        else:
+            ratio_var = var_ucm / var_ort
+
         largo_max_ejes = np.sqrt(2 * valor_deseado**2)
 
         eje_ucm = var_ucm * largo_max_ejes
         eje_ort = var_ort * largo_max_ejes
 
-        ratio_var = var_ucm / var_ort
+        
 
         
 
@@ -411,7 +417,7 @@ def main_control_motor():
         # SÍ es sinergia (ratio > 1)
         plot_es_sinergia = crear_plot_sinergia_ucm(mostrar_numeros=True,
                                                    var_ucm=0.8,
-                                                   var_ort=0.2
+                                                   var_ort=0
                                                    )
         
         st.plotly_chart(plot_es_sinergia, use_container_width=True, config={"staticPlot": True})
