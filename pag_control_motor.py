@@ -245,7 +245,7 @@ def main_control_motor():
             var_ort = 0.000000001
             ratio_var = "&infin"
         else:
-            ratio_var = var_ucm / var_ort
+            ratio_var = round((var_ucm / var_ort), 2)
 
         largo_max_ejes = np.sqrt(2 * valor_deseado**2)
 
@@ -287,9 +287,9 @@ def main_control_motor():
                 points_y.append(pt_rot[1,0] + y_center)
 
         if (var_ucm / var_ort) > 1: # si es sinergia
-            subtitle = f'Es sinergia (Rvar = {round(ratio_var, 2)})'
+            subtitle = f'Es sinergia (Rvar = {ratio_var})'
         else:
-            subtitle = f'No es sinergia (Rvar = {round(ratio_var, 2)})'
+            subtitle = f'No es sinergia (Rvar = {ratio_var})'
             # else if (var_ucm / var_ort) <=1, no es sinergia
 
         
