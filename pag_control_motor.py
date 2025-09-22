@@ -101,7 +101,7 @@ def main_control_motor():
     st.markdown("## Teorías del Control Motor")
 
     # Crear tabs para cada teoría
-    tab_refleja, tab_jerarquica, tab_pm, tab_sistemas, tab_dinamicos, tab_ecologica = st.tabs([
+    tab_intro, tab_refleja, tab_jerarquica, tab_pm, tab_sistemas, tab_dinamicos, tab_ecologica = st.tabs([
         "Teoría Refleja",
         "Teoría Jerárquica",
         "Programación Motora",
@@ -111,7 +111,9 @@ def main_control_motor():
     ])
 
     
-
+    with tab_intro:
+        st.markdown("Explora esta sección para conocer las principales teorías del control motor (pasadas y actuales), sus postulados, limitaciones y cronología.")
+    
     with tab_refleja:
         st.markdown("""
     **Teoría Refleja (Reflex Theory)**  
