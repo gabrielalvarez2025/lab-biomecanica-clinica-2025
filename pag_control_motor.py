@@ -243,7 +243,7 @@ def main_control_motor():
 
         var_ucm = np.sqrt(2 * valor_deseado**2) / 2
 
-        if ratio_var < 1:    
+        if ratio_var > 1:    
             var_ort = var_ucm / ratio_var
 
 
