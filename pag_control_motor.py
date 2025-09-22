@@ -261,7 +261,7 @@ def main_control_motor():
         fig.add_trace(go.Scatter(
             x=[0, 10], y=[10, 0],
             mode="lines",
-            line=dict(color="#D54341", dash="dash"),
+            line=dict(color="#45A2A2", dash="dash"),
             name="VarUCM"
         ))
 
@@ -269,7 +269,7 @@ def main_control_motor():
         fig.add_trace(go.Scatter(
             x=[0, 10], y=[0, 10],
             mode="lines",
-            line=dict(color="#FFB347", dash="dash"),
+            line=dict(color="#D54341", dash="dash"),
             name="VarORT"
         ))
 
