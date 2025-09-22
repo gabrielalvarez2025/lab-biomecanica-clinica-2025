@@ -288,25 +288,27 @@ def main_control_motor():
         fig.add_trace(go.Scatter(x=[0, 10], y=[10, 0], mode="lines", line=dict(color="#45A2A2", dash="dash"), name="Var<sub>UCM</sub>"))
         fig.add_trace(go.Scatter(x=[0, 10], y=[0, 10], mode="lines", line=dict(color="#D54341", dash="dash"), name="Var<sub>ORT</sub>"))
 
-        # ----- Elipse IC95% -----
-        cov = np.cov(x, y)
-        mean_x, mean_y = np.mean(x), np.mean(y)
-        chi2_val = chi2.ppf(0.80, df=2)
-        theta = np.linspace(0, 2*np.pi, 100)
-        circle = np.array([np.cos(theta), np.sin(theta)])
-        vals, vecs = np.linalg.eigh(cov)
-        ellipse = vecs @ np.diag(np.sqrt(vals * chi2_val)) @ circle
-        ellipse[0, :] += mean_x
-        ellipse[1, :] += mean_y
-        fig.add_trace(go.Scatter(
-            x=ellipse[0, :],
-            y=ellipse[1, :],
-            mode="lines",
-            line=dict(color="#3C3718", width=1),
-            fill="toself",
-            fillcolor="rgba(204,197,37,0.05)",
-            showlegend=False
-        ))
+        if n_points >0:
+        
+            # ----- Elipse IC95% -----
+            cov = np.cov(x, y)
+            mean_x, mean_y = np.mean(x), np.mean(y)
+            chi2_val = chi2.ppf(0.80, df=2)
+            theta = np.linspace(0, 2*np.pi, 100)
+            circle = np.array([np.cos(theta), np.sin(theta)])
+            vals, vecs = np.linalg.eigh(cov)
+            ellipse = vecs @ np.diag(np.sqrt(vals * chi2_val)) @ circle
+            ellipse[0, :] += mean_x
+            ellipse[1, :] += mean_y
+            fig.add_trace(go.Scatter(
+                x=ellipse[0, :],
+                y=ellipse[1, :],
+                mode="lines",
+                line=dict(color="#3C3718", width=1),
+                fill="toself",
+                fillcolor="rgba(204,197,37,0.05)",
+                showlegend=False
+            ))
 
         # ----- Layout -----
         fig.update_layout(
@@ -360,7 +362,7 @@ def main_control_motor():
 
 
     
-    st.plotly_chart(crear_plot_sinergia_ucm(title="Sinergia", synergy=True, ratio_var=1, mostrar_numeros=True, boton_agregar=True), 
+    st.plotly_chart(crear_plot_sinergia_ucm(title="Sinergia", synergy=True, ratio_var=1, mostrar_numeros=True, boton_agregar=True, n_points=0), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
