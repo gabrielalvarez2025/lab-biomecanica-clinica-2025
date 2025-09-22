@@ -291,7 +291,7 @@ def main_control_motor():
             x=ellipse[0, :],
             y=ellipse[1, :],
             mode="lines",
-            line=dict(color="#CCA525", width=2, alpha=0.7),  # naranjo pastel
+            line=dict(color="#CCA525", width=2),  # naranjo pastel
             fill="toself",
             fillcolor="rgba(204,197,37,0.2)",  # mismo naranjo pastel alpha=0.4
             showlegend=False
