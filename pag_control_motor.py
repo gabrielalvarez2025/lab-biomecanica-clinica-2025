@@ -236,17 +236,13 @@ def main_control_motor():
         synergy: bool = True,
         n_points: int = 24,
         valor_deseado: float = 10,
-        ratio_var: float = 1,
-        mostrar_numeros: bool = False,
-        mostrar_elipse: bool = True,
-        puntos_size: float = 5
+        var_ucm: float = 3,   # semieje mayor (a)
+        var_ort: float = 1,   # semieje menor (b)
+        mostrar_numeros: bool = False
     ):
         np.random.seed(42)
+        puntos_size = 5
         
-
-        var_ucm = np.sqrt(2 * valor_deseado**2)
-
-        var_ort = ratio_var / var_ucm
 
         # ----- Rotación 45° (VarUCM alineada con y=-x+valor_deseado) -----
         theta_rot = np.pi / 4 * 3
@@ -279,17 +275,16 @@ def main_control_motor():
 
         fig = go.Figure()
 
-        if mostrar_elipse:
-            # ----- Elipse -----
-            fig.add_trace(go.Scatter(
-                x=x_ellipse_rot,
-                y=y_ellipse_rot,
-                mode="lines",
-                line=dict(color="#3C3718", width=1),
-                fill="toself",
-                fillcolor="rgba(204,197,37,0.05)",
-                showlegend=False
-            ))
+        # ----- Elipse -----
+        fig.add_trace(go.Scatter(
+            x=x_ellipse_rot,
+            y=y_ellipse_rot,
+            mode="lines",
+            line=dict(color="#3C3718", width=1),
+            fill="toself",
+            fillcolor="rgba(204,197,37,0.05)",
+            showlegend=False
+        ))
 
         # ----- Puntos -----
         fig.add_trace(go.Scatter(
@@ -371,7 +366,7 @@ def main_control_motor():
     esp1, col_plot, esp2 = st.columns([1, 99, 1])
 
     with col_plot:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="Sinergia", synergy=True, n_points=24, valor_deseado=10, ratio_var=1), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="Sinergia", synergy=True, n_points=24, valor_deseado=10, var_ucm=14, var_ort=1), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
@@ -381,13 +376,13 @@ def main_control_motor():
     col1, esp, col2 = st.columns([0.49, 0.02, 0.49])
     
     with col1:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=False, ratio_var=0.1, mostrar_numeros=True, mostrar_elipse=False), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=False, var_ucm=10, var_ort=1, mostrar_numeros=True), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
     
     with col2:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="Sinergia", synergy=True, n_points=24, valor_deseado=10, ratio_var=1), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="A synergy", synergy=True), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
