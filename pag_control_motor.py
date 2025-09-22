@@ -234,7 +234,7 @@ def main_control_motor():
         
         np.random.seed(42)  # reproducibilidad
 
-        puntos_size = 8
+        puntos_size = 5
         
         if synergy:
             # A synergy → puntos alineados a lo largo de la UCM
