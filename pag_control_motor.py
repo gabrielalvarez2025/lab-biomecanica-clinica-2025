@@ -394,7 +394,7 @@ def main_control_motor():
     col1, esp, col2 = st.columns([0.49, 0.02, 0.49])
     
     with col1:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=False, mostrar_numeros=True, ratio_var=1.7, elipse_size=0.30), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=True, mostrar_numeros=True, ratio_var=1.7, elipse_size=0.30), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
