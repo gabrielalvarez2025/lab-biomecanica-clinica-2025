@@ -238,10 +238,11 @@ def main_control_motor():
         valor_deseado: float = 10,
         ratio_var: float = 1,
         mostrar_numeros: bool = False,
-        mostrar_elipse: bool = True
+        mostrar_elipse: bool = True,
+        puntos_size: float = 5
     ):
         np.random.seed(42)
-        puntos_size = 5
+        
 
         var_ucm = np.sqrt(2 * valor_deseado**2)
 
