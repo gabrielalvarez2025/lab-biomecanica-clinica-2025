@@ -233,18 +233,27 @@ def main_control_motor():
 
     def crear_plot_sinergia_ucm(
         title: str,
+        ratio_var: float,
+        elipse_size: float = 1.0,
         synergy: bool = True,
         n_points: int = 24,
         valor_deseado: float = 10,
-        var_ucm: float = 3,   # semieje mayor (a)
-        var_ort: float = 1,   # semieje menor (b)
         mostrar_numeros: bool = False
     ):
         np.random.seed(42)
         puntos_size = 5
 
-        var_ucm = var_ucm/2
-        var_ort = var_ort/2
+        var_ucm = np.sqrt(2 * valor_deseado**2) / 2
+        var_ort = var_ucm / ratio_var
+
+        var_ucm = var_ucm * elipse_size
+        var_ort = var_ort * elipse_size
+
+
+
+
+
+
         
 
         # ----- Rotación 45° (VarUCM alineada con y=-x+valor_deseado) -----
@@ -369,7 +378,7 @@ def main_control_motor():
     esp1, col_plot, esp2 = st.columns([1, 99, 1])
 
     with col_plot:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="Sinergia", synergy=True, n_points=24, valor_deseado=5, var_ucm=9, var_ort=1), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="Sinergia", synergy=True, n_points=24, valor_deseado=5, ratio_var=1), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
@@ -379,13 +388,13 @@ def main_control_motor():
     col1, esp, col2 = st.columns([0.49, 0.02, 0.49])
     
     with col1:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=False, var_ucm=3, var_ort=4, mostrar_numeros=True), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="Not a synergy", synergy=False, mostrar_numeros=True, ratio_var=1.0, elipse_size=0.30), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
     
     with col2:
-        st.plotly_chart(crear_plot_sinergia_ucm(title="A synergy", synergy=True), 
+        st.plotly_chart(crear_plot_sinergia_ucm(title="A synergy", synergy=True, ratio_var=0.3), 
                         use_container_width=True,
                         config={"staticPlot": True}
                         )
