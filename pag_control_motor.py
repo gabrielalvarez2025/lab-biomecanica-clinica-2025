@@ -242,6 +242,9 @@ def main_control_motor():
     ):
         np.random.seed(42)
         puntos_size = 5
+
+        var_ucm = var_ucm/2
+        var_ort = var_ort/2
         
 
         # ----- Rotación 45° (VarUCM alineada con y=-x+valor_deseado) -----
