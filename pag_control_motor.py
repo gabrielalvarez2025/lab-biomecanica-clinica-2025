@@ -285,7 +285,7 @@ def main_control_motor():
                 color="white",
                 showline=True,
                 linewidth=2,
-                linecolor="white"
+                linecolor="white",
                 scaleanchor="y",  # asegura 1:1
                 scaleratio=1
             ),
