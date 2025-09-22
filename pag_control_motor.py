@@ -244,7 +244,7 @@ def main_control_motor():
         puntos_size = 5
 
         # ----- Rotación 45° (VarUCM alineada con y=-x+valor_deseado) -----
-        theta_rot = np.pi / 4 * 2
+        theta_rot = np.pi / 4 * 3
         R = np.array([[np.cos(theta_rot), -np.sin(theta_rot)],
                     [np.sin(theta_rot),  np.cos(theta_rot)]])
 
