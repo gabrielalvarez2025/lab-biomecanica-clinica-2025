@@ -1,8 +1,9 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
-import pandas as pd
+import plotly.graph_objects as go
 from pydub import AudioSegment
 
 def main_control_motor():
@@ -235,37 +236,56 @@ def main_control_motor():
     x_A = np.random.uniform(2, 8, n_points)
     y_A = -x_A + 10 + np.random.normal(0, 3, n_points)  # más dispersión ortogonal
 
+    figA = go.Figure()
+    figA.add_trace(go.Scatter(
+        x=x_A, y=y_A,
+        mode="markers",
+        marker=dict(color="#AEC6CF", size=12, line=dict(color="black", width=1)),
+        name="Puntos"
+    ))
+    figA.add_trace(go.Scatter(
+        x=[0, 10], y=[10, 0],
+        mode="lines",
+        line=dict(color="red", dash="dash"),
+        name="UCM: y=-x+10"
+    ))
+
+    figA.update_layout(
+        title="A: Not a synergy (VarUCM/VarORT < 1)",
+        xaxis=dict(range=[0, 12], showgrid=True, gridcolor="white"),
+        yaxis=dict(range=[0, 12], showgrid=True, gridcolor="white"),
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font=dict(color="white"),
+        legend=dict(font=dict(color="white"))
+    )
+    st.plotly_chart(figA, use_container_width=True)
+
     # ----- Plot B: A synergy (VarUCM/VarORT > 1) -----
     x_B = np.random.uniform(2, 8, n_points)
-    y_B = -x_B + 10 + np.random.normal(0, 0.8, n_points)  # poca dispersión ortogonal
+    y_B = -x_B + 10 + np.random.normal(0, 0.8, n_points)  # menos dispersión ortogonal
 
-    # ----- Visualización -----
-    fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+    figB = go.Figure()
+    figB.add_trace(go.Scatter(
+        x=x_B, y=y_B,
+        mode="markers",
+        marker=dict(color="#FFB347", size=12, line=dict(color="black", width=1)),
+        name="Puntos"
+    ))
+    figB.add_trace(go.Scatter(
+        x=[0, 10], y=[10, 0],
+        mode="lines",
+        line=dict(color="red", dash="dash"),
+        name="UCM: y=-x+10"
+    ))
 
-    color_A = "#AEC6CF"  # azul pastel
-    color_B = "#FFB347"  # naranja pastel
-
-    # Plot A
-    axes[0].scatter(x_A, y_A, c=color_A, edgecolor="k", s=80)
-    axes[0].plot([0, 10], [10, 0], "r--", lw=2, alpha=0.6, label="UCM: y = -x + 10")
-    axes[0].set_title("A: Not a synergy\n(VarUCM/VarORT < 1)", fontsize=12)
-    axes[0].set_xlim(0, 12)
-    axes[0].set_ylim(0, 12)
-    axes[0].set_aspect("equal", "box")
-    axes[0].grid(True, linestyle="--", alpha=0.6)
-    axes[0].legend()
-
-    # Plot B
-    axes[1].scatter(x_B, y_B, c=color_B, edgecolor="k", s=80)
-    axes[1].plot([0, 10], [10, 0], "r--", lw=2, alpha=0.6, label="UCM: y = -x + 10")
-    axes[1].set_title("B: A synergy\n(VarUCM/VarORT > 1)", fontsize=12)
-    axes[1].set_xlim(0, 12)
-    axes[1].set_ylim(0, 12)
-    axes[1].set_aspect("equal", "box")
-    axes[1].grid(True, linestyle="--", alpha=0.6)
-    axes[1].legend()
-
-    plt.tight_layout()
-
-    # 👇 esta es la clave en Streamlit
-    st.pyplot(fig)
+    figB.update_layout(
+        title="B: A synergy (VarUCM/VarORT > 1)",
+        xaxis=dict(range=[0, 12], showgrid=True, gridcolor="white"),
+        yaxis=dict(range=[0, 12], showgrid=True, gridcolor="white"),
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        font=dict(color="white"),
+        legend=dict(font=dict(color="white"))
+    )
+    st.plotly_chart(figB, use_container_width=True)
