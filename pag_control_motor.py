@@ -472,15 +472,14 @@ def main_control_motor():
     from streamlit.components.v1 import html
 
     lorem = (
-        """
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec
-    vulputate lacinia, nunc nisl aliquam mauris, eget aliquet nisl nisl et nunc.
-    Sed euismod, nisl nec vulputate lacinia, nunc nisl aliquam mauris, eget aliquet.</p>
     """
-        * 10
+    <div style="color: white;">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Otro párrafo en blanco</p>
+    </div>
+    """
+    * 5
     )
-
-    hola = st.markdown("Hola")
 
     html(hola, height=500, scrolling=True)
     
