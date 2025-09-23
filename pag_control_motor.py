@@ -469,3 +469,5 @@ def main_control_motor():
         
         st.plotly_chart(plot_sinergia_fuerte, use_container_width=True, config={"staticPlot": True})
     
+    st.sidebar.markdown("Hola")
+    
