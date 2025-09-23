@@ -99,7 +99,7 @@ def tabs_teorias_resumen():
     st.markdown("## Teorías del Control Motor")
 
     # Crear tabs para cada teoría
-    tab_intro, tab_refleja, tab_jerarquica, tab_pm, tab_sistemas, tab_dinamicos, tab_ecologica = st.tabs([
+    tab_intro, tab_refleja, tab_jerarquica, tab_pm, tab_sistemas, tab_dinamicos, tab_ecologica, tab_modelos_internos = st.tabs([
         "🔎",
         "Teoría Refleja",
         "Teoría Jerárquica",
