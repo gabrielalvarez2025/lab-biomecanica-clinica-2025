@@ -11,7 +11,20 @@ from pydub import AudioSegment
 def into_control_motor():
     
     st.subheader("Los 2 prolemas del control motor", divider="grey")
-    st.markdown("Al momento de querer comprender cómo se produce y controla el movimiento, la disciplina del control motor se topa con dos situaciones difíciles de explicar.")
+    st.markdown('Al momento de querer comprender cómo se produce y controla el movimiento, la disciplina del control motor se topa con dos situaciones difíciles de explicar, los llamados **"problemas del control motor"**.')
+    st.markdown("En ambos casos, sabemos, vivimos, experimentamos que nuestro movimiento se produce de cierta manera y con ciertas características... pero todo lo que sabemos sobre cómo funciona indica que no debería poder lograr hacerlo así.")
+    st.markdown("Revisemos en qué consiste cada uno:")
+
+    col_problema_retardo, col_problema_redundancia = st.columns(2)
+
+    with col_problema_retardo:
+
+        st.markdown("#### Problema del retardo sensoriomotor")
+
+    with col_problema_redundancia:
+
+        st.markdown("#### Problema de la redundancia motora")
+
 
 
 def timeline_teorias_control_motor():
