@@ -62,6 +62,8 @@ pagina = st.sidebar.radio("Selecciona una sección:", [
     pag_opencap
 ])
 
+st.sidebar("Hola")
+
 st.sidebar.markdown("---")  # línea horizontal para separar
 
 # Leer parámetros de la URL
