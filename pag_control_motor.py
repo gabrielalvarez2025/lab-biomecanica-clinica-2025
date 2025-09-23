@@ -19,7 +19,7 @@ def into_control_motor():
 
     with col_problema_retardo:
 
-        st.markdown("#### El problema del \nretardo sensoriomotor")
+        st.markdown("#### El problema del retardo sensoriomotor")
 
     with col_problema_redundancia:
 
