@@ -481,5 +481,5 @@ def main_control_motor():
     * 5
     )
 
-    html(hola, height=500, scrolling=True)
+    html(lorem, height=500, scrolling=True)
     
