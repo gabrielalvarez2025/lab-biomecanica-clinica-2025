@@ -474,7 +474,7 @@ def main_control_motor():
     seccion_intro = "Introducción al control motor"
     seccion_teorias = "Las teorías del control motor"
     
-    sub_seccion = st.sidebar.selectbox("Selecciona una sección:", [
+    sub_seccion = st.sidebar.radio("Selecciona una sección:", [
         seccion_intro,
         seccion_teorias
     ])
