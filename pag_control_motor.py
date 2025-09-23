@@ -19,12 +19,11 @@ def into_control_motor():
 
     with col_problema_retardo:
 
-        st.markdown("###### Problema del")
-        st.markdown("#### retardo sensoriomotor")
+        st.markdown("#### El problema del retardo sensoriomotor")
 
     with col_problema_redundancia:
 
-        st.markdown("#### Problema de la redundancia motora")
+        st.markdown("#### El problema de la redundancia motora")
 
 
 
