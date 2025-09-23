@@ -47,56 +47,57 @@ def timeline_teorias_control_motor():
         ]
     }
 
-    
     # Crear DataFrame
     df = pd.DataFrame(data)
     df["Inicio"] = pd.to_datetime(df["Inicio"])
     df["Fin"] = pd.to_datetime(df["Fin"])
 
-    # Timeline con Plotly
-    fig = px.timeline(
-        df,
-        x_start="Inicio",
-        x_end="Fin",
-        y="Teoría",
-        color="Teoría",
-        text="Teoría",   # Etiquetas sobre las barras
-        title="Cronología de teorías del control motor",
-    )
-
-    fig.update_traces(
-        textposition="inside",  # texto dentro de las barras
-        insidetextanchor="middle",  # centrado
-        textfont=dict(
-            color="black",     # color blanco
-            size=12            # mismo tamaño para todas
+    with tab_timeline:
+    
+        # Timeline con Plotly
+        fig = px.timeline(
+            df,
+            x_start="Inicio",
+            x_end="Fin",
+            y="Teoría",
+            color="Teoría",
+            text="Teoría",   # Etiquetas sobre las barras
+            title="Cronología de teorías del control motor",
         )
-    )
-    fig.update_yaxes(autorange="reversed", showticklabels=False)
 
-    # Ajustes de layout
-    fig.update_layout(
-        xaxis_title="Año",
-        yaxis_title="",
-        hovermode="closest",
-        height=600,
-        legend=dict(
-            orientation="h",
-            y=-0.2,
-            x=0.5,
-            xanchor="center"
+        fig.update_traces(
+            textposition="inside",  # texto dentro de las barras
+            insidetextanchor="middle",  # centrado
+            textfont=dict(
+                color="black",     # color blanco
+                size=12            # mismo tamaño para todas
+            )
         )
-    )
+        fig.update_yaxes(autorange="reversed", showticklabels=False)
 
-    # Grid vertical cada 5 años
-    fig.update_xaxes(
-        tickformat="%Y",
-        dtick="M120",         # cada 60 meses = 5 años
-        showgrid=True,
-        gridcolor="lightgray"
-    )
+        # Ajustes de layout
+        fig.update_layout(
+            xaxis_title="Año",
+            yaxis_title="",
+            hovermode="closest",
+            height=600,
+            legend=dict(
+                orientation="h",
+                y=-0.2,
+                x=0.5,
+                xanchor="center"
+            )
+        )
 
-    st.plotly_chart(fig, use_container_width=True)
+        # Grid vertical cada 5 años
+        fig.update_xaxes(
+            tickformat="%Y",
+            dtick="M120",         # cada 60 meses = 5 años
+            showgrid=True,
+            gridcolor="lightgray"
+        )
+
+        st.plotly_chart(fig, use_container_width=True)
 
 
 def tabs_teorias_resumen():
