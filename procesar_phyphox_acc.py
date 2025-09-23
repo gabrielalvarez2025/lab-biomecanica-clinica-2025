@@ -5,8 +5,6 @@ import seaborn as sns
 import os
 from scipy.signal import butter, filtfilt   # 👈 importar
 import plotly.graph_objects as go   # 👈 agregar import
-import streamlit.components.v1 as components
-
 
 
 # --------------------------
@@ -267,7 +265,6 @@ def ejemplo_fr_botas():
         #with col_web_left_filtrado:
         st.markdown("##### Filtrando la señal")
         st.markdown('Te habrás dado cuenta que en el gráfico distinguimos la "señal original" (en blanco), de la "señal filtrada" (en naranjo). Esto se debe a que aplicamoos uno de los posibles pasos de procesamiento de señales a la señal de aceleración capturada: el filtrado.')
-        
         col_text_filter1, col_text_filter2 = st.columns(2)
 
 
@@ -364,17 +361,12 @@ def ejemplo_fr_botas():
     
     
     with col_text_filter1:
-        texto1 = """
-        <div style="height:500px; overflow-y: scroll; color: white; padding:10px; background-color:black; border-radius:10px;">
-            <p>Cuando capturamos señales usando sensores, es común que haya ruido contaminando la señal. Ruido es todo aquello que no es parte de la señal que queremos medir.</p>
-            <p>En este caso, queremos medir las oscilaciones causadas por la respiración, pero al mismo tiempo sensamos otras fuentes de movimiento, que generan ruido en la señal. Por ejemplo, cada vez que Botas respira, ronronea. Esa vibración genera movimiento que contamina la señal que queremos medir.</p>
-            <p>Para eliminar ruido de una señal, podemos usar un <b>filtro digital</b>.</p>
-            <p>Un filtro digital es un algoritmo que procesa la señal en términos de las frecuencias que la componen y, al igual que un colador, deja pasar solo las frecuencias que nos interesan, ignorando las demás.</p>
-            <p>El resultado es una señal filtrada más limpia, que idealmente contiene sólo la información que nos interesa estudiar.</p>
-            <p>Existen muchos tipos de filtros digitales. En este ejemplo, usaremos un filtro 'de pasa banda', es decir, un filtro que deja pasar sólo aquel rango de frecuencias que nosotros seleccionemos.</p>
-        </div>
-        """
-        components.html(texto1, height=500, scrolling=True)
+        st.markdown("Cuando capturamos señales usando sensores, es común que haya ruido contaminando la señal. Ruido es todo aquello que no es parte de la señal que queremos medir.")
+        st.markdown("En este caso, queremos medir las oscilaciones causadas por la respiración, pero al mismo tiempo sensamos otras fuentes de movimiento, que generan ruido en la señal. Por ejemplo, cada vez que Botas respira, ronronea. Esa vibración genera movimiento que contamina la señal que queremos medir.")
+        st.markdown("Para eliminar ruido de una señal, podemos usar un **filtro digital**.")
+        st.markdown("Un filtro digital es un algoritmo que procesa la señal en términos de las frecuencias que la componen y, al igual que un colador, deja pasar solo las frecuencias que nos interesan, ignorando las demás.")
+        st.markdown("El resultado es una señal filtrada más limpia, que idealmente contiene sólo la información que nos interesa estudiar.")
+        st.markdown("Existen muchos tipos de filtros digitales. En este ejemplo, usaremos un filtro 'de pasa banda', es decir, un filtro que deja pasar sólo aquel rango de frecuencias que nosotros seleccionemos.")
         
     
     with col_text_filter2:
