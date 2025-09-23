@@ -52,7 +52,7 @@ pag_opencap = "Aplicando VFG: OpenCap"
 #st.sidebar.markdown("Selecciona una sección:")  # línea horizontal para separar
 
 # Sidebar 1
-pagina = st.sidebar.checkbox("Selecciona una sección:", [
+pagina = st.sidebar.selectbox("Selecciona una sección:", [
     pag_bienvenida,
     pag_introduccion,
     pag_bioinstrumentacion,
