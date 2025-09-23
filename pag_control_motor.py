@@ -9,6 +9,11 @@ from pydub import AudioSegment
 
 def timeline_teorias_control_motor():
     
+    tab_intro, tab_timeline = st.tabs([
+        "🔎",
+        "Línea de tiempo"
+    ])
+
     data = {
         "Teoría": [
             "T. Refleja",
