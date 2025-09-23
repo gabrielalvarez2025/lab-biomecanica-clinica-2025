@@ -7,6 +7,13 @@ import plotly.graph_objects as go
 from scipy.stats import chi2
 from pydub import AudioSegment
 
+
+def into_control_motor():
+    
+    st.subheader("Los 2 prolemas del control motor", divider=True)
+    st.markdown("Al momento de querer comprender cómo se produce y controla el movimiento, la disciplina del control motor se topa con dos situaciones difíciles de explicar.")
+
+
 def timeline_teorias_control_motor():
     
     tab_intro, tab_timeline = st.tabs([
