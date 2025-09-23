@@ -10,7 +10,7 @@ from pydub import AudioSegment
 def timeline_teorias_control_motor():
     
     tab_intro, tab_timeline = st.tabs([
-        "🔎",
+        "Haz click aquí ⮕",
         "Línea de tiempo"
     ])
 
