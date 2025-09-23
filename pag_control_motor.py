@@ -52,6 +52,10 @@ def timeline_teorias_control_motor():
     df["Inicio"] = pd.to_datetime(df["Inicio"])
     df["Fin"] = pd.to_datetime(df["Fin"])
 
+    
+    with tab_intro:
+        st.markdown("Explora esta pestaña para ver una línea de tiempo aproximada de las principales teorías del control motor pasadas y actuales.")
+    
     with tab_timeline:
     
         # Timeline con Plotly
@@ -487,8 +491,10 @@ def main_control_motor():
     ])
 
     if sub_seccion == seccion_intro:
-        timeline_teorias_control_motor()
+        st.markdown(" ")
     
     elif sub_seccion == seccion_teorias:
         tabs_teorias_resumen()
+        st.markdown("---")
+        timeline_teorias_control_motor()
 
