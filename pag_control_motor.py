@@ -106,7 +106,8 @@ def tabs_teorias_resumen():
         "Programación Motora",
         "Teoría de Sistemas",
         "Sistemas Dinámicos",
-        "Teoría Ecológica"
+        "Teoría Ecológica",
+        "Modelos internos"
     ])
 
     
