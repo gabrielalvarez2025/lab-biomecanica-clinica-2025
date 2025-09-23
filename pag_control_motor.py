@@ -498,7 +498,7 @@ def main_control_motor():
     ])
 
     if sub_seccion == seccion_intro:
-        st.markdown(" ")
+        into_control_motor()
     
     elif sub_seccion == seccion_teorias:
         tabs_teorias_resumen()
