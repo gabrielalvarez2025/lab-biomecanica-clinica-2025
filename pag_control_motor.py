@@ -10,7 +10,7 @@ from pydub import AudioSegment
 
 def into_control_motor():
     
-    st.subheader("Los 2 prolemas del control motor", divider="grey")
+    st.subheader("Los 2 problemas del control motor", divider="grey")
     st.markdown('Al momento de querer comprender cómo se produce y controla el movimiento, la disciplina del control motor se topa con dos situaciones difíciles de explicar, los llamados **"problemas del control motor"**.')
     st.markdown("En ambos casos, sabemos, vivimos, experimentamos que nuestro movimiento se produce de cierta manera y con ciertas características... pero todo lo que sabemos sobre cómo funciona indica que no debería poder lograr hacerlo así.")
     st.markdown("Revisemos en qué consiste cada uno:")
