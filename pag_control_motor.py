@@ -469,5 +469,16 @@ def main_control_motor():
         
         st.plotly_chart(plot_sinergia_fuerte, use_container_width=True, config={"staticPlot": True})
     
-    st.sidebar.markdown("Hola")
+    from streamlit.components.v1 import html
+
+    lorem = (
+        """
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec
+    vulputate lacinia, nunc nisl aliquam mauris, eget aliquet nisl nisl et nunc.
+    Sed euismod, nisl nec vulputate lacinia, nunc nisl aliquam mauris, eget aliquet.</p>
+    """
+        * 10
+    )
+
+    html(lorem, height=100, scrolling=True)
     
