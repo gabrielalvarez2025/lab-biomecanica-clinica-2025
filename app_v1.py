@@ -62,7 +62,7 @@ pagina = st.sidebar.radio("Selecciona una sección:", [
     pag_opencap
 ])
 
-st.sidebar.markdown("Hola")
+st.sidebar.markdown("1. Hola")
 
 st.sidebar.markdown("---")  # línea horizontal para separar
 
