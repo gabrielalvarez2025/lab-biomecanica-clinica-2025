@@ -471,6 +471,7 @@ def main_control_motor():
     
     from streamlit.components.v1 import html
 
+    
     lorem = (
     """
     <div style="color: white;">
@@ -480,6 +481,8 @@ def main_control_motor():
     """
     * 5
     )
-
+    
+    st.markdown("---")
     html(lorem, height=500, scrolling=True)
+    st.markdown("---")
     
