@@ -20,7 +20,7 @@ def into_control_motor():
     with col_problema_retardo:
 
         st.markdown("#### El problema del retardo sensoriomotor")
-        st.markdown("Todos los procesos involucrados en el control del movimiento por parte del sistema nervioso son procesos biológicos. Por lo tanto, están limitados por las leyes de la física: ocurren en un espacio determinado del cuerpo y demoran un tiempo determinado en ocurrir.")
+        st.markdown("Todos los procesos involucrados en el control del movimiento por parte del sistema nervioso son procesos biológicos y están limitados por las leyes de la física. Por lo tanto, como procesos, ocurren en lugares determinados del cuerpo y demoran un tiempo determinado en ocurrir.")
         st.markdown("Si pensamos en el proceso más simple, la transmisión de un impulso nervioso a lo largo de una neurona, nos damos cuenta de que este tiene varios pasos. Primero, debe gatillarse un potencial de accion en dendritas o soma y luego este impulso debe viajar a lo largo del axón. Ese impulso debe recorrer todo el axón hasta llegar a la arborización terminal, donde podrá ocurrir una sinapsis. Cada uno de esos procesos toma tiempo; tiempo minúsculo (milisegundos) pero real.")
         
 
