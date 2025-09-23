@@ -480,5 +480,7 @@ def main_control_motor():
         * 10
     )
 
-    html(lorem, height=500, scrolling=True)
+    hola = st.markdown("Hola")
+
+    html(hola, height=500, scrolling=True)
     
