@@ -7,10 +7,8 @@ import plotly.graph_objects as go
 from scipy.stats import chi2
 from pydub import AudioSegment
 
-def main_control_motor():
-    st.markdown("#### Teorías del control motor")
-
-
+def timeline_teorias_control_motor():
+    
     data = {
         "Teoría": [
             "T. Refleja",
@@ -96,9 +94,7 @@ def main_control_motor():
     st.plotly_chart(fig, use_container_width=True)
 
 
-    
-
-    
+def tabs_teorias_resumen():
 
     st.markdown("## Teorías del Control Motor")
 
@@ -225,7 +221,9 @@ def main_control_motor():
     - Ha tendido a dar menos énfasis a la organización y función del sistema nervioso que conduce a esta interacción, cambiando el énfasis de la investigación del sistema nervioso a la interfaz organismo/entorno.
         """)
 
-    
+
+def pag_sistemas_dinamicos():
+  
     st.markdown("---")
     st.markdown("### Perspectivas actuales")
     st.markdown("#### Hipótesis del descontrol múltiple (UCM)")
@@ -468,7 +466,33 @@ def main_control_motor():
                                                    )
         
         st.plotly_chart(plot_sinergia_fuerte, use_container_width=True, config={"staticPlot": True})
+  
+
+def main_control_motor():
+    st.markdown("# Teorías del control motor")
     
+    seccion_intro = "Introducción al control motor"
+    seccion_teorias = "Las teorías del control motor"
+    
+    sub_seccion = st.sidebar.selectbox("Selecciona una sección:", [
+        seccion_intro,
+        seccion_teorias
+    ])
+
+    if sub_seccion == seccion_intro:
+        pass
+    
+    elif sub_seccion == seccion_teorias:
+        tabs_teorias_resumen()
+
+
+
+    
+
+    
+
+    
+  
     from streamlit.components.v1 import html
 
     
