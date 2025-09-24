@@ -75,7 +75,7 @@ with tab_aprender:
 
 with tab_medir:
 
-    
+    st.markdown(" ")    
 
 
 
