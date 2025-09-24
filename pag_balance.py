@@ -25,6 +25,8 @@ def main_balance():
         seccion_ev_instrumentada
     ])
 
+    
+    
     if sub_seccion == seccion_propiocepcion:
         st.info("Para más infromación sobre propiocepción, consultar el artículo: ")
 
@@ -36,7 +38,7 @@ def main_balance():
     pdf_bytes = response.content
 
     # Crear botón de descarga
-    st.download_button(
+    st.info.download_button(
         label="📄 Descargar artículo PDF",
         data=pdf_bytes,
         file_name="articulo.pdf",
