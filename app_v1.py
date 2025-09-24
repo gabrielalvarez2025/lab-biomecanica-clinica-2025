@@ -55,7 +55,7 @@ pag_opencap = "Aplicando VFG: OpenCap"
 #st.sidebar.markdown("Selecciona una sección:")  # línea horizontal para separar
 
 
-tab_aprender, tab_medir = st.tabs([
+tab_aprender, tab_medir = st.sidebar.tabs([
     "Quiero aprender",
     "Quiero tomar datos"
 ])
