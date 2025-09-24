@@ -1,6 +1,8 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
+from streamlit_option_menu import option_menu
+
 
 # importar secciones
 from pag_bienvenida import main_bienvenida
