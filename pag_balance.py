@@ -6,7 +6,7 @@ import random
 
 def main_balance():
     st.set_page_config(layout="centered", initial_sidebar_state="expanded")
-    st.title("Balance y control postural")
+    st.markdown("##### Sistema sensoriomotor, balance y control postural")
 
     seccion_intro = "El sistema sensoriomotor"
     seccion_estabilidad = "Concepto de estabilidad"
