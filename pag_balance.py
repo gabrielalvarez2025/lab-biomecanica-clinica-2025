@@ -37,10 +37,6 @@ def main_balance():
     # URL del PDF
     url_paper_propiocepcion = "https://pmc.ncbi.nlm.nih.gov/articles/PMC164311/pdf/attr_37_01_0071.pdf"
 
-    # Descargar el PDF en memoria para botón de descarga
-    response = requests.get(url_paper_propiocepcion)
-    pdf_bytes = response.content
-
     with col2:
         # Botón para abrir el PDF en nueva pestaña
         st.markdown(f'''
@@ -49,10 +45,10 @@ def main_balance():
         </a>
         ''', unsafe_allow_html=True)
 
-        # Botón de descarga
-        st.download_button(
-            label="📄 Descargar artículo PDF",
-            data=pdf_bytes,
-            file_name="articulo_propiocepcion.pdf",
-            mime="application/pdf"
-        )
+        st.markdown(f'''
+        <a href="{url_paper_propiocepcion}" download="articulo_propiocepcion.pdf">
+            <button style="padding:6px 12px; font-size:14px;">📄 Descargar artículo PDF</button>
+        </a>
+        ''', unsafe_allow_html=True)
+
+        
