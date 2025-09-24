@@ -62,16 +62,17 @@ tab_aprender, tab_medir = st.sidebar.tabs([
 
 with tab_aprender:
 
-    # Sidebar 1
-    pagina = st.sidebar.selectbox("Selecciona una sección:", [
-        pag_bienvenida,
-        pag_introduccion,
-        pag_bioinstrumentacion,
-        pag_control_motor,
-        pag_balance,
-        pag_marcha,
-        pag_opencap
-    ])
+    if tab_aprender:
+        # Sidebar 1
+        pagina = st.sidebar.selectbox("Selecciona una sección:", [
+            pag_bienvenida,
+            pag_introduccion,
+            pag_bioinstrumentacion,
+            pag_control_motor,
+            pag_balance,
+            pag_marcha,
+            pag_opencap
+        ])
 
 with tab_medir:
     st.markdown("### Sección: Tomar datos")
