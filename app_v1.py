@@ -53,7 +53,7 @@ selected = option_menu(
     
     menu_icon="cast", 
     default_index=0, 
-    orientation="vertical",
+    orientation="horizontal",
     styles={
         "container": {"padding": "0!important", "background-color": "#fafafa"},
         "icon": {"color": "orange", "font-size": "25px"}, 
