@@ -45,6 +45,8 @@ def main_balance():
         </a>
         ''', unsafe_allow_html=True)
 
+        st.markdown(" ")
+
         st.markdown(f'''
         <a href="{url_paper_propiocepcion}" download="articulo_propiocepcion.pdf">
             <button style="padding:6px 12px; font-size:14px;">📄 Descargar artículo PDF</button>
