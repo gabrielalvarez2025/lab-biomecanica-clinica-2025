@@ -49,7 +49,7 @@ def main_balance():
     
     st.subheader("Propiocepción")
 
-    tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    tab1, tab2 = st.tabs([
         "Propiocepción",
         "Somatosensación"
     ])
