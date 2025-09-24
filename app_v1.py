@@ -74,8 +74,8 @@ with tab_aprender:
     ])
 
 with tab_medir:
-
-    st.markdown(" ")    
+    st.markdown("### Sección: Tomar datos")
+    st.write("Aquí irá la interfaz para tomar datos") 
 
 
 
