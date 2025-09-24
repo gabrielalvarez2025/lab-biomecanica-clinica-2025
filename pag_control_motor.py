@@ -8,7 +8,17 @@ from scipy.stats import chi2
 from pydub import AudioSegment
 
 
-def into_control_motor():
+def intro_control_motor():
+    st.markdown(" ")
+
+
+        
+
+    with tab_problema_redundancia:
+
+        st.markdown("#### El problema de la redundancia motora")
+        
+def problemas_control_motor():
     
     st.subheader("Los 2 problemas del control motor", divider="grey")
     st.markdown('Al momento de querer comprender cómo se produce y controla el movimiento, la disciplina del control motor se topa con dos situaciones difíciles de explicar, los llamados **"problemas del control motor"**.')
@@ -28,16 +38,6 @@ def into_control_motor():
         st.markdown("Pensemos en un proceso simple que ocurre en el sistema nervioso: la transmisión de un impulso nervioso a lo largo de una neurona. Nos damos cuenta de que este proceso tiene varios pasos. Primero, debe gatillarse un potencial de accion en dendritas o soma. Luego, este impulso debe viajar del soma a la arborización terminal, recorriendo todo el largo del axón. Sólo una vez que llegue a un botón sináptico, puede comenzar a liberar neurotransmisores hacia el espacio sináptico para empezar a producir la sinapsis. Una vez que los neurotransmisores avancen la distancia del espacio sináptico, deben unirse a sus receptores postsinápticos y gatillar una vía de señalización. Cada uno de esos procesos no es instantáneo, toma tiempo: un tiempo minúsculo (milisegundos) pero real.")
 
         st.markdown("Ahora, imagina el siguiente caso. Vas caminando por la calle y de pronto ves que una pelota se avecina sobre tu cara. Para protegerte, tu reacción es poner la mano en frente tuyo e impedir que te golpee.")
-
-
-
-
-        
-
-    with tab_problema_redundancia:
-
-        st.markdown("#### El problema de la redundancia motora")
-        
 
 
 
@@ -525,7 +525,7 @@ def main_control_motor():
     ])
 
     if sub_seccion == seccion_intro:
-        into_control_motor()
+        intro_control_motor()
     
     elif sub_seccion == seccion_teorias:
         tabs_teorias_resumen()
