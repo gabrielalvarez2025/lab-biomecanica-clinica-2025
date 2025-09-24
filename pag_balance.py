@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
 import random
+import requests
+
 
 
 def main_balance():
@@ -23,7 +25,20 @@ def main_balance():
         seccion_ev_instrumentada
     ])
 
-    #if sub_seccion == seccion_intro:
+    if sub_seccion == seccion_propiocepcion:
+        st.info("Para más infromación sobre propiocepción, consultar el artículo: ")
 
+    # URL del PDF
+    url_paper_propiocepcion = "https://pmc.ncbi.nlm.nih.gov/articles/PMC164311/pdf/attr_37_01_0071.pdf"
 
-    
+    # Descargar el PDF en memoria
+    response = requests.get(url_paper_propiocepcion)
+    pdf_bytes = response.content
+
+    # Crear botón de descarga
+    st.download_button(
+        label="📄 Descargar artículo PDF",
+        data=pdf_bytes,
+        file_name="articulo.pdf",
+        mime="application/pdf"
+    )
