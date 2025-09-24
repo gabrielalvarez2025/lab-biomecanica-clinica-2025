@@ -14,6 +14,11 @@ def main_bienvenida():
                 )
     
     
+    col1, col2 = st.columns([2, 5])
+
+    with col1:
+        st.markdown("## https://bit.ly/484Yy9r")
+    
     st.image("app_qr_code.png", width=400)
     
     # Mensaje aclaración
