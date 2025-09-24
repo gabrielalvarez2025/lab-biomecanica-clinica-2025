@@ -14,7 +14,7 @@ def main_bienvenida():
                 )
     
     
-    st.image("app_qr_code.png", width=200)
+    st.image("app_qr_code.png", width=400)
     
     # Mensaje aclaración
     st.markdown("""
