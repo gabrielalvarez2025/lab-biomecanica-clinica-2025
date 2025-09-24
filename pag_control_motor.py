@@ -523,6 +523,7 @@ def main_control_motor():
     
     sub_seccion = st.sidebar.radio("¿Qué te gustaría aprender?", [
         seccion_intro,
+        seccion_problemas,
         seccion_teorias
     ])
 
