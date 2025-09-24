@@ -48,10 +48,12 @@ pag_opencap = "Aplicando VFG: OpenCap"
 selected = option_menu(
     None, 
     ["Home", "Upload", "Tasks", "QA", "Overall summary", "Settings"], 
+    
     icons=['house', 'cloud-upload', "list-task", 'question-diamond-fill', 'card-list', 'gear'], 
+    
     menu_icon="cast", 
     default_index=0, 
-    orientation="horizontal",
+    orientation="vertical",
     styles={
         "container": {"padding": "0!important", "background-color": "#fafafa"},
         "icon": {"color": "orange", "font-size": "25px"}, 
