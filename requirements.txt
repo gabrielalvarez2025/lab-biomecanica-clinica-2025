@@ -15,4 +15,3 @@ plotly
 streamlit-drawable-canvas
 openpyxl
 streamlit_option_menu
-webbrowser

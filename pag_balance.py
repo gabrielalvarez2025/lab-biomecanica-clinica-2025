@@ -46,7 +46,7 @@ def main_balance():
 
         
         if st.button("📄 Abrir artículo PDF"):
-            webbrowser.open_new_tab(pdf_url)
+            webbrowser.open_new_tab(url_paper_propiocepcion)
         
         # Crear botón de descarga
         st.download_button(
