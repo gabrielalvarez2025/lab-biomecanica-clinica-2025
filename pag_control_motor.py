@@ -10,10 +10,6 @@ from pydub import AudioSegment
 
 def intro_control_motor():
     st.markdown(" ")
-
-
-        
-
     
         
 def problemas_control_motor():
@@ -40,6 +36,9 @@ def problemas_control_motor():
     with tab_problema_redundancia:
 
             st.markdown("#### El problema de la redundancia motora")
+
+    st.subheader("Solucionando los problemas del control motor", divider="grey")
+
 
 
 def timeline_teorias_control_motor():
@@ -268,7 +267,7 @@ def tabs_teorias_resumen():
         """)
 
 
-def pag_sistemas_dinamicos():
+def sistemas_dinamicos():
   
     st.markdown("---")
     st.markdown("### Perspectivas actuales")
@@ -512,7 +511,7 @@ def pag_sistemas_dinamicos():
                                                    )
         
         st.plotly_chart(plot_sinergia_fuerte, use_container_width=True, config={"staticPlot": True})
-  
+
 
 def main_control_motor():
     st.markdown("##### Teorías del control motor")
