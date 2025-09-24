@@ -4,6 +4,8 @@ import plotly.graph_objects as go
 import random
 import requests
 import webbrowser
+import streamlit.components.v1 as components
+
 
 
 
@@ -45,12 +47,8 @@ def main_balance():
         </a>
         ''', unsafe_allow_html=True)
 
-        st.markdown(" ")
-
-        st.markdown(f'''
-        <a href="{url_paper_propiocepcion}" download="articulo_propiocepcion.pdf">
-            <button style="padding:6px 12px; font-size:14px;">📄 Descargar artículo PDF</button>
-        </a>
-        ''', unsafe_allow_html=True)
+    components.html(f'''
+    <iframe src="{pdf_url}" width="700" height="500" style="border:none;"></iframe>
+    ''', height=500)
 
         
