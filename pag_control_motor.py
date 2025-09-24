@@ -535,5 +535,5 @@ def main_control_motor():
     elif sub_seccion == seccion_teorias:
         tabs_teorias_resumen()
         st.markdown("---")
-        #timeline_teorias_control_motor()
+        timeline_teorias_control_motor()
 
