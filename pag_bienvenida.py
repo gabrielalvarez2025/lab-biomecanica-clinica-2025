@@ -13,6 +13,9 @@ def main_bienvenida():
                 "Aquí encontrarás recursos y herramientas interactivas para complementar tu aprendizaje."
                 )
     
+    
+    st.image("app_qr_code.png")
+    
     # Mensaje aclaración
     st.markdown("""
     ¡Hola! Este espacio está diseñado para acompañarte a lo largo del curso.  
