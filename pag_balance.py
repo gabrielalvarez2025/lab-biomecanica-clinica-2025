@@ -52,6 +52,6 @@ def main_balance():
         st.download_button(
             label="📄 Descargar artículo PDF",
             data=pdf_bytes,
-            file_name="articulo.pdf",
+            file_name="articulo_propiocepcion.pdf",
             mime="application/pdf"
         )
