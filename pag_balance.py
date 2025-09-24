@@ -12,7 +12,7 @@ def main_balance():
     seccion_estabilidad = "Concepto de estabilidad"
     seccion_propiocepcion = "La propiocepción"
     seccion_ev_clinica = "Evaluación clínica del balance"
-    seccion_ev_instrumentada = "Evaluación instrumentada del balance"
+    seccion_ev_instrumentada = "Evaluación instrumentada"
     
     
     sub_seccion = st.sidebar.radio("¿Qué te gustaría aprender?", [
