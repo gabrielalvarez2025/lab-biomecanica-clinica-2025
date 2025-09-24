@@ -45,7 +45,7 @@ pag_marcha              = "Análisis de marcha"
 # Paginas adicionales
 pag_opencap = "Aplicando VFG: OpenCap"
 
-selected = option_menu(
+selected = st.sidebar.option_menu(
     None, 
     ["Home", "Upload", "Tasks", "QA", "Overall summary", "Settings"], 
     
