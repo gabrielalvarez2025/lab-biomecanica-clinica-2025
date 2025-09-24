@@ -26,9 +26,11 @@ def main_balance():
     ])
 
     
-    
-    if sub_seccion == seccion_propiocepcion:
-        st.info("Para más infromación sobre propiocepción, consultar el artículo: ")
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if sub_seccion == seccion_propiocepcion:
+            st.info("Para más infromación sobre propiocepción, consultar el artículo: ")
 
     # URL del PDF
     url_paper_propiocepcion = "https://pmc.ncbi.nlm.nih.gov/articles/PMC164311/pdf/attr_37_01_0071.pdf"
@@ -37,10 +39,13 @@ def main_balance():
     response = requests.get(url_paper_propiocepcion)
     pdf_bytes = response.content
 
-    # Crear botón de descarga
-    st.info.download_button(
-        label="📄 Descargar artículo PDF",
-        data=pdf_bytes,
-        file_name="articulo.pdf",
-        mime="application/pdf"
-    )
+    
+    with col2:
+
+        # Crear botón de descarga
+        st.download_button(
+            label="📄 Descargar artículo PDF",
+            data=pdf_bytes,
+            file_name="articulo.pdf",
+            mime="application/pdf"
+        )
