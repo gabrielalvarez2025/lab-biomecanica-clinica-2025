@@ -55,35 +55,17 @@ pag_opencap = "Aplicando VFG: OpenCap"
 #st.sidebar.markdown("Selecciona una sección:")  # línea horizontal para separar
 
 
-tab_aprender, tab_medir = st.sidebar.tabs([
-    "Quiero aprender",
-    "Quiero tomar datos"
+
+# Sidebar 1
+pagina = st.sidebar.selectbox("Selecciona una sección:", [
+    pag_bienvenida,
+    pag_introduccion,
+    pag_bioinstrumentacion,
+    pag_control_motor,
+    pag_balance,
+    pag_marcha,
+    pag_opencap
 ])
-
-with tab_aprender:
-
-    if tab_aprender:
-        # Sidebar 1
-        pagina = st.sidebar.selectbox("Selecciona una sección:", [
-            pag_bienvenida,
-            pag_introduccion,
-            pag_bioinstrumentacion,
-            pag_control_motor,
-            pag_balance,
-            pag_marcha,
-            pag_opencap
-        ])
-
-with tab_medir:
-    st.markdown("### Sección: Tomar datos")
-    st.write("Aquí irá la interfaz para tomar datos") 
-
-    pagina2 = st.sidebar.selectbox("Selecciona una sección:", [
-        pag_bienvenida,
-        pag_introduccion
-    ])
-
-
 
 
 st.sidebar.markdown("---")  # línea horizontal para separar
