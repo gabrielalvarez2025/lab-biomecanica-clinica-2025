@@ -14,9 +14,7 @@ def intro_control_motor():
 
         
 
-    with tab_problema_redundancia:
-
-        st.markdown("#### El problema de la redundancia motora")
+    
         
 def problemas_control_motor():
     
@@ -39,6 +37,9 @@ def problemas_control_motor():
 
         st.markdown("Ahora, imagina el siguiente caso. Vas caminando por la calle y de pronto ves que una pelota se avecina sobre tu cara. Para protegerte, tu reacción es poner la mano en frente tuyo e impedir que te golpee.")
 
+    with tab_problema_redundancia:
+
+            st.markdown("#### El problema de la redundancia motora")
 
 
 def timeline_teorias_control_motor():
