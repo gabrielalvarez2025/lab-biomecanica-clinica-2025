@@ -45,34 +45,7 @@ pag_marcha              = "Análisis de marcha"
 # Paginas adicionales
 pag_opencap = "Aplicando VFG: OpenCap"
 
-selected = option_menu(
-    menu_title=None,  # sin título
-    options=["Home", "Upload", "Tasks", "QA", "Overall summary", "Settings"],
-    icons=['house', 'cloud-upload', "list-task", 'question-diamond-fill', 'card-list', 'gear'],
-    menu_icon="cast",
-    default_index=0,
-    orientation="horizontal",
-    styles={
-        "container": {
-            "padding": "0!important",
-            "background-color": "transparent",  # fondo transparente
-            "border": "none"
-        },
-        "icon": {"color": "black", "font-size": "20px"},  # iconos discretos
-        "nav-link": {
-            "font-size": "18px",
-            "text-align": "center",
-            "margin":"0px",
-            "--hover-color": "#f0f0f0",  # ligero efecto al pasar el mouse
-            "color": "black"
-        },
-        "nav-link-selected": {
-            "background-color": "rgba(0,0,0,0.05)",  # resaltado muy sutil
-            "color": "black",
-            "border-radius": "5px"
-        },
-    }
-)
+
 
 
 
