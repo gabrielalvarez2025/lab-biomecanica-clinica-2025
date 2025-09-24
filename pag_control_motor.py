@@ -15,9 +15,13 @@ def into_control_motor():
     st.markdown("En ambos casos, sabemos, vivimos, experimentamos que nuestro movimiento se produce de cierta manera y con ciertas características... pero todo lo que sabemos sobre cómo funciona indica que no debería poder lograr hacerlo así.")
     st.markdown("Revisemos en qué consiste cada uno:")
 
-    col_problema_retardo, col_problema_redundancia = st.columns(2)
+    tab_problema_retardo, tab_problema_redundancia = st.tabs([
+        "Problema del retardo sensoriomotor",
+        "Problema de la redundancia motora"
+    ])
 
-    with col_problema_retardo:
+    
+    with tab_problema_retardo:
 
         st.markdown("#### El problema del retardo sensoriomotor")
         st.markdown("Todos los procesos involucrados en el control del movimiento por parte del sistema nervioso son procesos biológicos y están limitados por las leyes de la física. Por lo tanto, como procesos, ocurren en lugares determinados del cuerpo y demoran un tiempo determinado en ocurrir.")
@@ -25,12 +29,12 @@ def into_control_motor():
 
         st.markdown("Ahora, imagina el siguiente caso. Vas caminando por la calle y de pronto ves que una pelota se avecina sobre tu cara. Para protegerte, tu reacción es poner la mano en frente tuyo e impedir que te golpee.")
 
+
+
+
         
 
-
-        
-
-    with col_problema_redundancia:
+    with tab_problema_redundancia:
 
         st.markdown("#### El problema de la redundancia motora")
         
