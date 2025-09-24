@@ -48,7 +48,7 @@ def main_balance():
         ''', unsafe_allow_html=True)
 
     components.html(f'''
-    <iframe src="{pdf_url}" width="700" height="500" style="border:none;"></iframe>
+    <iframe src="{url_paper_propiocepcion}" width="700" height="500" style="border:none;"></iframe>
     ''', height=500)
 
         
