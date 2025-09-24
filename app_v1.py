@@ -77,7 +77,7 @@ with tab_medir:
     st.markdown("### Sección: Tomar datos")
     st.write("Aquí irá la interfaz para tomar datos") 
 
-    pagina = st.sidebar.selectbox("Selecciona una sección:", [
+    pagina2 = st.sidebar.selectbox("Selecciona una sección:", [
         pag_bienvenida,
         pag_introduccion
     ])
