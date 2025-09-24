@@ -3,6 +3,8 @@ import numpy as np
 import plotly.graph_objects as go
 import random
 import requests
+import webbrowser
+
 
 
 
@@ -42,6 +44,10 @@ def main_balance():
     
     with col2:
 
+        
+        if st.button("📄 Abrir artículo PDF"):
+            webbrowser.open_new_tab(pdf_url)
+        
         # Crear botón de descarga
         st.download_button(
             label="📄 Descargar artículo PDF",
