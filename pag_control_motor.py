@@ -517,7 +517,7 @@ def pag_sistemas_dinamicos():
 def main_control_motor():
     st.markdown("##### Teorías del control motor")
     
-    seccion_intro = "Introducción al control motor",
+    seccion_intro = "Introducción al control motor"
     seccion_problemas = "Los 2 problemas"
     seccion_teorias = "Las teorías del control motor"
     
