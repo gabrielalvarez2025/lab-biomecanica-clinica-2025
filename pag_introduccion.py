@@ -1,12 +1,31 @@
 import streamlit as st
 import random
+import yt_dlp
+
+def obtener_url_video_directo(url_instagram):
+    """
+    Usa yt-dlp para extraer la URL real del archivo .mp4
+    evitando los bloqueos de iframe de Instagram.
+    """
+    ydl_opts = {
+        'format': 'best',
+        'quiet': True,
+        'no_warnings': True,
+    }
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            info = ydl.extract_info(url_instagram, download=False)
+            # Retorna el enlace directo al .mp4 que expira en unas horas,
+            # pero como se ejecuta en tiempo real para el alumno, siempre estará activo.
+            return info.get('url', None)
+    except Exception:
+        return None
 
 def main_introduccion():
     st.header("Introducción al análisis del movimiento")
-
     st.markdown("---")
-    st.subheader("📱 Biomecánica Reels: *Doomscrolling* para Ñoños x")
-    
+    st.subheader("📱 Biomecánica Reels: *Doomscrolling* para Ñoños v3")
+
     LISTA_VIDEOS = [
         "https://www.instagram.com/p/DXSdAOnimiF/",
         "https://www.instagram.com/p/DYF_XhqTTby/",
@@ -25,14 +44,17 @@ def main_introduccion():
             st.markdown("**🤖 Análisis de caso en el feed:**")
 
             if "instagram.com" in url:
-                # Extrae el código del reel para mostrarlo en el texto
-                id_reel = url.split("/p/")[1].split("/")[0]
+                # Mostramos un spinner de carga mientras Python extrae el video en segundo plano
+                with st.spinner("Cargando video desde Instagram..."):
+                    video_directo_url = obtener_url_video_directo(url)
                 
-                # Diseñamos una tarjeta con aspecto de post
-                st.info(f"📸 **Instagram Reel ({id_reel})**")
-                st.link_button("▶️ Ver Reel de Biomecánica", url, use_container_width=True)
-                st.caption("Haz clic arriba para abrir el video directamente en Instagram.")
-
+                if video_directo_url:
+                    # Cargamos el reproductor nativo con el .mp4 extraído
+                    st.video(video_directo_url)
+                else:
+                    # Respaldo por si falla la extracción
+                    st.warning("No se pudo previsualizar el video directamente.")
+                    st.page_link(url, label="📸 Ver directamente en Instagram", icon="🔗")
             else:
                 st.video(url)
 
