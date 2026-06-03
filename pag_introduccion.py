@@ -21,7 +21,8 @@ def main_introduccion():
     st.header("Introducción al análisis del movimiento")
     st.markdown("---")
 
-    st.subheader("📸 Historias de Biomecánica: *Casos de Estudio*")
+    st.subheader("Reels biomecánicos para ñoños")
+    st.markdown("Te dejamos acá una selección de algunos videos sacados de Instagram, TikTok, YouTube Shorts y otras plataformas, que podrían resultarte interesantes y complementar contenidos vistos en clase. Cada uno se acompaña de un breve comentario de nuestra parte destacando alguno de los aspectos que podrían ser relevantes para el curso. La idea es que puedas entretenerte con este contenido curado para ti cuando estés aburrido. Estaremos continuamente haciendo crecer la colección de videos.")
 
     # 1. Base de datos estructurada con tus comentarios docentes o Lorem Ipsum
     DATABASE_VIDEOS = [
