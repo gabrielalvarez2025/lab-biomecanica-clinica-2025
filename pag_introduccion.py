@@ -27,8 +27,16 @@ def main_introduccion():
     DATABASE_VIDEOS = [
         {
             "url": "https://www.instagram.com/p/DXSdAOnimiF/",
-            "titulo": "Caso 1: Cinemática de la carrera y función patelar",
-            "comentario": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. En este video destacamos la importancia de la patela como polea mecánica para optimizar el brazo de momento del cuádriceps durante la extensión de rodilla.",
+            "titulo": "",
+            "comentario": "resulta interesante observar el control del tronco durante la vocalización. "
+            "La acción coordinada de transverso abdominal, multífidos, diafragma y piso pélvico genera un cilindro "
+            "estable que minimiza movimientos indeseados del tronco y evita una pérdida brusca de presión, permitiendo "
+            "dosificar la salida de aire de manera eficiente. Esto es especialmente relevante al cantar, "
+            "ya que la tarea requiere mantener una presión subglótica relativamente constante durante períodos prolongados. "
+            "La estabilidad proporcionada por el sistema muscular profundo permite desacoplar parcialmente la función postural "
+            "de la función respiratoria, evitando que las oscilaciones asociadas a la ventilación comprometan la postura o que "
+            "las exigencias posturales interfieran con la producción vocal. Es un buen ejemplo de cómo los músculos estabilizadores "
+            "no solo contribuyen a la estabilidad lumbopélvica, sino también al control respiratorio y al desempeño global de la tarea.",
         },
         {
             "url": "https://www.instagram.com/p/DYF_XhqTTby/",
@@ -37,7 +45,7 @@ def main_introduccion():
         },
         {
             "url": "https://www.instagram.com/p/DY9ahGasLK1/",
-            "titulo": "Caso 3: Análisis cinemático tridimensional",
+            "titulo": " ",
             "comentario": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Aquí se observa el uso de herramientas de videofotogrametría computacional para la extracción de trayectorias articulares sin marcadores físicos.",
         },
     ]
