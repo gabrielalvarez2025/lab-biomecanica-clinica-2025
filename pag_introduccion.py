@@ -3,18 +3,36 @@ import streamlit as st
 import yt_dlp
 
 
-def obtener_url_video_directo(url_instagram):
+@st.cache_data(show_spinner=False)
+def precargar_todos_los_videos(lista_casos):
+    """Extrae las URLs directas de todos los videos en un solo viaje
+
+    para que la navegación posterior sea instantánea.
+    """
     ydl_opts = {
         "format": "best",
         "quiet": True,
         "no_warnings": True,
     }
-    try:
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            info = ydl.extract_info(url_instagram, download=False)
-            return info.get("url", None)
-    except Exception:
-        return None
+    resultados = []
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        for caso in lista_casos:
+            try:
+                info = ydl.extract_info(caso["url"], download=False)
+                url_directa = info.get("url", None)
+                if url_directa:
+                    resultados.append(
+                        {
+                            "mp4": url_directa,
+                            "url_original": caso["url"],
+                            "titulo": caso["titulo"],
+                            "comentario": caso["comentario"],
+                        }
+                    )
+            except Exception:
+                # Si uno falla, avanzamos para no trabar la app
+                continue
+    return resultados
 
 
 def main_introduccion():
@@ -23,19 +41,15 @@ def main_introduccion():
 
     st.subheader("Reels biomecánicos para ñoños")
     st.markdown(
-        "Te dejamos acá una selección de algunos videos sacados de Instagram, TikTok, YouTube Shorts y otras plataformas, "
-        "que podrían resultarte interesantes y complementar contenidos vistos en clase. Cada uno se acompaña de un breve "
-        "comentario de nuestra parte destacando alguno de los aspectos que podrían ser relevantes para el curso. La idea "
-        "es que puedas entretenerte con este contenido curado para ti cuando estés aburrido. Estaremos continuamente "
-        "haciendo crecer la colección de videos."
+        "Te dejamos acá una selección de algunos videos sacados de Instagram, TikTok, YouTube Shorts y otras plataformas... "
+        "La idea es que puedas entretenerte con este contenido curado para ti cuando estés aburrido."
     )
 
-    # 1. Base de datos estructurada con tus comentarios docentes
     DATABASE_VIDEOS = [
         {
             "url": "https://www.instagram.com/p/DXSdAOnimiF/",
             "titulo": "Caso 1: Control de tronco y presiones",
-            "comentario": "Resulta interesante observar el control del tronco durante la vocalización. La acción coordinada de transverso abdominal, multífidos, diafragma y piso pélvico genera un cilindro estable que minimiza movimientos indeseados del tronco y evita una pérdida brusca de presión, permitiendo dosificar la salida de aire de manera eficiente. Esto es especialmente relevante al cantar, ya que la tarea requiere mantener una presión subglótica relativamente constante durante períodos prolongados. La estabilidad proporcionada por el sistema muscular profundo permite desacoplar parcialmente la función postural de la función respiratoria, evitando que las oscilaciones asociadas a la ventilación comprometan la postura o que las exigencias posturales interfieran con la producción vocal. Es un buen ejemplo de cómo los músculos estabilizadores no solo contribuyen a la estabilidad lumbopélvica, sino también al control respiratorio y al desempeño global de la tarea.",
+            "comentario": "Resulta interesante observar el control del tronco durante la vocalización. La acción coordinada de transverso abdominal, multífidos, diafragma y piso pélvico genera un cilindro estable que minimiza movimientos indeseados del tronco y evita una pérdida brusca de presión, permitiendo dosificar la salida de aire de manera eficiente...",
         },
         {
             "url": "https://www.instagram.com/p/DYF_XhqTTby/",
@@ -45,100 +59,74 @@ def main_introduccion():
         {
             "url": "https://www.instagram.com/p/DY9ahGasLK1/",
             "titulo": "Caso 3: Transferencia de momentum",
-            "comentario": "Recordar: Gran parte del movimiento global de la extremidad inferior durante la marcha y otras actividades, está mediado por la inercia y transferencia de momentum desde movimientos previos y activación de la musculatura proximal. Somos altamente eficientes debido a que gran parte de los movimientos que realizamos aprovechan la física de los cuerpos rígidos que componen nuestros segmentos para ahorrar energía y utilizar sólo la activación muscular estrictamente necesaria para lograr la tarea.",
+            "comentario": "Recordar: Gran parte del movimiento global de la extremidad inferior durante la marcha y otras actividades, está mediado por la inercia y transferencia de momentum desde movimientos previos y activación de la musculatura proximal...",
         },
     ]
 
-    # 2. Inicializar el feed aleatorio en la sesión si no existe
-    if "videos_feed" not in st.session_state:
-        st.session_state.videos_feed = random.sample(
+    # Mezclar la base de datos de manera fija por sesión para que no cambie en cada clic
+    if "db_mezclada" not in st.session_state:
+        st.session_state.db_mezclada = random.sample(
             DATABASE_VIDEOS, len(DATABASE_VIDEOS)
         )
 
-    # 3. Inicializar el índice del video actual
-    if "reels_index" not in st.session_state:
-        st.session_state.reels_index = 0
+    # 1. PRECARGA EN UN SOLO BLOQUE (Usa caché para que solo ocurra una vez)
+    with st.spinner("Preparando el feed multimedia de forma fluida..."):
+        casos_listos = precargar_todos_los_videos(st.session_state.db_mezclada)
 
-    # Obtener el caso actual basado en el índice
-    idx = st.session_state.reels_index
-    caso_actual = st.session_state.videos_feed[idx]
+    if not casos_listos:
+        st.error("No se pudieron conectar los videos en este momento.")
+        return
 
-    # --- DISEÑO DE DOS COLUMNAS NATIVAS ---
-    col_izquierda, col_derecha = st.columns([1.2, 1], gap="large")
+    # Estética para ocultar visualmente las pestañas superiores si se prefiere,
+    # pero las dejaremos limpias como un menú de navegación horizontal rápido tipo "Historias"
+    st.write("🔽 Selecciona un caso para verlo al instante:")
 
-    # COLUMNA IZQUIERDA: El Video (Escalado proporcional automático)
-    with col_izquierda:
-        with st.spinner("Extrayendo flujo multimedia..."):
-            video_directo_url = obtener_url_video_directo(caso_actual["url"])
+    # 2. SISTEMA DE TABS (Pestañas) COMO NAVEGADOR INSTANTÁNEO
+    nombres_tabs = [f"📹 Video {i+1}" for i in range(len(casos_listos))]
+    tabs = st.tabs(nombres_tabs)
 
-        if video_directo_url:
-            st.video(video_directo_url)
-        else:
-            st.error("No se pudo cargar la previsualización del video.")
-            st.page_link(caso_actual["url"], label="Ver en Instagram", icon="📸")
+    # Renderizar el contenido dentro de cada pestaña
+    for idx, tab in enumerate(tabs):
+        with tab:
+            caso = casos_listos[idx]
 
-    # COLUMNA DERECHA: El Texto Académico Sincronizado y Enlaces
-    with col_derecha:
-        if caso_actual["titulo"].strip():
-            st.markdown(f"### 🧠 {caso_actual['titulo']}")
-        else:
-            st.markdown("### 🧠 Análisis de Caso Clínico")
+            # Estructura de dos columnas nativas idéntica a la anterior
+            col_izquierda, col_derecha = st.columns([1.2, 1], gap="large")
 
-        st.markdown(
-            f"<p style='text-align: justify; font-size: 14px;'>{caso_actual['comentario']}</p>",
-            unsafe_allow_html=True,
-        )
+            with col_izquierda:
+                # El video ya está precargado, arranca de inmediato al cambiar de pestaña
+                st.video(caso["mp4"])
 
-        st.write("")  # Espaciador estético
+            with col_derecha:
+                st.markdown(f"### 🧠 {caso['titulo']}")
+                st.markdown(
+                    f"<p style='text-align: justify; font-size: 14px;'>{caso['comentario']}</p>",
+                    unsafe_allow_html=True,
+                )
 
-        # --- NUEVA SECCIÓN: ENLACE A LA PLATAFORMA ORIGINAL ---
-        # Un botón estilizado de ancho completo que cambia dinámicamente según la URL
-        texto_plataforma = "🔗 Ver publicación original"
-        if "instagram.com" in caso_actual["url"]:
-            texto_plataforma = "📸 Ver Reel original en Instagram"
-        elif "tiktok.com" in caso_actual["url"]:
-            texto_plataforma = "🎵 Ver Video original en TikTok"
-        elif "youtube.com" in caso_actual["url"] or "youtu.be" in caso_actual["url"]:
-            texto_plataforma = "📺 Ver Short original en YouTube"
+                st.write("")
 
-        st.link_button(
-            texto_plataforma, caso_actual["url"], use_container_width=True
-        )
+                # Botón de red social dinámico
+                texto_plataforma = "📸 Ver original en Instagram"
+                if "tiktok.com" in caso["url_original"]:
+                    texto_plataforma = "🎵 Ver original en TikTok"
+                elif (
+                    "youtube.com" in caso["url_original"]
+                    or "youtu.be" in caso["url_original"]
+                ):
+                    texto_plataforma = "📺 Ver original en YouTube"
 
-        st.write("")  # Espaciador estético
+                st.link_button(
+                    texto_plataforma,
+                    caso["url_original"],
+                    use_container_width=True,
+                )
 
-        # --- BOTONES DE NAVEGACIÓN DENTRO DE LA COLUMNA DE TEXTO ---
-        st.markdown("**Navegación de casos:**")
-        col_btn_prev, col_btn_next = st.columns(2)
-
-        with col_btn_prev:
-            if st.button(
-                "⬅️ Anterior",
-                use_container_width=True,
-                disabled=(idx == 0),
-            ):
-                st.session_state.reels_index -= 1
-                st.rerun()
-
-        with col_btn_next:
-            if st.button(
-                "Siguiente ➡️",
-                use_container_width=True,
-                disabled=(idx == len(st.session_state.videos_feed) - 1),
-            ):
-                st.session_state.reels_index += 1
-                st.rerun()
-
-        st.caption(
-            f"<center>Caso {idx + 1} de {len(st.session_state.videos_feed)}</center>",
-            unsafe_allow_html=True,
-        )
-
-    # --- BOTÓN INFERIOR GENERAL PARA BARAJAR ---
+    # 3. BOTÓN DE REESCRITURA GENERAL (Abajo del todo)
     st.markdown("---")
-    if st.button("🎲 Mezclar y reiniciar orden de casos", use_container_width=True):
-        st.session_state.videos_feed = random.sample(
+    if st.button("🎲 Mezclar videos y generar nuevo orden", use_container_width=True):
+        st.session_state.db_mezclada = random.sample(
             DATABASE_VIDEOS, len(DATABASE_VIDEOS)
         )
-        st.session_state.reels_index = 0
+        st.clear_cache()  # Limpia la caché para obligar a buscar nuevas URLs
         st.rerun()
