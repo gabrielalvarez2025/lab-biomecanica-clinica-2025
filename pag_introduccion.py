@@ -21,168 +21,101 @@ def main_introduccion():
     st.header("Introducción al análisis del movimiento")
     st.markdown("---")
 
-    st.subheader("📸 Historias de Biomecánica: *Carrusel Académico*")
-    st.write(
-        "Desliza horizontalmente. A la izquierda verás el gesto motriz y a la derecha nuestra observación docente."
-    )
+    st.subheader("📸 Historias de Biomecánica: *Casos de Estudio*")
 
+    # 1. Base de datos estructurada con tus comentarios docentes o Lorem Ipsum
     DATABASE_VIDEOS = [
         {
             "url": "https://www.instagram.com/p/DXSdAOnimiF/",
-            "titulo": "Caso 1: Cinemática de la carrera",
-            "comentario": "Observen detalladamente la fase de desaceleración y el ángulo de flexión de la rodilla en el contacto inicial. Analicen cómo influye el torque en la articulación femoropatelar durante el ciclo.",
+            "titulo": "Caso 1: Cinemática de la carrera y función patelar",
+            "comentario": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. En este video destacamos la importancia de la patela como polea mecánica para optimizar el brazo de momento del cuádriceps durante la extensión de rodilla.",
         },
         {
             "url": "https://www.instagram.com/p/DYF_XhqTTby/",
-            "titulo": "Caso 2: Dinámica en levantamiento",
-            "comentario": "Pongan atención a la estabilidad de la columna lumbar durante la fase de despegue (first pull). Comparen el comportamiento del centro de masas respecto a los libros de Neumann.",
+            "titulo": "Caso 2: Dinámica y torque lumbar en levantamiento",
+            "comentario": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Analicen detalladamente la coactivación muscular y cómo la transferencia de fuerzas a través de la fascia toracolumbar contribuye a la estabilidad del core.",
         },
         {
             "url": "https://www.instagram.com/p/DY9ahGasLK1/",
-            "titulo": "Caso 3: Análisis de marcha (OpenCap)",
-            "comentario": "Aquí se evidencia la reconstrucción 3D a través de videofotogrametría. Miren la correspondencia entre los vectores de aceleración estimados y los planos anatómicos tradicionales.",
+            "titulo": "Caso 3: Análisis cinemático tridimensional",
+            "comentario": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Aquí se observa el uso de herramientas de videofotogrametría computacional para la extracción de trayectorias articulares sin marcadores físicos.",
         },
     ]
 
+    # 2. Inicializar el feed aleatorio en la sesión si no existe
     if "videos_feed" not in st.session_state:
         st.session_state.videos_feed = random.sample(
             DATABASE_VIDEOS, len(DATABASE_VIDEOS)
         )
 
-    # --- NUEVO DISEÑO CSS AJUSTADO Y CORREGIDO ---
-    st.markdown(
-        """
-        <style>
-        .wrapper-carrusel {
-            width: 100%;
-            overflow: hidden;
-        }
-        .carrusel-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            gap: 30px;
-            padding: 15px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        /* Forzar que aparezca la barra si es necesario o esconderla limpiamente */
-        .carrusel-container::-webkit-scrollbar {
-            height: 6px;
-        }
-        .carrusel-container::-webkit-scrollbar-thumb {
-            background-color: #333;
-            border-radius: 10px;
-        }
-        
-        /* Aseguramos dimensiones fijas absolutas para que no se colapse la estructura */
-        .tarjeta-story-doble {
-            flex: 0 0 650px; /* Impide que la tarjeta se encoja o colapse */
-            width: 650px;
-            height: 400px;
-            background-color: #1a1a1a;
-            border-radius: 14px;
-            border: 2px solid #2d2d2d;
-            scroll-snap-align: center;
-            display: flex !important; /* Forzar comportamiento horizontal */
-            flex-direction: row !important;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-        }
-        
-        /* Columna Izquierda: Video */
-        .col-video {
-            width: 50% !important;
-            height: 100% !important;
-            background-color: #000000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        /* Ajuste del reproductor de video para que no se corte */
-        .col-video video {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: contain !important; /* Muestra el video completo sin recortes */
-        }
-        
-        /* Columna Derecha: Texto */
-        .col-texto {
-            width: 50% !important;
-            height: 100% !important;
-            padding: 20px;
-            box-sizing: border-box;
-            background-color: #121212;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-        }
-        
-        .titulo-docente {
-            font-size: 15px;
-            font-weight: bold;
-            color: #FF4B4B;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 5px;
-        }
-        
-        .cuerpo-docente {
-            font-size: 13px;
-            line-height: 1.5;
-            color: #e0e0e0;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    # 3. Inicializar el índice del video actual
+    if "reels_index" not in st.session_state:
+        st.session_state.reels_index = 0
 
-    urls_completas = []
-    for item in st.session_state.videos_feed:
-        with st.spinner("Cargando portafolio de movimiento..."):
-            url_mp4 = obtener_url_video_directo(item["url"])
-            if url_mp4:
-                urls_completas.append(
-                    {
-                        "mp4": url_mp4,
-                        "titulo": item["titulo"],
-                        "comentario": item["comentario"],
-                    }
-                )
+    # Obtener el caso actual basado en el índice
+    idx = st.session_state.reels_index
+    caso_actual = st.session_state.videos_feed[idx]
 
-    # --- ARMADO DEL HTML ---
-    html_carrusel = '<div class="wrapper-carrusel"><div class="carrusel-container">'
+    # --- DISEÑO DE DOS COLUMNAS NATIVAS ---
+    col_izquierda, col_derecha = st.columns([1.2, 1], gap="large")
 
-    for item in urls_completas:
-        html_carrusel += f"""
-        <div class="tarjeta-story-doble">
-            <div class="col-video">
-                <video autoplay muted loop playsinline controls>
-                    <source src="{item['mp4']}" type="video/mp4">
-                </video>
-            </div>
-            
-            <div class="col-texto">
-                <div class="titulo-docente">🧠 {item['titulo']}</div>
-                <div class="cuerpo-docente">
-                    <strong>Observación docente:</strong><br>
-                    {item['comentario']}
-                </div>
-            </div>
-        </div>
-        """
+    # COLUMNA IZQUIERDA: El Video (Escalado proporcional automático)
+    with col_izquierda:
+        with st.spinner("Extrayendo flujo multimedia..."):
+            video_directo_url = obtener_url_video_directo(caso_actual["url"])
 
-    html_carrusel += "</div></div>"
+        if video_directo_url:
+            # El componente nativo se adapta perfectamente al ancho de la columna sin cortarse
+            st.video(video_directo_url)
+        else:
+            st.error("No se pudo cargar la previsualización del video.")
+            st.page_link(caso_actual["url"], label="Ver en Instagram", icon="📸")
 
-    # CLAVE: Forzamos el ancho del iframe a true completo usando use_container_width
-    st.components.v1.html(html_carrusel, height=450, scrolling=False)
+    # COLUMNA DERECHA: El Texto Académico Sincronizado
+    with col_derecha:
+        st.markdown(f"### 🧠 {caso_actual['titulo']}")
+        st.markdown(
+            f"<p style='text-align: justify; font-size: 14px;'>{caso_actual['comentario']}</p>",
+            unsafe_allow_html=True,
+        )
 
-    if st.button("🎲 Mezclar Casos Clínicos", use_container_width=True):
+        st.write("")  # Espaciador estético
+
+        # --- BOTONES DE NAVEGACIÓN DENTRO DE LA COLUMNA DE TEXTO ---
+        st.markdown("**Navegación de casos:**")
+        col_btn_prev, col_btn_next = st.columns(2)
+
+        with col_btn_prev:
+            # Desactivar botón si estamos en el primer video
+            if st.button(
+                "⬅️ Anterior",
+                use_container_width=True,
+                disabled=(idx == 0),
+            ):
+                st.session_state.reels_index -= 1
+                st.rerun()
+
+        with col_btn_next:
+            # Desactivar botón si estamos en el último video
+            if st.button(
+                "Siguiente ➡️",
+                use_container_width=True,
+                disabled=(idx == len(st.session_state.videos_feed) - 1),
+            ):
+                st.session_state.reels_index += 1
+                st.rerun()
+
+        st.caption(
+            f"<center>Caso {idx + 1} de {len(st.session_state.videos_feed)}</center>",
+            unsafe_allow_html=True,
+        )
+
+    # --- BOTÓN INFERIOR GENERAL PARA BARAJAR ---
+    st.markdown("---")
+    if st.button("🎲 Mezclar y reiniciar orden de casos", use_container_width=True):
         st.session_state.videos_feed = random.sample(
             DATABASE_VIDEOS, len(DATABASE_VIDEOS)
         )
+        st.session_state.reels_index = 0
         st.rerun()
 
