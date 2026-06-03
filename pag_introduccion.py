@@ -26,7 +26,6 @@ def main_introduccion():
         "Desliza horizontalmente. A la izquierda verás el gesto motriz y a la derecha nuestra observación docente."
     )
 
-    # 1. Base de datos estructurada: URL + Comentario de los profesores
     DATABASE_VIDEOS = [
         {
             "url": "https://www.instagram.com/p/DXSdAOnimiF/",
@@ -50,91 +49,100 @@ def main_introduccion():
             DATABASE_VIDEOS, len(DATABASE_VIDEOS)
         )
 
-    # --- DISEÑO CSS ADAPTADO PARA DOS COLUMNAS ---
+    # --- NUEVO DISEÑO CSS AJUSTADO Y CORREGIDO ---
     st.markdown(
         """
         <style>
+        .wrapper-carrusel {
+            width: 100%;
+            overflow: hidden;
+        }
         .carrusel-container {
             display: flex;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
-            gap: 24px;
-            padding: 20px 10px;
-            -webkit-overflow-scrolling: touch;
+            gap: 30px;
+            padding: 15px;
+            width: 100%;
+            box-sizing: border-box;
         }
+        /* Forzar que aparezca la barra si es necesario o esconderla limpiamente */
         .carrusel-container::-webkit-scrollbar {
-            display: none;
+            height: 6px;
+        }
+        .carrusel-container::-webkit-scrollbar-thumb {
+            background-color: #333;
+            border-radius: 10px;
         }
         
-        /* Expandimos el ancho de la tarjeta para albergar de forma cómoda las dos columnas */
+        /* Aseguramos dimensiones fijas absolutas para que no se colapse la estructura */
         .tarjeta-story-doble {
-            min-width: 600px;
-            max-width: 600px;
-            height: 420px;
-            background-color: #121212;
-            border-radius: 16px;
-            border: 2px solid #333;
+            flex: 0 0 650px; /* Impide que la tarjeta se encoja o colapse */
+            width: 650px;
+            height: 400px;
+            background-color: #1a1a1a;
+            border-radius: 14px;
+            border: 2px solid #2d2d2d;
             scroll-snap-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            display: flex; /* Flexbox horizontal para las dos columnas */
+            display: flex !important; /* Forzar comportamiento horizontal */
+            flex-direction: row !important;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
         }
         
-        .tarjeta-story-doble:hover {
-            transform: scale(1.02);
-            border-color: #FF4B4B;
-        }
-        
-        /* Columna Izquierda: Contenedor del Video */
+        /* Columna Izquierda: Video */
         .col-video {
-            width: 50%;
-            height: 100%;
-            background-color: #000;
+            width: 50% !important;
+            height: 100% !important;
+            background-color: #000000;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
         
-        /* Columna Derecha: Contenedor del Texto Académico */
+        /* Ajuste del reproductor de video para que no se corte */
+        .col-video video {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important; /* Muestra el video completo sin recortes */
+        }
+        
+        /* Columna Derecha: Texto */
         .col-texto {
-            width: 50%;
-            height: 100%;
-            padding: 24px;
+            width: 50% !important;
+            height: 100% !important;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #121212;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            box-sizing: border-box;
-            background-color: #1a1a1a;
-            color: #ffffff;
-            overflow-y: auto; /* Por si el texto del profe es muy largo */
+            overflow-y: auto;
         }
         
         .titulo-docente {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
             color: #FF4B4B;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             border-bottom: 1px solid #333;
-            padding-bottom: 6px;
+            padding-bottom: 5px;
         }
         
         .cuerpo-docente {
-            font-size: 13.5px;
-            line-height: 1.6;
+            font-size: 13px;
+            line-height: 1.5;
             color: #e0e0e0;
-            text-align: justify;
         }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-    # Extraer URLs en tiempo real con yt-dlp
     urls_completas = []
     for item in st.session_state.videos_feed:
-        with st.spinner("Sincronizando registros biomecánicos..."):
+        with st.spinner("Cargando portafolio de movimiento..."):
             url_mp4 = obtener_url_video_directo(item["url"])
             if url_mp4:
                 urls_completas.append(
@@ -145,14 +153,14 @@ def main_introduccion():
                     }
                 )
 
-    # --- CONSTRUCCIÓN DEL CONTENEDOR HTML ---
-    html_carrusel = '<div class="carrusel-container">'
+    # --- ARMADO DEL HTML ---
+    html_carrusel = '<div class="wrapper-carrusel"><div class="carrusel-container">'
 
     for item in urls_completas:
         html_carrusel += f"""
         <div class="tarjeta-story-doble">
             <div class="col-video">
-                <video width="100%" height="100%" autoplay muted loop playsinline controls style="object-fit: contain;">
+                <video autoplay muted loop playsinline controls>
                     <source src="{item['mp4']}" type="video/mp4">
                 </video>
             </div>
@@ -167,10 +175,10 @@ def main_introduccion():
         </div>
         """
 
-    html_carrusel += "</div>"
+    html_carrusel += "</div></div>"
 
-    # Inyectamos el componente a la pantalla (ajustamos el height a 480 para dar holgura a las sombras)
-    st.components.v1.html(html_carrusel, height=480, scrolling=False)
+    # CLAVE: Forzamos el ancho del iframe a true completo usando use_container_width
+    st.components.v1.html(html_carrusel, height=450, scrolling=False)
 
     if st.button("🎲 Mezclar Casos Clínicos", use_container_width=True):
         st.session_state.videos_feed = random.sample(
@@ -178,7 +186,3 @@ def main_introduccion():
         )
         st.rerun()
 
-    st.caption(
-        "<center>Desliza horizontalmente para avanzar. Los videos se reproducen de forma automática. Activa el audio interactuando con los controles de cada video.</center>",
-        unsafe_allow_html=True,
-    )
