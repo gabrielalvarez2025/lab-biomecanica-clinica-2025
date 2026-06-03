@@ -22,14 +22,20 @@ def main_introduccion():
     st.markdown("---")
 
     st.subheader("Reels biomecánicos para ñoños")
-    st.markdown("Te dejamos acá una selección de algunos videos sacados de Instagram, TikTok, YouTube Shorts y otras plataformas, que podrían resultarte interesantes y complementar contenidos vistos en clase. Cada uno se acompaña de un breve comentario de nuestra parte destacando alguno de los aspectos que podrían ser relevantes para el curso. La idea es que puedas entretenerte con este contenido curado para ti cuando estés aburrido. Estaremos continuamente haciendo crecer la colección de videos.")
+    st.markdown(
+        "Te dejamos acá una selección de algunos videos sacados de Instagram, TikTok, YouTube Shorts y otras plataformas, "
+        "que podrían resultarte interesantes y complementar contenidos vistos en clase. Cada uno se acompaña de un breve "
+        "comentario de nuestra parte destacando alguno de los aspectos que podrían ser relevantes para el curso. La idea "
+        "es que puedas entretenerte con este contenido curado para ti cuando estés aburrido. Estaremos continuamente "
+        "haciendo crecer la colección de videos."
+    )
 
-    # 1. Base de datos estructurada con tus comentarios docentes o Lorem Ipsum
+    # 1. Base de datos estructurada con tus comentarios docentes
     DATABASE_VIDEOS = [
         {
             "url": "https://www.instagram.com/p/DXSdAOnimiF/",
-            "titulo": "",
-            "comentario": "resulta interesante observar el control del tronco durante la vocalización. La acción coordinada de transverso abdominal, multífidos, diafragma y piso pélvico genera un cilindro estable que minimiza movimientos indeseados del tronco y evita una pérdida brusca de presión, permitiendo dosificar la salida de aire de manera eficiente. Esto es especialmente relevante al cantar, ya que la tarea requiere mantener una presión subglótica relativamente constante durante períodos prolongados. La estabilidad proporcionada por el sistema muscular profundo permite desacoplar parcialmente la función postural de la función respiratoria, evitando que las oscilaciones asociadas a la ventilación comprometan la postura o que las exigencias posturales interfieran con la producción vocal. Es un buen ejemplo de cómo los músculos estabilizadores no solo contribuyen a la estabilidad lumbopélvica, sino también al control respiratorio y al desempeño global de la tarea.",
+            "titulo": "Caso 1: Control de tronco y presiones",
+            "comentario": "Resulta interesante observar el control del tronco durante la vocalización. La acción coordinada de transverso abdominal, multífidos, diafragma y piso pélvico genera un cilindro estable que minimiza movimientos indeseados del tronco y evita una pérdida brusca de presión, permitiendo dosificar la salida de aire de manera eficiente. Esto es especialmente relevante al cantar, ya que la tarea requiere mantener una presión subglótica relativamente constante durante períodos prolongados. La estabilidad proporcionada por el sistema muscular profundo permite desacoplar parcialmente la función postural de la función respiratoria, evitando que las oscilaciones asociadas a la ventilación comprometan la postura o que las exigencias posturales interfieran con la producción vocal. Es un buen ejemplo de cómo los músculos estabilizadores no solo contribuyen a la estabilidad lumbopélvica, sino también al control respiratorio y al desempeño global de la tarea.",
         },
         {
             "url": "https://www.instagram.com/p/DYF_XhqTTby/",
@@ -38,7 +44,7 @@ def main_introduccion():
         },
         {
             "url": "https://www.instagram.com/p/DY9ahGasLK1/",
-            "titulo": " ",
+            "titulo": "Caso 3: Transferencia de momentum",
             "comentario": "Recordar: Gran parte del movimiento global de la extremidad inferior durante la marcha y otras actividades, está mediado por la inercia y transferencia de momentum desde movimientos previos y activación de la musculatura proximal. Somos altamente eficientes debido a que gran parte de los movimientos que realizamos aprovechan la física de los cuerpos rígidos que componen nuestros segmentos para ahorrar energía y utilizar sólo la activación muscular estrictamente necesaria para lograr la tarea.",
         },
     ]
@@ -66,18 +72,37 @@ def main_introduccion():
             video_directo_url = obtener_url_video_directo(caso_actual["url"])
 
         if video_directo_url:
-            # El componente nativo se adapta perfectamente al ancho de la columna sin cortarse
             st.video(video_directo_url)
         else:
             st.error("No se pudo cargar la previsualización del video.")
             st.page_link(caso_actual["url"], label="Ver en Instagram", icon="📸")
 
-    # COLUMNA DERECHA: El Texto Académico Sincronizado
+    # COLUMNA DERECHA: El Texto Académico Sincronizado y Enlaces
     with col_derecha:
-        st.markdown(f"### 🧠 {caso_actual['titulo']}")
+        if caso_actual["titulo"].strip():
+            st.markdown(f"### 🧠 {caso_actual['titulo']}")
+        else:
+            st.markdown("### 🧠 Análisis de Caso Clínico")
+
         st.markdown(
             f"<p style='text-align: justify; font-size: 14px;'>{caso_actual['comentario']}</p>",
             unsafe_allow_html=True,
+        )
+
+        st.write("")  # Espaciador estético
+
+        # --- NUEVA SECCIÓN: ENLACE A LA PLATAFORMA ORIGINAL ---
+        # Un botón estilizado de ancho completo que cambia dinámicamente según la URL
+        texto_plataforma = "🔗 Ver publicación original"
+        if "instagram.com" in caso_actual["url"]:
+            texto_plataforma = "📸 Ver Reel original en Instagram"
+        elif "tiktok.com" in caso_actual["url"]:
+            texto_plataforma = "🎵 Ver Video original en TikTok"
+        elif "youtube.com" in caso_actual["url"] or "youtu.be" in caso_actual["url"]:
+            texto_plataforma = "📺 Ver Short original en YouTube"
+
+        st.link_button(
+            texto_plataforma, caso_actual["url"], use_container_width=True
         )
 
         st.write("")  # Espaciador estético
@@ -87,7 +112,6 @@ def main_introduccion():
         col_btn_prev, col_btn_next = st.columns(2)
 
         with col_btn_prev:
-            # Desactivar botón si estamos en el primer video
             if st.button(
                 "⬅️ Anterior",
                 use_container_width=True,
@@ -97,7 +121,6 @@ def main_introduccion():
                 st.rerun()
 
         with col_btn_next:
-            # Desactivar botón si estamos en el último video
             if st.button(
                 "Siguiente ➡️",
                 use_container_width=True,
@@ -119,4 +142,3 @@ def main_introduccion():
         )
         st.session_state.reels_index = 0
         st.rerun()
-
