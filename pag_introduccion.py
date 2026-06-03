@@ -28,15 +28,7 @@ def main_introduccion():
         {
             "url": "https://www.instagram.com/p/DXSdAOnimiF/",
             "titulo": "",
-            "comentario": "resulta interesante observar el control del tronco durante la vocalización. "
-            "La acción coordinada de transverso abdominal, multífidos, diafragma y piso pélvico genera un cilindro "
-            "estable que minimiza movimientos indeseados del tronco y evita una pérdida brusca de presión, permitiendo "
-            "dosificar la salida de aire de manera eficiente. Esto es especialmente relevante al cantar, "
-            "ya que la tarea requiere mantener una presión subglótica relativamente constante durante períodos prolongados. "
-            "La estabilidad proporcionada por el sistema muscular profundo permite desacoplar parcialmente la función postural "
-            "de la función respiratoria, evitando que las oscilaciones asociadas a la ventilación comprometan la postura o que "
-            "las exigencias posturales interfieran con la producción vocal. Es un buen ejemplo de cómo los músculos estabilizadores "
-            "no solo contribuyen a la estabilidad lumbopélvica, sino también al control respiratorio y al desempeño global de la tarea.",
+            "comentario": "resulta interesante observar el control del tronco durante la vocalización. La acción coordinada de transverso abdominal, multífidos, diafragma y piso pélvico genera un cilindro estable que minimiza movimientos indeseados del tronco y evita una pérdida brusca de presión, permitiendo dosificar la salida de aire de manera eficiente. Esto es especialmente relevante al cantar, ya que la tarea requiere mantener una presión subglótica relativamente constante durante períodos prolongados. La estabilidad proporcionada por el sistema muscular profundo permite desacoplar parcialmente la función postural de la función respiratoria, evitando que las oscilaciones asociadas a la ventilación comprometan la postura o que las exigencias posturales interfieran con la producción vocal. Es un buen ejemplo de cómo los músculos estabilizadores no solo contribuyen a la estabilidad lumbopélvica, sino también al control respiratorio y al desempeño global de la tarea.",
         },
         {
             "url": "https://www.instagram.com/p/DYF_XhqTTby/",
