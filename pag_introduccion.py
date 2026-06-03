@@ -38,7 +38,7 @@ def main_introduccion():
         {
             "url": "https://www.instagram.com/p/DY9ahGasLK1/",
             "titulo": " ",
-            "comentario": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Aquí se observa el uso de herramientas de videofotogrametría computacional para la extracción de trayectorias articulares sin marcadores físicos.",
+            "comentario": "Recordar: Gran parte del movimiento global de la extremidad inferior durante la marcha y otras actividades, está mediado por la inercia y transferencia de momentum desde movimientos previos y activación de la musculatura proximal. Somos altamente eficientes debido a que gran parte de los movimientos que realizamos aprovechan la física de los cuerpos rígidos que componen nuestros segmentos para ahorrar energía y utilizar sólo la activación muscular estrictamente necesaria para lograr la tarea.",
         },
     ]
 
